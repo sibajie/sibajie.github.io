@@ -1,0 +1,841 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"shuxun","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"./public/search.xml"};
+  </script>
+
+  <meta name="description" content="专注互联网运维技术发展">
+<meta property="og:type" content="website">
+<meta property="og:title" content="学无止境">
+<meta property="og:url" content="http://shuxun,wang/page/47/index.html">
+<meta property="og:site_name" content="学无止境">
+<meta property="og:description" content="专注互联网运维技术发展">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:author" content="王殊勋">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://shuxun,wang/page/47/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : true,
+    isPost : false,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>学无止境</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">学无止境</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">注互联网运维技术发展</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-sitemap">
+
+    <a href="/sitemap.xml" rel="section"><i class="fa fa-sitemap fa-fw"></i>站点地图</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content index posts-expand">
+            
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://shuxun,wang/2017/01/14/1055/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="王殊勋">
+      <meta itemprop="description" content="专注互联网运维技术发展">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="学无止境">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2017/01/14/1055/" class="post-title-link" itemprop="url">centos configure error Can't find ext2fs library</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2017-01-14 02:24:00" itemprop="dateCreated datePublished" datetime="2017-01-14T02:24:00+08:00">2017-01-14</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-07-14 15:16:19" itemprop="dateModified" datetime="2021-07-14T15:16:19+08:00">2021-07-14</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E9%94%99%E8%AF%AF%E8%A7%A3%E5%86%B3/" itemprop="url" rel="index"><span itemprop="name">错误解决</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">yum</span> install e<span class="number">2</span>fsprogs.x<span class="number">86</span>_<span class="number">64</span> e<span class="number">2</span>fsprogs-devel.x<span class="number">86</span>_<span class="number">64</span> e<span class="number">2</span>fsprogs-libs.x<span class="number">86</span>_<span class="number">64</span></span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://shuxun,wang/2017/01/13/1506/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="王殊勋">
+      <meta itemprop="description" content="专注互联网运维技术发展">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="学无止境">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2017/01/13/1506/" class="post-title-link" itemprop="url">解决ruby command not found</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2017-01-13 01:03:00" itemprop="dateCreated datePublished" datetime="2017-01-13T01:03:00+08:00">2017-01-13</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-07-14 15:15:28" itemprop="dateModified" datetime="2021-07-14T15:15:28+08:00">2021-07-14</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E9%94%99%E8%AF%AF%E8%A7%A3%E5%86%B3/" itemprop="url" rel="index"><span itemprop="name">错误解决</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>错误:</p>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo: <span class="keyword">ruby</span>: <span class="keyword">command</span> not found</span><br></pre></td></tr></table></figure>
+
+<p>所以还要建立以下软链接:</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo ln -s <span class="regexp">/usr/</span>local<span class="regexp">/ruby/</span>bin<span class="regexp">/ruby /u</span>sr<span class="regexp">/bin/</span>ruby</span><br><span class="line">sudo ln -s <span class="regexp">/usr/</span>local<span class="regexp">/ruby/</span>bin<span class="regexp">/gem /u</span>sr<span class="regexp">/bin/g</span>em</span><br></pre></td></tr></table></figure>
+
+<p>然后执行:</p>
+<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">sudo gem -v</span></span><br></pre></td></tr></table></figure>
+
+<p>输出 1.3.7.</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://shuxun,wang/2017/01/12/1034/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="王殊勋">
+      <meta itemprop="description" content="专注互联网运维技术发展">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="学无止境">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2017/01/12/1034/" class="post-title-link" itemprop="url">APACHE安全配置</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2017-01-12 15:07:00" itemprop="dateCreated datePublished" datetime="2017-01-12T15:07:00+08:00">2017-01-12</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-07-14 15:15:58" itemprop="dateModified" datetime="2021-07-14T15:15:58+08:00">2021-07-14</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%90%84%E7%B1%BB%E6%9C%8D%E5%8A%A1/" itemprop="url" rel="index"><span itemprop="name">各类服务</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>Apache服务器走到那里,unix/linux就跟到那里,这足以说明在WEB服务器领域Apache的优良性能与市场占有率.<br>这今天互联网的大环境下,web服务已经成为公司企业必不可少的业务,大多数的安全问题也跟随而来,攻击重点也转移为web攻击,许多web与颇有价值的客户服务与电子商业活动结合在一起,这也是吸引恶意攻击重要原因.<br>先来了解下web所面临的安全风险.</p>
+<p>1.HTTP拒绝服务攻击</p>
+<p>攻击者通过某些手段使服务器拒绝对http应答,这使Apache对系统资源(cup时间与内存)需求巨增,最终造成系统变慢甚至完全瘫痪,Apache服务器最大的缺点是,它的普遍性使它成为众矢之的,Apache服务器无时无刻不受到DoS攻击威胁,主要有下边几种.</p>
+<p>2.数据包洪水攻击</p>
+<p>一种中断服务器或本地网络的方法是数据包洪水攻击,它通常使用internet控制报文协议(ICMP,属于网络层协议).<br>包或是udp包,在最简单的形式下,这些攻击都是使服务器或网络负载过重,这意味这攻击者的网络速度必须比目标主机网络速度要快,使用udp包的优势是不会有任何包返回到黑客的计算机(udp效率要比tcp高17倍),而使用ICMP包的优势是攻击者能让攻击更加富与变化,发送有缺陷的包会搞乱并锁住受害者的网络,目前流行的趋势是攻击者欺骗服务器,让其相信正在受来自自身的洪水攻击.</p>
+<p>3.磁盘攻击</p>
+<p>这是一种很不道德的攻击,它不仅影响计算机的通信,还破坏其硬件,伪造的用户请求利用写命令攻击目标计算机硬盘,让其超过极限,并强制关闭,结局很悲惨.</p>
+<p>4.路由不可达</p>
+<p>通常DoS攻击,集中在路由器上,攻击者首先获得控制权并操纵目标机器,当攻击者能更改路由表条目时候,会导致整个网络无法通信,这种攻击很阴险,隐蔽,因为网络管理员需要排除的网络不通原因很多,其中一些原因需要详细分辨.</p>
+<p>5.分布式拒绝服务攻击</p>
+<p>这也是最具有威胁的DDoS攻击,名称很容易理解,简单说就是群欧,很多客户机同时单条服务器,你会发现你将伤痕累累,Apache服务器特别容易受到攻击,无论是DDos还是隐藏来源的攻击,因为Apache无处不在,特别是为Apache特意打造的病毒(特选SSL蠕虫),潜伏在许多主机上,攻击者通过病毒可以操纵大量被感染的机器,对特定目标发动一次浩大的DDoS攻击,通过将蠕虫散播到大量主机,大规模的点对点攻击得以进行,除非你不提供服务,要不然几乎无法阻止这样的攻击,这种攻击通常会定位到大型的网站上.</p>
+<p>缓冲区溢出,这种攻击很普遍,攻击者利用CGI程序编写一些缺陷程序偏离正常的流程,程序使用静态的内存分配,攻击者就可以发送一个超长的请求使缓冲区溢出,比如,一些perl编写的处理用户请求的网关脚本,一但缓冲区溢出,攻击者就可以执行恶意指令.</p>
+<p>非法获取root权限<br>如果Apache以root权限运行,系统上一些程序的逻辑缺陷或缓冲区溢出漏洞,会让攻击者很容易在本地系统获取linux服务器上的管理者权限,在一些远程情况下,攻击者会利用一些以root身份执行的有缺陷的系统守护进程来取得root权限,或利用有缺陷的服务进程漏洞来取得普通用户权限,以远程登陆,进而控制整个系统.</p>
+<p>这边这些都是服务将会遇到的攻击手段,下边来说,如何打造安全的Apache服务器.<br>如果你能遵守下边这些建议,那么你将得到一台相对安全的apache服务器.</p>
+<p>一:勤打补丁</p>
+<p>你必须要相信这个是最有用的手段,缓冲区溢出等漏洞都必须使用这种手段来防御,勤快点相信对你没有坏处.<br>在http:<a target="_blank" rel="noopener" href="http://www.apache.org/">www.apache.org</a> 上最新的changelog中都写有:bug fix ,security bug fix的字样,做为负责任的管理员要经常关注相关漏洞,及时升级系统添加补丁.使用最新安全版本对加强apache至关重要.</p>
+<p>二:隐藏和伪装Apache的版本</p>
+<p>打乱攻击者的步骤,给攻击者带来麻烦,相信是管理员愿意看到的.软件的漏洞信息和版本是相关的,在攻击者收集你服务软件信息时候给与迷惑是个不错的选择,何况版本号,对攻击者来说相当与GPS定位一样重要.<br>默认情况,系统会把apache版本模块都显示出来(http返回头),如果列举目录的话,会显示域名信息(文件列表正文),去除Apache版本号的方法是修改配置文件,找到关键字,修改为下边.</p>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">ServerSignature</span> <span class="literal">off</span></span><br><span class="line">ServerTokens prod</span><br></pre></td></tr></table></figure>
+
+<p>通过分析web服务器类型,大致可以推测操作系统类型,win使用iis,linux普遍apache,默认的Apache配置里没有任何信息保护机制,并且允许目录浏览,通过目录浏览,通常可以得到类似”apache/1.37 Server at apache.linuxforum.net Port 80”或”apache/2.0.49(unix)PHP/4.3.8”的信息.<br>通过修改配置文件中的ServerTokens参数,可以将Apache的相关信息隐藏起来,如果不行的话,可能是提示信息被编译在程序里了,要隐藏需要修改apache的源代码,然后重新编译程序,以替换内容.<br>编辑ap_release.h文件,<br>修改</p>
+<figure class="highlight livescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;<span class="subst">#define</span> AP_SERVER_BASEPRODUCT&quot;</span><span class="string">&quot;Apache&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>为</p>
+<figure class="highlight livescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;<span class="subst">#define</span> AP_SERVER_BASEPRODUCT&quot;</span><span class="string">&quot;Microsoft-IIS/5.0&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>编辑os/unix/os.h文件:<br>修改</p>
+<figure class="highlight livescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;<span class="subst">#define</span> PLATFORM&quot;</span><span class="string">&quot;Unix&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>为</p>
+<figure class="highlight ada"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;#define PLATFORM&quot;</span><span class="symbol">&#x27;Win32</span><span class="string">&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>修改完成后,重新编译,安装apache,在修改配置文件为上边做过的,再次启动apache后,用工具扫描,发现提示信息中已经显示为windows操作系统了.<br>顺便说下,现在这个论坛,就有点不太讲究,这是论坛错误的返回信息,看了有点汗地感觉.</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">Apache</span>/<span class="number">2</span>.<span class="number">2</span>.<span class="number">8</span> (Ubuntu) DAV/<span class="number">2</span> SVN/<span class="number">1</span>.<span class="number">4</span>.<span class="number">6</span> mod_ssl/<span class="number">2</span>.<span class="number">2</span>.<span class="number">8</span> OpenSSL/<span class="number">0</span>.<span class="number">9</span>.<span class="number">8</span>g Server at forum.ubuntu.org.cn Port <span class="number">80</span></span><br></pre></td></tr></table></figure>
+
+<p>这个等于告诉恶意用户很多有用信息,虽然说不算开了门,但等于被告诉了门在那里,还是相当危险的.</p>
+<p>三:建立安全的目录结构apache服务器包括四个目录结构</p>
+<figure class="highlight gauss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">ServerRoot <span class="meta">#保存配置文件,二进制文件与其他服务器配置文件</span></span><br><span class="line">DocumentRoot <span class="meta">#保存web站点内容,包括HTML文件和图片等</span></span><br><span class="line">ScripAlias <span class="meta">#保存CGI脚本</span></span><br><span class="line">Customlog 和 <span class="keyword">Errorlog</span> <span class="meta">#保存日志和错误日志</span></span><br></pre></td></tr></table></figure>
+
+<p>建议的目录结构为,以上四种目录相互独立并且不存在父子逻辑关系.<br>注:<br>ServerRoot目录只能为root用户访问<br>DocumentRoot目录应该能够被管理web站点内容的用户访问和使用apache服务器的apache用户与组访问<br>ScripAlias目录应该只能被CGI开发人员和apache用户访问<br>Customlog 和 Errorlog只能被root访问</p>
+<p>下边是一个安全目录结构的事例:</p>
+<figure class="highlight 1c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">+-------/etc/</span><br><span class="line"><span class="string">|</span></span><br><span class="line"><span class="string">| +----/http (ServerRoot)</span></span><br><span class="line"><span class="string">| +----/logs (Customlog 和 Errorlog)</span></span><br><span class="line"><span class="string">|</span></span><br><span class="line">+-------var/www</span><br><span class="line"><span class="string">|</span></span><br><span class="line"><span class="string">| +---/cgi-bin (ScripAlias)</span></span><br><span class="line"><span class="string">| +---/html (DocumentRoot)</span></span><br></pre></td></tr></table></figure>
+
+<p>这样的目录结构是比较安全的,因为目录之间独立,某个目录权限错误不会影响到其他目录.</p>
+<p>四:为apache使用专门的用户与组</p>
+<p>按照最小特权的原则,需要给apache分配一个合适的权限,让其能够完成web服务.<br>注:<br>最小特权原则是系统安全中最基本的原则之一,限制使用者对系统及数据进行存取所需要的最小权限,保证用户可以完成任务,同时也确保被窃取或异常操作所造成的损失.</p>
+<p>必须保证apache使用一个专门的用户与组,不要使用系统预定的帐户,比如nobody用户与nogroup组.<br>因为只有root用户可以运行apache,DocumentRoot应该能够被管理web站点内容的用户访问和使用.apache服务器的 apache用户与组访问,例如,希望”test”用户在web站点发布内容,并且可以以httpd身份运行apache服务器,可以这样设定.</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">groupadd webteam</span><br><span class="line">usermod -G webteam test</span><br><span class="line">chown -R httpd.webteam <span class="regexp">/www/</span>html</span><br><span class="line">chmod -R <span class="number">2570</span> <span class="regexp">/www/</span>htdocs</span><br><span class="line"><span class="comment">#只有root能访问日志,推荐这样的权限</span></span><br><span class="line">chown -R root.root <span class="regexp">/etc/</span>logs</span><br><span class="line">chown -R <span class="number">700</span> <span class="regexp">/etc/</span>logs</span><br></pre></td></tr></table></figure>
+
+<p>五:web目录的访问策略</p>
+<p>对于可以访问的web目录,要使用相对保守的途径进行访问,不要让用户查看任何目录索引列表.<br>禁止使用目录索引:<br>apache在接到用户对一个目录的访问时,会查找DirectoryIndex指令指定的目录索引文件,默认为index.html,如果该文件不存在,那么apache会创建动态列表为用户显示该目录的内容,这样就会暴露web站点结构,因此需要修改配置文件禁止显示动态目录索引,修改httpd.conf.</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute"><span class="nomarkup">Options</span></span> -Indexes FollowSymLinks</span><br></pre></td></tr></table></figure>
+
+<p>Options指令通知apache禁止使用目录索引,FollowSymLinks表示不允许使用符号连接.<br>禁止默认访问:<br>要的安全策略必须要禁止默认访问的存在,只对指定的目录开放权限,如果允许访问 <code>/var/www/html</code>目录,使用如下设定.</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute"><span class="nomarkup">Order</span></span> <span class="literal">deny</span>,<span class="literal">allow</span></span><br><span class="line"><span class="attribute"><span class="nomarkup">Allow</span></span> from <span class="literal">all</span></span><br></pre></td></tr></table></figure>
+
+<p>禁止用户重载:<br>为了禁止用户对目录配置文件(htaccess)进行重载(修改),可以这样设定.</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">AllowOverride <span class="attribute">None</span></span><br></pre></td></tr></table></figure>
+
+<p>六:apache服务器访问控制</p>
+<p>apache的access.conf文件负责设置文件的访问权限,可以实现互联网域名和ip地址的访问控制.<br>如允许192.168.1.1到192.168.1.254的主机访问,可以这样设定.</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute"><span class="nomarkup">order</span></span> <span class="literal">deny</span>,<span class="literal">allow</span></span><br><span class="line"><span class="attribute"><span class="nomarkup">deny</span></span> from <span class="literal">all</span></span><br><span class="line"><span class="attribute"><span class="nomarkup">allow</span></span> from pair <span class="number">192.168.1.0</span>/<span class="number">255.255.255.0</span></span><br></pre></td></tr></table></figure>
+
+<p>七:apache服务器的密码保护</p>
+<p>.htaccess文件是apache上的一个设置文件,它是一个文本文件,.htaccess文件提供了针对目录改变配置的方法.<br>既通过在一个特定的文档目录中放置一个包含一个或多个指令的文件(.htaccess文件),以作用于此目录和子目录.<br>.htaccess的功能包括设置网页密码,设置发生错误时出现的文件,改变首业的文件名.(如,index.html),禁止读取文件名,重新导向文件,加上MIME类别,禁止目录下的文件等.<br>注:.htaccess是一个完整的文件名,不是***.htaccess或其他格式,在/abc目录下放置一个.htaccess文件,那么/abc与它的子目录都会被这个文件影响,但/index.html不会被影响.</p>
+<p>.htaccess的建立和使用比较复杂点,如果感兴趣的朋友可以回帖发问,这里就不具体写出来了,这种保护要比某些程序实现的保护安全,那种方法可以通过被猜测方法获取密码,用.htaccess很难被破解,但文本方式的验证会比较慢,对少量用户没影响,但对大量用户就必须使用带数据模块的验证了,这需要编译源代码时候开启模块,默认是不开启的.</p>
+<p>八:让apache运行在”监牢”中</p>
+<p>“监牢”的意思是指通过chroot机制来更改某个软件运行时所能看到的根目录,简单说,就是被限制在指定目录中,保证软件只能对该目录与子目录文件有所动作,从而保证整个服务器的安全,即使被破坏或侵入,损伤也不大.<br>以前,unix/linux上的daemon都是以root权限启动的,当时,这是一件理所当然的事情,像apache这样的服务器软件,需要绑定到80端口上来监听请求,而root是唯一有这种权限的用户,随着攻击手段和强度的增加,这样会使服务器受到相当大的威胁,一但被利用缓冲区溢出漏洞,就可以控制整个系统.现在的服务器设计通常以root启动,然后进程放弃root权限,改为某个低级的帐号运行.这种方式显然会降低对系统的危害,但攻击者还是会寻找漏洞提升权限,即使无法获得root权限,也可以删除文件,涂改主页等.<br>为了进一步提高系统安全性,linux内核引入chroot机制,chroot是内核中的一个系统调用,软件可以通过调用函数库的chroot 函数,来更改某个进程所能见到的跟目录,比如,apache软件安装在/usr/local/httpd目录,以root启动apache,这个root 权限的父进程会派生数个以nobody权限运行的子进程,父进程监听80端口,然后交给某个子进程处理,这时候子进程所处的目录续承父进程,即/usr /local/httpd目录,但是一但目录权限设定错误,被攻击的apache子进程可以访问/usr/local , /usr ,/tmp甚至整个文件系统,因为apache进程所处的跟目录仍然是整个文件系统的跟目录,如果可以用chroot将apache限制在/usr /local/httpd/下,那么apache所存取的文件都被限制在/usr/local/httpd下,创建chroot监牢的作用就是将进程权限限制在文件目录树下,保证安全.<br>如果自己手动apache的监牢,将是很烦琐和复杂的工作,需要牵扯到库文件,这里可以使用jail包来简化监牢的实现.<br>jail的官方网站为: 有兴趣可以逛逛.<br>这里也不写出具体的创建过程稍微麻烦,如果对安全有需要的话,请回帖,会及时补上.</p>
+<p>九:apache服务器防范Dos</p>
+<p>apache服务经常会碰到Dos攻击,防范的主要手段是通过软件,apahce Dos Evasive Maneuvers Module.<br>来实现的,它是一款mod_access的代替软件,可以对抗DoS攻击,该软件可以快速拒绝来自相同地址对同一URL的重复请求,通过查询内部一张各子进程的哈希表来实现.<br>可以到网址:<a target="_blank" rel="noopener" href="http://online/.securityfocus.com/tools/">http://online/.securityfocus.com/tools/</a> 上下载软件.</p>
+<p>十:减少CGI和SSI风险</p>
+<p>CGI脚本的漏洞已经成为WEB服务器的首要安全隐患,通常是程序编写CGI脚本产生了许多漏洞,控制CGI的漏洞除了在编写时候注意对输入数据的合法检查,对系统调用的谨慎使用等因素外,首先使用CGI程序所有者的ID来运行这些程序,即使被漏洞危害也仅限于该ID能访问的文件,不会对整个系统带来致命的危害,因此需要谨慎使用CGI程序.<br>1.3版的apache集成了suEXEC程序,可以为apache提供CGI程序的控制支持,可以把suEXEC看做一个包装器,在Apache接到CGI程序的调用请求后,把这个请求交给suEXEC来负责完成具体调用,并从suEXEC返回结果,suEXEC可以解决一些安全问题,但会影响速度.<br>如果是对安全性要求很高时候,建议使用suEXEC,此外还有一个软件CGIWrap,它的安全性要高与suEXEC减少SSI脚本风险,如果用exec等SSI命令运行外部程序,也会存在类似CGI脚本风险,除了内部调试程序时,应使用.<br>option命令禁止其使用:</p>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Option</span> IncludesNOEXEC</span><br></pre></td></tr></table></figure>
+
+<p>十一:使用ssl加固Apache</p>
+<p>使用具有SSL功能的服务器,可以提高网站敏感页的安全性能,SSL工作与TCP/IP协议和HTTP协议之间<br>SSL可以加密互联网上传递的数据流,提供身份验证,在线购物而不必担心别人窃取信用卡信息,在基于电子商务和基于web邮件的地方非常重要.<br>SSL的应用相对还是比较麻烦的,有需要的话,可以发贴或查看资料,这几就不多写,篇幅不够.</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://shuxun,wang/2017/01/12/1387/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="王殊勋">
+      <meta itemprop="description" content="专注互联网运维技术发展">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="学无止境">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2017/01/12/1387/" class="post-title-link" itemprop="url">windows服务器禁止ip</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2017-01-12 07:25:00" itemprop="dateCreated datePublished" datetime="2017-01-12T07:25:00+08:00">2017-01-12</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-07-14 15:15:22" itemprop="dateModified" datetime="2021-07-14T15:15:22+08:00">2021-07-14</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" itemprop="url" rel="index"><span itemprop="name">操作系统</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>使用IP策略,阻止该ip访问你的任何端口.<br>下边是方法:<br>打开:控制面版–管理工具-本地安全设置.点左边的 IP安全策略,在本地计算机.然后在右边点右键–创建IP安全策略,打开IP安全策略向导.<br>下一步,出现IP安全策略名称,随便起个就行.比如叫 阻止192.168.1.163<br>下一步,出现激活默认响应规则,不要选中,把钩去掉.<br>下一步,选中编辑属性,完成.<br>然后出现了 IP安全策略属性,点下边的添加,出现规则属性,点击添加,出现IP策略器列表.把使用添加向导去掉,点右边的添加,出现筛选器属性.<br>寻址栏 原地址选 一个特定的IP 192.168.1.163.目标IP是 我的IP地址.然后点击确定.<br>现在回到 IP 筛选器列表,点击确定,在规则属性里应该多了个列表,选中它.然后切换到筛选器操作选项卡,把使用添加向导去掉,点击添加.在出现的筛选器操作 属性里的安全措施选项卡中,选择 阻止,点击确定.在筛选器操作选项卡中会多出一个阻止的选项,选中它.<br>总之,在IP筛选器列表中你要选中你建的那个列表,筛选器操作中要选中阻止.然后点击应用以后关闭.<br>现在回到 IP安全策略 属性 这里,把你建的IP筛选器列表钩上,点击关闭.<br>这时,在你最开始打开的 本地安全设置里 会多出一个策略,就是你建立的<br>“阻止192.168.1.163”.在它身上点右键,选择指派,就OK了.</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://shuxun,wang/2017/01/01/1332/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="王殊勋">
+      <meta itemprop="description" content="专注互联网运维技术发展">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="学无止境">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2017/01/01/1332/" class="post-title-link" itemprop="url">python 在某个时间段内生成随机日期的时间戳</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2017-01-01 17:02:00" itemprop="dateCreated datePublished" datetime="2017-01-01T17:02:00+08:00">2017-01-01</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-07-14 15:16:21" itemprop="dateModified" datetime="2021-07-14T15:16:21+08:00">2021-07-14</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%BC%96%E7%A8%8B%E5%BC%80%E5%8F%91/" itemprop="url" rel="index"><span itemprop="name">编程开发</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># -*- coding: UTF-8 -*-</span></span><br><span class="line"><span class="attribute">import</span> MySQLdb as mdb</span><br><span class="line"><span class="attribute">import</span> time</span><br><span class="line"><span class="attribute">import</span> random</span><br><span class="line"></span><br><span class="line"><span class="attribute">a1</span>=(<span class="number">2010</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>)              #设置开始日期时间元组(<span class="number">1976</span>-<span class="number">01</span>-<span class="number">01</span> <span class="number">00</span>:<span class="number">00</span>:<span class="number">00</span>)</span><br><span class="line"><span class="attribute">a2</span>=(<span class="number">2019</span>,<span class="number">5</span>,<span class="number">31</span>,<span class="number">23</span>,<span class="number">59</span>,<span class="number">59</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>)    #设置结束日期时间元组(<span class="number">1990</span>-<span class="number">12</span>-<span class="number">31</span> <span class="number">23</span>:<span class="number">59</span>:<span class="number">59</span>)</span><br><span class="line"></span><br><span class="line"><span class="attribute">start</span>=time.mktime(a<span class="number">1</span>)    #生成开始时间戳</span><br><span class="line"><span class="attribute">end</span>=time.mktime(a<span class="number">2</span>)      #生成结束时间戳</span><br><span class="line"></span><br><span class="line"><span class="attribute">for</span> i in range(<span class="number">10</span>):     #随机生成<span class="number">10</span>个日期字符串</span><br><span class="line">    <span class="attribute">t</span>=random.randint(start,end)    #在开始和结束时间戳中随机取出一个</span><br><span class="line">    <span class="attribute">date_touple</span>=time.localtime(t)          #将时间戳生成时间元组</span><br><span class="line">    <span class="attribute">date</span>=time.strftime(<span class="string">&quot;%Y-%m-%d %H:%M:%S&quot;</span>,date_touple)  #将时间元组转成格式化字符串(<span class="number">1976</span>-<span class="number">05</span>-<span class="number">21</span>)</span><br><span class="line">    <span class="attribute">timeArray</span> = time.strptime(date, <span class="string">&quot;%Y-%m-%d %H:%M:%S&quot;</span>)</span><br><span class="line">    <span class="attribute">timestamp</span> = int(time.mktime(timeArray))</span><br><span class="line">    <span class="attribute">print</span> timestamp</span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+
+  
+  <nav class="pagination">
+    <a class="extend prev" rel="prev" href="/page/46/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/46/">46</a><span class="page-number current">47</span><a class="page-number" href="/page/48/">48</a><span class="space">&hellip;</span><a class="page-number" href="/page/132/">132</a><a class="extend next" rel="next" href="/page/48/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+  </nav>
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="王殊勋"
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name">王殊勋</p>
+  <div class="site-description" itemprop="description">better late than never.<br>只要开始，虽晚不迟。</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">656</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">2058</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <!--添加网站运行时间 -->
+  <span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
+  <script>
+      var now = new Date(); 
+      function createtime() { 
+          var grt= new Date("12/01/2007 12:00:00");//此处修改你的建站时间或者网站上线时间 
+          now.setTime(now.getTime()+250); 
+          days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days); 
+          hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours); 
+          if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum); 
+          mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;} 
+          seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum); 
+          snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;} 
+          document.getElementById("timeDate").innerHTML = "本站已安全运行 "+dnum+" 天 "; 
+          document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒"; 
+      } 
+  setInterval("createtime()",250);
+  </script>
+  <span itemprop="copyrightYear">(2007 - 2021)</span>
+  <!-- 添加网站运行时间 -->
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">学无止境</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script size="300" alpha="0.6" zIndex="0" src="/lib/canvas-ribbon/canvas-ribbon.js"></script>
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

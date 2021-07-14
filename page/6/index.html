@@ -1,0 +1,944 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"shuxun","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"./public/search.xml"};
+  </script>
+
+  <meta name="description" content="专注互联网运维技术发展">
+<meta property="og:type" content="website">
+<meta property="og:title" content="学无止境">
+<meta property="og:url" content="http://shuxun,wang/page/6/index.html">
+<meta property="og:site_name" content="学无止境">
+<meta property="og:description" content="专注互联网运维技术发展">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:author" content="王殊勋">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://shuxun,wang/page/6/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : true,
+    isPost : false,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>学无止境</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">学无止境</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">注互联网运维技术发展</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-sitemap">
+
+    <a href="/sitemap.xml" rel="section"><i class="fa fa-sitemap fa-fw"></i>站点地图</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content index posts-expand">
+            
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://shuxun,wang/2019/09/23/1331/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="王殊勋">
+      <meta itemprop="description" content="专注互联网运维技术发展">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="学无止境">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/09/23/1331/" class="post-title-link" itemprop="url">python reload报错</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-09-23 08:56:00" itemprop="dateCreated datePublished" datetime="2019-09-23T08:56:00+08:00">2019-09-23</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-07-14 15:14:55" itemprop="dateModified" datetime="2021-07-14T15:14:55+08:00">2021-07-14</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E9%94%99%E8%AF%AF%E8%A7%A3%E5%86%B3/" itemprop="url" rel="index"><span itemprop="name">错误解决</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>程序:</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">import sys </span><br><span class="line"><span class="function"><span class="title">reload</span><span class="params">(sys)</span></span> </span><br><span class="line">sys<span class="selector-class">.setdefaultencoding</span>(‘utf-<span class="number">8</span>’) </span><br></pre></td></tr></table></figure>
+
+<p>以上是python2的写法，但是在python3中这个需要已经不存在了，这么做也没什么实际意义。<br>但是python3中仍然可以使用这个方法代替:</p>
+<figure class="highlight elm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> importlib,sys </span><br><span class="line">importlib.reload(sys)</span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://shuxun,wang/2019/09/12/1460/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="王殊勋">
+      <meta itemprop="description" content="专注互联网运维技术发展">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="学无止境">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/09/12/1460/" class="post-title-link" itemprop="url">解决Cannot retrieve metalink for repository epel. Please verify its path and try again</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-09-12 07:40:00" itemprop="dateCreated datePublished" datetime="2019-09-12T07:40:00+08:00">2019-09-12</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-07-14 15:15:29" itemprop="dateModified" datetime="2021-07-14T15:15:29+08:00">2021-07-14</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E9%94%99%E8%AF%AF%E8%A7%A3%E5%86%B3/" itemprop="url" rel="index"><span itemprop="name">错误解决</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>解决方法:</p>
+<p>修改 epel.repo 文件,把第3行注释去掉,第四行注释掉.</p>
+<p>编辑 <code>/etc/yum.repos.d/epel.repo</code>:</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">vi <span class="regexp">/etc/yum</span>.repos.d/epel.repo</span><br><span class="line"></span><br><span class="line">[epel]</span><br><span class="line">name=Extra Packages <span class="keyword">for</span> Enterprise Linux <span class="number">6</span> - <span class="variable">$basearch</span></span><br><span class="line"><span class="comment">#baseurl=http://download.fedoraproject.org/pub/epel/6/$basearch</span></span><br><span class="line">mirrorlist=https:<span class="regexp">//mi</span>rrors.fedoraproject.org/metalink?repo=epel-<span class="number">6</span>&amp;arch=<span class="variable">$basearch</span></span><br></pre></td></tr></table></figure>
+
+<p>修改为:</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[epel]</span><br><span class="line">name=Extra Packages <span class="keyword">for</span> Enterprise Linux <span class="number">6</span> - <span class="variable">$basearch</span></span><br><span class="line">baseurl=http:<span class="regexp">//</span>download.fedoraproject.org<span class="regexp">/pub/</span>epel<span class="regexp">/6/</span><span class="variable">$basearch</span></span><br><span class="line"><span class="comment">#mirrorlist=https://mirrors.fedoraproject.org/metalink?repo=epel-6&amp;arch=$basearch</span></span><br></pre></td></tr></table></figure>
+
+<p>再清理源,重新安装.</p>
+<figure class="highlight ada"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">yum clean <span class="keyword">all</span></span><br><span class="line">yum install -y 需要的包</span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://shuxun,wang/2019/09/10/1417/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="王殊勋">
+      <meta itemprop="description" content="专注互联网运维技术发展">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="学无止境">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/09/10/1417/" class="post-title-link" itemprop="url">本站简介</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-09-10 03:24:00" itemprop="dateCreated datePublished" datetime="2019-09-10T03:24:00+08:00">2019-09-10</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-07-14 15:16:26" itemprop="dateModified" datetime="2021-07-14T15:16:26+08:00">2021-07-14</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E9%94%99%E8%AF%AF%E8%A7%A3%E5%86%B3/" itemprop="url" rel="index"><span itemprop="name">错误解决</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>关于我：十年打杂胡混经验的职业IT农民工、专业运维工程师、偶尔充当python开发工程师。</p>
+<p>网站地址首页：<a target="_blank" rel="noopener" href="https://shuxun.wang/">https://shuxun.wang</a></p>
+<p>广告合作：请邮件发送至 <a href="mailto:&#x39;&#49;&#54;&#49;&#x36;&#54;&#54;&#53;&#57;&#64;&#x71;&#113;&#46;&#x63;&#111;&#x6d;">&#x39;&#49;&#54;&#49;&#x36;&#54;&#54;&#53;&#57;&#64;&#x71;&#113;&#46;&#x63;&#111;&#x6d;</a> 进行恰谈 。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://shuxun,wang/2019/09/05/1159/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="王殊勋">
+      <meta itemprop="description" content="专注互联网运维技术发展">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="学无止境">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/09/05/1159/" class="post-title-link" itemprop="url">conky配置文件备份</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-09-05 06:56:00" itemprop="dateCreated datePublished" datetime="2019-09-05T06:56:00+08:00">2019-09-05</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-07-14 15:16:09" itemprop="dateModified" datetime="2021-07-14T15:16:09+08:00">2021-07-14</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" itemprop="url" rel="index"><span itemprop="name">操作系统</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br></pre></td><td class="code"><pre><span class="line">background <span class="literal">yes</span></span><br><span class="line">double_buffer <span class="literal">yes</span></span><br><span class="line"></span><br><span class="line">alignment top_right</span><br><span class="line">border_width 1</span><br><span class="line">cpu_avg_samples 2</span><br><span class="line">default_color white</span><br><span class="line">default_outline_color white</span><br><span class="line">default_shade_color white</span><br><span class="line">draw_borders <span class="literal">no</span></span><br><span class="line">draw_graph_borders <span class="literal">yes</span></span><br><span class="line">draw_outline <span class="literal">no</span></span><br><span class="line">draw_shades <span class="literal">no</span></span><br><span class="line"></span><br><span class="line">gap_x 0</span><br><span class="line">gap_y 0</span><br><span class="line">net_avg_samples 2</span><br><span class="line">no_buffers <span class="literal">yes</span></span><br><span class="line">out_to_console <span class="literal">no</span></span><br><span class="line">out_to_stderr <span class="literal">no</span></span><br><span class="line">extra_newline <span class="literal">no</span></span><br><span class="line"></span><br><span class="line">own_window <span class="literal">yes</span></span><br><span class="line">own_window_type normal</span><br><span class="line">own_window_transparent <span class="literal">yes</span></span><br><span class="line">own_window_colour 000000</span><br><span class="line">own_window_argb_visual <span class="literal">yes</span></span><br><span class="line">own_window_argb_value 0</span><br><span class="line">own_window_hints undecorated,below,sticky,skip_taskbar,skip_pager</span><br><span class="line"></span><br><span class="line">minimum_size 200 0</span><br><span class="line">stippled_borders 0</span><br><span class="line">update_interval 2.0</span><br><span class="line">uppercase <span class="literal">no</span></span><br><span class="line">use_spacer none</span><br><span class="line"></span><br><span class="line">use_xft <span class="literal">yes</span></span><br><span class="line">xftalpha 0.1</span><br><span class="line">xftfont  Technical CE:<span class="attribute">size</span>=10</span><br><span class="line">color0 white</span><br><span class="line">color1 EAEAEA</span><br><span class="line">color2 06FF1C</span><br><span class="line">color3 D9DFDA</span><br><span class="line">color4 0478FF   </span><br><span class="line">color5 A40810</span><br><span class="line"></span><br><span class="line">TEXT</span><br><span class="line"><span class="variable">$&#123;image ~/.conky/logo-arch.png -p 60 60&#125;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#systemlab</span></span><br><span class="line"><span class="variable">$&#123;voffset 15&#125;</span></span><br><span class="line"><span class="variable">$&#123;color4&#125;</span>SYSTEM<span class="variable">$&#123;hr 3&#125;</span></span><br><span class="line"><span class="variable">$&#123;voffset -10&#125;</span></span><br><span class="line">OS: <span class="variable">$&#123;execi 10800 cat /etc/issue.net2&#125;</span></span><br><span class="line">Kernel: <span class="variable">$&#123;kernel&#125;</span></span><br><span class="line">Hostname: <span class="variable">$&#123;nodename&#125;</span></span><br><span class="line">Uptime: <span class="variable">$&#123;uptime&#125;</span></span><br><span class="line">Processes: <span class="variable">$&#123;processes&#125;</span> (<span class="variable">$running_processes</span> running)</span><br><span class="line">Updates: <span class="variable">$&#123;execi 360 aptitude search &quot;~U&quot; | wc -l | tail&#125;</span></span><br><span class="line"><span class="variable">$&#123;color4&#125;</span>DISCS <span class="variable">$&#123;hr 3&#125;</span><span class="variable">$&#123;font&#125;</span></span><br><span class="line"><span class="variable">$&#123;voffset 5&#125;</span><span class="variable">$&#123;goto 80&#125;</span>FREE:<span class="variable">$&#123;goto 150&#125;</span>TOTAL:<span class="variable">$&#123;color1&#125;</span><span class="variable">$&#123;voffset 5&#125;</span></span><br><span class="line">Home<span class="variable">$&#123;goto 80&#125;</span><span class="variable">$&#123;fs_free /home&#125;</span><span class="variable">$&#123;goto 150&#125;</span><span class="variable">$&#123;fs_size /home&#125;</span></span><br><span class="line">Root<span class="variable">$&#123;goto 80&#125;</span><span class="variable">$&#123;fs_free /&#125;</span><span class="variable">$&#123;goto 150&#125;</span><span class="variable">$&#123;fs_size /&#125;</span></span><br><span class="line">EX2<span class="variable">$&#123;goto 80&#125;</span><span class="variable">$&#123;fs_free /mnt/EX2&#125;</span><span class="variable">$&#123;goto 150&#125;</span><span class="variable">$&#123;fs_size /mnt/EX2&#125;</span></span><br><span class="line">EX2home<span class="variable">$&#123;goto 80&#125;</span><span class="variable">$&#123;fs_free /mnt/EX2home&#125;</span><span class="variable">$&#123;goto 150&#125;</span><span class="variable">$&#123;fs_size /mnt/EX2home&#125;</span></span><br><span class="line">Storage<span class="variable">$&#123;goto 80&#125;</span><span class="variable">$&#123;fs_free /media/Storage&#125;</span><span class="variable">$&#123;goto 150&#125;</span><span class="variable">$&#123;fs_size /media/Storage&#125;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#processlab</span></span><br><span class="line"><span class="variable">$&#123;voffset -30&#125;</span></span><br><span class="line"><span class="variable">$&#123;color4&#125;</span>CPU PROCESSES <span class="variable">$&#123;hr 3&#125;</span></span><br><span class="line"><span class="variable">$&#123;voffset -10&#125;</span></span><br><span class="line"><span class="variable">$&#123;color4&#125;</span>CPU 0<span class="variable">$&#123;color0&#125;</span><span class="variable">$&#123;alignr&#125;</span><span class="variable">$&#123;cpu cpu0&#125;</span> %<span class="variable">$&#123;color5&#125;</span></span><br><span class="line"><span class="variable">$&#123;cpubar cpu0&#125;</span></span><br><span class="line"><span class="variable">$&#123;voffset -18&#125;</span><span class="variable">$&#123;color0&#125;</span><span class="variable">$&#123;execbar echo 0&#125;</span></span><br><span class="line"><span class="variable">$&#123;color4&#125;</span>CPU 1<span class="variable">$&#123;color0&#125;</span><span class="variable">$&#123;alignr&#125;</span><span class="variable">$&#123;cpu cpu1&#125;</span> %<span class="variable">$&#123;color5&#125;</span></span><br><span class="line"><span class="variable">$&#123;cpubar cpu1&#125;</span></span><br><span class="line"><span class="variable">$&#123;voffset -18&#125;</span><span class="variable">$&#123;color0&#125;</span><span class="variable">$&#123;execbar echo 0&#125;</span></span><br><span class="line"><span class="variable">$&#123;color4&#125;</span>CPU 2<span class="variable">$&#123;color0&#125;</span><span class="variable">$&#123;alignr&#125;</span><span class="variable">$&#123;cpu cpu2&#125;</span> %<span class="variable">$&#123;color5&#125;</span></span><br><span class="line"><span class="variable">$&#123;cpubar cpu2&#125;</span></span><br><span class="line"><span class="variable">$&#123;voffset -18&#125;</span><span class="variable">$&#123;color0&#125;</span><span class="variable">$&#123;execbar echo 0&#125;</span><span class="variable">$&#123;color2&#125;</span></span><br><span class="line"><span class="variable">$&#123;color4&#125;</span>CPU 3<span class="variable">$&#123;color0&#125;</span><span class="variable">$&#123;alignr&#125;</span><span class="variable">$&#123;cpu cpu3&#125;</span> %<span class="variable">$&#123;color5&#125;</span></span><br><span class="line"><span class="variable">$&#123;cpubar cpu3&#125;</span></span><br><span class="line"><span class="variable">$&#123;voffset -18&#125;</span><span class="variable">$&#123;color0&#125;</span><span class="variable">$&#123;execbar echo 0&#125;</span></span><br><span class="line"><span class="variable">$&#123;top name 1&#125;</span> <span class="variable">$alignr</span> <span class="variable">$&#123;top cpu 1&#125;</span> %</span><br><span class="line"><span class="variable">$&#123;top name 2&#125;</span> <span class="variable">$alignr</span> <span class="variable">$&#123;top cpu 2&#125;</span> %</span><br><span class="line"><span class="variable">$&#123;top name 3&#125;</span> <span class="variable">$alignr</span> <span class="variable">$&#123;top cpu 3&#125;</span> %</span><br><span class="line"><span class="variable">$&#123;top name 4&#125;</span> <span class="variable">$alignr</span> <span class="variable">$&#123;top cpu 4&#125;</span> %</span><br><span class="line"><span class="variable">$&#123;top name 5&#125;</span> <span class="variable">$alignr</span> <span class="variable">$&#123;top cpu 5&#125;</span> %</span><br><span class="line"><span class="variable">$&#123;voffset -10&#125;</span><span class="variable">$&#123;color4&#125;</span></span><br><span class="line"><span class="variable">$&#123;color4&#125;</span>RAM <span class="variable">$&#123;hr 3&#125;</span></span><br><span class="line"><span class="variable">$&#123;voffset -10&#125;</span></span><br><span class="line"><span class="variable">$&#123;membar&#125;</span></span><br><span class="line"><span class="variable">$&#123;voffset -18&#125;</span><span class="variable">$&#123;color0&#125;</span><span class="variable">$&#123;execbar echo 0&#125;</span></span><br><span class="line"><span class="variable">$&#123;top_mem name 1&#125;</span> <span class="variable">$alignr</span> <span class="variable">$&#123;top_mem mem_res 1&#125;</span></span><br><span class="line"><span class="variable">$&#123;top_mem name 2&#125;</span> <span class="variable">$alignr</span> <span class="variable">$&#123;top_mem mem_res 2&#125;</span></span><br><span class="line"><span class="variable">$&#123;top_mem name 3&#125;</span> <span class="variable">$alignr</span> <span class="variable">$&#123;top_mem mem_res 3&#125;</span></span><br><span class="line"><span class="variable">$&#123;top_mem name 4&#125;</span> <span class="variable">$alignr</span> <span class="variable">$&#123;top_mem mem_res 4&#125;</span></span><br><span class="line"><span class="variable">$&#123;top_mem name 5&#125;</span> <span class="variable">$alignr</span> <span class="variable">$&#123;top_mem mem_res 5&#125;</span></span><br><span class="line"><span class="variable">$&#123;voffset -10&#125;</span></span><br><span class="line">totalmem<span class="variable">$&#123;color4&#125;</span><span class="variable">$alignr</span><span class="variable">$&#123;mem&#125;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#networklab</span></span><br><span class="line"><span class="comment"># Change the network interface from bond0 to whatever your system calls it</span></span><br><span class="line"><span class="comment"># It could be enp2s0, eth0, eth1, ppp0, ppp1, etc.</span></span><br><span class="line"><span class="variable">$&#123;voffset -30&#125;</span></span><br><span class="line"><span class="variable">$&#123;color4&#125;</span>NETWORK <span class="variable">$&#123;hr 3&#125;</span></span><br><span class="line"><span class="variable">$&#123;voffset -10&#125;</span></span><br><span class="line"><span class="variable">$&#123;color2&#125;</span>DOWNLOAD SPEED<span class="variable">$&#123;color0&#125;</span><span class="variable">$&#123;alignr&#125;</span><span class="variable">$&#123;downspeed wlx30b49e4dab86&#125;</span></span><br><span class="line"><span class="variable">$&#123;color0&#125;</span><span class="variable">$&#123;downspeedgraph wlx30b49e4dab86 50,200 06FF1C 06FF1C s&#125;</span><span class="variable">$&#123;voffset -8&#125;</span></span><br><span class="line"><span class="variable">$&#123;color5&#125;</span>UPLOAD SPEED <span class="variable">$&#123;color0&#125;</span><span class="variable">$&#123;alignr&#125;</span><span class="variable">$&#123;upspeed wlx30b49e4dab86&#125;</span></span><br><span class="line"><span class="variable">$&#123;color0&#125;</span><span class="variable">$&#123;upspeedgraph wlx30b49e4dab86 50,200 A40810 A40810 s&#125;</span><span class="variable">$&#123;color2&#125;</span><span class="variable">$&#123;voffset -8&#125;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#temperaturelab</span></span><br><span class="line"><span class="variable">$&#123;color4&#125;</span>TEMPERATURE <span class="variable">$&#123;hr 3&#125;</span></span><br><span class="line"><span class="variable">$&#123;color0&#125;</span>CPU:   <span class="variable">$&#123;color0&#125;</span><span class="variable">$&#123;exec sensors -A | grep 1|grep &#x27;high&#x27;| awk -F&#x27;+&#x27; &#x27;&#123;print $2&#125;</span><span class="string">&#x27; | awk -F&#x27;</span>.<span class="string">&#x27; &#x27;</span>&#123;<span class="builtin-name">print</span> <span class="variable">$1</span>&#125;<span class="string">&#x27;&#125; °C $&#123;color0&#125;$&#123;alignr&#125;GPU:   $&#123;color0&#125;$&#123;exec sensors -A | grep 1|grep &#x27;</span>crit<span class="string">&#x27;| awk -F&#x27;</span>+<span class="string">&#x27; &#x27;</span>&#123;<span class="builtin-name">print</span> <span class="variable">$2</span>&#125;<span class="string">&#x27; | awk -F&#x27;</span>.<span class="string">&#x27; &#x27;</span>&#123;<span class="builtin-name">print</span> <span class="variable">$1</span>&#125;<span class="string">&#x27;&#125; °C</span></span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://shuxun,wang/2019/08/21/1094/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="王殊勋">
+      <meta itemprop="description" content="专注互联网运维技术发展">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="学无止境">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/08/21/1094/" class="post-title-link" itemprop="url">Centos7 部署kubernetes+docker+flannel+dashboard集群环境</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-08-21 08:30:00" itemprop="dateCreated datePublished" datetime="2019-08-21T08:30:00+08:00">2019-08-21</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-07-14 15:15:01" itemprop="dateModified" datetime="2021-07-14T15:15:01+08:00">2021-07-14</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%90%84%E7%B1%BB%E6%9C%8D%E5%8A%A1/" itemprop="url" rel="index"><span itemprop="name">各类服务</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>一、Kubernetes简介</p>
+<p>Kubernetes(简称K8S)是开源的容器集群管理系统,可以实现容器集群的自动化部署、自动扩缩容、维护等功能.它既是一款容器编排工具,也是全新的基于容器技术的分布式架构领先方案.在Docker技术的基础上,为容器化的应用提供部署运行、资源调度、服务发现和动态伸缩等功能,提高了大规模容器集群管理的便捷性.</p>
+<p>K8S集群中有管理节点与工作节点两种类型.管理节点主要负责K8S集群管理,集群中各节点间的信息交互、任务调度,还负责容器、Pod、NameSpaces、PV等生命周期的管理.工作节点主要为容器和Pod提供计算资源,Pod及容器全部运行在工作节点上,工作节点通过kubelet服务与管理节点通信以管理容器的生命周期,并与集群其他节点进行通信.</p>
+<p>二、安装环境配置(下步骤在所有主机上都需执行)</p>
+<p>1.在安装之前,需要先做如下准备.三台CentOS 7主机:</p>
+<p>在各自主机上设置主机名:</p>
+<figure class="highlight dsconfig"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">hostnamectl</span> <span class="built_in">set-hostname</span> <span class="string">k8s-1</span> <span class="comment"># 根据不同主机设置主机名</span></span><br></pre></td></tr></table></figure>
+
+<p>或者修改配置文件永久修改自己的主机名,通过下面的步骤修改文件.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cat &gt;&gt; /etc/sysconfig/network &lt;&lt; <span class="string">EOF</span></span><br><span class="line"><span class="string">hostname=k8s-1</span></span><br><span class="line"><span class="string">EOF</span></span><br></pre></td></tr></table></figure>
+
+<p>2.编辑 /etc/hosts 文件,添加域名解析.</p>
+<figure class="highlight accesslog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">cat &lt;&lt;EOF &gt;&gt;/etc/hosts</span><br><span class="line"><span class="number">192.168.2.87</span> k8s-<span class="number">1</span></span><br><span class="line"><span class="number">192.168.2.91</span> k8s-<span class="number">2</span></span><br><span class="line"><span class="number">192.168.2.92</span> k8s-<span class="number">3</span></span><br><span class="line">EOF</span><br></pre></td></tr></table></figure>
+
+<p>3.关闭防火墙、selinux和swap.</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">systemctl stop firewalld</span><br><span class="line">systemctl disable firewalld</span><br><span class="line">setenforce <span class="number">0</span></span><br><span class="line">sed -i <span class="string">&quot;s/^SELINUX=enforcing/SELINUX=disabled/g&quot;</span> <span class="regexp">/etc/</span>selinux/config</span><br><span class="line">swapoff -a</span><br><span class="line">sed -i <span class="string">&#x27;s/.*swap.*/#&amp;/&#x27;</span> <span class="regexp">/etc/</span>fstab</span><br></pre></td></tr></table></figure>
+
+<p>4.第一次安装打开路由转发功能,很多文档上没有写,但是我安装的时候确实报错了.</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">echo <span class="string">&quot;1&quot;</span> &gt; <span class="regexp">/proc/</span>sys<span class="regexp">/net/i</span>pv4/ip_forward</span><br></pre></td></tr></table></figure>
+
+<p>5.配置内核参数,将桥接的IPv4流量传递到iptables的链:</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">cat &gt; /etc/sysctl.d/k8s<span class="selector-class">.conf</span> &lt;&lt;EOF</span><br><span class="line">net<span class="selector-class">.bridge</span><span class="selector-class">.bridge-nf-call-ip6tables</span> = <span class="number">1</span></span><br><span class="line">net<span class="selector-class">.bridge</span><span class="selector-class">.bridge-nf-call-iptables</span> = <span class="number">1</span></span><br><span class="line">EOF</span><br></pre></td></tr></table></figure>
+
+<p>使其生效:</p>
+<figure class="highlight ada"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sysctl <span class="comment">--system</span></span><br></pre></td></tr></table></figure>
+
+<p>6.配置国内yum源:</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">yum install -y wget</span><br><span class="line">mkdir <span class="regexp">/etc/yum</span>.repos.d<span class="regexp">/bak &amp;&amp; mv /</span>etc<span class="regexp">/yum.repos.d/</span>*.repo <span class="regexp">/etc/yum</span>.repos.d/bak</span><br><span class="line">wget -O <span class="regexp">/etc/yum</span>.repos.d<span class="regexp">/CentOS-Base.repo http:/</span><span class="regexp">/mirrors.cloud.tencent.com/</span>repo/centos7_base.repo</span><br><span class="line">wget -O <span class="regexp">/etc/yum</span>.repos.d<span class="regexp">/epel.repo http:/</span><span class="regexp">/mirrors.cloud.tencent.com/</span>repo/epel-<span class="number">7</span>.repo</span><br><span class="line">yum clean all &amp;&amp; yum makecache</span><br></pre></td></tr></table></figure>
+
+<p>配置国内Kubernetes源:</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">cat &lt;&lt;EOF &gt; <span class="regexp">/etc/yum</span>.repos.d/kubernetes.repo</span><br><span class="line"></span><br><span class="line">[kubernetes]</span><br><span class="line">name=Kubernetes</span><br><span class="line">baseurl=https:<span class="regexp">//mi</span>rrors.aliyun.com<span class="regexp">/kubernetes/yum</span><span class="regexp">/repos/</span>kubernetes-el7-x86_64/</span><br><span class="line">enabled=<span class="number">1</span></span><br><span class="line">gpgcheck=<span class="number">1</span></span><br><span class="line">repo_gpgcheck=<span class="number">1</span></span><br><span class="line">gpgkey=https:<span class="regexp">//mi</span>rrors.aliyun.com<span class="regexp">/kubernetes/yum</span><span class="regexp">/doc/yum</span>-key.gpg https:<span class="regexp">//mi</span>rrors.aliyun.com<span class="regexp">/kubernetes/yum</span><span class="regexp">/doc/</span>rpm-package-key.gpg</span><br><span class="line">EOF</span><br></pre></td></tr></table></figure>
+
+<p>配置 docker 源:</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget https:<span class="regexp">//mi</span>rrors.aliyun.com<span class="regexp">/docker-ce/</span>linux<span class="regexp">/centos/</span>docker-ce.repo -O <span class="regexp">/etc/yum</span>.repos.d/docker-ce.repo</span><br></pre></td></tr></table></figure>
+
+<p>三、master部署</p>
+<p>master节点需要安装以下组件:</p>
+<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">etcd</span></span><br><span class="line"><span class="attribute">flannel</span></span><br><span class="line"><span class="attribute">kubernets</span></span><br></pre></td></tr></table></figure>
+
+<p>1.etcd安装</p>
+<p>安装命令:</p>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum <span class="keyword">install</span> etcd -y</span><br></pre></td></tr></table></figure>
+
+<p>编辑etcd的默认配置文件:</p>
+<figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">vi /etc/etcd/etcd.conf</span><br><span class="line"></span><br><span class="line">ETCD_DATA_DIR=<span class="string">&quot;/var/lib/etcd/default.etcd&quot;</span></span><br><span class="line">ETCD_LISTEN_CLIENT_URLS=<span class="string">&quot;http://0.0.0.0:2379&quot;</span> <span class="comment"># 127.0.0.1改成0.0.0.0</span></span><br><span class="line">ETCD_NAME=<span class="string">&quot;default&quot;</span></span><br><span class="line">ETCD_ADVERTISE_CLIENT_URLS=<span class="string">&quot;http://0.0.0.0:2379&quot;</span> <span class="comment"># 127.0.0.1改成0.0.0.0</span></span><br></pre></td></tr></table></figure>
+
+<p>注:整个etcd.conf文件有许多选项用”#”注释掉了,我们这里不再一一列出,etcd可以用多台配置成集群,有兴趣的朋友可以自行百度,参考文章很多.我们用单台实现基本功能.</p>
+<p>启动etcd并验证:</p>
+<figure class="highlight crmsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl <span class="literal">start</span> etcd</span><br></pre></td></tr></table></figure>
+
+<p>验证etcd工作状态:</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">etcdctl</span> -C http://<span class="number">192.168.2.87:2379</span> cluster-health</span><br><span class="line"></span><br><span class="line"><span class="attribute">member</span> <span class="number">8</span>e<span class="number">9</span>e<span class="number">05</span>c<span class="number">52164694</span>d is healthy: got healthy result from http://<span class="number">0.0.0.0:2379</span></span><br><span class="line"><span class="attribute">cluster</span> is healthy</span><br></pre></td></tr></table></figure>
+
+<p>2.flannel安装</p>
+<p>安装命令:</p>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum <span class="keyword">install</span> flannel</span><br></pre></td></tr></table></figure>
+
+<p>配置flannel:</p>
+<figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">vi /etc/sysconfig/flanneld</span><br><span class="line"></span><br><span class="line"># Flanneld <span class="keyword">configuration</span> <span class="keyword">options</span> </span><br><span class="line"></span><br><span class="line"># etcd url <span class="keyword">location</span>. <span class="type">Point</span> this <span class="keyword">to</span> the <span class="keyword">server</span> <span class="keyword">where</span> etcd runs</span><br><span class="line">FLANNEL_ETCD_ENDPOINTS=&quot;http://192.168.2.87:2379&quot; #这里ip改为master服务器ip</span><br><span class="line"></span><br><span class="line"># etcd config key. This <span class="keyword">is</span> the <span class="keyword">configuration</span> key that flannel queries </span><br><span class="line"># <span class="keyword">For</span> address range assignment </span><br><span class="line">FLANNEL_ETCD_KEY=&quot;/coreos.com/network&quot; # 注意要修改coreos.com和FLANNEL_ETCD_KEY(不是FLANNEL_ETCD_PREFIX)</span><br><span class="line"><span class="meta">#FLANNEL_ETCD_PREFIX=&quot;/atomic.io/network&quot; </span></span><br><span class="line"><span class="meta">#FLANNEL_OPTIONS=&quot;--etcd-endpoints=http://192.168.2.87:2379 --ip-masq=true&quot; </span></span><br><span class="line"></span><br><span class="line"># <span class="keyword">Any</span> additional <span class="keyword">options</span> that you want <span class="keyword">to</span> pass #FLANNEL_OPTIONS=&quot;&quot;</span><br></pre></td></tr></table></figure>
+
+<p>配置etcd中关于flannel的key:</p>
+<figure class="highlight jboss-cli"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">etcdctl <span class="keyword">set</span> <span class="string">/coreos.com/network/config</span> &#x27;&#123; <span class="string">&quot;Network&quot;</span>: <span class="string">&quot;172.17.0.0/16&quot;</span> &#125;&#x27;</span><br><span class="line"></span><br><span class="line">&#123; <span class="string">&quot;Network&quot;</span>: <span class="string">&quot;172.17.0.0/16&quot;</span> &#125;</span><br></pre></td></tr></table></figure>
+
+<p>启动flannel并设置开机自启:</p>
+<figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">systemctl <span class="keyword">start</span> flanneld.service</span><br><span class="line">systemctl <span class="keyword">enable</span> flanneld.service</span><br></pre></td></tr></table></figure>
+
+<p>3.kubernets安装</p>
+<p>k8s的安装命令很简单,执行:</p>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum <span class="keyword">install</span> kubernetes</span><br></pre></td></tr></table></figure>
+
+<p>master上需要运行以下组件:</p>
+<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">kube-apiserver</span></span><br><span class="line"><span class="attribute">kube-scheduler</span></span><br><span class="line"><span class="attribute">kube-controller-manager</span></span><br></pre></td></tr></table></figure>
+
+<p>下面详细阐述:</p>
+<p>配置 <code>/etc/kubernetes/apiserver</code>文件:</p>
+<figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">vi /etc/kubernetes/apiserver </span><br><span class="line"></span><br><span class="line"><span class="comment">###</span></span><br><span class="line"><span class="comment"># kubernetes system config</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># The following values are used to configure the kube-apiserver</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># The address on the local server to listen to.</span></span><br><span class="line">KUBE_API_ADDRESS=<span class="string">&quot;--insecure-bind-address=0.0.0.0&quot;</span> <span class="comment"># ip修改为0.0.0.0</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># The port on the local server to listen on.</span></span><br><span class="line">KUBE_API_PORT=<span class="string">&quot;--port=8080&quot;</span> <span class="comment"># 这行取消注释</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Port minions listen on</span></span><br><span class="line">KUBELET_PORT=<span class="string">&quot;--kubelet-port=10250&quot;</span> <span class="comment"># 这行取消注释</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Comma separated list of nodes in the etcd cluster</span></span><br><span class="line">KUBE_ETCD_SERVERS=<span class="string">&quot;--etcd-servers=http://192.168.2.87:2379&quot;</span> <span class="comment"># ip修改为master服务器ip</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Address range to use for services</span></span><br><span class="line">KUBE_SERVICE_ADDRESSES=<span class="string">&quot;--service-cluster-ip-range=10.254.0.0/16&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># default admission control policies</span></span><br><span class="line"><span class="comment">#KUBE_ADMISSION_CONTROL=&quot;--admission-control=NamespaceLifecycle,NamespaceExists,LimitRanger,SecurityContextDeny,ServiceAccount,ResourceQuota&quot;</span></span><br><span class="line">KUBE_ADMISSION_CONTROL=<span class="string">&quot;NamespaceExists,LimitRanger,ResourceQuota&quot;</span> <span class="comment"># 注意这行只是修改了上面一行,是必须存在的.</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Add your own!</span></span><br><span class="line">KUBE_API_ARGS=<span class="string">&quot;&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>配置 <code>/etc/kubernetes/config</code>文件:</p>
+<figure class="highlight vala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">vi /etc/kubernetes/config</span><br><span class="line"></span><br><span class="line"><span class="meta">###</span></span><br><span class="line"><span class="meta"># kubernetes system config</span></span><br><span class="line"><span class="meta">#</span></span><br><span class="line"><span class="meta"># The following values are used to configure various aspects of all</span></span><br><span class="line"><span class="meta"># kubernetes services, including</span></span><br><span class="line"><span class="meta">#</span></span><br><span class="line"><span class="meta">#   kube-apiserver.service</span></span><br><span class="line"><span class="meta">#   kube-controller-manager.service</span></span><br><span class="line"><span class="meta">#   kube-scheduler.service</span></span><br><span class="line"><span class="meta">#   kubelet.service</span></span><br><span class="line"><span class="meta">#   kube-proxy.service</span></span><br><span class="line"><span class="meta"># Comma seperated list of nodes in the etcd cluster  </span></span><br><span class="line"><span class="meta">#KUBE_ETCD_SERVERS=&quot;--etcd_servers=http://192.168.2.87:2379&quot;  </span></span><br><span class="line"></span><br><span class="line"><span class="meta"># logging to stderr means we get it in the systemd journal</span></span><br><span class="line">KUBE_LOGTOSTDERR=<span class="string">&quot;--logtostderr=true&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="meta"># journal message level, 0 is debug</span></span><br><span class="line">KUBE_LOG_LEVEL=<span class="string">&quot;--v=0&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="meta"># Should this cluster be allowed to run privileged docker containers</span></span><br><span class="line">KUBE_ALLOW_PRIV=<span class="string">&quot;--allow-privileged=false&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="meta"># How the controller-manager, scheduler, and proxy find the apiserver</span></span><br><span class="line">KUBE_MASTER=<span class="string">&quot;--master=http://192.168.2.87:8080&quot;</span> # 修改ip为master服务器ip</span><br></pre></td></tr></table></figure>
+
+<p>启动k8s各个组件:</p>
+<figure class="highlight crmsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">systemctl <span class="literal">start</span> kube-apiserver.service </span><br><span class="line">systemctl <span class="literal">start</span> kube-controller-manager.service </span><br><span class="line">systemctl <span class="literal">start</span> kube-scheduler.service</span><br></pre></td></tr></table></figure>
+
+<p>设置k8s各组件开机启动:</p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">systemctl <span class="builtin-name">enable</span> kube-apiserver.service </span><br><span class="line">systemctl <span class="builtin-name">enable</span> kube-controller-manager.service </span><br><span class="line">systemctl <span class="builtin-name">enable</span> kube-scheduler.service</span><br></pre></td></tr></table></figure>
+
+<p>四、部署Slave节点</p>
+<p>slave节点需要安装以下组件:</p>
+<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">flannel</span></span><br><span class="line"><span class="attribute">docker</span></span><br><span class="line"><span class="attribute">kubernetes</span></span><br></pre></td></tr></table></figure>
+
+<p>下面按顺序阐述:</p>
+<p>1.flannel安装</p>
+<p>安装命令:</p>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum <span class="keyword">install</span> flannel</span><br></pre></td></tr></table></figure>
+
+<p>配置flannel:</p>
+<figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">vi /etc/sysconfig/flanneld</span><br><span class="line"></span><br><span class="line"># Flanneld <span class="keyword">configuration</span> <span class="keyword">options</span>  </span><br><span class="line"></span><br><span class="line"># etcd url <span class="keyword">location</span>.  <span class="type">Point</span> this <span class="keyword">to</span> the <span class="keyword">server</span> <span class="keyword">where</span> etcd runs</span><br><span class="line">FLANNEL_ETCD_ENDPOINTS=&quot;http://192.168.2.87:2379&quot; # ip修改为master服务器ip</span><br><span class="line"></span><br><span class="line"># etcd config key.  This <span class="keyword">is</span> the <span class="keyword">configuration</span> key that flannel queries</span><br><span class="line"># <span class="keyword">For</span> address range assignment</span><br><span class="line">FLANNEL_ETCD_KEY=&quot;/coreos.com/network&quot; # 注意要修改coreos.com和FLANNEL_ETCD_KEY(不是FLANNEL_ETCD_PREFIX)</span><br><span class="line"><span class="meta">#FLANNEL_ETCD_PREFIX=&quot;/atomic.io/network&quot;</span></span><br><span class="line"><span class="meta">#FLANNEL_OPTIONS=&quot;--etcd-endpoints=http://192.168.2.87:2379  --ip-masq=true&quot;</span></span><br><span class="line"></span><br><span class="line"># <span class="keyword">Any</span> additional <span class="keyword">options</span> that you want <span class="keyword">to</span> pass</span><br><span class="line"><span class="meta">#FLANNEL_OPTIONS=&quot;&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>启动flannel并设置开机自启:</p>
+<figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">systemctl <span class="keyword">start</span> flanneld.service </span><br><span class="line">systemctl <span class="keyword">enable</span> flanneld.service</span><br></pre></td></tr></table></figure>
+
+<p>2.kubernetes安装</p>
+<p>安装命令:</p>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum <span class="keyword">install</span> kubernetes</span><br></pre></td></tr></table></figure>
+
+<p>不同于master节点,slave节点上需要运行kubernetes的如下组件:</p>
+<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">kubelet</span></span><br><span class="line"><span class="attribute">kubernets-proxy</span></span><br></pre></td></tr></table></figure>
+
+<p>下面详细阐述要配置的东西:</p>
+<p>配置 <code>/etc/kubernetes/config</code>文件:</p>
+<figure class="highlight vala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">vi /etc/kubernetes/config</span><br><span class="line"></span><br><span class="line"><span class="meta">###</span></span><br><span class="line"><span class="meta"># kubernetes system config</span></span><br><span class="line"><span class="meta">#</span></span><br><span class="line"><span class="meta"># The following values are used to configure various aspects of all</span></span><br><span class="line"><span class="meta"># kubernetes services, including</span></span><br><span class="line"><span class="meta">#</span></span><br><span class="line"><span class="meta">#   kube-apiserver.service</span></span><br><span class="line"><span class="meta">#   kube-controller-manager.service</span></span><br><span class="line"><span class="meta">#   kube-scheduler.service</span></span><br><span class="line"><span class="meta">#   kubelet.service</span></span><br><span class="line"><span class="meta">#   kube-proxy.service</span></span><br><span class="line"><span class="meta"># logging to stderr means we get it in the systemd journal</span></span><br><span class="line">KUBE_LOGTOSTDERR=<span class="string">&quot;--logtostderr=true&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="meta"># journal message level, 0 is debug</span></span><br><span class="line">KUBE_LOG_LEVEL=<span class="string">&quot;--v=0&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="meta"># Should this cluster be allowed to run privileged docker containers</span></span><br><span class="line">KUBE_ALLOW_PRIV=<span class="string">&quot;--allow-privileged=false&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="meta"># How the controller-manager, scheduler, and proxy find the apiserver</span></span><br><span class="line">KUBE_MASTER=<span class="string">&quot;--master=http://192.168.2.87:8080&quot;</span> # ip修改为master服务器ip</span><br></pre></td></tr></table></figure>
+
+<p>配置 <code>/etc/kubernetes/kubelet</code>文件:</p>
+<figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">vi /etc/kubernetes/config</span><br><span class="line"></span><br><span class="line"><span class="comment">###</span></span><br><span class="line"><span class="comment"># kubernetes kubelet (minion) config</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># The address for the info server to serve on (set to 0.0.0.0 or &quot;&quot; for all interfaces)</span></span><br><span class="line">KUBELET_ADDRESS=<span class="string">&quot;--address=0.0.0.0&quot;</span> <span class="comment"># 修改ip为0.0.0.0</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># The port for the info server to serve on</span></span><br><span class="line"><span class="comment"># KUBELET_PORT=&quot;--port=10250&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># You may leave this blank to use the actual hostname</span></span><br><span class="line">KUBELET_HOSTNAME=<span class="string">&quot;--hostname-override=192.168.2.91&quot;</span> <span class="comment"># 修改ip为本机ip</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># location of the api-server</span></span><br><span class="line">KUBELET_API_SERVER=<span class="string">&quot;--api-servers=http://192.168.2.87:8080&quot;</span> <span class="comment"># 修改ip为master服务器ip</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># pod infrastructure container</span></span><br><span class="line">KUBELET_POD_INFRA_CONTAINER=<span class="string">&quot;--pod-infra-container-image=registry.access.redhat.com/rhel7/pod-infrastructure:latest&quot;</span> <span class="comment"># 成功部署后node节点会拉取这个容器,如果拉取不到修改这里的容器地址</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Add your own!</span></span><br><span class="line">KUBELET_ARGS=<span class="string">&quot;--cluster-dns=192.168.2.87 --cluster-domain=playcrab-inc.com&quot;</span> <span class="comment"># 增加这样一句,作用未知</span></span><br></pre></td></tr></table></figure>
+
+<p>启动kube服务:</p>
+<figure class="highlight crmsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">systemctl <span class="literal">start</span> kubelet.service </span><br><span class="line">systemctl <span class="literal">start</span> kube-proxy.service</span><br></pre></td></tr></table></figure>
+
+<p>设置k8s组件开机自启:</p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">systemctl <span class="builtin-name">enable</span> kubelet.service </span><br><span class="line">systemctl <span class="builtin-name">enable</span> kube-proxy.service</span><br></pre></td></tr></table></figure>
+
+<p>至此为止,k8s集群的搭建过程就完成了,下面来验证一下集群是否搭建成功了.</p>
+<p>验证集群状态:</p>
+<p>查看端点信息:</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">kubectl</span> get endpoints</span><br><span class="line"></span><br><span class="line"><span class="attribute">NAME</span>            ENDPOINTS           AGE</span><br><span class="line"><span class="attribute">kubernetes</span>      <span class="number">192.168.2.87:6443</span>   <span class="number">8</span>d</span><br></pre></td></tr></table></figure>
+
+<p>查看集群信息:</p>
+<figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">kubectl <span class="keyword">cluster</span>-<span class="keyword">info</span></span><br><span class="line"></span><br><span class="line">Kubernetes master <span class="keyword">is</span> running at http://localhost:<span class="number">8080</span></span><br><span class="line"><span class="keyword">To</span> further <span class="keyword">debug</span> <span class="keyword">and</span> diagnose <span class="keyword">cluster</span> problems, use <span class="string">&#x27;kubectl cluster-info dump&#x27;</span>.</span><br></pre></td></tr></table></figure>
+
+<p>获取集群中的节点状态:</p>
+<figure class="highlight accesslog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">kubectl get nodes</span><br><span class="line"></span><br><span class="line">NAME           STATUS    AGE</span><br><span class="line"><span class="number">192.168.2.91</span>   Ready     8d</span><br><span class="line"><span class="number">192.168.2.92</span>   Ready     8d</span><br></pre></td></tr></table></figure>
+
+<p>五、配置dashboard服务</p>
+<p>dashboard本质上就是webui连接master的api接口,通过api获取k8s集群的相关信息,然后在web上展示出来,对用户来说比较友好一些,实际用处并不是很大.</p>
+<p>1.yaml文件</p>
+<p>编辑dashboard.yaml,注意或更改以下红色部分:</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">vi</span> <span class="string">dashboard.yaml</span></span><br><span class="line"></span><br><span class="line"><span class="attr">apiVersion:</span> <span class="string">extensions/v1beta1</span></span><br><span class="line"><span class="attr">kind:</span> <span class="string">Deployment</span></span><br><span class="line"><span class="attr">metadata:</span></span><br><span class="line"><span class="comment"># Keep the name in sync with image version and</span></span><br><span class="line"><span class="comment"># gce/coreos/kube-manifests/addons/dashboard counterparts</span></span><br><span class="line">  <span class="attr">name:</span> <span class="string">kubernetes-dashboard-latest</span></span><br><span class="line">  <span class="attr">namespace:</span> <span class="string">kube-system</span></span><br><span class="line"><span class="attr">spec:</span></span><br><span class="line">  <span class="attr">replicas:</span> <span class="number">1</span></span><br><span class="line">  <span class="attr">template:</span></span><br><span class="line">    <span class="attr">metadata:</span></span><br><span class="line">      <span class="attr">labels:</span></span><br><span class="line">        <span class="attr">k8s-app:</span> <span class="string">kubernetes-dashboard</span></span><br><span class="line">        <span class="attr">version:</span> <span class="string">latest</span></span><br><span class="line">        <span class="attr">kubernetes.io/cluster-service:</span> <span class="string">&quot;true&quot;</span></span><br><span class="line">    <span class="attr">spec:</span></span><br><span class="line">      <span class="attr">containers:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">kubernetes-dashboard</span></span><br><span class="line">        <span class="attr">image:</span> <span class="string">docker.io/siriuszg/kubernetes-dashboard-amd64:v1.5.1</span></span><br><span class="line">        <span class="attr">resources:</span></span><br><span class="line">          <span class="comment"># keep request = limit to keep this container in guaranteed class</span></span><br><span class="line">          <span class="attr">limits:</span></span><br><span class="line">            <span class="attr">cpu:</span> <span class="string">100m</span></span><br><span class="line">            <span class="attr">memory:</span> <span class="string">50Mi</span></span><br><span class="line">          <span class="attr">requests:</span></span><br><span class="line">            <span class="attr">cpu:</span> <span class="string">100m</span></span><br><span class="line">            <span class="attr">memory:</span> <span class="string">50Mi</span></span><br><span class="line">        <span class="attr">ports:</span></span><br><span class="line">        <span class="bullet">-</span> <span class="attr">containerPort:</span> <span class="number">9090</span></span><br><span class="line">        <span class="attr">args:</span></span><br><span class="line">         <span class="bullet">-</span>  <span class="string">--apiserver-host=http://192.168.2.87:8080</span></span><br><span class="line">        <span class="attr">livenessProbe:</span></span><br><span class="line">          <span class="attr">httpGet:</span></span><br><span class="line">            <span class="attr">path:</span> <span class="string">/</span></span><br><span class="line">            <span class="attr">port:</span> <span class="number">9090</span></span><br><span class="line">          <span class="attr">initialDelaySeconds:</span> <span class="number">30</span></span><br><span class="line">          <span class="attr">timeoutSeconds:</span> <span class="number">30</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># image后面地址是kubernetes-dashboard容器地址,如无法拉取可在此处修改.</span></span><br><span class="line"><span class="comment"># apiserver-host后面要修改为master服务器ip</span></span><br></pre></td></tr></table></figure>
+
+<p>编辑dashboardsvc.yaml文件:</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">vi</span> <span class="string">dashboardsvc.yaml</span></span><br><span class="line"></span><br><span class="line"><span class="attr">apiVersion:</span> <span class="string">v1</span></span><br><span class="line"><span class="attr">kind:</span> <span class="string">Service</span></span><br><span class="line"><span class="attr">metadata:</span></span><br><span class="line">  <span class="attr">name:</span> <span class="string">kubernetes-dashboard</span></span><br><span class="line">  <span class="attr">namespace:</span> <span class="string">kube-system</span></span><br><span class="line">  <span class="attr">labels:</span></span><br><span class="line">    <span class="attr">k8s-app:</span> <span class="string">kubernetes-dashboard</span></span><br><span class="line">    <span class="attr">kubernetes.io/cluster-service:</span> <span class="string">&quot;true&quot;</span></span><br><span class="line"><span class="attr">spec:</span></span><br><span class="line">  <span class="attr">selector:</span></span><br><span class="line">    <span class="attr">k8s-app:</span> <span class="string">kubernetes-dashboard</span></span><br><span class="line">  <span class="attr">ports:</span></span><br><span class="line">  <span class="bullet">-</span> <span class="attr">port:</span> <span class="number">80</span></span><br><span class="line">    <span class="attr">targetPort:</span> <span class="number">9090</span></span><br></pre></td></tr></table></figure>
+
+<p>2.启动</p>
+<p>在master执行如下命令:</p>
+<figure class="highlight gauss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">kubectl <span class="keyword">create</span> -f dashboard.yaml</span><br><span class="line">kubectl <span class="keyword">create</span> -f dashboardsvc.yaml</span><br></pre></td></tr></table></figure>
+
+<p>如果出现错误需要删除重新修改执行:</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">kubectl deldete <span class="operator">-f</span> dashboard.yaml</span><br><span class="line">kubectl deldete <span class="operator">-f</span> dashboardsvc.yaml</span><br></pre></td></tr></table></figure>
+
+<p>之后,dashboard搭建完成.</p>
+<p>4.验证</p>
+<p>命令验证,master上执行如下命令:</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">kubectl</span> get deployment --<span class="literal">all</span>-namespaces</span><br><span class="line"></span><br><span class="line"><span class="attribute">NAMESPACE</span>     NAME                          DESIRED   CURRENT   UP-TO-DATE   AVAILABLE   AGE</span><br><span class="line"><span class="attribute">kube</span>-system   kubernetes-dashboard-latest   <span class="number">1</span>         <span class="number">1</span>         <span class="number">1</span>            <span class="number">1</span>           <span class="number">1</span>h</span><br><span class="line"></span><br><span class="line"><span class="attribute">kubectl</span> get svc --<span class="literal">all</span>-namespaces </span><br><span class="line"></span><br><span class="line"><span class="attribute">NAMESPACE</span>     NAME                   CLUSTER-IP        EXTERNAL-IP   PORT(S)            AGE</span><br><span class="line"><span class="attribute">default</span>       frontend               <span class="number">10.254.190.16</span>     <span class="number">80</span>:<span class="number">30001</span>/TCP                     <span class="number">1</span>d</span><br><span class="line"><span class="attribute">default</span>       kubernetes             <span class="number">10.254.0.1</span>        <span class="number">443</span>/TCP                          <span class="number">10</span>d</span><br><span class="line"><span class="attribute">default</span>       redis-master           <span class="number">10.254.166.81</span>     <span class="number">6379</span>/TCP                         <span class="number">1</span>d</span><br><span class="line"><span class="attribute">default</span>       redis-slave            <span class="number">10.254.140.100</span>    <span class="number">6379</span>/TCP                         <span class="number">1</span>d</span><br><span class="line"><span class="attribute">kube</span>-system   kubernetes-dashboard   <span class="number">10.254.84.123</span>     <span class="number">80</span>/TCP                           <span class="number">1</span>h</span><br></pre></td></tr></table></figure>
+
+<p>界面验证,浏览器访问:</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http:<span class="regexp">//</span><span class="number">192.168</span>.<span class="number">2.87</span>:<span class="number">8080</span>/ui</span><br></pre></td></tr></table></figure>
+
+<p>5.销毁应用</p>
+<p>在master上执行:</p>
+<figure class="highlight mel"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">kubectl <span class="keyword">delete</span> deployment kubernetes-dashboard-latest --<span class="keyword">namespace</span>=kube-<span class="keyword">system</span></span><br><span class="line">kubectl <span class="keyword">delete</span> svc  kubernetes-dashboard --<span class="keyword">namespace</span>=kube-<span class="keyword">system</span></span><br></pre></td></tr></table></figure>
+
+<p>六、遇到的错误</p>
+<p>1.无法访问dashboard,提示超时,master服务器无法ping通node节点容器的ip.</p>
+<p>node服务器iptables问题,使用iptables -nL命令查看,果然,Forward的策略还是drop,执行:</p>
+<figure class="highlight tp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">iptables -<span class="keyword">P</span> FORWARD <span class="keyword">ACC</span>EPT</span><br></pre></td></tr></table></figure>
+
+<p>问题解决.</p>
+<p>2.报错:details: (open /etc/docker/certs.d/registry.access.redhat.com/redhat-ca.crt: no such file or directory)</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">yum</span> install *rhsm* </span><br><span class="line"><span class="attribute">wget</span> http://mirror.centos.org/centos/<span class="number">7</span>/os/x<span class="number">86</span>_<span class="number">64</span>/Packages/python-rhsm-certificates-<span class="number">1</span>.<span class="number">19</span>.<span class="number">10</span>-<span class="number">1</span>.el<span class="number">7</span>_<span class="number">4</span>.x<span class="number">86</span>_<span class="number">64</span>.rpm</span><br><span class="line"><span class="attribute">rpm2cpio</span> python-rhsm-certificates-<span class="number">1</span>.<span class="number">19</span>.<span class="number">10</span>-<span class="number">1</span>.el<span class="number">7</span>_<span class="number">4</span>.x<span class="number">86</span>_<span class="number">64</span>.rpm | cpio -iv --to-stdout ./etc/rhsm/ca/redhat-uep.pem | tee /etc/rhsm/ca/redhat-uep.pem</span><br></pre></td></tr></table></figure>
+
+<p>完成后,执行一下docker pull registry.access.redhat.com/rhel7/pod-infrastructure:latest,发现可以正常拉取容器.</p>
+<p>3.在创建Dashborad时,查看状态总是ContainerCreating.</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">kubectl</span> get pod --namespace=kube-system</span><br><span class="line"></span><br><span class="line"><span class="attribute">NAME</span>                                    READY     STATUS              RESTARTS   AGE</span><br><span class="line"><span class="attribute">kubernetes</span>-dashboard-<span class="number">2094756401</span>-kzhnx   <span class="number">0</span>/<span class="number">1</span>       ContainerCreating   <span class="number">0</span>          <span class="number">10</span>m</span><br></pre></td></tr></table></figure>
+
+<p>解决办法:</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">vi</span> dashboard.yaml</span><br><span class="line"></span><br><span class="line"><span class="attribute">image</span>: docker.io/siriuszg/kubernetes-dashboard-amd<span class="number">64</span>:v<span class="number">1</span>.<span class="number">5</span>.<span class="number">1</span> # 这个容器地址一定要是服务器可以正常拉取的</span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+
+  
+  <nav class="pagination">
+    <a class="extend prev" rel="prev" href="/page/5/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/">7</a><span class="space">&hellip;</span><a class="page-number" href="/page/132/">132</a><a class="extend next" rel="next" href="/page/7/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+  </nav>
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="王殊勋"
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name">王殊勋</p>
+  <div class="site-description" itemprop="description">better late than never.<br>只要开始，虽晚不迟。</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">656</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">2058</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <!--添加网站运行时间 -->
+  <span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
+  <script>
+      var now = new Date(); 
+      function createtime() { 
+          var grt= new Date("12/01/2007 12:00:00");//此处修改你的建站时间或者网站上线时间 
+          now.setTime(now.getTime()+250); 
+          days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days); 
+          hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours); 
+          if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum); 
+          mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;} 
+          seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum); 
+          snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;} 
+          document.getElementById("timeDate").innerHTML = "本站已安全运行 "+dnum+" 天 "; 
+          document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒"; 
+      } 
+  setInterval("createtime()",250);
+  </script>
+  <span itemprop="copyrightYear">(2007 - 2021)</span>
+  <!-- 添加网站运行时间 -->
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">学无止境</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script size="300" alpha="0.6" zIndex="0" src="/lib/canvas-ribbon/canvas-ribbon.js"></script>
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

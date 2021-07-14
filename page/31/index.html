@@ -1,0 +1,835 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"shuxun","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"./public/search.xml"};
+  </script>
+
+  <meta name="description" content="专注互联网运维技术发展">
+<meta property="og:type" content="website">
+<meta property="og:title" content="学无止境">
+<meta property="og:url" content="http://shuxun,wang/page/31/index.html">
+<meta property="og:site_name" content="学无止境">
+<meta property="og:description" content="专注互联网运维技术发展">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:author" content="王殊勋">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://shuxun,wang/page/31/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : true,
+    isPost : false,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>学无止境</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">学无止境</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">注互联网运维技术发展</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-sitemap">
+
+    <a href="/sitemap.xml" rel="section"><i class="fa fa-sitemap fa-fw"></i>站点地图</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content index posts-expand">
+            
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://shuxun,wang/2018/03/16/1542/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="王殊勋">
+      <meta itemprop="description" content="专注互联网运维技术发展">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="学无止境">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2018/03/16/1542/" class="post-title-link" itemprop="url">利用screen永久后台运行程序</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2018-03-16 18:46:00" itemprop="dateCreated datePublished" datetime="2018-03-16T18:46:00+08:00">2018-03-16</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-07-14 15:16:29" itemprop="dateModified" datetime="2021-07-14T15:16:29+08:00">2021-07-14</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" itemprop="url" rel="index"><span itemprop="name">操作系统</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>root登陆后,输入:</p>
+<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">screen</span></span><br></pre></td></tr></table></figure>
+
+<p>然后回车,然后就会出现窗口,和原来差不多,你在这里,和刚才一样输入:</p>
+<figure class="highlight jboss-cli"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">cd</span> qq &amp;&amp; <span class="string">./qq</span></span><br></pre></td></tr></table></figure>
+
+<p>就可以了,登陆以后,</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Ctrl+<span class="selector-tag">a</span>,再按d.</span><br></pre></td></tr></table></figure>
+
+<p>就算退出了,这是断开连接,QQ就不掉线了.</p>
+<p>想再次进入,只需运行:</p>
+<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">screen -r</span></span><br></pre></td></tr></table></figure>
+
+<p>输入命令screen -ls可以查看到被挂起的窗口:</p>
+<figure class="highlight hsp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="keyword">screen</span> -ls</span><br><span class="line"></span><br><span class="line">There is a <span class="keyword">screen</span> <span class="keyword">on</span>:</span><br><span class="line"><span class="number">22496</span>.pts<span class="number">-0.</span>Nginx (Detached)</span><br><span class="line"><span class="number">1</span> Socket in /var/<span class="keyword">run</span>/<span class="keyword">screen</span>/S-root.</span><br></pre></td></tr></table></figure>
+
+<p>恢复窗口:</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">screen</span> -r <span class="number">22496</span></span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://shuxun,wang/2018/03/03/1492/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="王殊勋">
+      <meta itemprop="description" content="专注互联网运维技术发展">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="学无止境">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2018/03/03/1492/" class="post-title-link" itemprop="url">解决mysql error while loading shared libraries libmysqlclient.so.16 cannot open shared object file No such file or directory</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2018-03-03 11:58:00" itemprop="dateCreated datePublished" datetime="2018-03-03T11:58:00+08:00">2018-03-03</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-07-14 15:15:33" itemprop="dateModified" datetime="2021-07-14T15:15:33+08:00">2021-07-14</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E9%94%99%E8%AF%AF%E8%A7%A3%E5%86%B3/" itemprop="url" rel="index"><span itemprop="name">错误解决</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>这个错误原因很简单,就是没有找到libmysqlclient.so.16,<br>我们可以用yum来安装它,<br>命令是:</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">yum install libmysqlclient.so.<span class="number">16</span></span><br><span class="line">ln -s <span class="regexp">/usr/</span>local<span class="regexp">/mysql/</span>lib<span class="regexp">/libmysqlclient.so.18  /u</span>sr<span class="regexp">/lib/</span></span><br></pre></td></tr></table></figure>
+
+<p>照做后仍然报错,原因是该方法适用于32位系统,64位系统应使用下面的这行:</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ln -s <span class="regexp">/usr/</span>local<span class="regexp">/mysql/</span>lib<span class="regexp">/libmysqlclient.so.18  /u</span>sr<span class="regexp">/lib64/</span></span><br></pre></td></tr></table></figure>
+
+<p>一共下载8M多的文件,然后启动mysql,错误消失.</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://shuxun,wang/2018/02/28/1185/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="王殊勋">
+      <meta itemprop="description" content="专注互联网运维技术发展">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="学无止境">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2018/02/28/1185/" class="post-title-link" itemprop="url">git安装</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2018-02-28 14:23:00" itemprop="dateCreated datePublished" datetime="2018-02-28T14:23:00+08:00">2018-02-28</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-07-14 15:15:53" itemprop="dateModified" datetime="2021-07-14T15:15:53+08:00">2021-07-14</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%90%84%E7%B1%BB%E6%9C%8D%E5%8A%A1/" itemprop="url" rel="index"><span itemprop="name">各类服务</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>1.安装git</p>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum <span class="keyword">install</span> –y git</span><br></pre></td></tr></table></figure>
+
+<p>2.服务器创建git账户</p>
+<figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">groupadd git</span><br><span class="line"><span class="built_in">id</span> git</span><br></pre></td></tr></table></figure>
+
+<p>如果没有git账户:</p>
+<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">useradd git</span></span><br><span class="line"><span class="attribute">passwd git</span></span><br><span class="line"><span class="attribute">git</span></span><br></pre></td></tr></table></figure>
+
+<p>3.服务器git打开RSA认证</p>
+<p>进入 <code>/etc/ssh</code>目录,编辑sshd_config,打开以下三个配置的注释,如无则添加:</p>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">RSAAuthentication</span> <span class="literal">yes</span></span><br><span class="line">PubkeyAuthentication <span class="literal">yes</span></span><br><span class="line">AuthorizedKeysFile .ssh/authorized_keys</span><br></pre></td></tr></table></figure>
+
+<p>保存并重启sshd服务.</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="regexp">/etc/</span>rc.d<span class="regexp">/init.d/</span>sshd restart</span><br></pre></td></tr></table></figure>
+
+<p>4.在 <code>/home/git</code>下创建目录.ssh</p>
+<figure class="highlight jboss-cli"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">cd</span> <span class="string">/home/git</span></span><br><span class="line">mkdir <span class="string">.ssh</span></span><br></pre></td></tr></table></figure>
+
+<p>然后更改.ssh的所有者和用户组为git:</p>
+<figure class="highlight excel"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chown –R g<span class="symbol">it:gi</span><span class="built_in">t</span> .ssh</span><br></pre></td></tr></table></figure>
+
+<p>5.将客户端公钥导入服务器端 <code>/home/git/.ssh/authorized_keys</code>文件</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cd <span class="regexp">/home/gi</span>t/.ssh</span><br><span class="line">touch authorized_keys</span><br><span class="line">vi authorized_keys</span><br></pre></td></tr></table></figure>
+
+<p>把客户端公钥粘贴到这个文件.<br>保存退出.</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://shuxun,wang/2018/02/25/1303/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="王殊勋">
+      <meta itemprop="description" content="专注互联网运维技术发展">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="学无止境">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2018/02/25/1303/" class="post-title-link" itemprop="url">nginx反向代理</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2018-02-25 21:35:00" itemprop="dateCreated datePublished" datetime="2018-02-25T21:35:00+08:00">2018-02-25</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-07-14 15:14:55" itemprop="dateModified" datetime="2021-07-14T15:14:55+08:00">2021-07-14</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%90%84%E7%B1%BB%E6%9C%8D%E5%8A%A1/" itemprop="url" rel="index"><span itemprop="name">各类服务</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>首先在nginx的配置文件nginx.conf的http模块中添加,服务器集群server cluster(我们这里是两台)的定义:</p>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">upstream</span> myCluster &#123;</span><br><span class="line">    <span class="attribute">server</span> <span class="number">127.0.0.1:80</span> ;</span><br><span class="line">    <span class="attribute">server</span> <span class="number">158.37.70.143:80</span> ;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>表示这个server cluster包含2台服务器&gt;然后在server模块中定义,负载均衡:</p>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">location</span> <span class="regexp">~ .php$</span> &#123;</span><br><span class="line">    <span class="attribute">proxy_pass</span> http://myCluster ; <span class="comment">#这里的名字和上面的cluster的名字相同</span></span><br><span class="line">    <span class="attribute">proxy_redirect</span> <span class="literal">off</span>;</span><br><span class="line">    <span class="attribute">proxy_set_header</span> Host $host;</span><br><span class="line">    <span class="attribute">proxy_set_header</span> X-Real-IP $remote_addr;</span><br><span class="line">    <span class="attribute">proxy_set_header</span> X-Forwarded-For $proxy_add_x_forwarded_for;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这样的话,如果访问<a target="_blank" rel="noopener" href="http://localhost:8080/test.php">http://localhost:8080/test.php</a> 页面的话,nginx目录下根本没有该文件,但是它会自动将其pass到myCluster定义的服务区机群中,分别由127.0.0.1:80;或者158.37.70.143:80;来做处理.上面在定义upstream的时候每个server之后没有定义权重,表示两者均衡;如果希望某个更多响应的话例如:</p>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">upstream</span> myCluster &#123;</span><br><span class="line">    <span class="attribute">server</span> <span class="number">127.0.0.1:80</span> weight=<span class="number">5</span>;</span><br><span class="line">    <span class="attribute">server</span> <span class="number">158.37.70.143:80</span> ;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://shuxun,wang/2018/02/24/1203/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="王殊勋">
+      <meta itemprop="description" content="专注互联网运维技术发展">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="学无止境">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2018/02/24/1203/" class="post-title-link" itemprop="url">Linux php.ini的安全优化配置</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2018-02-24 15:47:00" itemprop="dateCreated datePublished" datetime="2018-02-24T15:47:00+08:00">2018-02-24</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-07-14 15:16:19" itemprop="dateModified" datetime="2021-07-14T15:16:19+08:00">2021-07-14</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%90%84%E7%B1%BB%E6%9C%8D%E5%8A%A1/" itemprop="url" rel="index"><span itemprop="name">各类服务</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>1、PHP函数禁用找到</p>
+<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">disable_functions</span> =</span><br></pre></td></tr></table></figure>
+
+<p>该选项可以设置哪些PHP函数是禁止使用的,PHP中有一些函数的风险性还是相当大的,可以直接执行一些CentOS系统级脚本命令,如果允许这些函数执行,当PHP 程序出现漏洞时,损失是非常严重的!以下我们给出推荐的禁用函数设置:</p>
+<figure class="highlight mel"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">disable_functions = phpinfo,passthru,<span class="keyword">exec</span>,<span class="keyword">system</span>,<span class="keyword">popen</span>,chroot,escapeshellcmd,escapeshellarg,shell_exec,proc_open,proc_get_status</span><br></pre></td></tr></table></figure>
+
+<p>需注意:如果您的服务器中含有一些CentOS系统状态检测的PHP程序,则不要禁用shell_exec,proc_open,proc_get_status等函数.</p>
+<p>2、PHP脚本执行时间找到</p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">max_execution_time</span> = <span class="number">30</span></span><br></pre></td></tr></table></figure>
+
+<p>该选项设定PHP程序的最大执行时间,如果一个PHP脚本被请求,且该PHP脚本在max_execution_time时间内没能执行完毕,则PHP不再继续执行,直接给客户端返回超时错误.没有特殊需要该选项可保持默认设置30秒,如果您的PHP脚本确实需要长执行时间则可以适当增大该时间设置.</p>
+<p>3、PHP脚本处理内存占用找到</p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">memory_limit</span> = <span class="number">8</span>M</span><br></pre></td></tr></table></figure>
+
+<p>该选项指定PHP脚本处理所能占用的最大内存,默认为8MB,如果您的服务器内存为1GB以上,则该选项可以设置为12MB以获得更快的PHP脚本处理效率.</p>
+<p>4、PHP全局函数声明找到</p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">register_globals</span> = <span class="literal">Off</span></span><br></pre></td></tr></table></figure>
+
+<p>网络上很多关于PHP设置的文章都推荐将该选项设置为On,其实这是一种及其危险的设置方法,很可能引起严重的安全性问题.如果没有特殊的需要,强烈推荐保留默认设置!</p>
+<p>5、PHP上传文件大小限制找到</p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">upload_max_filesize</span> = <span class="number">2</span>M</span><br></pre></td></tr></table></figure>
+
+<p>该选项设定PHP所能允许最大上传文件大小,默认为2MB.根据实际应用需求,可以适当增大该设置.</p>
+<p>6、几个地方的检查</p>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">查找:display_errors</span><br><span class="line">如果是<span class="keyword">On</span>的话改成<span class="keyword">Off</span></span><br><span class="line">查找:magic_quotes_gpc</span><br><span class="line">如果是<span class="keyword">Off</span>的话改成<span class="keyword">On</span></span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+
+  
+  <nav class="pagination">
+    <a class="extend prev" rel="prev" href="/page/30/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/30/">30</a><span class="page-number current">31</span><a class="page-number" href="/page/32/">32</a><span class="space">&hellip;</span><a class="page-number" href="/page/132/">132</a><a class="extend next" rel="next" href="/page/32/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+  </nav>
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="王殊勋"
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name">王殊勋</p>
+  <div class="site-description" itemprop="description">better late than never.<br>只要开始，虽晚不迟。</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">656</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">2058</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <!--添加网站运行时间 -->
+  <span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
+  <script>
+      var now = new Date(); 
+      function createtime() { 
+          var grt= new Date("12/01/2007 12:00:00");//此处修改你的建站时间或者网站上线时间 
+          now.setTime(now.getTime()+250); 
+          days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days); 
+          hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours); 
+          if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum); 
+          mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;} 
+          seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum); 
+          snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;} 
+          document.getElementById("timeDate").innerHTML = "本站已安全运行 "+dnum+" 天 "; 
+          document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒"; 
+      } 
+  setInterval("createtime()",250);
+  </script>
+  <span itemprop="copyrightYear">(2007 - 2021)</span>
+  <!-- 添加网站运行时间 -->
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">学无止境</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script size="300" alpha="0.6" zIndex="0" src="/lib/canvas-ribbon/canvas-ribbon.js"></script>
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

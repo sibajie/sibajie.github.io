@@ -1,0 +1,854 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"shuxun","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"./public/search.xml"};
+  </script>
+
+  <meta name="description" content="专注互联网运维技术发展">
+<meta property="og:type" content="website">
+<meta property="og:title" content="学无止境">
+<meta property="og:url" content="http://shuxun,wang/page/128/index.html">
+<meta property="og:site_name" content="学无止境">
+<meta property="og:description" content="专注互联网运维技术发展">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:author" content="王殊勋">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://shuxun,wang/page/128/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : true,
+    isPost : false,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>学无止境</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">学无止境</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">注互联网运维技术发展</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-sitemap">
+
+    <a href="/sitemap.xml" rel="section"><i class="fa fa-sitemap fa-fw"></i>站点地图</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content index posts-expand">
+            
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://shuxun,wang/2011/02/21/1550/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="王殊勋">
+      <meta itemprop="description" content="专注互联网运维技术发展">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="学无止境">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2011/02/21/1550/" class="post-title-link" itemprop="url">批处理修改系统首页 并删除自己</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2011-02-21 16:04:00" itemprop="dateCreated datePublished" datetime="2011-02-21T16:04:00+08:00">2011-02-21</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-07-14 15:15:16" itemprop="dateModified" datetime="2021-07-14T15:15:16+08:00">2021-07-14</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" itemprop="url" rel="index"><span itemprop="name">操作系统</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <figure class="highlight jboss-cli"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">reg add <span class="string">&quot;HKEY_CURRENT_USERSoftwareMicrosoftInternet ExplorerMain&quot;</span> <span class="string">/v</span> <span class="string">&quot;Start Page&quot;</span> <span class="string">/t</span> reg_sz <span class="string">/d</span> http:<span class="string">//www.baidu.com</span> <span class="string">/f</span></span><br><span class="line">reg add <span class="string">&quot;HKEY_CURRENT_USERSoftwareMicrosoftInternet ExplorerMain&quot;</span> <span class="string">/v</span> <span class="string">&quot;Default_Page_URL&quot;</span> <span class="string">/t</span> reg_sz <span class="string">/d</span> http:<span class="string">//www.baidu.com</span> <span class="string">/f</span></span><br><span class="line">del %0</span><br><span class="line">pause</span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://shuxun,wang/2011/02/19/1085/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="王殊勋">
+      <meta itemprop="description" content="专注互联网运维技术发展">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="学无止境">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2011/02/19/1085/" class="post-title-link" itemprop="url">CentOS6 安装gnutls</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2011-02-19 13:32:00" itemprop="dateCreated datePublished" datetime="2011-02-19T13:32:00+08:00">2011-02-19</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-07-14 15:15:17" itemprop="dateModified" datetime="2021-07-14T15:15:17+08:00">2021-07-14</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" itemprop="url" rel="index"><span itemprop="name">操作系统</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">wget http:<span class="regexp">//</span>download.savannah.gnu.org<span class="regexp">/releases/</span>lzip/lzip-<span class="number">1.20</span>.tar.gz</span><br><span class="line">tar zxvf lzip-<span class="number">1.20</span>.tar.gz</span><br><span class="line">cd lzip-<span class="number">1.20</span></span><br><span class="line">./configure</span><br><span class="line">make</span><br><span class="line">make install</span><br></pre></td></tr></table></figure>
+
+<p>官网:<a target="_blank" rel="noopener" href="https://gmplib.org/">https://gmplib.org/</a></p>
+<figure class="highlight smali"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">wget https://gmplib.org/download/gmp/gmp-6.1.2.tar.lz</span><br><span class="line">lzip -d gmp-6.1.2.tar.lz</span><br><span class="line">tar xvf gmp-6.1.2.tar</span><br><span class="line">cd gmp-6.1.2</span><br><span class="line"><span class="keyword">.</span>/configure</span><br><span class="line">make</span><br><span class="line">make install</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">wget https://ftp.gnu.org/gnu/nettle/nettle-3.4.tar.gz</span><br><span class="line">tar zxvf nettle-3.4.tar.gz</span><br><span class="line">cd nettle-3.4</span><br><span class="line"><span class="keyword">.</span>/configure</span><br><span class="line">make</span><br><span class="line">make<span class="built_in"> check </span><span class="comment">#测试一下</span></span><br><span class="line">make install</span><br></pre></td></tr></table></figure>
+
+<p>官网:<a target="_blank" rel="noopener" href="https://www.gnutls.org/download.html">https://www.gnutls.org/download.html</a></p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">wget</span> ftp://ftp.gnutls.org/gcrypt/gnutls/v<span class="number">3</span>.<span class="number">5</span>/gnutls-<span class="number">3</span>.<span class="number">5</span>.<span class="number">9</span>.tar.xz</span><br><span class="line"><span class="attribute">xz</span> -d gnutls-<span class="number">3</span>.<span class="number">5</span>.<span class="number">9</span>.tar.xz</span><br><span class="line"><span class="attribute">tar</span> xvf gnutls-<span class="number">3</span>.<span class="number">5</span>.<span class="number">9</span>.tar</span><br><span class="line"><span class="attribute">cd</span> gnutls-<span class="number">3</span>.<span class="number">5</span>.<span class="number">9</span></span><br><span class="line"><span class="attribute">PKG_CONFIG_PATH</span>=/usr/local/lib<span class="number">64</span>/pkgconfig ./configure --with-included-libtasn<span class="number">1</span> --with-included-unistring --without-p<span class="number">11</span>-kit</span><br><span class="line"><span class="attribute">make</span></span><br><span class="line"><span class="attribute">make</span> install</span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://shuxun,wang/2011/02/16/1237/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="王殊勋">
+      <meta itemprop="description" content="专注互联网运维技术发展">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="学无止境">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2011/02/16/1237/" class="post-title-link" itemprop="url">linux下PacketiX的安装设置</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2011-02-16 12:11:00" itemprop="dateCreated datePublished" datetime="2011-02-16T12:11:00+08:00">2011-02-16</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-07-14 15:14:57" itemprop="dateModified" datetime="2021-07-14T15:14:57+08:00">2021-07-14</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%90%84%E7%B1%BB%E6%9C%8D%E5%8A%A1/" itemprop="url" rel="index"><span itemprop="name">各类服务</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>download:</p>
+<p><a target="_blank" rel="noopener" href="http://www.softether.co.jp/jp/download/file.aspx/37520A8DB099EC339A07F95D005370B22CA9E67C/vpnclient-5280-rtm-linux-x64.tar.gz">http://www.softether.co.jp/jp/download/file.aspx/37520A8DB099EC339A07F95D005370B22CA9E67C/vpnclient-5280-rtm-linux-x64.tar.gz</a></p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">tar</span> xzvf vpnclient-<span class="number">5280</span>-rtm-linux-x<span class="number">64</span>.tar.gz</span><br><span class="line"><span class="attribute">cd</span> vpnclient</span><br><span class="line"><span class="attribute">make</span></span><br></pre></td></tr></table></figure>
+
+<p>notice:</p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cannot <span class="builtin-name">find</span> -lcurses</span><br></pre></td></tr></table></figure>
+
+<p>solution:</p>
+<p>copy these two files under <code>/usr/lib64</code></p>
+<figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">libncurses.<span class="keyword">a</span></span><br><span class="line">libncurses.so</span><br></pre></td></tr></table></figure>
+
+<p>to vpnclient install directory.<br>and:</p>
+<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">vi Makefile</span></span><br></pre></td></tr></table></figure>
+
+<p>change:</p>
+<figure class="highlight diff"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="deletion">-lcurses</span></span><br></pre></td></tr></table></figure>
+
+<p>to:</p>
+<figure class="highlight diff"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="deletion">-lncurses -L.</span></span><br></pre></td></tr></table></figure>
+
+<p>final:</p>
+<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">make</span></span><br></pre></td></tr></table></figure>
+
+<p>How to access vpn client:</p>
+<figure class="highlight jboss-cli"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">./vpncmd</span> localhost</span><br></pre></td></tr></table></figure>
+
+<p>configure:</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd <span class="regexp">/usr/</span>local<span class="regexp">/vpnclient/</span></span><br><span class="line">./vpncmd</span><br></pre></td></tr></table></figure>
+
+<p>select 2 and enter next, you will getm VPN Client:</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">command</span>: (exam:fujikazu /fujikazu<span class="number">123456</span>)</span><br></pre></td></tr></table></figure>
+
+<p>create name:</p>
+<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">NicCreate VPNChina</span></span><br></pre></td></tr></table></figure>
+
+<p>configure args:</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">AccountCreate VPNChina <span class="regexp">/SERVER:vpn.a-it.jp:8888 /</span>HUB:CHINA-HUB <span class="regexp">/USERNAME:fujikazu /</span>NICNAME:VPNChina</span><br></pre></td></tr></table></figure>
+
+<p>set up vpn:</p>
+<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">AccountStartupSet VPNChina</span></span><br></pre></td></tr></table></figure>
+
+<p>set password:</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">AccountPasswordSet VPNChina <span class="regexp">/PASSWORD:fujikazu123456 /</span>TYPE:standard</span><br></pre></td></tr></table></figure>
+
+<p>connect vpn:</p>
+<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">AccountConnect VPNChina</span></span><br></pre></td></tr></table></figure>
+
+<p>cut off vpn:</p>
+<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">AccountDisconnect VPNChina</span></span><br></pre></td></tr></table></figure>
+
+<p>test:</p>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">ping</span> <span class="number">192.168.6.52</span></span><br></pre></td></tr></table></figure>
+
+<p>It ‘s OK if ping reachable.</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://shuxun,wang/2011/02/10/1298/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="王殊勋">
+      <meta itemprop="description" content="专注互联网运维技术发展">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="学无止境">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2011/02/10/1298/" class="post-title-link" itemprop="url">Nginx 限制网站并发数和带宽</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2011-02-10 08:30:00" itemprop="dateCreated datePublished" datetime="2011-02-10T08:30:00+08:00">2011-02-10</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-07-14 15:15:54" itemprop="dateModified" datetime="2021-07-14T15:15:54+08:00">2021-07-14</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%90%84%E7%B1%BB%E6%9C%8D%E5%8A%A1/" itemprop="url" rel="index"><span itemprop="name">各类服务</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">server</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="attribute">listen</span> <span class="number">80</span>;</span><br><span class="line">    <span class="attribute">server_name</span> download.selboo.com.cn;</span><br><span class="line">    <span class="attribute">index</span> index.html index.htm default.html default.htm index.php;</span><br><span class="line">    <span class="attribute">root</span> /wwwroot/selboo/download/;</span><br><span class="line">    <span class="attribute">limit_zone</span> limit $binary_remote_addr <span class="number">10m</span>;</span><br><span class="line"></span><br><span class="line">    <span class="attribute">location</span> / &#123;</span><br><span class="line">        <span class="attribute">limit_conn</span> limit <span class="number">2</span>;</span><br><span class="line">        <span class="attribute">limit_rate</span> <span class="number">50k</span>;</span><br><span class="line">        <span class="comment">#限制并发为2,每个并发限速50k.</span></span><br><span class="line">        <span class="attribute">limit_zone</span></span><br><span class="line">        <span class="comment">#是针对每个IP定义一个存储session状态的容器.这个示例中定义了一个10m的容器,按照32bytes/session,可以处理320000个session.</span></span><br><span class="line">        limit_conn limit <span class="number">2</span></span><br><span class="line">        <span class="comment">#限制每个IP只能并发两个连接.</span></span><br><span class="line">        limit_rate <span class="number">50k</span>;</span><br><span class="line">        <span class="comment">#对每个连接限速50k. 注意,这里是对连接限速,而不是对IP限速.如果一个IP允许两个并发连接,那么这个IP就是限速       limit_conn ×limit_rate,也就是 2×50k=100k.</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://shuxun,wang/2011/02/07/1121/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="王殊勋">
+      <meta itemprop="description" content="专注互联网运维技术发展">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="学无止境">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2011/02/07/1121/" class="post-title-link" itemprop="url">CentOS服务器安全与优化</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2011-02-07 16:00:00" itemprop="dateCreated datePublished" datetime="2011-02-07T16:00:00+08:00">2011-02-07</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-07-14 15:14:55" itemprop="dateModified" datetime="2021-07-14T15:14:55+08:00">2021-07-14</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" itemprop="url" rel="index"><span itemprop="name">操作系统</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>第一:停止ipv6<br>CentOS默认的状态下,ipv6是被启用的状态.因为我们不使用ipv6,所以,停止ipv6,以最大限度保证安全和快速.<br>如上图所示:</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">sit0</span>      Link encap:IPv<span class="number">6</span>-in-IPv<span class="number">4</span></span><br><span class="line">          <span class="attribute">NOARP</span>  MTU:<span class="number">1480</span>  Metric:<span class="number">1</span></span><br><span class="line">          <span class="attribute">RX</span> packets:<span class="number">0</span> errors:<span class="number">0</span> dropped:<span class="number">0</span> overruns:<span class="number">0</span> frame:<span class="number">0</span></span><br><span class="line">          <span class="attribute">TX</span> packets:<span class="number">0</span> errors:<span class="number">0</span> dropped:<span class="number">0</span> overruns:<span class="number">0</span> carrier:<span class="number">0</span></span><br><span class="line">          <span class="attribute">collisions</span>:<span class="number">0</span> txqueuelen:<span class="number">0</span></span><br><span class="line">          <span class="attribute">RX</span> bytes:<span class="number">0</span> (<span class="number">0</span>.<span class="number">0</span> b)  TX bytes:<span class="number">0</span> (<span class="number">0</span>.<span class="number">0</span> b)</span><br></pre></td></tr></table></figure>
+
+<p>这表明,IPV6功能是被启动的状态.</p>
+<p>解决方法:</p>
+<figure class="highlight jboss-cli"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">vi <span class="string">/etc/modprobe.conf</span> <span class="comment"># 修改相应配置文件,添加如下行到文尾:</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">alias</span> net-pf-10 off</span><br><span class="line"><span class="keyword">alias</span> ipv6 off</span><br><span class="line"></span><br><span class="line"><span class="keyword">shutdown</span> -r now <span class="comment"># 重新启动系统,使设置生效(我试过重启网卡不生效)</span></span><br></pre></td></tr></table></figure>
+
+<p>第二:停止打印服务</p>
+<p>系统默认被设置为自动启动的打印服务,这个需要不需要要看你们具体情况了.</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="regexp">/etc/</span>rc.d<span class="regexp">/init.d/</span>cups stop <span class="comment"># 停止打印服务</span></span><br><span class="line"></span><br><span class="line">停止 cups: 　　　　　　 　　　　[ 确定 ]　 　                 <span class="comment"># 停止服务成功,出现&quot;确定&quot;</span></span><br><span class="line">[root@localhost ~]<span class="comment"># chkconfig cups off                    # 禁止打印服务自动启动</span></span><br><span class="line">[root@localhost ~]<span class="comment"># chkconfig --list cups                 # 确认打印服务自启动设置状态</span></span><br><span class="line"></span><br><span class="line">cups <span class="number">0</span>:关闭  <span class="number">1</span>:关闭  <span class="number">2</span>:关闭  <span class="number">3</span>:关闭  <span class="number">4</span>:关闭  <span class="number">5</span>:关闭  <span class="number">6</span>:关闭  <span class="comment"># 0-6都为off的状态就OK</span></span><br></pre></td></tr></table></figure>
+
+<p>第三:防止别人ping</p>
+<p>1)命令提示符下打</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">echo <span class="number">1</span>　&gt; <span class="regexp">/proc/</span>sys<span class="regexp">/net/i</span>pv4/icmp_ignore_all</span><br></pre></td></tr></table></figure>
+
+<p>2)用防火墙禁止(或丢弃) icmp 包</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">iptables -<span class="selector-tag">A</span> <span class="selector-tag">INPUT</span> -<span class="selector-tag">p</span> icmp -j DROP</span><br></pre></td></tr></table></figure>
+
+<p>第四:更改SSH端口,如改为5000</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vi <span class="regexp">/etc/</span>ssh/sshd_config</span><br></pre></td></tr></table></figure>
+
+<p>默认port是22,我改为5000,保存退出.</p>
+<p>第五:修改命令history记录数</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vi <span class="regexp">/etc/</span>profile</span><br></pre></td></tr></table></figure>
+
+<p>找到 HISTSIZE=1000 改为 HISTSIZE=30(举例)</p>
+<p>第六:打开SYN Cookie功能,该功能可以防止部分SYN攻击</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">echo <span class="string">&#x27;net.ipv4.tcp_syncookies = 1&#x27;</span> &gt;&gt; /etc/sysctl<span class="selector-class">.conf</span></span><br><span class="line">sysctl -<span class="selector-tag">p</span></span><br><span class="line"></span><br><span class="line">net<span class="selector-class">.ipv4</span><span class="selector-class">.ip_forward</span> = <span class="number">0</span>                        #如果为网关或路由器应设置为<span class="number">1</span></span><br><span class="line">net<span class="selector-class">.ipv4</span><span class="selector-class">.conf</span><span class="selector-class">.default</span><span class="selector-class">.rp_filter</span> = <span class="number">1</span>            #提供 IP Spoofing 保护</span><br><span class="line">net<span class="selector-class">.ipv4</span><span class="selector-class">.conf</span><span class="selector-class">.default</span><span class="selector-class">.accept_source_route</span> = <span class="number">0</span>  #禁止 IP源路由功能</span><br><span class="line">kernel<span class="selector-class">.sysrq</span> = <span class="number">0</span></span><br><span class="line">kernel<span class="selector-class">.core_uses_pid</span> = <span class="number">1</span></span><br><span class="line">net<span class="selector-class">.ipv4</span><span class="selector-class">.tcp_syncookies</span> = <span class="number">1</span>                    #提供 TCP SYN 泛滥保护</span><br><span class="line">kernel<span class="selector-class">.msgmnb</span> = <span class="number">65536</span></span><br><span class="line">kernel<span class="selector-class">.msgmax</span> = <span class="number">65536</span></span><br><span class="line">kernel<span class="selector-class">.shmmax</span> = <span class="number">4294967295</span></span><br><span class="line">kernel<span class="selector-class">.shmall</span> = <span class="number">268435456</span></span><br></pre></td></tr></table></figure>
+
+<p>第七:资源限制 (本设置只对登录到系统中的用户有效)</p>
+<figure class="highlight tap"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">vi /etc/security/limits.conf</span><br><span class="line"></span><br><span class="line">    <span class="number"> 42 </span><span class="comment">#*                      soft    core          0      #表示禁止创建core文件</span></span><br><span class="line">    <span class="number"> 43 </span><span class="comment">#*                      hard    rss           10000  #其他用户最多使用10000M内存.</span></span><br><span class="line">    <span class="number"> 44 </span><span class="comment">#@student               hard    nproc         20     #表示最多把进程数限制在20</span></span><br><span class="line">    <span class="number"> 45 </span><span class="comment">#@faculty               soft    nproc         20</span></span><br><span class="line">    <span class="number"> 46 </span><span class="comment">#@faculty               hard    nproc         50</span></span><br><span class="line">    <span class="number"> 47 </span><span class="comment">#ftp                    hard    nproc         0</span></span><br></pre></td></tr></table></figure>
+
+<p>第八:使ctrl+alt+del关机键无效</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vi <span class="regexp">/etc/i</span>nittab</span><br></pre></td></tr></table></figure>
+
+<p>查找:</p>
+<figure class="highlight arcade"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ca::ctrlaltdel:<span class="regexp">/sbin/</span>shutdown -t3 -r now</span><br></pre></td></tr></table></figure>
+
+<p>在这句前面加”#”注释掉即可.</p>
+<p>/sbin/init q # 使上面设置生效</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+
+  
+  <nav class="pagination">
+    <a class="extend prev" rel="prev" href="/page/127/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/127/">127</a><span class="page-number current">128</span><a class="page-number" href="/page/129/">129</a><span class="space">&hellip;</span><a class="page-number" href="/page/132/">132</a><a class="extend next" rel="next" href="/page/129/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+  </nav>
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="王殊勋"
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name">王殊勋</p>
+  <div class="site-description" itemprop="description">better late than never.<br>只要开始，虽晚不迟。</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">656</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">2058</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <!--添加网站运行时间 -->
+  <span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
+  <script>
+      var now = new Date(); 
+      function createtime() { 
+          var grt= new Date("12/01/2007 12:00:00");//此处修改你的建站时间或者网站上线时间 
+          now.setTime(now.getTime()+250); 
+          days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days); 
+          hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours); 
+          if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum); 
+          mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;} 
+          seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum); 
+          snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;} 
+          document.getElementById("timeDate").innerHTML = "本站已安全运行 "+dnum+" 天 "; 
+          document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒"; 
+      } 
+  setInterval("createtime()",250);
+  </script>
+  <span itemprop="copyrightYear">(2007 - 2021)</span>
+  <!-- 添加网站运行时间 -->
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">学无止境</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script size="300" alpha="0.6" zIndex="0" src="/lib/canvas-ribbon/canvas-ribbon.js"></script>
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

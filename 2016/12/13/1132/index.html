@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"shuxun","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"./public/search.xml"};
+  </script>
+
+  <meta name="description" content="系统自带的sandmail会和postfix冲突. 第一步卸载sandmail. 1yum remove sandmail  第二步:安装postfix ,dovecot,cyrus-sasl. 123yum -y install devecotyum -y install postfixyum -y install cyrus-sasl  三、修改postfix的配置文件. 123456789[">
+<meta property="og:type" content="article">
+<meta property="og:title" content="centos上布置postfix邮件服务器">
+<meta property="og:url" content="http://shuxun,wang/2016/12/13/1132/index.html">
+<meta property="og:site_name" content="学无止境">
+<meta property="og:description" content="系统自带的sandmail会和postfix冲突. 第一步卸载sandmail. 1yum remove sandmail  第二步:安装postfix ,dovecot,cyrus-sasl. 123yum -y install devecotyum -y install postfixyum -y install cyrus-sasl  三、修改postfix的配置文件. 123456789[">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2016-12-13T07:34:00.000Z">
+<meta property="article:modified_time" content="2021-07-14T07:15:01.827Z">
+<meta property="article:author" content="王殊勋">
+<meta property="article:tag" content="etc">
+<meta property="article:tag" content="root">
+<meta property="article:tag" content="var">
+<meta property="article:tag" content="postfix">
+<meta property="article:tag" content="配置">
+<meta property="article:tag" content="vim">
+<meta property="article:tag" content="saslauthd">
+<meta property="article:tag" content="openwebmail">
+<meta property="article:tag" content="ser">
+<meta property="article:tag" content="mydomain">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://shuxun,wang/2016/12/13/1132/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>centos上布置postfix邮件服务器 | 学无止境</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">学无止境</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">注互联网运维技术发展</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-sitemap">
+
+    <a href="/sitemap.xml" rel="section"><i class="fa fa-sitemap fa-fw"></i>站点地图</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://shuxun,wang/2016/12/13/1132/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="王殊勋">
+      <meta itemprop="description" content="专注互联网运维技术发展">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="学无止境">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          centos上布置postfix邮件服务器
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2016-12-13 15:34:00" itemprop="dateCreated datePublished" datetime="2016-12-13T15:34:00+08:00">2016-12-13</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-07-14 15:15:01" itemprop="dateModified" datetime="2021-07-14T15:15:01+08:00">2021-07-14</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%90%84%E7%B1%BB%E6%9C%8D%E5%8A%A1/" itemprop="url" rel="index"><span itemprop="name">各类服务</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>系统自带的sandmail会和postfix冲突.</p>
+<p>第一步卸载sandmail.</p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum <span class="builtin-name">remove</span> sandmail</span><br></pre></td></tr></table></figure>
+
+<p>第二步:安装postfix ,dovecot,cyrus-sasl.</p>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">yum -y <span class="keyword">install</span> devecot</span><br><span class="line">yum -y <span class="keyword">install</span> postfix</span><br><span class="line">yum -y <span class="keyword">install</span> cyrus-sasl</span><br></pre></td></tr></table></figure>
+
+<p>三、修改postfix的配置文件.</p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">[root@ser ~]</span><span class="comment"># vim /etc/postfix/main.cf</span></span><br><span class="line"></span><br><span class="line"><span class="attr">myhostname</span> = mail.shuxun.wang</span><br><span class="line"><span class="attr">mydomain</span> = shuxun.wang</span><br><span class="line"><span class="attr">myorigin</span> = shuxun.wang</span><br><span class="line"><span class="attr">inet_interfaces</span> =all</span><br><span class="line"><span class="attr">mynetworks</span> = <span class="number">192.168</span>.<span class="number">1.0</span>/<span class="number">240</span></span><br><span class="line"><span class="attr">relay_domains</span> = shuxun.wang, <span class="variable">$mydomain</span></span><br><span class="line"><span class="attr">mydestination</span> = <span class="variable">$myhostname</span>, localhost.<span class="variable">$mydomain</span>, localhost, <span class="variable">$mydomain</span>,       mail.<span class="variable">$mydomain</span>, www.<span class="variable">$mydomain</span>, ftp.<span class="variable">$mydomain</span></span><br></pre></td></tr></table></figure>
+
+<p>重启　postfix 服务.</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[root<span class="meta">@ser</span> <span class="operator">~</span>]# service <span class="keyword">postfix</span> restart</span><br><span class="line"><span class="type">Shutting</span> down <span class="keyword">postfix</span>:                                     [  <span class="type">OK</span>  ]</span><br><span class="line"><span class="type">Starting</span> <span class="keyword">postfix</span>:                                          [  <span class="type">OK</span>  ]</span><br><span class="line">[root<span class="meta">@ser</span> <span class="operator">~</span>]# chkconfig  <span class="keyword">postfix</span> on</span><br><span class="line">[root<span class="meta">@ser</span> <span class="operator">~</span>]# chkconfig  dovecot on</span><br></pre></td></tr></table></figure>
+
+<p>修改dovecot的配置文件.</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">vim</span> /etc/dovecot.conf</span><br><span class="line"></span><br><span class="line"><span class="attribute">protocols</span> = imap imaps  pop<span class="number">3</span> pop<span class="number">3</span>s(在后面启动dovecot时,说端口已经被使用,lsof -i tcp:端口,是pop<span class="number">3</span>s占用了,如果出现这样的情况,把这里的pop<span class="number">3</span>s去掉.)</span><br><span class="line"><span class="attribute"><span class="nomarkup">listen</span></span> = *</span><br></pre></td></tr></table></figure>
+
+<p>在iptables　里开放25,110,143端口.</p>
+<figure class="highlight pf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[root@ser ~]<span class="comment"># vim /etc/sysconfig/iptables</span></span><br><span class="line">-A RH-Firewall-<span class="number">1</span>-INPUT -m <span class="keyword">state</span> --state NEW -m tcp -p tcp --dport <span class="number">110</span> -j ACCEPT</span><br><span class="line">-A RH-Firewall-<span class="number">1</span>-INPUT -m <span class="keyword">state</span> --state NEW -m tcp -p tcp --dport <span class="number">25</span> -j ACCEPT</span><br><span class="line">-A RH-Firewall-<span class="number">1</span>-INPUT -m <span class="keyword">state</span> --state NEW -m tcp -p tcp --dport <span class="number">143</span> -j ACCEPT</span><br></pre></td></tr></table></figure>
+
+<p>重启iptables.</p>
+<figure class="highlight ldif"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">[root@ser ~]<span class="comment"># service iptables restart</span></span><br><span class="line"><span class="attribute">Flushing firewall rules</span>:                               [  OK  ]</span><br><span class="line"><span class="attribute">Setting chains to policy ACCEPT</span>: filter                [  OK  ]</span><br><span class="line"><span class="attribute">Unloading iptables modules</span>:                            [  OK</span><br><span class="line"><span class="attribute">Applying iptables firewall rules</span>:                     [  OK  ]</span><br><span class="line"><span class="attribute">Loading additional iptables modules</span>: ip_conntrack_netbios_n[  OK  ]ntrack_ftp</span><br><span class="line">[root@ser ~]<span class="comment"># chkconfig  saslauthd on</span></span><br></pre></td></tr></table></figure>
+
+<p>修改 <code>/etc/sysconfig/saslauthd</code>.</p>
+<figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">[root@ser ~]<span class="comment"># vim /etc/sysconfig/saslauthd</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Directory in which to place saslauthd&#x27;s listening socket, pid file, and so</span></span><br><span class="line"><span class="comment"># on.  This directory must already exist.</span></span><br><span class="line">SOCKETDIR=/var/run/saslauthd</span><br><span class="line"></span><br><span class="line"><span class="comment"># Mechanism to use when checking passwords.  Run &quot;saslauthd -v&quot; to get a list</span></span><br><span class="line"><span class="comment"># of which mechanism your installation was compiled with the ablity to use.</span></span><br><span class="line">MECH=shadow</span><br><span class="line"></span><br><span class="line"><span class="comment"># Additional flags to pass to saslauthd on the command line.  See saslauthd(8)</span></span><br><span class="line"><span class="comment"># for the list of accepted flags.</span></span><br><span class="line">FLAGS=</span><br></pre></td></tr></table></figure>
+
+<p>修改 <code>/usr/lib/sasl2/smtpd.conf</code>.</p>
+<figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@ser ~]# vim <span class="regexp">/usr/</span>lib64<span class="regexp">/sasl2/</span>smtpd.conf</span><br><span class="line">pwcheck_method: saslauthd</span><br></pre></td></tr></table></figure>
+
+<p>测试 saslauthd.</p>
+<figure class="highlight autoit"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root<span class="symbol">@ser</span> ~]<span class="meta"># service saslauthd  restart</span></span><br><span class="line">[root<span class="symbol">@ser</span> ~]<span class="meta"># testsaslautd  -u yjw -p <span class="string">&#x27;020304&#x27;</span></span></span><br><span class="line"><span class="number">0</span>: OK <span class="string">&quot;Success.&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>在postfix 的配置文件中,添加以下内容,使其支持SMTP认证.</p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">[root@ser ~]</span><span class="comment">#  vim /etc/postfix/main.cf</span></span><br><span class="line"><span class="attr">message_size_limit</span> = <span class="number">1073741824</span>   <span class="comment"># 邮件的大小为10M</span></span><br><span class="line"><span class="attr">default_process_limit</span> = <span class="number">50</span></span><br><span class="line"><span class="attr">default_destination_concurrency_limit</span> = <span class="number">20</span></span><br><span class="line"></span><br><span class="line"><span class="attr">smtpd_sasl_auth_enable</span> = <span class="literal">yes</span></span><br><span class="line"><span class="attr">smtpd_sasl_local_domain</span> =  <span class="variable">$myhostname</span></span><br><span class="line"></span><br><span class="line"><span class="attr">smtpd_sasl_application_name</span> = smtpd</span><br><span class="line"></span><br><span class="line"><span class="attr">broken_sasl_auth_clients</span> = <span class="literal">yes</span></span><br><span class="line"><span class="attr">smtpd_recipient_restrictions</span> = permit_mynetworks, permit_sasl_authenticated,reject_unauth_destination</span><br><span class="line"><span class="attr">smtpd_client_restrictions</span> = permit_sasl_authenticated</span><br><span class="line"><span class="attr">smtpd_sasl_security_options</span> = noanonymous</span><br></pre></td></tr></table></figure>
+
+<p>测试 25端口.</p>
+<figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">[root@ser ~]<span class="comment">#  telnet mail.shuxun.wang 25</span></span><br><span class="line">Trying <span class="number">192</span>.<span class="number">168</span>.<span class="number">1</span>.<span class="number">2</span>...</span><br><span class="line">Connected to mail.<span class="keyword">shuxun.wang </span>(<span class="number">192</span>.<span class="number">168</span>.<span class="number">1</span>.<span class="number">2</span>).</span><br><span class="line">Escape character is <span class="string">&#x27;^]&#x27;</span>.</span><br><span class="line"><span class="number">220</span> mail.<span class="keyword">shuxun.wang </span>ESMTP Postfix</span><br><span class="line">EHLO  <span class="number">163</span>.com</span><br><span class="line"><span class="number">250</span>-mail.<span class="keyword">shuxun.wang</span></span><br><span class="line"><span class="keyword"></span><span class="number">250</span>-PIPELINING</span><br><span class="line"><span class="number">250</span>-SIZE <span class="number">10240000</span></span><br><span class="line"><span class="number">250</span>-VRFY</span><br><span class="line"><span class="number">250</span>-ETRN</span><br><span class="line"><span class="number">250</span>-AUTH LOGIN PLAIN</span><br><span class="line"><span class="number">250</span>-AUTH=LOGIN PLAIN</span><br><span class="line"><span class="number">250</span>-ENHANCEDSTATUSCODES</span><br><span class="line"><span class="number">250</span><span class="number">-8</span>BITMIME</span><br><span class="line"><span class="number">250</span> DSN</span><br><span class="line">quit</span><br><span class="line"><span class="number">221</span> <span class="number">2</span>.<span class="number">0</span>.<span class="number">0</span> <span class="keyword">Bye</span></span><br><span class="line"><span class="keyword"></span>Connection <span class="keyword">closed </span><span class="keyword">by </span>foreign host.</span><br></pre></td></tr></table></figure>
+
+<p>现在可以测试一下给root发一封邮件.</p>
+<figure class="highlight 1c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">echo <span class="string">&quot;this is a test mail !&quot;</span><span class="string">|mail -s mailname root</span></span><br></pre></td></tr></table></figure>
+
+<p>输入mail查看是否成功.也可给给QQ邮箱发,将root修改成QQ邮箱地址就可以了.</p>
+<p>四、安装openwebmail.</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">[root@ser ~]<span class="comment"># vim /etc/yum.repos.d/openwebmail.repo</span></span><br><span class="line">[openwebmail]</span><br><span class="line"><span class="comment">## Thomas Chung</span></span><br><span class="line"><span class="comment">## 2008.05.29</span></span><br><span class="line">name=Openwebmail <span class="keyword">for</span> Fedora or Enterprise Linux</span><br><span class="line">baseurl=http:<span class="regexp">//</span>openwebmail.org<span class="regexp">/openwebmail/</span>download<span class="regexp">/redhat/</span>rpm<span class="regexp">/release/</span></span><br><span class="line">enabled=<span class="number">1</span></span><br><span class="line">gpgcheck=<span class="number">1</span></span><br><span class="line">gpgkey=http:<span class="regexp">//</span>openwebmail.org<span class="regexp">/openwebmail/</span>download<span class="regexp">/redhat/</span>rpm<span class="regexp">/release/</span>RPM-GPG-KEY-openwebmail</span><br><span class="line"><span class="comment">#metadata_expire=0</span></span><br></pre></td></tr></table></figure>
+
+<p>若这样安装不成功,先安装 perl-Text-Iconv-1.4-1.2.el4.rf.i386.rpm.</p>
+<p>下载地址:</p>
+<figure class="highlight perl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">http:<span class="regexp">//rpm</span>.pbone.net/index.php3?<span class="keyword">stat</span>=<span class="number">26</span>&amp;dist=<span class="number">42</span>&amp;size=<span class="number">19383</span>&amp;name=perl-Text-Iconv-<span class="number">1.4</span>-<span class="number">1.2</span>.el4.rf.i386.rpm</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">[root@ser ~]<span class="comment">#  yum -y  install openwebmail</span></span><br><span class="line">[root@ser ~]<span class="comment"># cd /var/www/cgi-bin/openwebmail/</span></span><br><span class="line">[root@ser openwebmail]<span class="comment"># ./openwebmail-tool.pl  --init  #出现Y/N时 ,按N.</span></span><br></pre></td></tr></table></figure>
+
+<p>修改openwebmail 的一些配置文件.</p>
+<figure class="highlight avrasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">[root@<span class="keyword">ser</span> etc]<span class="meta"># vim dbm.conf</span></span><br><span class="line">dbm_ext                 <span class="meta">.db</span></span><br><span class="line">dbmopen_ext             <span class="meta">.db</span></span><br><span class="line">dbmopen_haslock         no</span><br><span class="line">[root@<span class="keyword">ser</span> etc]]<span class="meta"># cd defaults/</span></span><br><span class="line">[root@<span class="keyword">ser</span> defaults]<span class="meta">#  vim dbm.conf</span></span><br><span class="line">dbm_ext                 <span class="meta">.db</span></span><br><span class="line">dbmopen_ext             <span class="meta">.db</span></span><br><span class="line">dbmopen_haslock         yes</span><br><span class="line">smtpserver  <span class="number">192.168</span><span class="number">.1</span><span class="number">.2</span></span><br><span class="line">[root@<span class="keyword">ser</span> defaults]<span class="meta">#  vim openwebmail.conf</span></span><br><span class="line">domainnames             shuxun.wang</span><br><span class="line">smtpserver              <span class="number">192.168</span><span class="number">.1</span><span class="number">.2</span></span><br><span class="line">authpop3_server         <span class="number">192.168</span><span class="number">.1</span><span class="number">.2</span></span><br></pre></td></tr></table></figure>
+
+<p>再次初始化openwebmail.</p>
+<figure class="highlight 1c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@ser defaults]<span class="meta"># cd  http:<span class="comment">//www.cnblogs.com/openwebmail-tool.pl  --init</span></span></span><br><span class="line">出现Y/N 时,按Y.</span><br></pre></td></tr></table></figure>
+
+<p>把Postfix+Dovecot+Openwebmail 三者个格式统一下就行了.<br>1.postfix 配置 main.cf</p>
+<figure class="highlight arcade"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mail_spool_directory = <span class="regexp">/var/</span>spool/mail</span><br></pre></td></tr></table></figure>
+
+<p>2.Dovecot 配置 Dovecot.conf</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mail_location = mbox:~<span class="regexp">/mail:INBOX=/</span>var<span class="regexp">/spool/m</span>ail/%u</span><br></pre></td></tr></table></figure>
+
+<p>3.Openwebmail.conf</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mailspooldir <span class="regexp">/var/</span>spool/mail</span><br></pre></td></tr></table></figure>
+
+<p>修改apache配置</p>
+<figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[root@ser ~]<span class="comment"># vim /etc/httpd/conf/httpd.conf</span></span><br><span class="line"></span><br><span class="line">ServerAdmin</span><br><span class="line">root@<span class="keyword">shuxun.wang</span></span><br><span class="line"><span class="keyword"></span>ServerName  mail.<span class="keyword">shuxun.wang:80</span></span><br><span class="line"><span class="keyword"></span><span class="keyword">AddHandler </span>cgi-<span class="keyword">script </span>.cgi .pl</span><br></pre></td></tr></table></figure>
+
+<p>五、登陆openwebmail<br>在IE 中输入</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mail.shuxun.wang<span class="regexp">/cgi-bin/</span>openwebmail/openwebmail.pl</span><br></pre></td></tr></table></figure>
+
+<p>这个地址是不是很长,那么我们来点短点的<br>在  httpd的 配置文件中添加 下面 内容:</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ScriptAlias  <span class="regexp">/mail    /</span>var<span class="regexp">/www/</span>cgi-bin<span class="regexp">/openwebmail/</span>openwebmail.pl</span><br></pre></td></tr></table></figure>
+
+<p>这样在IE 中直接输入</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mail<span class="selector-class">.shuxun</span>.wang/mail</span><br></pre></td></tr></table></figure>
+
+<p>如果出现了下面的问题</p>
+<figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Couldn&#x27;t create <span class="keyword">File</span> /<span class="keyword">var</span>/<span class="keyword">log</span>/openwebmail.<span class="keyword">log</span>! (Permission denied)</span><br></pre></td></tr></table></figure>
+
+<p>在网上找到解决办法了:如下方面 运行:</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">touch <span class="regexp">/var/</span>log/openwebmail.log</span><br><span class="line">chcon -u system_u <span class="regexp">/var/</span>log/openwebmail.log</span><br><span class="line">chcon -t httpd_sys_script_rw_t <span class="regexp">/var/</span>log/openwebmail.log</span><br><span class="line">chcon -t httpd_unconfined_script_exec_t <span class="regexp">/var/</span>www<span class="regexp">/cgi-bin/</span>openwebmail/openwebmail*</span><br></pre></td></tr></table></figure>
+
+<p>然后刷新了一下 OK ,很漂亮的界面出现了.</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/etc/" rel="tag"># etc</a>
+              <a href="/tags/root/" rel="tag"># root</a>
+              <a href="/tags/var/" rel="tag"># var</a>
+              <a href="/tags/postfix/" rel="tag"># postfix</a>
+              <a href="/tags/%E9%85%8D%E7%BD%AE/" rel="tag"># 配置</a>
+              <a href="/tags/vim/" rel="tag"># vim</a>
+              <a href="/tags/saslauthd/" rel="tag"># saslauthd</a>
+              <a href="/tags/openwebmail/" rel="tag"># openwebmail</a>
+              <a href="/tags/ser/" rel="tag"># ser</a>
+              <a href="/tags/mydomain/" rel="tag"># mydomain</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2016/12/11/1381/" rel="prev" title="win7访问共享文件,登录失败禁用当前用户 解决方法">
+      <i class="fa fa-chevron-left"></i> win7访问共享文件,登录失败禁用当前用户 解决方法
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2016/12/15/1443/" rel="next" title="关于linux无法连接无线网络的问题">
+      关于linux无法连接无线网络的问题 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="王殊勋"
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name">王殊勋</p>
+  <div class="site-description" itemprop="description">better late than never.<br>只要开始，虽晚不迟。</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">656</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">2058</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <!--添加网站运行时间 -->
+  <span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
+  <script>
+      var now = new Date(); 
+      function createtime() { 
+          var grt= new Date("12/01/2007 12:00:00");//此处修改你的建站时间或者网站上线时间 
+          now.setTime(now.getTime()+250); 
+          days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days); 
+          hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours); 
+          if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum); 
+          mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;} 
+          seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum); 
+          snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;} 
+          document.getElementById("timeDate").innerHTML = "本站已安全运行 "+dnum+" 天 "; 
+          document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒"; 
+      } 
+  setInterval("createtime()",250);
+  </script>
+  <span itemprop="copyrightYear">(2007 - 2021)</span>
+  <!-- 添加网站运行时间 -->
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">学无止境</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script size="300" alpha="0.6" zIndex="0" src="/lib/canvas-ribbon/canvas-ribbon.js"></script>
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

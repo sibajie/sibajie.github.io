@@ -1,0 +1,828 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"shuxun","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"./public/search.xml"};
+  </script>
+
+  <meta name="description" content="专注互联网运维技术发展">
+<meta property="og:type" content="website">
+<meta property="og:title" content="学无止境">
+<meta property="og:url" content="http://shuxun,wang/page/50/index.html">
+<meta property="og:site_name" content="学无止境">
+<meta property="og:description" content="专注互联网运维技术发展">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:author" content="王殊勋">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://shuxun,wang/page/50/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : true,
+    isPost : false,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>学无止境</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">学无止境</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">注互联网运维技术发展</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-sitemap">
+
+    <a href="/sitemap.xml" rel="section"><i class="fa fa-sitemap fa-fw"></i>站点地图</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content index posts-expand">
+            
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://shuxun,wang/2016/11/18/1389/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="王殊勋">
+      <meta itemprop="description" content="专注互联网运维技术发展">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="学无止境">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2016/11/18/1389/" class="post-title-link" itemprop="url">Windows文件在linux下不能使用 每行后出现^M字样</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2016-11-18 19:22:00" itemprop="dateCreated datePublished" datetime="2016-11-18T19:22:00+08:00">2016-11-18</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-07-14 15:15:31" itemprop="dateModified" datetime="2021-07-14T15:15:31+08:00">2021-07-14</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" itemprop="url" rel="index"><span itemprop="name">操作系统</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>最近使用Ubuntu Linux发现,Windows 下的文本到Linux下可以正常的浏览,但是Linux下的文本到Windows下后发现凡是”回车”部分全是”黑块”,经过一段时间的查询搜索发现了原因及解决办法.<br>DOS/Windows和Linux/Unix的文件换行回车格式不同,基于 DOS/Windows 的文本文件在每一行末尾有一个 CR(回车)和 LF(换行),而 UNIX 文本只有一个换行.</p>
+<p>1)、把Dos/Windows下的文件移至Linux/Unix系统</p>
+<p>虽然很多程序不在乎 DOS/Windows 格式的 CR/LF 文本文件,但是有几个程序却在乎 – 最著名的是 bash,只要一遇到回车,它就会出问题.以下 sed 调用将把 DOS/Windows 格式的文本转换成可信赖的 UNIX 格式:</p>
+<figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$ </span>sed -e <span class="string">&#x27;s/.$//&#x27;</span> mydos.txt &gt; myunix.txt</span><br></pre></td></tr></table></figure>
+
+<p>该脚本的工作原理很简单:替代规则表达式与一行的最末字符匹配,而该字符恰好就是回车.我们用空字符替换它,从而将其从输出中彻底删除.如果使用该脚本并注意到已经删除了输出中每行的最末字符,那么,您就指定了已经是 UNIX 格式的文本文件.也就没必要那样做了!</p>
+<p>2)、把Linux/UNIX 文本移至 Windows 系统,使用以下脚本执行必需的格式转换</p>
+<figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$ </span>sed -e <span class="string">&#x27;s/$/r/&#x27;</span> myunix.txt &gt; mydos.txt</span><br></pre></td></tr></table></figure>
+
+<p>在该脚本中,’$’ 规则表达式将与行的末尾匹配,而 ‘r’ 告诉 sed 在其之前插入一个回车.在换行之前插入回车,立即,每一行就以 CR/LF 结束.请注意,仅当使用 GNU sed 3.02.80 或以后的版本时,才会用 CR 替换 ‘r’.</p>
+<p>另外还有个方法,使用命令:</p>
+<figure class="highlight sas"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">unix2dos <span class="meta">filename</span></span><br><span class="line">dos2unix <span class="meta">filename</span></span><br></pre></td></tr></table></figure>
+
+<p>互相转换,具体哪个方向转不用我说了吧.</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://shuxun,wang/2016/11/13/1216/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="王殊勋">
+      <meta itemprop="description" content="专注互联网运维技术发展">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="学无止境">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2016/11/13/1216/" class="post-title-link" itemprop="url">Linux的环境变量</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2016-11-13 04:18:00" itemprop="dateCreated datePublished" datetime="2016-11-13T04:18:00+08:00">2016-11-13</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-07-14 15:14:52" itemprop="dateModified" datetime="2021-07-14T15:14:52+08:00">2021-07-14</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" itemprop="url" rel="index"><span itemprop="name">操作系统</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>一、Linux的变量种类</p>
+<p>按变量的生存周期来划分,Linux变量可分为两类:</p>
+<p>1、永久的:需要修改配置文件,变量永久生效.<br>2、临时的:使用export命令声明即可,变量在关闭shell时失效.</p>
+<p>二、设置变量的三种方法</p>
+<p>1、在 <code>/etc/profile</code>文件中添加变量,对所有用户生效(永久的).</p>
+<p>用VI在文件 <code>/etc/profile</code>文件中增加变量,该变量将会对Linux下所有用户有效,并且是”永久的”.<br>例如:编辑 <code>/etc/profile</code>文件,添加CLASSPATH变量.</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">vi <span class="regexp">/etc/</span>profile</span><br><span class="line">export CLASSPATH=.<span class="regexp">/JAVA_HOME/</span>lib;<span class="variable">$JAVA_HOME</span><span class="regexp">/jre/</span>lib</span><br></pre></td></tr></table></figure>
+
+<p>注:修改文件后要想马上生效还要运行:</p>
+<figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">source</span> <span class="regexp">/etc/</span>profile</span><br></pre></td></tr></table></figure>
+
+<p>不然只能在下次重进此用户时生效.</p>
+<p>2、在用户目录下的.bash_profile文件中增加变量,对单一用户生效(永久的).</p>
+<p>用VI在用户目录下的.bash_profile文件中增加变量,改变量仅会对当前用户有效,并且是”永久的”.<br>例如:编辑guok用户目录 <code>/home/guok</code>下的.bash_profile.</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vi <span class="regexp">/home/gu</span>ok/.bash.profile</span><br></pre></td></tr></table></figure>
+
+<p>添加如下内容:</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">export CLASSPATH=.<span class="regexp">/JAVA_HOME/</span>lib;<span class="variable">$JAVA_HOME</span><span class="regexp">/jre/</span>lib</span><br></pre></td></tr></table></figure>
+
+<p>注:修改文件后要想马上生效还要运行:</p>
+<figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">source</span> <span class="regexp">/home/gu</span>ok/.bash_profile</span><br></pre></td></tr></table></figure>
+
+<p>不然只能在下次重进此用户时生效.</p>
+<p>3、直接运行export命令定义变量,只对当前shell有效(临时的).</p>
+<p>在shell的命令行下直接使用[export 变量名=变量值].<br>定义变量,该变量只在当前的shell或其子shell下是有效的,shell关闭了,变量也就失效了,再打开新shell时就没有这个变量,需要使用的话还需要重新定义.</p>
+<p>三、PATH声明,其格式为:</p>
+<figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">PATH=<span class="variable">$PATH</span><span class="symbol">:&lt;PATH</span> <span class="number">1</span>&gt;<span class="symbol">:&lt;PATH</span> <span class="number">2</span>&gt;<span class="symbol">:&lt;PATH</span> <span class="number">3</span>&gt;<span class="symbol">:------</span><span class="symbol">:&lt;PATH</span> N&gt;</span><br></pre></td></tr></table></figure>
+
+<p>你可以自己加上指定的路径,中间用冒号隔开.环境变量更改后,在用户下次登陆时生效.<br>如果想立刻生效,则可执行下面的语句:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">source</span> .bash_profile</span><br></pre></td></tr></table></figure>
+
+<p>需要注意的是,最好不要把当前路径”./“放到PATH里,这样可能会受到意想不到的攻击.<br>完成后,可以通过:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="variable">$PATH</span></span><br></pre></td></tr></table></figure>
+
+<p>查看当前的搜索路径.这样定制后,就可以避免频繁的启动位于shell搜索的路径之外的程序了.</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://shuxun,wang/2016/11/11/1120/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="王殊勋">
+      <meta itemprop="description" content="专注互联网运维技术发展">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="学无止境">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2016/11/11/1120/" class="post-title-link" itemprop="url">centos-防火墙只允许80-22-端口访问</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2016-11-11 18:34:00" itemprop="dateCreated datePublished" datetime="2016-11-11T18:34:00+08:00">2016-11-11</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-07-14 15:16:26" itemprop="dateModified" datetime="2021-07-14T15:16:26+08:00">2021-07-14</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" itemprop="url" rel="index"><span itemprop="name">操作系统</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>这个教程比较有意思,让服务器除了网站和ssh能链接就不能做任何事情了,<br>就连在服务器yum安装软件,ping 百度都无法实现.<br>这样就保证了服务器的安全.</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">iptables -F <span class="comment">/* 清除所有规则 */</span></span><br><span class="line">iptables -<span class="selector-tag">A</span> <span class="selector-tag">INPUT</span> -<span class="selector-tag">p</span> tcp --dport <span class="number">22</span> -j ACCEPT <span class="comment">/*允许包从22端口进入*/</span></span><br><span class="line">iptables -<span class="selector-tag">A</span> OUTPUT -<span class="selector-tag">p</span> tcp --sport <span class="number">22</span> -m state --state ESTABLISHED -j ACCEPT <span class="comment">/*允许从22端口进入的包返回*/</span></span><br><span class="line">iptables -<span class="selector-tag">A</span> <span class="selector-tag">INPUT</span> -s <span class="number">127.0</span>.<span class="number">0.1</span> -d <span class="number">127.0</span>.<span class="number">0.1</span> -j ACCEPT <span class="comment">/*允许本机访问本机*/</span></span><br><span class="line">iptables -<span class="selector-tag">A</span> OUTPUT -s <span class="number">127.0</span>.<span class="number">0.1</span> -d <span class="number">127.0</span>.<span class="number">0.1</span> -j ACCEPT</span><br><span class="line">iptables -<span class="selector-tag">A</span> <span class="selector-tag">INPUT</span> -<span class="selector-tag">p</span> tcp -s <span class="number">0</span>/<span class="number">0</span> --dport <span class="number">80</span> -j ACCEPT <span class="comment">/*允许所有IP访问80端口*/</span></span><br><span class="line">iptables -<span class="selector-tag">A</span> OUTPUT -<span class="selector-tag">p</span> tcp --sport <span class="number">80</span> -m state --state ESTABLISHED -j ACCEPT</span><br><span class="line">iptables -<span class="selector-tag">P</span> <span class="selector-tag">INPUT</span> DROP</span><br><span class="line">iptables -<span class="selector-tag">P</span> FORWARD DROP</span><br><span class="line">iptables -<span class="selector-tag">P</span> OUTPUT DROP</span><br><span class="line">iptables-save &gt; /etc/sysconfig/iptables <span class="comment">/*保存配置*/</span></span><br><span class="line">iptables -L <span class="comment">/* 显示iptables列表 */</span></span><br></pre></td></tr></table></figure>
+
+<p>如果需要在服务器安装软件,或者下载文件则需要运行:</p>
+<figure class="highlight tp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">iptables -<span class="keyword">P</span> INPUT <span class="keyword">ACC</span>EPT</span><br><span class="line">iptables -<span class="keyword">P</span> OUTPUT <span class="keyword">ACC</span>EPT</span><br></pre></td></tr></table></figure>
+
+<p>这样就可以让服务器访问外网了,不过使用网络结束,需要重新拒绝访问.</p>
+<p>如果需要集群间的计算机互相访问则可以再拒绝所有之前添加如下规则.</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">iptables</span> -A FORWARD -s <span class="number">10.0.0.0</span>/<span class="number">24</span> -j ACCEPT /*允许局域网发送数据包*/</span><br><span class="line"><span class="attribute">iptables</span> -A FORWARD -d <span class="number">10.0.0.0</span>/<span class="number">24</span> -j ACCEPT /*允许局域网接收数据包*/</span><br></pre></td></tr></table></figure>
+
+<p>允许某台计算机访问服务器的某个端口.</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">iptables</span> -A INPUT -p tcp -s <span class="number">192.168.0.10</span> --dport <span class="number">80</span> -j ACCEPT /*允许<span class="number">192.168.0.10</span>访问<span class="number">80</span>端口*/</span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://shuxun,wang/2016/11/02/1013/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="王殊勋">
+      <meta itemprop="description" content="专注互联网运维技术发展">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="学无止境">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2016/11/02/1013/" class="post-title-link" itemprop="url">解决./.libs/libplumb.so undefined reference to 'uuid_parse'</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2016-11-02 00:41:00" itemprop="dateCreated datePublished" datetime="2016-11-02T00:41:00+08:00">2016-11-02</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-07-14 15:14:59" itemprop="dateModified" datetime="2021-07-14T15:14:59+08:00">2021-07-14</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E9%94%99%E8%AF%AF%E8%A7%A3%E5%86%B3/" itemprop="url" rel="index"><span itemprop="name">错误解决</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">./.libs/libplumb.so: undefined reference <span class="keyword">to</span> `uuid_pars<span class="string">e&#x27;</span></span><br><span class="line"><span class="string">./.libs/libplumb.so: undefined reference to `uuid_generate&#x27;</span></span><br><span class="line">./.libs/libplumb.so: undefined reference <span class="keyword">to</span> `uuid_copy<span class="string">&#x27;</span></span><br><span class="line"><span class="string">./.libs/libplumb.so: undefined reference to `uuid_is_null&#x27;</span></span><br><span class="line">./.libs/libplumb.so: undefined reference <span class="keyword">to</span> `uuid_unpars<span class="string">e&#x27;</span></span><br><span class="line"><span class="string">./.libs/libplumb.so: undefined reference to `uuid_clear&#x27;</span></span><br><span class="line">./.libs/libplumb.so: undefined reference <span class="keyword">to</span> `uuid_compar<span class="string">e&#x27;</span></span><br><span class="line"><span class="string">collect2: ld returned 1 exit status</span></span><br><span class="line"><span class="string">gmake[2]: *** [ipctest] Error 1</span></span><br><span class="line"><span class="string">gmake[2]: Leaving directory `/root/Reusable-Cluster-Components-glue-1.0.6/lib/clplumbing&#x27;</span></span><br><span class="line">gmake[<span class="number">1</span>]: *** [<span class="keyword">all</span>-<span class="keyword">recursive</span>] Error <span class="number">1</span></span><br><span class="line">gmake[<span class="number">1</span>]: Leaving directory `/root/Reusable-<span class="keyword">Cluster</span>-Components-glue<span class="number">-1.0</span><span class="number">.6</span>/lib<span class="string">&#x27;</span></span><br><span class="line"><span class="string">make: *** [all-recursive] Error 1</span></span><br></pre></td></tr></table></figure>
+
+<p>这个差不多能看出来是uuid方面的包的故障,所以我一开始就想去安装一个libuuid-devel的包,在这个上面消耗了不少时间.但最后通过 google与linux-ha的maillist得到了提示,总算是把这个问题给解决了.解决方法其实很简单,只要在configure时在后面加上:</p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">LIBS</span>=<span class="string">&#x27;/lib/libuuid.so.1&#x27;</span></span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://shuxun,wang/2016/10/22/1275/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="王殊勋">
+      <meta itemprop="description" content="专注互联网运维技术发展">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="学无止境">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2016/10/22/1275/" class="post-title-link" itemprop="url">mysql导入sql文件乱码解决</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2016-10-22 16:02:00" itemprop="dateCreated datePublished" datetime="2016-10-22T16:02:00+08:00">2016-10-22</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-07-14 15:16:25" itemprop="dateModified" datetime="2021-07-14T15:16:25+08:00">2021-07-14</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%90%84%E7%B1%BB%E6%9C%8D%E5%8A%A1/" itemprop="url" rel="index"><span itemprop="name">各类服务</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>打开mysql数据库客户端,输入:</p>
+<figure class="highlight gams"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">show <span class="keyword">variables</span> like <span class="comment">&#x27;character%&#x27;</span>;</span><br></pre></td></tr></table></figure>
+
+<p>查看各个编码格式.<br>如果没有sql文件对应的编码格式,可如下操作:</p>
+<p>先修改my.inimysql数据库配置文件,添加[client]标签内容和修改[mysqld]标签内容,然后保存.</p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">[client]</span></span><br><span class="line">　　<span class="attr">default-character-set</span>=utf8</span><br><span class="line"><span class="section">[mysqld]</span></span><br><span class="line">　　<span class="attr">default-storage-engine</span>=INNODB</span><br><span class="line">　　<span class="attr">character-set-server</span>=utf8</span><br><span class="line">　　<span class="attr">collation-server</span>=utf8_general_ci</span><br></pre></td></tr></table></figure>
+
+<p>电脑重启mysql服务,之后再重新执行 <code>show variables like &#39;character%&#39;;</code>查看编码格式,若没有修改,则使用命令:</p>
+<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">SET character_set_client</span> = utf8;</span><br></pre></td></tr></table></figure>
+
+<p>等等类似命令修改对应编码格式.这样大概问题就得以解决了.</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+
+  
+  <nav class="pagination">
+    <a class="extend prev" rel="prev" href="/page/49/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/49/">49</a><span class="page-number current">50</span><a class="page-number" href="/page/51/">51</a><span class="space">&hellip;</span><a class="page-number" href="/page/132/">132</a><a class="extend next" rel="next" href="/page/51/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+  </nav>
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="王殊勋"
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name">王殊勋</p>
+  <div class="site-description" itemprop="description">better late than never.<br>只要开始，虽晚不迟。</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">656</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">2058</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <!--添加网站运行时间 -->
+  <span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
+  <script>
+      var now = new Date(); 
+      function createtime() { 
+          var grt= new Date("12/01/2007 12:00:00");//此处修改你的建站时间或者网站上线时间 
+          now.setTime(now.getTime()+250); 
+          days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days); 
+          hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours); 
+          if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum); 
+          mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;} 
+          seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum); 
+          snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;} 
+          document.getElementById("timeDate").innerHTML = "本站已安全运行 "+dnum+" 天 "; 
+          document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒"; 
+      } 
+  setInterval("createtime()",250);
+  </script>
+  <span itemprop="copyrightYear">(2007 - 2021)</span>
+  <!-- 添加网站运行时间 -->
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">学无止境</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script size="300" alpha="0.6" zIndex="0" src="/lib/canvas-ribbon/canvas-ribbon.js"></script>
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

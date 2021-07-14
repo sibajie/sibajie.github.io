@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"shuxun","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"./public/search.xml"};
+  </script>
+
+  <meta name="description" content="英文的官方文档,别告诉我你看不懂英语,centos最新版是没有办法安装的 所以用5.5是个不错的选择. InstallationIt is recommended to use a clean (fresh) CentOS 5.4 install. Then follow the steps below to setup your server with ISPConfig 3:Installat">
+<meta property="og:type" content="article">
+<meta property="og:title" content="centos下手动安装ispconfig">
+<meta property="og:url" content="http://shuxun,wang/2017/06/18/1149/index.html">
+<meta property="og:site_name" content="学无止境">
+<meta property="og:description" content="英文的官方文档,别告诉我你看不懂英语,centos最新版是没有办法安装的 所以用5.5是个不错的选择. InstallationIt is recommended to use a clean (fresh) CentOS 5.4 install. Then follow the steps below to setup your server with ISPConfig 3:Installat">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2017-06-18T12:00:00.000Z">
+<meta property="article:modified_time" content="2021-07-14T07:16:06.041Z">
+<meta property="article:author" content="王殊勋">
+<meta property="article:tag" content="install">
+<meta property="article:tag" content="yum">
+<meta property="article:tag" content="etc">
+<meta property="article:tag" content="chkconfig">
+<meta property="article:tag" content="var">
+<meta property="article:tag" content="chroot">
+<meta property="article:tag" content="named">
+<meta property="article:tag" content="start">
+<meta property="article:tag" content="amavisd">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://shuxun,wang/2017/06/18/1149/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>centos下手动安装ispconfig | 学无止境</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">学无止境</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">注互联网运维技术发展</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-sitemap">
+
+    <a href="/sitemap.xml" rel="section"><i class="fa fa-sitemap fa-fw"></i>站点地图</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://shuxun,wang/2017/06/18/1149/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="王殊勋">
+      <meta itemprop="description" content="专注互联网运维技术发展">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="学无止境">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          centos下手动安装ispconfig
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2017-06-18 20:00:00" itemprop="dateCreated datePublished" datetime="2017-06-18T20:00:00+08:00">2017-06-18</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-07-14 15:16:06" itemprop="dateModified" datetime="2021-07-14T15:16:06+08:00">2021-07-14</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%90%84%E7%B1%BB%E6%9C%8D%E5%8A%A1/" itemprop="url" rel="index"><span itemprop="name">各类服务</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>英文的官方文档,别告诉我你看不懂英语,centos最新版是没有办法安装的 所以用5.5是个不错的选择.</p>
+<h2 id="Installation"><a href="#Installation" class="headerlink" title="Installation"></a>Installation</h2><p>It is recommended to use a clean (fresh) CentOS 5.4 install. Then follow the steps below to setup your server with ISPConfig 3:<br>Installation of some basic requirements:</p>
+<figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rpm --<span class="keyword">import</span> <span class="regexp">/etc/</span>pki<span class="regexp">/rpm-gpg/</span>RPM-GPG-KEY*</span><br></pre></td></tr></table></figure>
+
+<p>enable the contrib and centosplus repositories.</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vi <span class="regexp">/etc/yum</span>.repos.d/CentOS-Base.repo</span><br></pre></td></tr></table></figure>
+
+<p>Edit the file <code>/etc/yum.repos.d/CentOS-Base.repo</code> and edit the lines below.</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-attr">[base]</span></span><br><span class="line">exclude=postfix</span><br><span class="line"><span class="selector-attr">[update]</span></span><br><span class="line">exclude=postfix</span><br><span class="line"><span class="selector-attr">[centosplus]</span></span><br><span class="line">enabled=<span class="number">1</span></span><br><span class="line">includepkgs=postfix</span><br><span class="line"><span class="selector-attr">[contrib]</span></span><br><span class="line">enabled=<span class="number">1</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">rpm --import http:<span class="comment">//dag.wieers.com/rpm/packages/RPM-GPG-KEY.dag.txt</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">cd /tmp</span><br><span class="line">wget http:<span class="comment">//packages.sw.be/rpmforge-release/rpmforge-release-0.5.1-1.el5.rf.i386.rpm</span></span><br><span class="line">rpm -<span class="selector-tag">i</span> rpmforge-release-<span class="number">0.5</span>.<span class="number">1</span>-<span class="number">1</span><span class="selector-class">.el5</span><span class="selector-class">.rf</span><span class="selector-class">.i386</span><span class="selector-class">.rpm</span></span><br><span class="line">yum update</span><br></pre></td></tr></table></figure>
+
+<p>You should disable selinux now, as some programs will not start when selinux is enabled:</p>
+<figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">system-config-securitylevel-tui</span><br></pre></td></tr></table></figure>
+
+<p>then reboot the server.<br>Then remove the postfix without mysql support.</p>
+<figure class="highlight maxima"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum <span class="built_in">remove</span> <span class="built_in">postfix</span></span><br></pre></td></tr></table></figure>
+
+<ol>
+<li><p>Install Postfix fron centosplus with mysql support, Dovecot, MySQL, phpMyAdmin with the following command line (on one line!)</p>
+<p>yum install ntp httpd mysql-server php php-mysql php-mbstring phpMyAdmin postfix getmail</p>
+</li>
+</ol>
+<p>For 32Bit systems:</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">rpm</span> -i http://dl.atrpms.net/<span class="literal">all</span>/dovecot-<span class="number">1</span>.<span class="number">2</span>.<span class="number">11</span>-<span class="number">3</span>_<span class="number">108</span>.el<span class="number">5</span>.i<span class="number">386</span>.rpm</span><br><span class="line"><span class="attribute">rpm</span> -i http://dl.atrpms.net/<span class="literal">all</span>/dovecot-sieve-<span class="number">0</span>.<span class="number">1</span>.<span class="number">15</span>-<span class="number">4</span>.el<span class="number">5</span>.i<span class="number">386</span>.rpm</span><br></pre></td></tr></table></figure>
+
+<p>For 64Bit Systems:</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">rpm -ivh http:<span class="regexp">//</span>dl.atrpms.net<span class="regexp">/all/</span>dovecot-<span class="number">1.2</span>.<span class="number">11</span>-<span class="number">3</span>_108.el5.x86_64.rpm</span><br><span class="line">rpm -ivh http:<span class="regexp">//</span>dl.atrpms.net<span class="regexp">/all/</span>dovecot-sieve-<span class="number">0.1</span>.<span class="number">15</span>-<span class="number">4</span>.el5.x86_64.rpm</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">chkconfig --levels <span class="number">235</span> mysqld on</span><br><span class="line"><span class="regexp">/etc/i</span>nit.d/mysqld start</span><br><span class="line">chkconfig --levels <span class="number">235</span> httpd on</span><br><span class="line"><span class="regexp">/etc/i</span>nit.d/httpd start</span><br><span class="line">chkconfig --levels <span class="number">235</span> dovecot on</span><br><span class="line"><span class="regexp">/etc/i</span>nit.d/dovecot start</span><br><span class="line">chkconfig --levels <span class="number">235</span> sendmail off</span><br><span class="line">chkconfig --levels <span class="number">235</span> postfix on</span><br><span class="line"><span class="regexp">/etc/i</span>nit.d/sendmail stop</span><br><span class="line"><span class="regexp">/etc/i</span>nit.d/postfix start</span><br></pre></td></tr></table></figure>
+
+<p>Set the mysql database password:</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="regexp">/usr/</span>bin/mysql_secure_installation</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li><p>Install Amavisd-new, Spamassassin and Clamav (1 line!)</p>
+<p>yum install amavisd-new spamassassin clamav clamd unzip bzip2 unrar</p>
+<p>sa-update<br>chkconfig –levels 235 amavisd on<br>chkconfig –levels 235 clamd on<br>/usr/bin/freshclam<br>/etc/init.d/amavisd start<br>/etc/init.d/clamd start</p>
+</li>
+</ol>
+<p>If you use the amavisd from rpmforge (as we do in this guide) and not the one from centos, you will have to do these additional steps:</p>
+<p>add the following line in /<code>etc/sysconfig/amavisd</code>:</p>
+<figure class="highlight 1c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">CONFIG_FILE=<span class="string">&quot;/etc/amavisd/amavisd.conf</span></span><br></pre></td></tr></table></figure>
+
+<p>run:</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">mkdir <span class="regexp">/var/</span>run<span class="regexp">/amavisd /</span>var<span class="regexp">/spool/</span>amavisd <span class="regexp">/var/</span>spool<span class="regexp">/amavisd/</span>tmp <span class="regexp">/var/</span>spool<span class="regexp">/amavisd/</span>db</span><br><span class="line">chown amavis <span class="regexp">/var/</span>run<span class="regexp">/amavisd /</span>var<span class="regexp">/spool/</span>amavisd <span class="regexp">/var/</span>spool<span class="regexp">/amavisd/</span>tmp <span class="regexp">/var/</span>spool<span class="regexp">/amavisd/</span>db</span><br><span class="line">ln -s <span class="regexp">/var/</span>run<span class="regexp">/clamav/</span>clamd.sock <span class="regexp">/var/</span>spool<span class="regexp">/amavisd/</span>clamd.sock</span><br><span class="line">yum install perl-DBD-mysql</span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li><p>Install apache, PHP5 and phpmyadmin (1 line!)</p>
+<p>yum install php php-devel php-gd php-imap php-ldap php-mysql php-odbc php-pear php-xml php-xmlrpc php-eaccelerator php-mbstring php-mcrypt php-mhash php-mssql php-snmp php-soap php-tidy curl curl-devel perl-libwww-perl ImageMagick libxml2 libxml2-devel phpmyadmin</p>
+</li>
+<li><p>Install pure-ftpd and quota</p>
+<p>yum install pure-ftpd quota</p>
+<p>chkconfig –levels 235 pure-ftpd on<br>/etc/init.d/pure-ftpd start</p>
+</li>
+<li><p>Install bind dns server</p>
+<p>yum install bind-chroot</p>
+<p>chmod 755 /var/named/<br>chmod 775 /var/named/chroot/<br>chmod 775 /var/named/chroot/var/<br>chmod 775 /var/named/chroot/var/named/<br>chmod 775 /var/named/chroot/var/run/<br>chmod 777 /var/named/chroot/var/run/named/<br>cd /var/named/chroot/var/named/<br>ln -s ../../ chroot<br>cp /usr/share/doc/bind-9.3.6/sample/var/named/named.local /var/named/chroot/var/named/named.local<br>cp /usr/share/doc/bind-9.3.6/sample/var/named/named.root /var/named/chroot/var/named/named.root<br>touch /var/named/chroot/etc/named.conf<br>touch /var/named/chroot/etc/named.conf.local</p>
+<p>vi /var/named/chroot/etc/named.conf</p>
+<p>//<br>// named.conf<br>//<br>// Provided by Red Hat bind package to configure the ISC BIND named(8) DNS<br>// server as a caching only nameserver (as a localhost DNS resolver only).<br>//<br>// See /usr/share/doc/bind*/sample/ for example named configuration files.<br>//</p>
+<p>options {<br>listen-on port 53 { 127.0.0.1; };<br>listen-on-v6 port 53 { ::1; };<br>directory?????? “/var/named/chroot/var/named”;<br>dump-file?????? “/var/named/chroot/var/named/data/cache_dump.db”;<br>statistics-file “/var/named/chroot/var/named/data/named_stats.txt”;<br>memstatistics-file “/var/named/chroot/var/named/data/named_mem_stats.txt”;<br>allow-query???? { localhost; };<br>recursion yes;<br>};</p>
+<p>logging {<br>channel default_debug {<br>file “data/named.run”;<br>severity dynamic;<br>};<br>};</p>
+<p>zone “.” IN {<br>type hint;<br>file “named.root”;<br>};</p>
+<p>include “/var/named/chroot/etc/named.conf.local”;</p>
+<p>chkconfig –levels 235 named on<br>/etc/init.d/named start</p>
+</li>
+<li><p>Install vlogger dependencies and webalizer</p>
+<p>yum install webalizer perl-DateTime-Format-HTTP perl-DateTime-Format-Builder</p>
+</li>
+</ol>
+<p>Installing Jailkit:</p>
+<figure class="highlight jboss-cli"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">yum install gcc</span><br><span class="line"></span><br><span class="line"><span class="keyword">cd</span> <span class="string">/tmp</span></span><br><span class="line">wget http:<span class="string">//olivier.sessink.nl/jailkit/jailkit-2.11.tar.gz</span></span><br><span class="line">tar xvfz jailkit-2.11.tar.gz</span><br><span class="line"><span class="keyword">cd</span> jailkit-2.11</span><br><span class="line"><span class="string">./configure</span></span><br><span class="line">make</span><br><span class="line">make install</span><br><span class="line">rm -rf jailkit-2.11*</span><br></pre></td></tr></table></figure>
+
+<p>Edit the file <code>/etc/sudoers</code>:</p>
+<figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">vi /etc/sudoers</span><br><span class="line"></span><br><span class="line"><span class="keyword">and</span> change <span class="keyword">the</span> <span class="built_in">line</span>:</span><br><span class="line">Defaults??? requiretty</span><br><span class="line"><span class="built_in">to</span>:</span><br><span class="line"><span class="comment"># Defaults??? requiretty</span></span><br></pre></td></tr></table></figure>
+
+<ol start="7">
+<li><p>Install ISPConfig 3</p>
+<p>cd /tmp<br>wget <a target="_blank" rel="noopener" href="http://www.ispconfig.org/downloads/ISPConfig-3.0.2.tar.gz">http://www.ispconfig.org/downloads/ISPConfig-3.0.2.tar.gz</a><br>tar xvfz ISPConfig-3.0.2.tar.gz<br>cd ispconfig3_install/install/</p>
+</li>
+</ol>
+<p>Now start the installation process by executing:</p>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">php -q <span class="keyword">install</span>.php</span><br></pre></td></tr></table></figure>
+
+<p>The installer will configure all services like postfix, sasl, courier, etc. for you. A manual setup as required for ISPConfig 2 (perfect setup guides) is not necessary. To login to the ISPConfig controlpanel, open the following URL in your browser (replace the IP to match your settings!):</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http:<span class="regexp">//</span><span class="number">192.168</span>.<span class="number">0.100</span>:<span class="number">8080</span>/</span><br></pre></td></tr></table></figure>
+
+<p>the default login is:</p>
+<figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">user</span>: <span class="keyword">admin</span></span><br><span class="line"><span class="keyword">password</span>: <span class="keyword">admin</span></span><br></pre></td></tr></table></figure>
+
+<p>In case you get a permission denied error from apache, please restart the apache webserver process.</p>
+<p>Optional:<br>Install a webbased Email Client<br>yum install squirrelmail</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/install/" rel="tag"># install</a>
+              <a href="/tags/yum/" rel="tag"># yum</a>
+              <a href="/tags/etc/" rel="tag"># etc</a>
+              <a href="/tags/chkconfig/" rel="tag"># chkconfig</a>
+              <a href="/tags/var/" rel="tag"># var</a>
+              <a href="/tags/chroot/" rel="tag"># chroot</a>
+              <a href="/tags/named/" rel="tag"># named</a>
+              <a href="/tags/start/" rel="tag"># start</a>
+              <a href="/tags/amavisd/" rel="tag"># amavisd</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2017/06/14/1089/" rel="prev" title="Centos6.5 安装 RabbitMQ3.6.1">
+      <i class="fa fa-chevron-left"></i> Centos6.5 安装 RabbitMQ3.6.1
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2017/06/23/1377/" rel="next" title="vim显示彩色字符的方法">
+      vim显示彩色字符的方法 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Installation"><span class="nav-number">1.</span> <span class="nav-text">Installation</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="王殊勋"
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name">王殊勋</p>
+  <div class="site-description" itemprop="description">better late than never.<br>只要开始，虽晚不迟。</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">656</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">2058</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <!--添加网站运行时间 -->
+  <span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
+  <script>
+      var now = new Date(); 
+      function createtime() { 
+          var grt= new Date("12/01/2007 12:00:00");//此处修改你的建站时间或者网站上线时间 
+          now.setTime(now.getTime()+250); 
+          days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days); 
+          hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours); 
+          if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum); 
+          mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;} 
+          seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum); 
+          snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;} 
+          document.getElementById("timeDate").innerHTML = "本站已安全运行 "+dnum+" 天 "; 
+          document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒"; 
+      } 
+  setInterval("createtime()",250);
+  </script>
+  <span itemprop="copyrightYear">(2007 - 2021)</span>
+  <!-- 添加网站运行时间 -->
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">学无止境</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script size="300" alpha="0.6" zIndex="0" src="/lib/canvas-ribbon/canvas-ribbon.js"></script>
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

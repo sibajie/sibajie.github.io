@@ -1,0 +1,819 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"shuxun","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"./public/search.xml"};
+  </script>
+
+  <meta name="description" content="专注互联网运维技术发展">
+<meta property="og:type" content="website">
+<meta property="og:title" content="学无止境">
+<meta property="og:url" content="http://shuxun,wang/page/120/index.html">
+<meta property="og:site_name" content="学无止境">
+<meta property="og:description" content="专注互联网运维技术发展">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:author" content="王殊勋">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://shuxun,wang/page/120/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : true,
+    isPost : false,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>学无止境</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">学无止境</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">注互联网运维技术发展</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-sitemap">
+
+    <a href="/sitemap.xml" rel="section"><i class="fa fa-sitemap fa-fw"></i>站点地图</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content index posts-expand">
+            
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://shuxun,wang/2011/12/03/1142/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="王殊勋">
+      <meta itemprop="description" content="专注互联网运维技术发展">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="学无止境">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2011/12/03/1142/" class="post-title-link" itemprop="url">CentOS下NTP安装配置</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2011-12-03 16:23:00" itemprop="dateCreated datePublished" datetime="2011-12-03T16:23:00+08:00">2011-12-03</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-07-14 15:16:21" itemprop="dateModified" datetime="2021-07-14T15:16:21+08:00">2021-07-14</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%90%84%E7%B1%BB%E6%9C%8D%E5%8A%A1/" itemprop="url" rel="index"><span itemprop="name">各类服务</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>安装:</p>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum <span class="keyword">install</span> ntp</span><br></pre></td></tr></table></figure>
+
+<p>配置文件 <code>/etc/ntp.conf</code>:</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">restrict</span> default kod nomodify</span><br><span class="line"><span class="attribute">notrap</span> nopeer noquery</span><br><span class="line"><span class="attribute">restrict</span>?-<span class="number">6</span> default kod nomodify notrap nopeer noquery</span><br><span class="line"><span class="attribute">restrict</span> <span class="number">127.0.0.1</span></span><br><span class="line"><span class="attribute">restrict</span>?-<span class="number">6</span>?::<span class="number">1</span></span><br><span class="line"><span class="comment">#?用restrict控管权限</span></span><br><span class="line"><span class="comment">#?nomodify?-?用户端不能更改ntp服务器的时间参数</span></span><br><span class="line"><span class="comment">#?noquery?-?用户端不能使用ntpq,ntpc等命令来查询ntp服务器</span></span><br><span class="line"><span class="comment">#?notrap?-?不提供trap远端登陆</span></span><br><span class="line"><span class="attribute">restrict</span> <span class="number">192.168.0.0</span> mask <span class="number">255.255.0.0</span> nomodify notrap</span><br><span class="line"><span class="comment">#?以下是两个ntp服务器</span></span><br><span class="line"><span class="attribute">restrict</span> cn.pool.ntp.org</span><br><span class="line"><span class="attribute">restrict</span> <span class="number">164.67.62.194</span></span><br><span class="line"><span class="comment">#?用server设定上层ntp服务器,&quot;prefer&quot;表示优先</span></span><br><span class="line"><span class="attribute">server</span> cn.pool.ntp.org prefer</span><br><span class="line"><span class="attribute">server</span> <span class="number">164.67.62.194</span></span><br><span class="line"><span class="attribute">server</span> <span class="number">127.127.1.0</span>?#?local clock</span><br><span class="line"><span class="attribute">fudge</span> <span class="number">127.127.1.0</span> stratum <span class="number">10</span></span><br><span class="line"><span class="comment">#?系统时间与bios事件的偏差记录</span></span><br><span class="line"><span class="attribute">driftfile</span>?/var/lib/ntp/drift</span><br><span class="line"><span class="attribute">keys</span>?/etc/ntp/keys</span><br><span class="line"><span class="comment">#?日志</span></span><br><span class="line"><span class="attribute">logfile</span>?/var/log/ntp.log</span><br><span class="line"><span class="attribute">broadcastdelay</span> <span class="number">0</span>.<span class="number">008</span></span><br></pre></td></tr></table></figure>
+
+<p>一个说明:</p>
+<p>我在vmware下搭建的ntp服务器,别人可以同步它,它自己的时间却不对.照理是它同步上层,下层同步它呀.后来找了蛮久的资料,发现这个文件:<code>/etc/ntp/step-tickers</code>,说是ntp服务器无法主动同步上层服务器,所以将地址写入该文件中即可.<br>我在物理机里暂时没发现这个问题,也许是物理机本来自己的时间就正确,就难以发现它有没有主动同步上层服务器.</p>
+<p>运行ntp:</p>
+<figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">service ntpd <span class="built_in">start</span>/<span class="built_in">stop</span>/restart</span><br><span class="line">chkconfig ntpd <span class="keyword">on</span></span><br></pre></td></tr></table></figure>
+
+<p>查看ntp的端口,应该看到123端口:</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">netstat?-unlnp</span><br></pre></td></tr></table></figure>
+
+<p>查看ntp服务器有无和上层连通:</p>
+<figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[root@S5?~]<span class="comment">#?ntpstat</span></span><br><span class="line">synchronised <span class="keyword">to</span> NTP server?()?<span class="keyword">at</span> stratum <span class="number">2</span></span><br><span class="line"><span class="built_in">time</span> correct <span class="keyword">to</span> within <span class="number">74</span> ms</span><br><span class="line">polling server <span class="keyword">every</span> <span class="number">128</span> s</span><br></pre></td></tr></table></figure>
+
+<p>注意:此命令出现上述synchronised结果比较慢,我的用了大概5分钟.<br>查看ntp服务器与上层间的联系:</p>
+<figure class="highlight accesslog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">[root@S5?~]</span>#?ntptrace?-n <span class="number">127</span>.<span class="number">0</span>.<span class="number">0</span>.<span class="number">1</span></span><br><span class="line"><span class="number">127.0.0.1</span>:?stratum <span class="number">2</span>,?offset <span class="number">0</span>.<span class="number">064524</span>,?synch distance <span class="number">0</span>.<span class="number">121167</span></span><br><span class="line"><span class="number">210.72.145.44</span>:?timed out,?nothing received***Request timed out</span><br></pre></td></tr></table></figure>
+
+<p>查看ntp服务器与上层ntp服务器的状态:</p>
+<figure class="highlight autoit"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root<span class="symbol">@S5</span>?~]<span class="meta">#?ntpq?-p</span></span><br></pre></td></tr></table></figure>
+
+<p>其中,</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">remote?-<span class="string">?本</span>机和上层ntp的ip或主机名,<span class="string">&quot;+&quot;</span>表示优先,<span class="string">&quot;*&quot;</span>表示次优先</span><br><span class="line">refid?-<span class="string">?参</span>考上一层ntp主机地址</span><br><span class="line">st?-<span class="string">?s</span>tratum阶层</span><br><span class="line"><span class="keyword">when</span>?-<span class="string">?多</span>少秒前曾经同步过时间</span><br><span class="line">poll?-<span class="string">?下</span>次更新在多少秒后</span><br><span class="line">reach?-<span class="string">?已</span>经向上层ntp服务器要求更新的次数</span><br><span class="line">delay?-<span class="string">?网</span>络延迟</span><br><span class="line">offset?-<span class="string">?时</span>间补偿</span><br><span class="line">jitter?-<span class="string">?系</span>统时间与bios时间差</span><br></pre></td></tr></table></figure>
+
+<p>客户端同步时间的方法:</p>
+<p>方法一:使用 ntpdate</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ntpdate?<span class="selector-attr">[IP_Address]</span></span><br></pre></td></tr></table></figure>
+
+<p>看下面的例子,其中192.168.1.5是我在内网搭建的ntp服务器:</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[root<span class="variable">@zy18</span>0?~]<span class="comment">#?date</span></span><br><span class="line">Thu Sep <span class="number">25</span> <span class="number">13</span><span class="symbol">:</span><span class="number">04</span><span class="symbol">:</span><span class="number">17</span> CST <span class="number">2008</span></span><br><span class="line">[root<span class="variable">@zy18</span>0?~]<span class="comment">#?ntpdate 192.168.1.5</span></span><br><span class="line"><span class="number">25</span> Sep <span class="number">14</span><span class="symbol">:</span><span class="number">33</span><span class="symbol">:</span><span class="number">13</span> ntpdate[<span class="number">10302</span>]<span class="symbol">:<span class="string">?s</span>tep</span> time server <span class="number">192.168</span>.<span class="number">1.5</span> offset <span class="number">5327.700798</span> sec</span><br><span class="line">[root<span class="variable">@zy18</span>0?~]<span class="comment">#?date</span></span><br><span class="line">Thu Sep <span class="number">25</span> <span class="number">14</span><span class="symbol">:</span><span class="number">33</span><span class="symbol">:</span><span class="number">18</span> CST <span class="number">2008</span></span><br></pre></td></tr></table></figure>
+
+<p>ntpdate 的特点:</p>
+<p>1,ntpdate只运行一次就结束,即只同步一次.所以要使用ntpdate同步时间的话要将该命令写入cron中.</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">vi?<span class="regexp">/etc/crontab</span></span><br><span class="line">*<span class="string">?*</span><span class="string">?*</span><span class="string">?*</span><span class="string">?*</span><span class="string">?r</span>oot ntpdate <span class="number">192.168</span>.<span class="number">1.5</span>?&amp;&amp;<span class="string">?h</span>wclock?-w</span><br></pre></td></tr></table></figure>
+
+<p>之所以使用hwclock?-w命令稍后再说.</p>
+<p>2,ntpdate同步时间是跳跃的,如上面的显示,时间立即就同步了,这将可能导致文件时间标记、监控数据的紊乱.</p>
+<p>方法二:使用ntpd服务</p>
+<figure class="highlight dts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="symbol">step1:</span><span class="meta-keyword">/etc/</span>ntpd.conf 写入 server?[IP_Address]</span><br><span class="line"><span class="symbol">step2:</span>chkconfig ntpd on</span><br><span class="line"><span class="symbol">step3:</span>service ntpd start</span><br></pre></td></tr></table></figure>
+
+<p>大概过一刻钟开始起作用.</p>
+<figure class="highlight n1ql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">FAQ:系统报错?-?Sep 25 11:59:39 localhost kernel:?set_rtc_mmss:?can&#x27;t <span class="keyword">update</span> <span class="keyword">from</span> <span class="number">7</span> <span class="keyword">to</span> <span class="number">59</span></span><br><span class="line">==================================网上查得源码==========================================</span><br><span class="line"><span class="keyword">if</span>?(<span class="built_in">abs</span>(real_minutes?-?cmos_minutes)?&lt;?<span class="number">30</span>)?&#123;?update_cmos()?&#125;?<span class="keyword">else</span>?&#123;?printk(<span class="string">&quot;set_rtc_mmss:?can&#x27;t update from?%d to?%dn&quot;</span>,?cmos_minutes,?real_minutes);?&#125;?========================================================================================</span><br></pre></td></tr></table></figure>
+
+<p>bios时间与系统时间差异超过30分钟,就会报上述错误,只要修改bios时间或系统时间即可.</p>
+<p>虚拟机下个人体验:</p>
+<p>我的vm客户端用ntpd同步服务器后,慢慢变成标准时间,可接着又比标准时间越来越慢,然后出现上述报错.所以我觉得ntpd的同步频率比我的vm时钟频率跑得慢.</p>
+<p>ntpd 的特点:</p>
+<p>1,ntpd服务始终运行,定期同步时间.<br>2,ntpd服务是慢慢改变时间直至标准时间.<br>3,如果系统时间与bios时间差异超过30分钟,ntpd就会报错.</p>
+<p>总结:<br>1,推荐使用 ntpd 服务.</p>
+<p>2,ntpd开启后,无法使用ntpdate,看如下例子:</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[root<span class="variable">@zy18</span>0?~]<span class="comment">#?service ntpd start</span></span><br><span class="line">Starting <span class="symbol">ntpd:</span><span class="string">?[</span><span class="string">?O</span>K?]</span><br><span class="line">[root<span class="variable">@zy18</span>0?~]<span class="comment">#?ntpdate 192.168.1.5</span></span><br><span class="line"><span class="number">25</span> Sep <span class="number">15</span><span class="symbol">:</span><span class="number">25</span><span class="symbol">:</span><span class="number">22</span> ntpdate[<span class="number">12334</span>]<span class="symbol">:<span class="string">?t</span>he</span> NTP socket is <span class="keyword">in</span> use,<span class="string">?e</span>xiting</span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://shuxun,wang/2011/11/19/1070/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="王殊勋">
+      <meta itemprop="description" content="专注互联网运维技术发展">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="学无止境">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2011/11/19/1070/" class="post-title-link" itemprop="url">centos 安装rsync实现数据同步</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2011-11-19 08:16:00" itemprop="dateCreated datePublished" datetime="2011-11-19T08:16:00+08:00">2011-11-19</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-07-14 15:15:38" itemprop="dateModified" datetime="2021-07-14T15:15:38+08:00">2021-07-14</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%90%84%E7%B1%BB%E6%9C%8D%E5%8A%A1/" itemprop="url" rel="index"><span itemprop="name">各类服务</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>1、保存下面的代码为一个文件,上传到服务器端,名称为rsync.sh</p>
+<p>复制代码代码如下:</p>
+<figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br></pre></td><td class="code"><pre><span class="line">#!<span class="regexp">/bin/</span>bash</span><br><span class="line">#rsync Written by zhumaohai</span><br><span class="line">#<span class="keyword">For</span> more information please visit http:<span class="comment">//www.centos.bz</span></span><br><span class="line">echo <span class="string">&quot;Please input the rsync username:&quot;</span></span><br><span class="line"><span class="keyword">read</span> username</span><br><span class="line">echo <span class="string">&quot;Please input the rsync username password:&quot;</span></span><br><span class="line"><span class="keyword">read</span> password</span><br><span class="line">echo <span class="string">&quot;Please input the server ip address:&quot;</span></span><br><span class="line"><span class="keyword">read</span> serverip</span><br><span class="line">echo <span class="string">&quot;Please input the allow ip address:&quot;</span></span><br><span class="line"><span class="keyword">read</span> allowip</span><br><span class="line">echo <span class="string">&quot;Please input the path you want to rsync:&quot;</span></span><br><span class="line"><span class="keyword">read</span> rsyncpath</span><br><span class="line">echo <span class="string">&quot;==========================input all completed========================&quot;</span></span><br><span class="line">echo <span class="string">&quot;==========================install rsync========================&quot;</span></span><br><span class="line">yum -y install rsync</span><br><span class="line">useradd $username</span><br><span class="line">mkdir <span class="regexp">/etc/</span>rsyncd</span><br><span class="line">cat &gt;<span class="regexp">/etc/</span>rsyncd/rsyncd.conf&lt;&lt;eof</span><br><span class="line"># Minimal configuration <span class="keyword">file</span> <span class="keyword">for</span> rsync daemon</span><br><span class="line"># See rsync(<span class="number">1</span>) and rsyncd.conf(<span class="number">5</span>) man pages <span class="keyword">for</span> help</span><br><span class="line"># <span class="keyword">This</span> line is required by the <span class="regexp">/etc/i</span>nit.d/rsyncd script</span><br><span class="line">pid <span class="keyword">file</span> = <span class="regexp">/var/</span>run/rsyncd.pid</span><br><span class="line">port = <span class="number">873</span></span><br><span class="line">address = $serverip</span><br><span class="line">#uid = nobody</span><br><span class="line">#gid = nobody</span><br><span class="line">uid = root</span><br><span class="line">gid = root</span><br><span class="line">use chroot = yes</span><br><span class="line"><span class="keyword">read</span> only = yes</span><br><span class="line"></span><br><span class="line">#limit access to <span class="keyword">private</span> LANs</span><br><span class="line">hosts allow=<span class="number">192.168</span>.<span class="number">1.0</span><span class="regexp">/255.255.255.0 10.0.1.0/</span><span class="number">255.255</span>.<span class="number">255.0</span> $allowip</span><br><span class="line">hosts deny=*</span><br><span class="line">max connections = <span class="number">5</span></span><br><span class="line">motd <span class="keyword">file</span> = <span class="regexp">/etc/</span>rsyncd/rsyncd.motd</span><br><span class="line">#<span class="keyword">This</span> will give you a separate log <span class="keyword">file</span></span><br><span class="line">#log <span class="keyword">file</span> = <span class="regexp">/var/</span>log/rsync.log</span><br><span class="line">#<span class="keyword">This</span> will log <span class="keyword">every</span> <span class="keyword">file</span> transferred - up to <span class="number">85</span>,<span class="number">000</span>+ per user, per sync</span><br><span class="line">#transfer logging = yes</span><br><span class="line">log format = %t %a %m %f %b</span><br><span class="line">syslog facility = local3</span><br><span class="line">timeout = <span class="number">300</span></span><br><span class="line">[$username home]</span><br><span class="line">path = $rsyncpath</span><br><span class="line">list=yes</span><br><span class="line">ignore errors</span><br><span class="line">auth users = $username</span><br><span class="line">secrets <span class="keyword">file</span> = <span class="regexp">/etc/</span>rsyncd/rsyncd.secrets</span><br><span class="line">eof</span><br><span class="line">echo <span class="string">&quot;$username:$password&quot;</span> &gt; <span class="regexp">/etc/</span>rsyncd/rsyncd.secrets</span><br><span class="line">chmod <span class="number">600</span> <span class="regexp">/etc/</span>rsyncd/rsyncd.secrets</span><br><span class="line">cat &gt;<span class="regexp">/etc/</span>rsyncd/rsyncd.motd&lt;&lt;eof</span><br><span class="line">+++++++++++++++++++++++++++</span><br><span class="line">+ centos.bz rsync <span class="number">2011</span>-<span class="number">2012</span> +</span><br><span class="line">+++++++++++++++++++++++++++</span><br><span class="line">eof</span><br><span class="line"><span class="regexp">/usr/</span>bin<span class="regexp">/rsync --daemon --config=/</span>etc<span class="regexp">/rsyncd/</span>rsyncd.conf</span><br><span class="line">ps -aux | <span class="keyword">grep</span> rsync</span><br></pre></td></tr></table></figure>
+
+<p>2、赋予脚本权限</p>
+<figure class="highlight llvm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chmod +<span class="keyword">x</span> rsync.sh</span><br></pre></td></tr></table></figure>
+
+<p>3、执行脚本</p>
+<figure class="highlight jboss-cli"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">./rsync.sh</span></span><br></pre></td></tr></table></figure>
+
+<p>4、客户端同样需要安装rsync</p>
+<figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">[root<span class="variable">@linux</span> docbook]<span class="variable">$ </span> rsync <span class="symbol">rsync:</span>/<span class="regexp">/www.9812.net/netkiller</span></span><br><span class="line">[root<span class="variable">@linux</span> tmp]<span class="variable">$ </span>rsync <span class="symbol">rsync:</span>/<span class="regexp">/netkiller@www.9812.net/netkiller</span></span><br><span class="line"><span class="symbol">Password:</span></span><br><span class="line">[chen<span class="variable">@linux</span> temp]<span class="variable">$ </span> rsync -vzrtopg --progress --delete postfix<span class="variable">@www</span>.<span class="number">9812</span>.net::postfix /tmp</span><br><span class="line"><span class="symbol">Password:</span></span><br><span class="line">rsync <span class="symbol">rsync:</span>/<span class="regexp">/认证用户@主机/</span>模块</span><br><span class="line">rsync -vzrtopg --progress --delete 认证用户@主机::模块 /mirror目录</span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://shuxun,wang/2011/10/20/1113/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="王殊勋">
+      <meta itemprop="description" content="专注互联网运维技术发展">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="学无止境">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2011/10/20/1113/" class="post-title-link" itemprop="url">centos安装svn</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2011-10-20 09:55:00" itemprop="dateCreated datePublished" datetime="2011-10-20T09:55:00+08:00">2011-10-20</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-07-14 15:14:49" itemprop="dateModified" datetime="2021-07-14T15:14:49+08:00">2021-07-14</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%90%84%E7%B1%BB%E6%9C%8D%E5%8A%A1/" itemprop="url" rel="index"><span itemprop="name">各类服务</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum <span class="keyword">install</span> subversion</span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://shuxun,wang/2011/10/18/1440/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="王殊勋">
+      <meta itemprop="description" content="专注互联网运维技术发展">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="学无止境">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2011/10/18/1440/" class="post-title-link" itemprop="url">关闭mysql bin日志</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2011-10-18 00:36:00" itemprop="dateCreated datePublished" datetime="2011-10-18T00:36:00+08:00">2011-10-18</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-07-14 15:16:08" itemprop="dateModified" datetime="2021-07-14T15:16:08+08:00">2021-07-14</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%90%84%E7%B1%BB%E6%9C%8D%E5%8A%A1/" itemprop="url" rel="index"><span itemprop="name">各类服务</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>编辑my.cnf.把里面的log-bin这一行注释掉.<br>进入 <code>/usr/local/mysql/var/</code>:<br>删除mysql-bin.000001 类似的文件.</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://shuxun,wang/2011/10/12/1614/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="王殊勋">
+      <meta itemprop="description" content="专注互联网运维技术发展">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="学无止境">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2011/10/12/1614/" class="post-title-link" itemprop="url">修改Winpe系统的注册表</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2011-10-12 00:36:00" itemprop="dateCreated datePublished" datetime="2011-10-12T00:36:00+08:00">2011-10-12</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-07-14 15:15:36" itemprop="dateModified" datetime="2021-07-14T15:15:36+08:00">2021-07-14</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" itemprop="url" rel="index"><span itemprop="name">操作系统</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p><code>/WINDOWS/system32/config</code>里面是注册表的文件.<br>在windows中运行regedit,进入注册表编辑器,选中HKLM,选择菜单上的”加载配置单元”,然后指定你要修改的PE的注册表文件进行修改.完成后选”卸载配置单元”,对PE注册表文件的修改就是你所要的”永久性”的了.</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+
+  
+  <nav class="pagination">
+    <a class="extend prev" rel="prev" href="/page/119/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/119/">119</a><span class="page-number current">120</span><a class="page-number" href="/page/121/">121</a><span class="space">&hellip;</span><a class="page-number" href="/page/132/">132</a><a class="extend next" rel="next" href="/page/121/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+  </nav>
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="王殊勋"
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name">王殊勋</p>
+  <div class="site-description" itemprop="description">better late than never.<br>只要开始，虽晚不迟。</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">656</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">2058</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <!--添加网站运行时间 -->
+  <span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
+  <script>
+      var now = new Date(); 
+      function createtime() { 
+          var grt= new Date("12/01/2007 12:00:00");//此处修改你的建站时间或者网站上线时间 
+          now.setTime(now.getTime()+250); 
+          days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days); 
+          hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours); 
+          if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum); 
+          mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;} 
+          seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum); 
+          snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;} 
+          document.getElementById("timeDate").innerHTML = "本站已安全运行 "+dnum+" 天 "; 
+          document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒"; 
+      } 
+  setInterval("createtime()",250);
+  </script>
+  <span itemprop="copyrightYear">(2007 - 2021)</span>
+  <!-- 添加网站运行时间 -->
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">学无止境</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script size="300" alpha="0.6" zIndex="0" src="/lib/canvas-ribbon/canvas-ribbon.js"></script>
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

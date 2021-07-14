@@ -1,0 +1,901 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"shuxun","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"./public/search.xml"};
+  </script>
+
+  <meta name="description" content="专注互联网运维技术发展">
+<meta property="og:type" content="website">
+<meta property="og:title" content="学无止境">
+<meta property="og:url" content="http://shuxun,wang/page/55/index.html">
+<meta property="og:site_name" content="学无止境">
+<meta property="og:description" content="专注互联网运维技术发展">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:author" content="王殊勋">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://shuxun,wang/page/55/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : true,
+    isPost : false,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>学无止境</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">学无止境</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">注互联网运维技术发展</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-sitemap">
+
+    <a href="/sitemap.xml" rel="section"><i class="fa fa-sitemap fa-fw"></i>站点地图</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content index posts-expand">
+            
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://shuxun,wang/2016/06/18/1361/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="王殊勋">
+      <meta itemprop="description" content="专注互联网运维技术发展">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="学无止境">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2016/06/18/1361/" class="post-title-link" itemprop="url">SSH Secure Shell Client中文乱码的解决办法</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2016-06-18 13:13:00" itemprop="dateCreated datePublished" datetime="2016-06-18T13:13:00+08:00">2016-06-18</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-07-14 15:16:14" itemprop="dateModified" datetime="2021-07-14T15:16:14+08:00">2021-07-14</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" itemprop="url" rel="index"><span itemprop="name">操作系统</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>说这是SSH Secure Shell Client多年未解决的短板,要求客户端和服务器端都要’UTF-8’编码,恩恩,这下我终于知道Windows中文版的编码居然是非UTF-8了.<br>意思是我不换操作系统,就无法使用这个东东了?<br>于是乎,解决办法貌似只有两个.<br>1,换系统.<br>2,使用Putty:<a target="_blank" rel="noopener" href="http://filezilla-project.org/download.php?type=client">http://filezilla-project.org/download.php?type=client</a><br>当然,如果需要SFTP,可以使用filezilla,包含了一个小巧的服务器端和FTP功能.<br>就是安装起来麻烦点…<br>后来找到根本的解决办法,只知方法,不知原因.</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vi <span class="regexp">/etc/</span>sysconfig/i18n</span><br></pre></td></tr></table></figure>
+
+<p>将内容改为:</p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">LANG</span>=<span class="string">&quot;zh_CN.GB18030&quot;</span></span><br><span class="line"><span class="attr">LANGUAGE</span>=<span class="string">&quot;zh_CN.GB18030:zh_CN.GB2312:zh_CN&quot;</span></span><br><span class="line"><span class="attr">SUPPORTED</span>=<span class="string">&quot;zh_CN.GB18030:zh_CN:zh:en_US.UTF-8:en_US:en&quot;</span></span><br><span class="line"><span class="attr">SYSFONT</span>=<span class="string">&quot;lat0-sun16&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>这样中文在SSH,telnet终端就可以正常显示了.</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://shuxun,wang/2016/06/15/1197/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="王殊勋">
+      <meta itemprop="description" content="专注互联网运维技术发展">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="学无止境">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2016/06/15/1197/" class="post-title-link" itemprop="url">ispconfig安装中文包的方法</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2016-06-15 10:00:00" itemprop="dateCreated datePublished" datetime="2016-06-15T10:00:00+08:00">2016-06-15</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-07-14 15:15:29" itemprop="dateModified" datetime="2021-07-14T15:15:29+08:00">2021-07-14</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%90%84%E7%B1%BB%E6%9C%8D%E5%8A%A1/" itemprop="url" rel="index"><span itemprop="name">各类服务</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>由于面板更新频繁,中文包这里不提供下载.</p>
+<p>点击system-import-select language file后面浏览到网上下载的中文包.<br>点击import the selected language file就可以导入中文包了.<br>然后进入tool-password and language里面的language里面就可以修改系统语言了.</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://shuxun,wang/2016/06/10/1127/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="王殊勋">
+      <meta itemprop="description" content="专注互联网运维技术发展">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="学无止境">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2016/06/10/1127/" class="post-title-link" itemprop="url">centos禁止别人ping</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2016-06-10 22:46:00" itemprop="dateCreated datePublished" datetime="2016-06-10T22:46:00+08:00">2016-06-10</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-07-14 15:14:49" itemprop="dateModified" datetime="2021-07-14T15:14:49+08:00">2021-07-14</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" itemprop="url" rel="index"><span itemprop="name">操作系统</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vi <span class="regexp">/proc/</span>sys<span class="regexp">/net/i</span>pv4/icmp_echo_ignore_all</span><br></pre></td></tr></table></figure>
+
+<p>修改里面的内容为1(1是不允许别人ping 0是允许).</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://shuxun,wang/2016/06/10/1016/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="王殊勋">
+      <meta itemprop="description" content="专注互联网运维技术发展">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="学无止境">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2016/06/10/1016/" class="post-title-link" itemprop="url">解决启动mysql提示Can't find messagefile '/usr/share/mysql/english/errmsg.sys '</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2016-06-10 20:23:00" itemprop="dateCreated datePublished" datetime="2016-06-10T20:23:00+08:00">2016-06-10</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-07-14 15:15:40" itemprop="dateModified" datetime="2021-07-14T15:15:40+08:00">2021-07-14</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E9%94%99%E8%AF%AF%E8%A7%A3%E5%86%B3/" itemprop="url" rel="index"><span itemprop="name">错误解决</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>遇到这个错误的朋友应该是拆卸mysql又重新安装的,拆卸mysql的时候,下面这个文件是不会删除的,导致第二次的启动失败.</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="regexp">/usr/</span>share<span class="regexp">/mysql/</span>english/errmsg.sys</span><br></pre></td></tr></table></figure>
+
+<p>解决办法是在:</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http:<span class="regexp">//</span>downloads.mysql.com/archives.php</span><br></pre></td></tr></table></figure>
+
+<p>寻找下载对应的mysql版本,解压后:</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysq-x.x.x<span class="regexp">/sql/</span>share<span class="regexp">/english/</span>errmsg.sys</span><br></pre></td></tr></table></figure>
+
+<p>拷贝到系统的:</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="regexp">/usr/</span>share<span class="regexp">/mysql/</span>english/</span><br></pre></td></tr></table></figure>
+
+<p>覆盖同名errmsg.sys文件.<br>或者拆卸mysql,删除该文件夹重新安装,成功.</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://shuxun,wang/2016/06/05/1367/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="王殊勋">
+      <meta itemprop="description" content="专注互联网运维技术发展">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="学无止境">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2016/06/05/1367/" class="post-title-link" itemprop="url">svn操作</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2016-06-05 19:14:00" itemprop="dateCreated datePublished" datetime="2016-06-05T19:14:00+08:00">2016-06-05</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-07-14 15:15:19" itemprop="dateModified" datetime="2021-07-14T15:15:19+08:00">2021-07-14</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%90%84%E7%B1%BB%E6%9C%8D%E5%8A%A1/" itemprop="url" rel="index"><span itemprop="name">各类服务</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>1、将文件checkout到本地目录</p>
+<figure class="highlight dos"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">svn checkout <span class="built_in">path</span> # <span class="built_in">path</span>是服务器上的目录</span><br></pre></td></tr></table></figure>
+
+<p>例如:</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">svn checkout svn:<span class="regexp">//</span><span class="number">192.168</span>.<span class="number">1.1</span><span class="regexp">/pro/</span>domain</span><br></pre></td></tr></table></figure>
+
+<p>简写:</p>
+<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">svn co</span></span><br></pre></td></tr></table></figure>
+
+<p>2、往版本库中添加新的文件</p>
+<figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">svn <span class="built_in">add</span> <span class="built_in">file</span></span><br></pre></td></tr></table></figure>
+
+<p>例如:</p>
+<figure class="highlight avrasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">svn <span class="keyword">add</span> test.php <span class="meta"># 添加test.php</span></span><br><span class="line">svn <span class="keyword">add</span> *.php <span class="meta"># 添加当前目录下所有的php文件</span></span><br></pre></td></tr></table></figure>
+
+<p>3、将改动的文件提交到版本库</p>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">svn</span> commit -m <span class="string">&quot;LogMessage&quot;</span> [-N] [--<span class="literal">no</span>-unlock] PATH <span class="comment"># 如果选择了保持锁,就使用--no-unlock开关</span></span><br></pre></td></tr></table></figure>
+
+<p>例如:</p>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">svn commit -m <span class="string">&quot;add test file for my test&quot;</span> <span class="keyword">test</span>.php</span><br></pre></td></tr></table></figure>
+
+<p>简写:</p>
+<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">svn ci</span></span><br></pre></td></tr></table></figure>
+
+<p>4、加锁/解锁</p>
+<figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">svn <span class="keyword">lock</span> -m &quot;LockMessage&quot; [<span class="comment">--force] PATH</span></span><br></pre></td></tr></table></figure>
+
+<p>例如:</p>
+<figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">svn <span class="keyword">lock</span> -m &quot;lock test file&quot; test.php</span><br><span class="line">svn unlock <span class="type">PATH</span></span><br></pre></td></tr></table></figure>
+
+<p>5、更新到某个版本</p>
+<figure class="highlight n1ql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">svn <span class="keyword">update</span> -r m <span class="keyword">path</span></span><br></pre></td></tr></table></figure>
+
+<p>例如:</p>
+<figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">svn <span class="keyword">update</span> # 如果后面没有目录,默认将当前目录以及子目录下的所有文件都更新到最新版本.</span><br><span class="line">svn <span class="keyword">update</span> -r 200 <span class="keyword">test</span>.php # 将版本库中的文件<span class="keyword">test</span>.php还原到版本200</span><br><span class="line">svn <span class="keyword">update</span> <span class="keyword">test</span>.php # 更新,于版本库同步.如果在提交的时候提示过期的话,是因为冲突,需要先<span class="keyword">update</span>,修改文件,然后清除svn resolved,最后再提交commit</span><br></pre></td></tr></table></figure>
+
+<p>简写:</p>
+<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">svn up</span></span><br></pre></td></tr></table></figure>
+
+<p>6、查看文件或者目录状态</p>
+<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">svn <span class="built_in">status</span> <span class="built_in">path</span> # 目录下的文件和子目录的状态,正常状态不显示</span><br><span class="line"></span><br><span class="line">[?:不在svn的控制中;M:内容被修改;C:发生冲突;A:预定加入到版本库;K:被锁定]</span><br><span class="line"></span><br><span class="line">svn <span class="built_in">status</span> -v <span class="built_in">path</span> # 显示文件和子目录状态</span><br><span class="line"></span><br><span class="line">第一列保持相同,第二列显示工作版本号,第三和第四列显示最后一次修改的版本号和修改人.</span><br><span class="line">注:svn <span class="built_in">status</span>、svn diff和 svn revert这三条命令在没有网络的情况下也可以执行的,原因是svn在本地的.svn中保留了本地版本的原始拷贝.</span><br></pre></td></tr></table></figure>
+
+<p>简写:</p>
+<figure class="highlight avrasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">svn <span class="keyword">st</span></span><br></pre></td></tr></table></figure>
+
+<p>7、删除文件</p>
+<figure class="highlight n1ql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">svn <span class="keyword">delete</span> <span class="keyword">path</span> -m <span class="string">&quot;delete test fle&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>例如:</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">svn <span class="keyword">delete</span> svn:<span class="regexp">//</span><span class="number">192.168</span>.<span class="number">1.1</span><span class="regexp">/pro/</span>domain/test.php -m <span class="string">&quot;delete test file&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>或者直接svn delete test.php 然后再svn ci -m ‘delete test file’,推荐使用这种.</p>
+<p>简写:</p>
+<figure class="highlight maxima"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">svn (<span class="built_in">del</span>, <span class="built_in">remove</span>, rm)</span><br></pre></td></tr></table></figure>
+
+<p>8、查看日志</p>
+<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">svn <span class="built_in">log</span> <span class="built_in">path</span></span><br></pre></td></tr></table></figure>
+
+<p>例如:</p>
+<figure class="highlight 1c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">svn <span class="built_in">log</span> test.php <span class="meta"># 显示这个文件的所有修改记录,及其版本号的变化</span></span><br></pre></td></tr></table></figure>
+
+<p>9、查看文件详细信息</p>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">svn</span> <span class="literal">info</span> path</span><br></pre></td></tr></table></figure>
+
+<p>例如:</p>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">svn</span> <span class="literal">info</span> test.php</span><br></pre></td></tr></table></figure>
+
+<p>10、比较差异</p>
+<figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">svn <span class="keyword">diff </span>path <span class="comment"># 将修改的文件与基础版本比较</span></span><br></pre></td></tr></table></figure>
+
+<p>例如:</p>
+<figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">svn <span class="keyword">diff </span>test.php</span><br><span class="line">svn <span class="keyword">diff </span>-r m:n path <span class="comment"># 对版本m和版本n比较差异</span></span><br></pre></td></tr></table></figure>
+
+<p>例如:</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">svn</span> diff -r <span class="number">200</span>:<span class="number">201</span> test.php</span><br></pre></td></tr></table></figure>
+
+<p>简写:</p>
+<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">svn di</span></span><br></pre></td></tr></table></figure>
+
+<p>11、将两个版本之间的差异合并到当前文件</p>
+<figure class="highlight n1ql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">svn <span class="keyword">merge</span> -r m:n <span class="keyword">path</span></span><br></pre></td></tr></table></figure>
+
+<p>例如:</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">svn</span> merge -r <span class="number">200</span>:<span class="number">205</span> test.php # 将版本<span class="number">200</span>与<span class="number">205</span>之间的差异合并到当前文件,但是一般都会产生冲突,需要处理一下</span><br></pre></td></tr></table></figure>
+
+<p>12、SVN 帮助</p>
+<figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">svn <span class="keyword">help</span></span><br><span class="line">svn <span class="keyword">help</span> <span class="keyword">ci</span></span><br></pre></td></tr></table></figure>
+
+<p>以上是常用命令,下面写几个不经常用的.</p>
+<p>13、版本库下的文件和目录列表</p>
+<figure class="highlight dos"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">svn list <span class="built_in">path</span> # 显示<span class="built_in">path</span>目录下的所有属于版本库的文件和目录</span><br><span class="line"></span><br><span class="line">简写: </span><br><span class="line"></span><br><span class="line">svn ls</span><br></pre></td></tr></table></figure>
+
+<p>14、创建纳入版本控制下的新目录</p>
+<figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">svn mkdir: 创建纳入版本控制下的新目录.</span><br></pre></td></tr></table></figure>
+
+<p>用法:</p>
+<figure class="highlight dos"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1</span>.<span class="built_in">mkdir</span> <span class="built_in">PATH</span>...</span><br><span class="line"><span class="number">2</span>.<span class="built_in">mkdir</span> URL...</span><br></pre></td></tr></table></figure>
+
+<p>创建版本控制的目录.</p>
+<figure class="highlight erlang"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1</span>.每一个以工作副本 PATH 指定的目录,都会创建在本地端,并且加入新增调度,以待下一次的提交.</span><br><span class="line"><span class="number">2</span>.每个以URL指定的目录,都会透过立即提交于仓库中创建,在这两个情况下,所有的中间目录都必须事先存在.</span><br></pre></td></tr></table></figure>
+
+<p>15、恢复本地修改</p>
+<figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">svn <span class="built_in">revert</span>: # 恢复原始未改变的工作副本文件 (恢复大部份的本地修改).<span class="built_in">revert</span>:</span><br></pre></td></tr></table></figure>
+
+<p>用法:</p>
+<figure class="highlight gams"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="title">revert</span></span> PATH...</span><br></pre></td></tr></table></figure>
+
+<p>注意: 本子命令不会存取网络,并且会解除冲突的状况.但是它不会恢复被删除的目录.</p>
+<p>16、代码库URL变更</p>
+<figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">svn <span class="keyword">switch</span> (sw): 更新工作副本至不同的<span class="built_in">URL</span>.</span><br></pre></td></tr></table></figure>
+
+<p>用法:</p>
+<figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1.</span><span class="keyword">switch</span> <span class="built_in">URL</span> [PATH]</span><br><span class="line"><span class="number">2.</span><span class="keyword">switch</span> <span class="comment">--relocate FROM TO [PATH...]</span></span><br><span class="line"></span><br><span class="line"><span class="number">1.</span>更新你的工作副本,映射到一个新的<span class="built_in">URL</span>,其行为跟<span class="string">&quot;svn update&quot;</span>很像,也会将服务器上文件与本地文件合并.这是将工作副本对应到同一仓库中某个分支或者标记的方法.</span><br><span class="line"><span class="number">2.</span>改写工作副本的<span class="built_in">URL</span>元数据,以反映单纯的<span class="built_in">URL</span>上的改变.当仓库的根<span class="built_in">URL</span>变动(比如方案名或是主机名称变动),但是工作副本仍旧对映到同一仓库的同一目录时使用这个命令更新工作副本与仓库的对应关系.</span><br></pre></td></tr></table></figure>
+
+<p>17、解决冲突</p>
+<figure class="highlight autoit"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">svn resolved: <span class="meta"># 移除工作副本的目录或文件的<span class="string">&quot;冲突&quot;</span>状态.</span></span><br></pre></td></tr></table></figure>
+
+<p>用法:</p>
+<figure class="highlight gams"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="title">resolved</span></span> PATH...</span><br></pre></td></tr></table></figure>
+
+<p>注意: 本子命令不会依语法来解决冲突或是移除冲突标记;它只是移除冲突的相关文件,然后让 PATH 可以再次提交.</p>
+<p>18、输出指定文件或URL的内容.</p>
+<figure class="highlight prolog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1.</span>svn cat 目标[@版本]...</span><br><span class="line"><span class="number">2.</span>svn cat -r <span class="symbol">PREV</span> filename &gt; filename</span><br><span class="line"></span><br><span class="line"><span class="number">1.</span>如果指定了版本,将从指定的版本开始查找.</span><br><span class="line"><span class="number">2.</span><span class="symbol">PREV</span> 是上一版本,也可以写具体版本号,这样输出结果是可以提交的.</span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+
+  
+  <nav class="pagination">
+    <a class="extend prev" rel="prev" href="/page/54/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/54/">54</a><span class="page-number current">55</span><a class="page-number" href="/page/56/">56</a><span class="space">&hellip;</span><a class="page-number" href="/page/132/">132</a><a class="extend next" rel="next" href="/page/56/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+  </nav>
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="王殊勋"
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name">王殊勋</p>
+  <div class="site-description" itemprop="description">better late than never.<br>只要开始，虽晚不迟。</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">656</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">2058</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <!--添加网站运行时间 -->
+  <span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
+  <script>
+      var now = new Date(); 
+      function createtime() { 
+          var grt= new Date("12/01/2007 12:00:00");//此处修改你的建站时间或者网站上线时间 
+          now.setTime(now.getTime()+250); 
+          days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days); 
+          hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours); 
+          if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum); 
+          mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;} 
+          seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum); 
+          snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;} 
+          document.getElementById("timeDate").innerHTML = "本站已安全运行 "+dnum+" 天 "; 
+          document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒"; 
+      } 
+  setInterval("createtime()",250);
+  </script>
+  <span itemprop="copyrightYear">(2007 - 2021)</span>
+  <!-- 添加网站运行时间 -->
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">学无止境</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script size="300" alpha="0.6" zIndex="0" src="/lib/canvas-ribbon/canvas-ribbon.js"></script>
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

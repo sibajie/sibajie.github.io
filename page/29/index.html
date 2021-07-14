@@ -1,0 +1,859 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"shuxun","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"./public/search.xml"};
+  </script>
+
+  <meta name="description" content="专注互联网运维技术发展">
+<meta property="og:type" content="website">
+<meta property="og:title" content="学无止境">
+<meta property="og:url" content="http://shuxun,wang/page/29/index.html">
+<meta property="og:site_name" content="学无止境">
+<meta property="og:description" content="专注互联网运维技术发展">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:author" content="王殊勋">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://shuxun,wang/page/29/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : true,
+    isPost : false,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>学无止境</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">学无止境</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">注互联网运维技术发展</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-sitemap">
+
+    <a href="/sitemap.xml" rel="section"><i class="fa fa-sitemap fa-fw"></i>站点地图</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content index posts-expand">
+            
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://shuxun,wang/2018/05/31/1472/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="王殊勋">
+      <meta itemprop="description" content="专注互联网运维技术发展">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="学无止境">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2018/05/31/1472/" class="post-title-link" itemprop="url">解决ECshop不支持问题</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2018-05-31 14:15:00" itemprop="dateCreated datePublished" datetime="2018-05-31T14:15:00+08:00">2018-05-31</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-07-14 15:14:50" itemprop="dateModified" datetime="2021-07-14T15:14:50+08:00">2021-07-14</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%BD%91%E7%AB%99%E5%BB%BA%E8%AE%BE/" itemprop="url" rel="index"><span itemprop="name">网站建设</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>php.ini中还有下面一些需要去掉注释:</p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">extension</span>=php_mysql.dll</span><br><span class="line"><span class="attr">extension</span>=php_mysqli.dll</span><br><span class="line"><span class="attr">extension</span>=php_zip.dll</span><br><span class="line"><span class="attr">extension</span>=php_sockets.dll</span><br><span class="line"><span class="attr">extension</span>=php_mbstring.dll</span><br><span class="line"><span class="attr">extension</span>=php_exif.dll</span><br><span class="line"><span class="attr">extension</span>=php_mcrypt.dll</span><br><span class="line"><span class="attr">extension</span>=php_imap.dll</span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://shuxun,wang/2018/05/16/1532/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="王殊勋">
+      <meta itemprop="description" content="专注互联网运维技术发展">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="学无止境">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2018/05/16/1532/" class="post-title-link" itemprop="url">解决主从数据库出现 Slave_IO_Running NO 以及远程访问mysql数据库</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2018-05-16 02:03:00" itemprop="dateCreated datePublished" datetime="2018-05-16T02:03:00+08:00">2018-05-16</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-07-14 15:15:02" itemprop="dateModified" datetime="2021-07-14T15:15:02+08:00">2021-07-14</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E9%94%99%E8%AF%AF%E8%A7%A3%E5%86%B3/" itemprop="url" rel="index"><span itemprop="name">错误解决</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>站长第一次搭建主从数据库就卡在这里1天的时间,原来是从数据库没有权限访问主数据库,<br>也就是从数据库搭建的时候填写的主数据库的用户名不能连接到主数据库,或者是连接到了没有权限访问,<br>如果是测试的话,可以直接使用主数据库的root帐号进行,但是要保证主数据库有远程访问的权限.<br>至于如何给数据库开通远程访问权限的问题,可以去搜索一下我前面的文章里面有写,<br>就是修改mysql下面的user里面,<br>登陆进入mysql:</p>
+<figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">mysql -uroot -p</span><br><span class="line">use mysql;</span><br><span class="line"><span class="keyword">update</span> <span class="keyword">user</span> <span class="keyword">set</span> Host = <span class="string">&#x27;%&#x27;</span> <span class="keyword">where</span> <span class="keyword">user</span> = <span class="string">&#x27;主数据库给从库开通的账号&#x27;</span></span><br><span class="line">FLUSH <span class="keyword">PRIVILEGES</span>;</span><br></pre></td></tr></table></figure>
+
+<p>目的就是修改前面的localhost为%,就可以实现远程账号登录了,当然这样修改其他用户的权限也是可以的.</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://shuxun,wang/2018/05/12/1080/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="王殊勋">
+      <meta itemprop="description" content="专注互联网运维技术发展">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="学无止境">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2018/05/12/1080/" class="post-title-link" itemprop="url">centos 主从数据库</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2018-05-12 08:52:00" itemprop="dateCreated datePublished" datetime="2018-05-12T08:52:00+08:00">2018-05-12</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-07-14 15:15:01" itemprop="dateModified" datetime="2021-07-14T15:15:01+08:00">2021-07-14</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%90%84%E7%B1%BB%E6%9C%8D%E5%8A%A1/" itemprop="url" rel="index"><span itemprop="name">各类服务</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>环境:</p>
+<p>主服务器:centos 5.2 mysql 5.1.35 源码 IP:192.168.1.22<br>从服务器:centos 5.2 mysql 5.1.35 源码 IP:192.168.1.33</p>
+<p>配置:</p>
+<p>一、主服务器</p>
+<p>1.1、创建一个复制用户,具有replication slave权限</p>
+<figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt;<span class="keyword">grant</span> <span class="keyword">replication</span> slave <span class="keyword">on</span> *.* <span class="keyword">to</span> <span class="string">&#x27;repl&#x27;</span>@<span class="string">&#x27;192.168.1.22&#x27;</span> identified <span class="keyword">by</span> <span class="string">&#x27;repl&#x27;</span>;</span><br></pre></td></tr></table></figure>
+
+<p>1.2、编辑my.cnf文件</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vi <span class="regexp">/etc/my</span>.cnf</span><br></pre></td></tr></table></figure>
+
+<p>添加:</p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">server-id</span>=<span class="number">1</span></span><br></pre></td></tr></table></figure>
+
+<p>并开启log-bin二进制日志文件:</p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">log-bin</span>=mysql-bin</span><br></pre></td></tr></table></figure>
+
+<p>注:需要把默认的server-id=1去掉.</p>
+<p>1.3、启动mysql数据库</p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysqld_safe <span class="attribute">--user</span>=mysql &amp;</span><br></pre></td></tr></table></figure>
+
+<p>1.4、设置读锁</p>
+<figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt;flush <span class="keyword">tables</span> <span class="keyword">with</span> <span class="keyword">read</span> <span class="keyword">lock</span>;</span><br></pre></td></tr></table></figure>
+
+<p>1.5、得到binlog日志文件名和偏移量</p>
+<figure class="highlight asciidoc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt;show master status;</span><br><span class="line"></span><br><span class="line"><span class="code">+------------------+</span>----------<span class="code">+--------------+</span>------------------+</span><br><span class="line"><span class="section">| File | Position | Binlog_Do_DB | Binlog_Ignore_DB |</span></span><br><span class="line"><span class="section">+------------------+----------+--------------+------------------+</span></span><br><span class="line"><span class="section">| mysql-bin.0000010 | 106| | |</span></span><br><span class="line"><span class="section">+------------------+----------+--------------+------------------+</span></span><br></pre></td></tr></table></figure>
+
+<p>1.6、备份要同步的数据库</p>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysqldump <span class="keyword">test</span> &gt; <span class="keyword">test</span>.sql</span><br></pre></td></tr></table></figure>
+
+<p>1.7、解锁</p>
+<figure class="highlight abnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt;unlock tables<span class="comment">;</span></span><br></pre></td></tr></table></figure>
+
+<p>二、从服务器</p>
+<p>2.1、编辑my.cnf文件</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vi <span class="regexp">/etc/my</span>.cnf</span><br></pre></td></tr></table></figure>
+
+<p>添加:</p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">server-id</span>=<span class="number">2</span></span><br></pre></td></tr></table></figure>
+
+<p>注:需要把默认的server-id=1去掉.</p>
+<p>2.2、启动从数据库</p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysqld_safe <span class="attribute">--user</span>=mysql &amp;</span><br></pre></td></tr></table></figure>
+
+<p>2.3、对从数据库进行相应设置</p>
+<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">change master to master_host</span>=<span class="string">&#x27;173.252.192.205&#x27;</span>,master_user=<span class="string">&#x27;root&#x27;</span>,master_password=<span class="string">&#x27;Fuck_24_25&#x27;</span>,master_log_file=<span class="string">&#x27;mysql-bin.000029&#x27;</span>,master_log_pos=257;</span><br></pre></td></tr></table></figure>
+
+<p>2.4、启动从服务器slave线程</p>
+<figure class="highlight crmsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt;<span class="literal">start</span> <span class="literal">slave</span>;</span><br></pre></td></tr></table></figure>
+
+<p>执行show processlist命令显示以下进程:</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt;show processlistG</span><br><span class="line"></span><br><span class="line"><span class="strong">****</span><span class="strong">****</span><span class="strong">****</span><span class="strong">****</span><span class="strong">****</span><span class="strong">****</span><span class="strong">**<span class="emphasis">* 2. row <span class="strong">****</span><span class="strong">****</span><span class="strong">****</span><span class="strong">****</span><span class="strong">****</span><span class="strong">****</span><span class="strong">**<span class="emphasis">*</span></span></span></span></span><br><span class="line"><span class="emphasis"><span class="strong"><span class="emphasis"><span class="strong">Id: 2</span></span></span></span></span><br><span class="line"><span class="emphasis"><span class="strong"><span class="emphasis"><span class="strong">User: system user</span></span></span></span></span><br><span class="line"><span class="emphasis"><span class="strong"><span class="emphasis"><span class="strong">Host:</span></span></span></span></span><br><span class="line"><span class="emphasis"><span class="strong"><span class="emphasis"><span class="strong">db: NULL</span></span></span></span></span><br><span class="line"><span class="emphasis"><span class="strong"><span class="emphasis"><span class="strong">Command: Connect</span></span></span></span></span><br><span class="line"><span class="emphasis"><span class="strong"><span class="emphasis"><span class="strong">Time: 2579</span></span></span></span></span><br><span class="line"><span class="emphasis"><span class="strong"><span class="emphasis"><span class="strong">State: Has read all relay log; waiting for the slave I/O thread to update it</span></span></span></span></span><br><span class="line"><span class="emphasis"><span class="strong"><span class="emphasis"><span class="strong">Info: NULL</span></span></span></span></span><br></pre></td></tr></table></figure>
+
+<p>表示slave已经连接上master,开始接受并执行日志.</p>
+<p>2.5、查看slave线程状态</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">mysql&gt;show</span> <span class="string">slave</span> <span class="string">status;</span></span><br><span class="line"></span><br><span class="line"><span class="string">***************************</span> <span class="number">1</span><span class="string">.</span> <span class="string">row</span> <span class="string">***************************</span></span><br><span class="line"><span class="attr">Slave_IO_State:</span> <span class="string">Waiting</span> <span class="string">for</span> <span class="string">master</span> <span class="string">to</span> <span class="string">send</span> <span class="string">event</span></span><br><span class="line"><span class="attr">Master_Host:</span> <span class="number">192.168</span><span class="number">.1</span><span class="number">.22</span></span><br><span class="line"><span class="attr">Master_User:</span> <span class="string">repl</span></span><br><span class="line"><span class="attr">Master_Port:</span> <span class="number">3306</span></span><br><span class="line"><span class="attr">Connect_Retry:</span> <span class="number">60</span></span><br><span class="line"><span class="attr">Master_Log_File:</span> <span class="string">mysql-bin.0000010</span></span><br><span class="line"><span class="attr">Read_Master_Log_Pos:</span> <span class="number">106</span></span><br><span class="line"><span class="attr">Relay_Log_File:</span> <span class="string">centos-relay-bin.000002</span></span><br><span class="line"><span class="attr">Relay_Log_Pos:</span> <span class="number">529</span></span><br><span class="line"><span class="attr">Relay_Master_Log_File:</span> <span class="string">mysql-bin.0000010</span></span><br><span class="line"><span class="attr">Slave_IO_Running:</span> <span class="literal">Yes</span></span><br><span class="line"><span class="attr">Slave_SQL_Running:</span> <span class="literal">Yes</span></span><br><span class="line"><span class="attr">Replicate_Do_DB:</span></span><br><span class="line"><span class="attr">Replicate_Ignore_DB:</span></span><br><span class="line"><span class="attr">Replicate_Do_Table:</span></span><br><span class="line"><span class="attr">Replicate_Ignore_Table:</span></span><br><span class="line"><span class="attr">Replicate_Wild_Do_Table:</span></span><br><span class="line"><span class="attr">Replicate_Wild_Ignore_Table:</span></span><br><span class="line"><span class="attr">Last_Errno:</span> <span class="number">0</span></span><br><span class="line"><span class="attr">Last_Error:</span></span><br><span class="line"><span class="attr">Skip_Counter:</span> <span class="number">0</span></span><br><span class="line"><span class="attr">Exec_Master_Log_Pos:</span> <span class="number">106</span></span><br><span class="line"><span class="attr">Relay_Log_Space:</span> <span class="number">830</span></span><br><span class="line"><span class="attr">Until_Condition:</span> <span class="string">None</span></span><br><span class="line"><span class="attr">Until_Log_File:</span></span><br><span class="line"><span class="attr">Until_Log_Pos:</span> <span class="number">0</span></span><br><span class="line"><span class="attr">Master_SSL_Allowed:</span> <span class="literal">No</span></span><br><span class="line"><span class="attr">Master_SSL_CA_File:</span></span><br><span class="line"><span class="attr">Master_SSL_CA_Path:</span></span><br><span class="line"><span class="attr">Master_SSL_Cert:</span></span><br><span class="line"><span class="attr">Master_SSL_Cipher:</span></span><br><span class="line"><span class="attr">Master_SSL_Key:</span></span><br><span class="line"><span class="attr">Seconds_Behind_Master:</span> <span class="number">0</span></span><br><span class="line"><span class="attr">Master_SSL_Verify_Server_Cert:</span> <span class="literal">No</span></span><br><span class="line"><span class="attr">Last_IO_Errno:</span> <span class="number">0</span></span><br><span class="line"><span class="attr">Last_IO_Error:</span></span><br><span class="line"><span class="attr">Last_SQL_Errno:</span> <span class="number">0</span></span><br><span class="line"><span class="attr">Last_SQL_Error:</span></span><br><span class="line"><span class="number">1</span> <span class="string">row</span> <span class="string">in</span> <span class="string">set</span> <span class="string">(0.00</span> <span class="string">sec)</span></span><br></pre></td></tr></table></figure>
+
+<p>验证是否配置正确.<br>在从服务器上执行:</p>
+<figure class="highlight crmsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">show <span class="literal">slave</span> statusG;</span><br><span class="line"></span><br><span class="line">Waiting for <span class="keyword">master</span> <span class="title">to</span> send event</span><br><span class="line">Slave_IO_Running: Yes</span><br><span class="line">Slave_SQL_Running: Yes</span><br></pre></td></tr></table></figure>
+
+<p>如以上二行同时为Yes 说明配置成功.</p>
+<p>测试:</p>
+<p>1、在主服务器test数据库中创建user表</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mysql<span class="operator">&gt;</span>use test;</span><br><span class="line">mysql<span class="operator">&gt;</span><span class="keyword">create</span> <span class="keyword">table</span> <span class="keyword">user</span>(id <span class="type">int</span>);</span><br></pre></td></tr></table></figure>
+
+<p>2、在从服务器中查看user表</p>
+<figure class="highlight asciidoc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt;use test;</span><br><span class="line">mysql&gt; show tables like <span class="emphasis">&#x27;user&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="code">+----------------------+</span></span><br><span class="line"><span class="section">| Tables_in_test(user) |</span></span><br><span class="line"><span class="section">+----------------------+</span></span><br><span class="line"><span class="section">| user |</span></span><br><span class="line"><span class="section">+----------------------+</span></span><br><span class="line">1 row in set (0.00 sec)</span><br></pre></td></tr></table></figure>
+
+<p>说明主从数据同步成功.</p>
+<p>如果需要多个从数据库的话,可以一直重复从数据库 的操作,但是my.cnf里面的server-id必须不能相同,使用不同的数字就可以了.</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://shuxun,wang/2018/05/11/1306/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="王殊勋">
+      <meta itemprop="description" content="专注互联网运维技术发展">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="学无止境">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2018/05/11/1306/" class="post-title-link" itemprop="url">nginx简单负载均衡</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2018-05-11 16:19:00" itemprop="dateCreated datePublished" datetime="2018-05-11T16:19:00+08:00">2018-05-11</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-07-14 15:15:23" itemprop="dateModified" datetime="2021-07-14T15:15:23+08:00">2021-07-14</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%90%84%E7%B1%BB%E6%9C%8D%E5%8A%A1/" itemprop="url" rel="index"><span itemprop="name">各类服务</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <figure class="highlight axapta"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">worker_processes <span class="number">1</span>;</span><br><span class="line">events &#123;</span><br><span class="line">    worker_connections <span class="number">1024</span>;</span><br><span class="line">&#125;</span><br><span class="line">http&#123;</span><br><span class="line">    upstream myproject &#123;</span><br><span class="line">    <span class="meta">#这里指定多个源服务器,ip:端口,80端口的话可写可不写</span></span><br><span class="line">    <span class="keyword">server</span> <span class="number">192.168</span><span class="number">.43</span><span class="number">.158</span>:<span class="number">80</span>;</span><br><span class="line">    <span class="keyword">server</span> <span class="number">192.168</span><span class="number">.41</span><span class="number">.167</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">server</span> &#123;</span><br><span class="line">        listen <span class="number">8080</span>;</span><br><span class="line">        location / &#123;</span><br><span class="line">             proxy_pass http:<span class="comment">//myproject;</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>```</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://shuxun,wang/2018/05/10/1273/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="王殊勋">
+      <meta itemprop="description" content="专注互联网运维技术发展">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="学无止境">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2018/05/10/1273/" class="post-title-link" itemprop="url">mysql创建用户与授权</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2018-05-10 14:05:00" itemprop="dateCreated datePublished" datetime="2018-05-10T14:05:00+08:00">2018-05-10</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-07-14 15:15:32" itemprop="dateModified" datetime="2021-07-14T15:15:32+08:00">2021-07-14</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%90%84%E7%B1%BB%E6%9C%8D%E5%8A%A1/" itemprop="url" rel="index"><span itemprop="name">各类服务</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>一, 创建用户<br>命令:</p>
+<figure class="highlight n1ql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">USER</span> <span class="string">&#x27;username&#x27;</span>@<span class="string">&#x27;host&#x27;</span> IDENTIFIED <span class="keyword">BY</span> <span class="string">&#x27;password&#x27;</span>;</span><br></pre></td></tr></table></figure>
+
+<p>说明:username - 你将创建的用户名, host - 指定该用户在哪个主机上可以登陆,如果是本地用户可用localhost, 如果想让该用户可以从任意远程主机登陆,可以使用通配符%. password - 该用户的登陆密码,密码可以为空,如果为空则该用户可以不需要密码登陆服务器.</p>
+<p>例子:</p>
+<figure class="highlight n1ql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">USER</span> <span class="string">&#x27;dog&#x27;</span>@<span class="string">&#x27;localhost&#x27;</span> IDENTIFIED <span class="keyword">BY</span> <span class="string">&#x27;123456&#x27;</span>;</span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">USER</span> <span class="string">&#x27;pig&#x27;</span>@<span class="string">&#x27;192.168.1.101_&#x27;</span> IDENDIFIED <span class="keyword">BY</span> <span class="string">&#x27;123456&#x27;</span>;</span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">USER</span> <span class="string">&#x27;pig&#x27;</span>@<span class="string">&#x27;%&#x27;</span> IDENTIFIED <span class="keyword">BY</span> <span class="string">&#x27;123456&#x27;</span>;</span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">USER</span> <span class="string">&#x27;pig&#x27;</span>@<span class="string">&#x27;%&#x27;</span> IDENTIFIED <span class="keyword">BY</span> <span class="string">&#x27;&#x27;</span>;</span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">USER</span> <span class="string">&#x27;pig&#x27;</span>@<span class="string">&#x27;%&#x27;</span>;</span><br></pre></td></tr></table></figure>
+
+<p>二,授权<br>命令:</p>
+<figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">GRANT</span> <span class="keyword">privileges</span> <span class="keyword">ON</span> databasename.tablename <span class="keyword">TO</span> <span class="string">&#x27;username&#x27;</span>@<span class="string">&#x27;host&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<p>说明: privileges - 用户的操作权限,如SELECT , INSERT , UPDATE 等.如果要授予所的权限则使用ALL.;databasename - 数据库名,tablename-表名,如果要授予该用户对所有数据库和表的相应操作权限则可用*表示, 如*.*.</p>
+<p>例子:</p>
+<figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">GRANT</span> <span class="keyword">SELECT</span>, <span class="keyword">INSERT</span> <span class="keyword">ON</span> test.<span class="keyword">user</span> <span class="keyword">TO</span> <span class="string">&#x27;pig&#x27;</span>@<span class="string">&#x27;%&#x27;</span>;</span><br><span class="line"><span class="keyword">GRANT</span> <span class="keyword">ALL</span> <span class="keyword">ON</span> *.* <span class="keyword">TO</span> <span class="string">&#x27;pig&#x27;</span>@<span class="string">&#x27;%&#x27;</span>;</span><br><span class="line">#注意:用以上命令授权的用户不能给其它用户授权,如果想让该用户可以授权,用以下命令:</span><br><span class="line"><span class="keyword">GRANT</span> <span class="keyword">privileges</span> <span class="keyword">ON</span> databasename.tablename <span class="keyword">TO</span> <span class="string">&#x27;username&#x27;</span>@<span class="string">&#x27;host&#x27;</span> <span class="keyword">WITH</span> <span class="keyword">GRANT</span> <span class="keyword">OPTION</span>;</span><br></pre></td></tr></table></figure>
+
+<p>三.设置与更改用户密码<br>命令:</p>
+<figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SET</span> <span class="keyword">PASSWORD</span> <span class="keyword">FOR</span> <span class="string">&#x27;username&#x27;</span>@<span class="string">&#x27;host&#x27;</span> = <span class="keyword">PASSWORD</span>(<span class="string">&#x27;newpassword&#x27;</span>);如果是当前登陆用户用<span class="keyword">SET</span> <span class="keyword">PASSWORD</span> = </span><br><span class="line"><span class="keyword">PASSWORD</span>(&quot;newpassword&quot;);</span><br></pre></td></tr></table></figure>
+
+<p>例子:</p>
+<figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SET</span> <span class="keyword">PASSWORD</span> <span class="keyword">FOR</span> <span class="string">&#x27;pig&#x27;</span>@<span class="string">&#x27;%&#x27;</span> = <span class="keyword">PASSWORD</span>(&quot;123456&quot;);</span><br></pre></td></tr></table></figure>
+
+<p>四.撤销用户权限<br>命令:</p>
+<figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">REVOKE</span> privilege <span class="keyword">ON</span> databasename.tablename <span class="keyword">FROM</span> <span class="string">&#x27;username&#x27;</span>@<span class="string">&#x27;host&#x27;</span>;</span><br></pre></td></tr></table></figure>
+
+<p>说明: privilege, databasename, tablename - 同授权部分.</p>
+<p>例子:</p>
+<figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">REVOKE</span> <span class="keyword">SELECT</span> <span class="keyword">ON</span> *.* <span class="keyword">FROM</span> <span class="string">&#x27;pig&#x27;</span>@<span class="string">&#x27;%&#x27;</span>;</span><br></pre></td></tr></table></figure>
+
+<p>注意: 假如你在给用户‘pig‘@’%’授权的时候是这样的(或类似的):<code>GRANT SELECT ON test.user TO &#39;pig&#39;@&#39;%&#39;</code>, 则在使用 <code>REVOKE SELECT ON *.* FROM &#39;pig&#39;@&#39;%&#39;;</code>命令并不能撤销该用户对test数据库中user表的SELECT 操作.相反,如果授权使用的是 <code>GRANT SELECT ON *.* TO &#39;pig&#39;@&#39;%&#39;;</code>则 <code>REVOKE SELECT ON test.user FROM &#39;pig&#39;@&#39;%&#39;;</code>命令也不能撤销该用户对test数据库中user表的Select 权限.<br>具体信息可以用命令 <code>SHOW GRANTS FOR &#39;pig&#39;@&#39;%&#39;;</code> 查看.</p>
+<p>五.删除用户<br>命令:</p>
+<figure class="highlight n1ql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">DROP</span> <span class="keyword">USER</span> <span class="string">&#x27;username&#x27;</span>@<span class="string">&#x27;host&#x27;</span>;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+
+  
+  <nav class="pagination">
+    <a class="extend prev" rel="prev" href="/page/28/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/28/">28</a><span class="page-number current">29</span><a class="page-number" href="/page/30/">30</a><span class="space">&hellip;</span><a class="page-number" href="/page/132/">132</a><a class="extend next" rel="next" href="/page/30/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+  </nav>
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="王殊勋"
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name">王殊勋</p>
+  <div class="site-description" itemprop="description">better late than never.<br>只要开始，虽晚不迟。</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">656</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">2058</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <!--添加网站运行时间 -->
+  <span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
+  <script>
+      var now = new Date(); 
+      function createtime() { 
+          var grt= new Date("12/01/2007 12:00:00");//此处修改你的建站时间或者网站上线时间 
+          now.setTime(now.getTime()+250); 
+          days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days); 
+          hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours); 
+          if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum); 
+          mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;} 
+          seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum); 
+          snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;} 
+          document.getElementById("timeDate").innerHTML = "本站已安全运行 "+dnum+" 天 "; 
+          document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒"; 
+      } 
+  setInterval("createtime()",250);
+  </script>
+  <span itemprop="copyrightYear">(2007 - 2021)</span>
+  <!-- 添加网站运行时间 -->
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">学无止境</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script size="300" alpha="0.6" zIndex="0" src="/lib/canvas-ribbon/canvas-ribbon.js"></script>
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"shuxun","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"./public/search.xml"};
+  </script>
+
+  <meta name="description" content="正向代理指令:1 resolver这个用于DNS服务器的ip . DNS服务器的主要工作是进行域名解析,将域名映射为对应IP地址resolver address … [valid &#x3D; time ]address ,   DNS 服务器的ip地址, 不指定的话默认53time 设置数据包在网络中的有效时间.例: resolver 127.0.0.1 [::1]:52113 valids2 resol">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Nginx反向代理命令详解">
+<meta property="og:url" content="http://shuxun,wang/2019/07/03/1304/index.html">
+<meta property="og:site_name" content="学无止境">
+<meta property="og:description" content="正向代理指令:1 resolver这个用于DNS服务器的ip . DNS服务器的主要工作是进行域名解析,将域名映射为对应IP地址resolver address … [valid &#x3D; time ]address ,   DNS 服务器的ip地址, 不指定的话默认53time 设置数据包在网络中的有效时间.例: resolver 127.0.0.1 [::1]:52113 valids2 resol">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2019-07-02T23:35:00.000Z">
+<meta property="article:modified_time" content="2021-07-14T07:15:37.379Z">
+<meta property="article:author" content="王殊勋">
+<meta property="article:tag" content="设置">
+<meta property="article:tag" content="cache">
+<meta property="article:tag" content="配置">
+<meta property="article:tag" content="客户端">
+<meta property="article:tag" content="nginx">
+<meta property="article:tag" content="指令">
+<meta property="article:tag" content="proxy">
+<meta property="article:tag" content="被代理服务器">
+<meta property="article:tag" content="响应数据">
+<meta property="article:tag" content="用于">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://shuxun,wang/2019/07/03/1304/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>Nginx反向代理命令详解 | 学无止境</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">学无止境</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">注互联网运维技术发展</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-sitemap">
+
+    <a href="/sitemap.xml" rel="section"><i class="fa fa-sitemap fa-fw"></i>站点地图</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://shuxun,wang/2019/07/03/1304/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="王殊勋">
+      <meta itemprop="description" content="专注互联网运维技术发展">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="学无止境">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Nginx反向代理命令详解
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-07-03 07:35:00" itemprop="dateCreated datePublished" datetime="2019-07-03T07:35:00+08:00">2019-07-03</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-07-14 15:15:37" itemprop="dateModified" datetime="2021-07-14T15:15:37+08:00">2021-07-14</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%90%84%E7%B1%BB%E6%9C%8D%E5%8A%A1/" itemprop="url" rel="index"><span itemprop="name">各类服务</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h2 id="正向代理指令"><a href="#正向代理指令" class="headerlink" title="正向代理指令:"></a>正向代理指令:</h2><p>1 resolver<br>这个用于DNS服务器的ip . DNS服务器的主要工作是进行域名解析,将域名映射为对应IP地址<br>resolver address … [valid = time ]<br>address ,   DNS 服务器的ip地址, 不指定的话默认53<br>time 设置数据包在网络中的有效时间.<br>例: resolver 127.0.0.1 [::1]:52113 valids<br>2 resolver_timeout<br>设置DNS服务器域名解析超时时间<br>语法结构: resolver_timeout time;<br>3 proxy_pass<br>设置代理服务器的协议和地址,可以用于反向代理服务<br>proxy_pass URL<br>URL  为设置的代理服务器协议和地址<br><code>&lt;br&gt;</code><br>反向代理基本指令:</p>
+<hr>
+<p>1 proxy_pass<br>设置代理服务器的协议和地址<br>proxy_pass URL<br>URL  为设置的代理服务器协议和地址<br>使用这个指令时要注意:<br>如果指令URL中变量不含有URI转向地址会只改变URL<br>如果指令URL中变量含有URI转向地址会全部改变<br>如果配置指令url后面带有/ 那么跳转同理<br>2 proxy_hide_header 指令<br>用于设置Nginx服务器发送http相应时,隐藏一些头域信息<br>proxy_hide_header field;<br>field 为需要隐藏的头域. 可以用于 http  server  localtion<br>3 proxy_pass_header 指令<br>默认Nginx 服务器在发送响应报文时,报文不包含 date server X-accel 等来自被代理服务器的头域信息,<br>该指令可以设置这些头域信息已被发送<br>proxy_pass_header filed;<br>field 为需要隐藏的头域. 可以用于 http  server  localtion<br>4 proxy_pass_request_body<br>配置是否将客户端请求体发送给代理服务器<br>proxy_pass_request_body on | off 可以用于 http server localtion<br>5 proxy_pass_request_header<br>配置是否将客户端的请求头发送给代理服务器<br>proxy_pass_request_header 可以用于 http server localtion<br>6 proxy_set_header<br>用于更改Nginx服务器接收到的客户端请求的请求头,然后将新的请求头发送给被代理服务器<br>proxy_set_header filed value<br>field 要更改的信息所在的头域<br>value  更改的值<br>7 proxy_set_body<br>更改Nginx服务器接收到的客户端请求的请求体信息,然后将新的请求体发送给被代理的服务器　<br>proxy_set_body value<br>value 为更改的信息<br>8 proxy_bind<br>强制将与代理主机的连接绑定到指定的ip主机<br>proxy_bind address<br>address 为IP地址<br>9 proxy_connect_timout<br>用于配置Nginx服务器与后端被代理服务器尝试连接的超时时间<br>proxy_connect_timout time 默认时间时60秒<br>10 proxy_read_timeout<br>用于配置Nginx服务器向后端被代理服务器(组)发出read请求后,等待响应的超时时间<br>proxy_read_timeout time; 默认时间时60秒<br>11 proxy_send_timeout<br>用于配置Nginx服务器向后端被代理服务器(组)发出write请求后,等待响应的超时时间<br>proxy_send_timeout time;默认时间时60秒<br>12 proxy_http_version<br>用于设置Nginx服务器提供代理服务器的HTTP协议版本<br>proxy_http_version 1.0 | 1.1 |2.0<br>13 proxy_method<br>用于设置Nginx服务器请求贝代理服务器使用的请求方法,设置了这个客户端的请求方法将会被忽略<br>proxy_method method<br>method 设置 POST | GET<br>14 proxy_ignore_client_abort<br>用于设置在客户端中断网络请求的时候,Nginx服务器是否中断对被代理服务器的请求,<br>proxy_ignore_client_abort on | off<br>15 proxy_ignore_headers<br>用于设置一些HTTP相应头的头域,<br>proxy_ignore_headers filed …<br>filed 为要设置的HTTP相应头的头域信息,例如”X-Accel-Redirect” “X-Accel-Expires” “Expores “  “Cache-Control “ “Set-Cookie”<br>16 proxy_redirect<br>用于修改被代理服务器返回的相应头中的location和Refresh 与 proxy_pass指令配合使用<br>语法结构:<br>proxy_redirect redirect replacement<br>proxy_redirect default<br>proxy_redirect　 off<br>redirect  匹配localtion头域值的字符串<br>replacement 用于替换redirect变量的字符串<br>假设前端url是example.com.后端server域名是csdn123.com,那么后端server在返回refresh或location的时候,host为csdn123.com,显然这个信息直接返回给客户端是不行的,需要nginx做转换,这时可以设置:<br>proxy_redirect <a target="_blank" rel="noopener" href="http://csdn123.com/">http://csdn123.com</a><br>nginx会将host及port部分替换成自身的server_name及listen port.不过这种配置对server_name有多个值的情况下支持不好.<br>我们可以用nginx内部变量来解决这一问题:<br>proxy_redirect <a target="_blank" rel="noopener" href="http://csdn123.com/">http://csdn123.com</a> http://$host:$server_port<br>17 proxy_intercept_errors<br>配置一个状态的开启或者关闭<br>proxy_intercept_errors on | off<br>18 proxy_headers_hash_max_size<br>存放HTTP报文头的哈希表的容量<br>proxy_headers_hash_max_size size; 默认大小512<br>19 proxy_headers_hash_bucket_size<br>Nginx服务器申请存放HTTP报文头的哈希表容量的单位大小<br>proxy_headers_hash_max_size 64;<br>20 proxy_next_upstream<br>如果Nginx定义了 upstream 后端服务器组,如果组内有异常情况,将请求顺次交给下一个组内服务器处理<br>proxy_next_upstream status…<br>status: error,timeout,invalid_header,http_500 502 503 504 404,off<br>21 proxy_ssl_session_reuse<br>该指令用于配置是否使用基于SSL安全协议的会话连接(htts://)被代理服务器,<br>proxy_ssl_session_reuse on | off; 默认on<br>Proxy Buffer 指令详解:<br>22 proxy_buffering<br>用于配置是否启用或者关闭proxybuff<br>proxy_buffering on | off<br>23 proxy_buffers　<br>用于配置接收一次被代理服务器响应数据的Proxy Buffer个数和每个Buffer的大小.<br>proxy_buffers number size;<br>size一般设置为内存页大小.根据平台的不同,取值可能为4KB或者8KB<br>proxy_buffers 8 4KB|8KB;<br>24 proxy_buffer_size<br>用于配置从被代理服务器获取的第一部分响应数据的大小,默认为4k或者8k,保持与proxy_buffers指令中的size变量相同.<br>25 proxy_busy_buffers_size<br>用于限制同时处于BUSY状态的Proxy Buffer的总大小.<br>proxy_busy_buffers_size size;<br>size为设置处于BUSY状态的缓存区总大小.默认为8KB或者16KB.<br>26 proxy_temp_path<br>用于配置磁盘上的一个文件路径,用于临时存放被代理服务器的大体积响应数据.如果Proxy Buffer被装满后,响应数据仍然没有被Nginx服务器完全接收,之后响应的数据就会被临时存放在该文件中.语法结构为:<br>proxy_temp_path path [level1 [level2 [level3]]]<br>path 磁盘上临时存放文件的路径<br>levelN 缓存文件存放在设置的路径的第几级hash目录中<br>27 proxy_max_temp_file_size<br>用于设置所有临时文件的总大小.<br>proxy_max_temp_file_size size;<br>默认为:1024MB<br>28 proxy_temp_file_write_size<br>用于配置同时写入临时文件的数据量的总大小<br>proxy_temp_file_write_size size;<br>默认设置根据平台的不同,可以为8KB或者16KB,一般与平台的内存也大小相同.<br>Proxy Cache 配置指令　　　　　　　　<br>29 proxy_cache<br>用于配置一块公用的内存区域的名称,该区域可以存放缓存的索引数据.这些数据在Nginx服务器启动时由缓存索引重建进程负责建立,在Nginx服务器的整个运行过程中由缓存管理进程负责定时检查过期数据、检索等管理工作.语法结构为:<br>proxy_cache zone | off;<br>zone 设置用于存放缓存索引的内存区域的名称<br>off 关闭proxy_cache功能,默认设置<br>30 proxy_cache_bypass<br>用于配置Nginx在响应客户端时不从缓存中获取数据的条件.语法结构为:<br>proxy_cache_bypass string …;<br>string为条件变量,支持配置多个,当至少有一个字符串指令不为空或者不等于0时,响应数据不从缓存中获取.<br>例子:<br>proxy_cache_bypass $cookie_nocache $arg_nocache $arg_comment $http_pragma $http_authorization;<br>31 proxy_cache_key<br>用于配置Nginx服务器在内存中为缓存数据建立索引时使用的关键字.默认为:<br>proxy_cache_key $scheme$proxy_host$uri$is_args$args<br>proxy_cache_lock<br>用于配置是否开启缓存的锁功能.在缓存中,某些数据项可以同时被多个请求返回的响应数据填充,开启该功能后,Nginx服务器同时只能有一个请求填充缓存中的某一数据项.如果其他请求也想填充该数据项,必须等待该数据项的锁被释放.这个等待的时间由proxy_cache_lock_timeout指令设置.<br>默认值为off,表示关闭锁功能.<br>32 proxy_cache_lock_timeout<br>用于配置开启锁功能以后锁的超时时间.默认为5s.<br>33 proxy_cache_in_uses<br>当客户端向被代理的服务器发送相同的请求达到该指令设定的次数后,Nginx服务器才对该其更年期的响应数据做缓存.默认为1<br>34 proxy_cache_path<br>用于设置Nginx服务器存储缓存数据的路径以及和缓存索引相关的内容,语法结构为:<br>proxy_cache_path path [levels=levels] keys_zone=name:size1 [inactive=time1] [max_size=size2] [loader_files=number] [loader_sleep=time2] [loader_threshold=time3];<br>path 设置缓存存放的根路径<br>levels 设置相对于path指定目录的第几级hash目录中缓存数据.levels=1,表示一级hash目录;levels=1:2,表示两极目录,以此类推.该目录是基于请求URL通过哈希算法得到的.<br>name:size1 Nginx服务器的缓存索引重建进程在内存中为缓存数据建立索引,这一对变量用来设置存放缓存索引的内存区域的名称和大小.<br>time1 设置强制更新缓存数据的时间,当缓存数据在设定的时间内没有被访问时,Nginx服务器就强制从硬盘上将其删除,下次客户端访问该数据时重新缓存.默认为10s.<br>size2 设置缓存数据大小.当缓存的大小超过该变量的设置时,索引管理进程将根据最近最少被访问的策略删除缓存.<br>number 设置缓存索引重建进程每次加载的数据元素的数量上限.默认为100<br>time2 设置缓存索引重建进程在一次遍历结束后下一次遍历开始之间暂停的时长,默认为50ms.<br>time3 设置遍历一次磁盘缓存源数据的时间上限.默认为200ms.<br>该指令比较复杂,一般需要设置前面3个指令的情形比较多,后面几个变量与Nginx服务器缓存索引重建进程以及管理进程性能有关,一般情况下保持默认设置就可以了.<br>例子:<br>proxy_cache_path /data/nginx/cache/a levels=1 keys_zone=a:10m;<br>proxy_cache_path /data/nginx/cache/b levels=2:2 keys_zone=b:100m;<br>proxy_cache_path /data/nginx/cache/c levels=1:1:2 keys_zone=c:1000m;<br>==该指令只能放在http块中==<br>35 proxy_cache_use_stale<br>指定在那种情况下,当被代理的服务器无法访问或者访问错误等现象时,Nginx服务器可以使用历史缓存响应客户端的请求.语法结构为:<br>proxy_cache_use_stale error | timeout | invalid_header | updating | http_500 | off …;<br>默认为off<br>36 proxy_cache_valid<br>该指令可以针对不能的HTTP响应状态设置不同的缓存时间,语法结构为:<br>proxy_cache_valid [code …] time;<br>code 设置HTTP响应的状态码,可选,默认只为响应吗是200 301 302的响应数据做缓存.可以使用 ‘any’ 表示缓存所有该指令中未设定的其他响应数据<br>time 缓存时间<br>例子:<br>proxy_cache_valid 200 302 10m;<br>proxy_cache_valid 301 1h;<br>proxy_cache_valid any 10m;<br>第三个例子表示对返回状态为不是200 301 302的响应数据缓存10分钟.<br>37 proxy_no_cache<br>配置在什么情况下不使用cache功能.语法结构为:<br>proxy_no_cache string …;<br>其中,string可以是一个或者多个变量,当string的值不为空或者不为’0’时,不启用cache功能.<br>38 proxy_store<br>配置是否在本地磁盘缓存来自被代理服务器的响应数据.语法结构为:<br>39 proxy_store on | off | string;<br>on | off 设置是否开启Proxy Store功能.如果开启,缓存文件会存放到alias指令或root指令设置的本地路径.默认为off<br>string 自定义缓存文件存放路径.使用该配置时,默认开启Proxy Store.<br>40 proxy_store_access<br>用于设置用户或用户组对Proxy Store缓存文件的访问权限,语法结构为:<br>proxy_store_access users:permissions …;<br>users 可以设置为user、group或者all<br>permission 设置方位权限<br>例子:<br>proxy_store on;<br>proxy_store_access user:rw group:rw all:r;<br>root /data/www;</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E8%AE%BE%E7%BD%AE/" rel="tag"># 设置</a>
+              <a href="/tags/cache/" rel="tag"># cache</a>
+              <a href="/tags/%E9%85%8D%E7%BD%AE/" rel="tag"># 配置</a>
+              <a href="/tags/%E5%AE%A2%E6%88%B7%E7%AB%AF/" rel="tag"># 客户端</a>
+              <a href="/tags/nginx/" rel="tag"># nginx</a>
+              <a href="/tags/%E6%8C%87%E4%BB%A4/" rel="tag"># 指令</a>
+              <a href="/tags/proxy/" rel="tag"># proxy</a>
+              <a href="/tags/%E8%A2%AB%E4%BB%A3%E7%90%86%E6%9C%8D%E5%8A%A1%E5%99%A8/" rel="tag"># 被代理服务器</a>
+              <a href="/tags/%E5%93%8D%E5%BA%94%E6%95%B0%E6%8D%AE/" rel="tag"># 响应数据</a>
+              <a href="/tags/%E7%94%A8%E4%BA%8E/" rel="tag"># 用于</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2019/07/03/1311/" rel="prev" title="nginx做负载均衡时其中一台服务器挂掉宕机时响应速度慢的问题解决">
+      <i class="fa fa-chevron-left"></i> nginx做负载均衡时其中一台服务器挂掉宕机时响应速度慢的问题解决
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2019/07/09/1180/" rel="next" title="ftplib中遇到中文路径错误问题">
+      ftplib中遇到中文路径错误问题 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%AD%A3%E5%90%91%E4%BB%A3%E7%90%86%E6%8C%87%E4%BB%A4"><span class="nav-number">1.</span> <span class="nav-text">正向代理指令:</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="王殊勋"
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name">王殊勋</p>
+  <div class="site-description" itemprop="description">better late than never.<br>只要开始，虽晚不迟。</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">656</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">2058</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <!--添加网站运行时间 -->
+  <span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
+  <script>
+      var now = new Date(); 
+      function createtime() { 
+          var grt= new Date("12/01/2007 12:00:00");//此处修改你的建站时间或者网站上线时间 
+          now.setTime(now.getTime()+250); 
+          days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days); 
+          hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours); 
+          if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum); 
+          mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;} 
+          seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum); 
+          snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;} 
+          document.getElementById("timeDate").innerHTML = "本站已安全运行 "+dnum+" 天 "; 
+          document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒"; 
+      } 
+  setInterval("createtime()",250);
+  </script>
+  <span itemprop="copyrightYear">(2007 - 2021)</span>
+  <!-- 添加网站运行时间 -->
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">学无止境</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script size="300" alpha="0.6" zIndex="0" src="/lib/canvas-ribbon/canvas-ribbon.js"></script>
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

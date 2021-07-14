@@ -1,0 +1,852 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"shuxun","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"./public/search.xml"};
+  </script>
+
+  <meta name="description" content="专注互联网运维技术发展">
+<meta property="og:type" content="website">
+<meta property="og:title" content="学无止境">
+<meta property="og:url" content="http://shuxun,wang/page/90/index.html">
+<meta property="og:site_name" content="学无止境">
+<meta property="og:description" content="专注互联网运维技术发展">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:author" content="王殊勋">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://shuxun,wang/page/90/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : true,
+    isPost : false,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>学无止境</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">学无止境</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">注互联网运维技术发展</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-sitemap">
+
+    <a href="/sitemap.xml" rel="section"><i class="fa fa-sitemap fa-fw"></i>站点地图</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content index posts-expand">
+            
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://shuxun,wang/2014/01/16/1547/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="王殊勋">
+      <meta itemprop="description" content="专注互联网运维技术发展">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="学无止境">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2014/01/16/1547/" class="post-title-link" itemprop="url">配置apache的Alias</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2014-01-16 23:34:00" itemprop="dateCreated datePublished" datetime="2014-01-16T23:34:00+08:00">2014-01-16</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-07-14 15:14:45" itemprop="dateModified" datetime="2021-07-14T15:14:45+08:00">2021-07-14</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%90%84%E7%B1%BB%E6%9C%8D%E5%8A%A1/" itemprop="url" rel="index"><span itemprop="name">各类服务</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>在 <code>xamppapacheconfhttpd.conf</code> 文件最后,添加如下:</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">Alias</span> /myphp <span class="string">&quot;D:/source/pdt-workspaces/myphp&quot;</span></span><br><span class="line"><span class="section">&lt;directory <span class="string">&quot;D:/source/pdt-workspaces/myphp&quot;</span>&gt;</span></span><br><span class="line">    <span class="attribute">AllowOverride</span> None</span><br><span class="line">    <span class="attribute"><span class="nomarkup">Options</span></span> None</span><br><span class="line">    <span class="attribute"><span class="nomarkup">Order</span></span> <span class="literal">allow</span>,<span class="literal">deny</span></span><br><span class="line">    <span class="attribute"><span class="nomarkup">Allow</span></span> from <span class="literal">all</span></span><br><span class="line"><span class="section">&lt;/directory&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>然后启动xampp, 访问 <a target="_blank" rel="noopener" href="http://localhost/myphp/test.php">http://localhost/myphp/test.php</a> 就可以了</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://shuxun,wang/2014/01/11/1169/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="王殊勋">
+      <meta itemprop="description" content="专注互联网运维技术发展">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="学无止境">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2014/01/11/1169/" class="post-title-link" itemprop="url">eAccelerator 配置参数详解</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2014-01-11 18:15:00" itemprop="dateCreated datePublished" datetime="2014-01-11T18:15:00+08:00">2014-01-11</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-07-14 15:16:22" itemprop="dateModified" datetime="2021-07-14T15:16:22+08:00">2021-07-14</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%90%84%E7%B1%BB%E6%9C%8D%E5%8A%A1/" itemprop="url" rel="index"><span itemprop="name">各类服务</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">eaccelerator.shm_size</span>=<span class="string">&quot;32&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>eAccelerator 可以使用的共享内存的数量 (以兆为单位) . “0” 是指操作系统的默认值. 默认值是 “0”.可根据服务器的实际情况来调整,16,32,64,128都是可以的.</p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">eaccelerator.cache_dir</span>=<span class="string">&quot;/home/php/tmp&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>这个目录是给磁盘缓存使用. eAccelerator 在这里储存预先编译好的代码, 进程数据, 内容以及用户的自定义内容. 同样的数据也能被储存在共享内存中 (这样可以提高访问速度). 默认的设置是 “/tmp/eaccelerator”.</p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">eaccelerator.enable</span>=<span class="string">&quot;1&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>开启或关闭 eAccelerator.”1” 为开启,”0” 为关闭.默认值为 “1”.</p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">eaccelerator.optimizer</span>=<span class="string">&quot;1&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>启或关闭内部优化器,可以提升代码执行速度.”1” 为开启,”0” 为关闭.默认值为 “1”.</p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">eaccelerator.check_mtime</span>=<span class="string">&quot;1&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>打开或者关闭 PHP 的文件修改检查. “1” 是指打开, “0” 是指关闭. 如果您在修改以后重新编译 PHP 的文件,那么您应当设置为 “1”. 默认值是 “1”.</p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">eaccelerator.debug</span>=<span class="string">&quot;0&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>开启或关闭调试日志记录.”1” 为开启,”0” 为关闭.默认值为 “0”.会将缓存命中得记录写入日志.</p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">eaccelerator.filter</span>=<span class="string">&quot;&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>判断哪些 PHP 文件必须缓存.您可以指定缓存和不缓存的文件类型(如 “*.php *.phtml”等)<br>如果参数以 “!” 开头,则匹配这些参数的文件被忽略缓存.默认值为 “”,即,所有 PHP 文件都将被缓存.</p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">eaccelerator.shm_max</span>=<span class="string">&quot;0&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>当使用 “ eaccelerator_put() “ 函数时禁止其向共享内存中存储过大的文件.该参数指定允许存储的最大值,单位:字节 (10240, 10K, 1M).”0” 为不限制.默认值为 “0”.</p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">eaccelerator.shm_ttl</span>=<span class="string">&quot;0&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>当 eAccelerator 获取新脚本的共享内存大小失败时,它将从共享内存中删除所有在最后 “shm_ttl” 秒内没有存取的脚本缓存.默认值为 “0”,即:不从共享内春中删除任何缓存文件.</p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">eaccelerator.shm_prune_period</span>=<span class="string">&quot;0&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>当 eAccelerator 获取新脚本的共享内存大小失败时,他将试图从共享内存中删除早于”shm_prune_period” 秒的缓存脚本.默认值为 “0”,即:不从共享内春中删除任何缓存文件.</p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">eaccelerator.shm_only</span>=<span class="string">&quot;0&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>允许或禁止将已编译脚本缓存在磁盘上.该选项对 session 数据和内容缓存无效.默认值为 “0”,即:使用磁盘和共享内存进行缓存.</p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">eaccelerator.compress</span>=<span class="string">&quot;1&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>允许或禁止压缩内容缓存.默认值为 “1”,即:允许压缩.</p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">eaccelerator.compress_level</span>=<span class="string">&quot;9&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>指定内容缓存的压缩等级.默认值为 “9”,为最高等级.</p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">eaccelerator.keys</span> = <span class="string">&quot;disk_only&quot;</span></span><br><span class="line"><span class="attr">eaccelerator.session</span> = <span class="string">&quot;disk_only&quot;</span></span><br><span class="line"><span class="attr">eaccelerator.content</span> = <span class="string">&quot;disk_only&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>设置内容缓存的存放的地方,可以设置为:</p>
+<figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">shm_and_disk </span>在共享缓存和硬盘(默认值)</span><br><span class="line"><span class="keyword">shm默认存在共享内存,如果共享内存已满或大小超过 </span><span class="string">&quot;eaccelerator.shm_max&quot;</span> 的值,就存到硬盘</span><br><span class="line"><span class="keyword">shm_only只存放在共享内存</span></span><br><span class="line"><span class="keyword"></span><span class="keyword">disk_only只存放在硬盘</span></span><br><span class="line"><span class="keyword"></span>none不缓存数据</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">eaccelerator.allowed_admin_path = <span class="string">&quot;/var/www/html/21andy.com/eaccelerator&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>这是控制面板的地址.<br>安装包里有个control.php,你把它复制到网站的任意目录,可以用它查看和管理,这个必须指定,否则查看缓存内容的时候会出错.</p>
+<p>最后,来看一下我的 eAccelerator 设置:</p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">; eaccelerator</span></span><br><span class="line"><span class="section">[eaccelerator]</span></span><br><span class="line"><span class="attr">zend_extension</span>=<span class="string">&quot;/usr/local/php/lib/php/extensions/no-debug-non-zts-20060613/eaccelerator.so&quot;</span></span><br><span class="line"><span class="attr">eaccelerator.shm_size</span>=<span class="string">&quot;128&quot;</span></span><br><span class="line"><span class="attr">eaccelerator.cache_dir</span>=<span class="string">&quot;/tmp/eaccelerator&quot;</span></span><br><span class="line"><span class="attr">eaccelerator.enable</span>=<span class="string">&quot;1&quot;</span></span><br><span class="line"><span class="attr">eaccelerator.optimizer</span>=<span class="string">&quot;1&quot;</span></span><br><span class="line"><span class="attr">eaccelerator.check_mtime</span>=<span class="string">&quot;1&quot;</span></span><br><span class="line"><span class="attr">eaccelerator.debug</span>=<span class="string">&quot;0&quot;</span></span><br><span class="line"><span class="attr">eaccelerator.filter</span>=<span class="string">&quot;&quot;</span></span><br><span class="line"><span class="attr">eaccelerator.shm_max</span>=<span class="string">&quot;0&quot;</span></span><br><span class="line"><span class="attr">eaccelerator.shm_ttl</span>=<span class="string">&quot;3600&quot;</span></span><br><span class="line"><span class="attr">eaccelerator.shm_prune_period</span>=<span class="string">&quot;3600&quot;</span></span><br><span class="line"><span class="attr">eaccelerator.shm_only</span>=<span class="string">&quot;0&quot;</span></span><br><span class="line"><span class="attr">eaccelerator.compress</span>=<span class="string">&quot;1&quot;</span></span><br><span class="line"><span class="attr">eaccelerator.compress_level</span>=<span class="string">&quot;9&quot;</span></span><br><span class="line"><span class="attr">eaccelerator.keys</span> = <span class="string">&quot;disk_only&quot;</span></span><br><span class="line"><span class="attr">eaccelerator.sessions</span> = <span class="string">&quot;disk_only&quot;</span></span><br><span class="line"><span class="attr">eaccelerator.content</span> = <span class="string">&quot;disk_only&quot;</span></span><br><span class="line"><span class="attr">eaccelerator.allowed_admin_path</span> = <span class="string">&quot;/var/www/html/21andy.com/eaccelerator&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>另外,再说下 eAccelerator 的安装:</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$ wget http:<span class="regexp">//</span>bart.eaccelerator.net<span class="regexp">/source/</span><span class="number">0.9</span>.<span class="number">6</span>/eaccelerator-<span class="number">0.9</span>.<span class="number">6</span>.tar.bz2</span><br><span class="line">$ tar -jxvf eaccelerator-<span class="number">0.9</span>.<span class="number">6</span>.tar.bz2</span><br><span class="line">$ cd eaccelerator-<span class="number">0.9</span>.<span class="number">6</span></span><br><span class="line">$ <span class="regexp">/usr/</span>local<span class="regexp">/php/</span>bin/phpize</span><br><span class="line">$ .<span class="regexp">/configure --enable-eaccelerator=shared --with-php-config=/u</span>sr<span class="regexp">/local/</span>php<span class="regexp">/bin/</span>php-config</span><br><span class="line">$ make &amp;&amp; make install</span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://shuxun,wang/2014/01/06/1086/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="王殊勋">
+      <meta itemprop="description" content="专注互联网运维技术发展">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="学无止境">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2014/01/06/1086/" class="post-title-link" itemprop="url">CENTOS6.0 iptables开放端口及保存防火墙规则</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2014-01-06 22:29:00" itemprop="dateCreated datePublished" datetime="2014-01-06T22:29:00+08:00">2014-01-06</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-07-14 15:15:21" itemprop="dateModified" datetime="2021-07-14T15:15:21+08:00">2021-07-14</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" itemprop="url" rel="index"><span itemprop="name">操作系统</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$<span class="regexp">/sbin/i</span>ptables -I INPUT -p tcp --dport <span class="number">80</span> -j ACCEPT</span><br><span class="line">$<span class="regexp">/sbin/i</span>ptables -I INPUT -p tcp --dport <span class="number">22</span> -j ACCEPT</span><br><span class="line">$<span class="regexp">/sbin/i</span>ptables -I INPUT -p tcp --dport <span class="number">3306</span> -j ACCEPT</span><br></pre></td></tr></table></figure>
+
+<p>然后保存:</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$<span class="regexp">/etc/</span>rc.d<span class="regexp">/init.d/i</span>ptables save</span><br></pre></td></tr></table></figure>
+
+<p>查看打开的端口:</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="regexp">/etc/i</span>nit.d/iptables status</span><br></pre></td></tr></table></figure>
+
+<p>补充说明:</p>
+<p>关闭防火墙:</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="regexp">/etc/i</span>nit.d/iptables stop</span><br></pre></td></tr></table></figure>
+
+<p>查看防火墙信息:</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="regexp">/etc/i</span>nit.d/iptables status</span><br></pre></td></tr></table></figure>
+
+<p>开放端口80808:</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/sbin/iptables -<span class="selector-tag">I</span> <span class="selector-tag">INPUT</span> -<span class="selector-tag">p</span> tcp --dport <span class="number">8080</span> -j ACCEPT</span><br></pre></td></tr></table></figure>
+
+<p>重启防火墙以便改动生效:(或者直接重启系统):</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="regexp">/etc/i</span>nit.d/iptables restart</span><br></pre></td></tr></table></figure>
+
+<p>将更改进行保存:</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="regexp">/etc/</span>rc.d<span class="regexp">/init.d/i</span>ptables save</span><br></pre></td></tr></table></figure>
+
+<p>另外直接在 <code>/etc/sysconfig/iptables</code>中增加一行:</p>
+<figure class="highlight ada"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">-A RH-Firewall-<span class="number">1</span>-INPUT -m state-state <span class="keyword">NEW</span> -m tcp -p tcp -dport <span class="number">8080</span> -j <span class="keyword">ACCEPT</span>#永久关闭防火墙</span><br><span class="line">chkconfig <span class="comment">--level 35 iptables off</span></span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://shuxun,wang/2014/01/02/1453/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="王殊勋">
+      <meta itemprop="description" content="专注互联网运维技术发展">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="学无止境">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2014/01/02/1453/" class="post-title-link" itemprop="url">解决 drbdadm create-md ha exited with coolcode 40</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2014-01-02 20:56:00" itemprop="dateCreated datePublished" datetime="2014-01-02T20:56:00+08:00">2014-01-02</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-07-14 15:16:24" itemprop="dateModified" datetime="2021-07-14T15:16:24+08:00">2021-07-14</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E9%94%99%E8%AF%AF%E8%A7%A3%E5%86%B3/" itemprop="url" rel="index"><span itemprop="name">错误解决</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>站长在使用drbd的时候,执行drbdadm create-md ha 时出现:</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">Device size would be truncated, which</span><br><span class="line"> would corrupt data and result <span class="keyword">in</span></span><br><span class="line"> <span class="string">&#x27;access beyond end of device&#x27;</span> errors.</span><br><span class="line"> You need to either</span><br><span class="line">    * use external meta data (recommended)</span><br><span class="line">    * shrink that filesystem first</span><br><span class="line">    * zero out the device (destroy the filesystem)</span><br><span class="line"> Operation refused.</span><br><span class="line"> Command <span class="string">&#x27;drbdmeta 0 v08 /dev/hdb1 internal create-md&#x27;</span> terminated with <span class="keyword">exit</span> coolcode <span class="number">40</span></span><br><span class="line"> drbdadm create-md ha: exited with coolcode <span class="number">40</span></span><br></pre></td></tr></table></figure>
+
+<p>解决办法是:</p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dd <span class="attribute">if</span>=/dev/zero <span class="attribute">of</span>=/dev/hdb1 <span class="attribute">bs</span>=1M <span class="attribute">count</span>=100</span><br></pre></td></tr></table></figure>
+
+<p>然后重新执行drbdadm create-md ha就可以顺利通过了.</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://shuxun,wang/2014/01/02/1088/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="王殊勋">
+      <meta itemprop="description" content="专注互联网运维技术发展">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="学无止境">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2014/01/02/1088/" class="post-title-link" itemprop="url">centos6.4更新163源</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2014-01-02 16:38:00" itemprop="dateCreated datePublished" datetime="2014-01-02T16:38:00+08:00">2014-01-02</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-07-14 15:15:33" itemprop="dateModified" datetime="2021-07-14T15:15:33+08:00">2021-07-14</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" itemprop="url" rel="index"><span itemprop="name">操作系统</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>1.备份现在的源文件</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mv <span class="regexp">/etc/yum</span>.repos.d<span class="regexp">/CentOS-Base.repo /</span>etc<span class="regexp">/yum.repos.d/</span>CentOS-Base.repo.bak</span><br></pre></td></tr></table></figure>
+
+<p>2.下载163源</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd <span class="regexp">/etc/yum</span>.repos.d/</span><br><span class="line">wget http:<span class="regexp">//mi</span>rrors.<span class="number">163</span>.com<span class="regexp">/.help/</span>CentOS6-Base-<span class="number">163</span>.repo</span><br></pre></td></tr></table></figure>
+
+<p>3.把下载文件改成源文件</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">mv</span> CentOS<span class="number">6</span>-Base-<span class="number">163</span>.repo CentOS-Base.repo</span><br></pre></td></tr></table></figure>
+
+<p>4.更新列表</p>
+<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">yum makecache</span></span><br></pre></td></tr></table></figure>
+
+<p>5.更新系统</p>
+<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">yum update</span> </span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+
+  
+  <nav class="pagination">
+    <a class="extend prev" rel="prev" href="/page/89/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/89/">89</a><span class="page-number current">90</span><a class="page-number" href="/page/91/">91</a><span class="space">&hellip;</span><a class="page-number" href="/page/132/">132</a><a class="extend next" rel="next" href="/page/91/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+  </nav>
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="王殊勋"
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name">王殊勋</p>
+  <div class="site-description" itemprop="description">better late than never.<br>只要开始，虽晚不迟。</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">656</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">2058</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <!--添加网站运行时间 -->
+  <span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
+  <script>
+      var now = new Date(); 
+      function createtime() { 
+          var grt= new Date("12/01/2007 12:00:00");//此处修改你的建站时间或者网站上线时间 
+          now.setTime(now.getTime()+250); 
+          days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days); 
+          hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours); 
+          if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum); 
+          mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;} 
+          seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum); 
+          snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;} 
+          document.getElementById("timeDate").innerHTML = "本站已安全运行 "+dnum+" 天 "; 
+          document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒"; 
+      } 
+  setInterval("createtime()",250);
+  </script>
+  <span itemprop="copyrightYear">(2007 - 2021)</span>
+  <!-- 添加网站运行时间 -->
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">学无止境</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script size="300" alpha="0.6" zIndex="0" src="/lib/canvas-ribbon/canvas-ribbon.js"></script>
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

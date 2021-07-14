@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"shuxun","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"./public/search.xml"};
+  </script>
+
+  <meta name="description" content="在Linux操作系统中,有一个系统软件包,它的功能类似于Windows里面的”添加&#x2F;删除程序”,但是功能又比”添加&#x2F;删除程序”强很多,它就是 Red Hat Package Manager(简称RPM).此工具包最先是由Red Hat公司推出的,后来被其他Linux开发商所借用.由于它为Linux使用者省去了很多时间,所以被广泛应用于在Linux下安装、删除软件.下面就给大家介绍一下它的具体使用方">
+<meta property="og:type" content="article">
+<meta property="og:title" content="RPM 命令参数使用详解">
+<meta property="og:url" content="http://shuxun,wang/2019/04/18/1349/index.html">
+<meta property="og:site_name" content="学无止境">
+<meta property="og:description" content="在Linux操作系统中,有一个系统软件包,它的功能类似于Windows里面的”添加&#x2F;删除程序”,但是功能又比”添加&#x2F;删除程序”强很多,它就是 Red Hat Package Manager(简称RPM).此工具包最先是由Red Hat公司推出的,后来被其他Linux开发商所借用.由于它为Linux使用者省去了很多时间,所以被广泛应用于在Linux下安装、删除软件.下面就给大家介绍一下它的具体使用方">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2019-04-18T15:11:00.000Z">
+<meta property="article:modified_time" content="2021-07-14T07:15:34.429Z">
+<meta property="article:author" content="王殊勋">
+<meta property="article:tag" content="安装">
+<meta property="article:tag" content="执行">
+<meta property="article:tag" content="系统">
+<meta property="article:tag" content="查找">
+<meta property="article:tag" content="rpm">
+<meta property="article:tag" content="软件">
+<meta property="article:tag" content="升级">
+<meta property="article:tag" content="功能">
+<meta property="article:tag" content="Linux">
+<meta property="article:tag" content="文件名">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://shuxun,wang/2019/04/18/1349/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>RPM 命令参数使用详解 | 学无止境</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">学无止境</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">注互联网运维技术发展</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-sitemap">
+
+    <a href="/sitemap.xml" rel="section"><i class="fa fa-sitemap fa-fw"></i>站点地图</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://shuxun,wang/2019/04/18/1349/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="王殊勋">
+      <meta itemprop="description" content="专注互联网运维技术发展">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="学无止境">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          RPM 命令参数使用详解
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-04-18 23:11:00" itemprop="dateCreated datePublished" datetime="2019-04-18T23:11:00+08:00">2019-04-18</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-07-14 15:15:34" itemprop="dateModified" datetime="2021-07-14T15:15:34+08:00">2021-07-14</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" itemprop="url" rel="index"><span itemprop="name">操作系统</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>在Linux操作系统中,有一个系统软件包,它的功能类似于Windows里面的”添加/删除程序”,但是功能又比”添加/删除程序”强很多,它就是 Red Hat Package Manager(简称RPM).此工具包最先是由Red Hat公司推出的,后来被其他Linux开发商所借用.由于它为Linux使用者省去了很多时间,所以被广泛应用于在Linux下安装、删除软件.下面就给大家介绍一下它的具体使用方法.</p>
+<p>1.我们得到一个新软件,在安装之前,一般都要先查看一下这个软件包里有什么内容,假设这个文件是:Linux-1.4-6.i368.rpm,我们可以用这条命令查看:</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">rpm</span> -qpi Linux-<span class="number">1</span>.<span class="number">4</span>-<span class="number">6</span>.i<span class="number">368</span>.rpm</span><br></pre></td></tr></table></figure>
+
+<p>系统将会列出这个软件包的详细资料,包括含有多少个文件、各文件名称、文件大小、创建时间、编译日期等信息.</p>
+<p>2.上面列出的所有文件在安装时不一定全部安装,就像Windows下程序的安装方式分为典型、完全、自定义一样,Linux也会让你选择安装方式,此时我们可以用下面这条命令查看软件包将会在系统里安装哪些部分,以方便我们的选择:</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">rpm</span> -qpl Linux-<span class="number">1</span>.<span class="number">4</span>-<span class="number">6</span>.i<span class="number">368</span>.rpm</span><br></pre></td></tr></table></figure>
+
+<p>3.选择安装方式后,开始安装.我们可以用rpm-ivh Linux-1.4-6.i368.rpm命令安装此软件.在安装过程中,若系统提示此软件已安装过或因其他原因无法继续安装,但若我们确实想执行安装命令,可以在 -ivh后加一参数”-replacepkgs”:</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">rpm</span> -ivh -replacepkgs Linux-<span class="number">1</span>.<span class="number">4</span>-<span class="number">6</span>.i<span class="number">368</span>.rpm</span><br></pre></td></tr></table></figure>
+
+<p>4.有时我们卸载某个安装过的软件,只需执行rpm-e &lt;文件名&gt;命令即可.</p>
+<p>5.对低版本软件进行升级是提高其功能的好办法,这样可以省去我们卸载后再安装新软件的麻烦,要升级某个软件,只须执行如下命令:rpm -uvh &lt;文件名&gt;,注意:此时的文件名必须是要升级软件的升级补丁.</p>
+<p>6.另外一个安装软件的方法可谓是Linux的独到之处,同时也是RMP强大功能的一个表现:通过FTP站点直接在线安装软件.当找到含有你所需软件的站点并与此网站连接后,执行下面的命令即可实现在线安装,譬如在线安装Linux-1.4-6.i368.rpm,可以用命令:</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rpm -i ftp:<span class="regexp">//</span>ftp.pht.com<span class="regexp">/pub/</span>linux<span class="regexp">/redhat/</span>...-<span class="number">1.4</span>-<span class="number">6</span>.i368.rpm</span><br></pre></td></tr></table></figure>
+
+<p>7.在我们使用电脑过程中,难免会有误操作,若我们误删了几个文件而影响了系统的性能时,怎样查找到底少了哪些文件呢?RPM软件包提供了一个查找损坏文件的功能,执行此命令:rpm -Va即可,Linux将为你列出所有损坏的文件.你可以通过Linux的安装光盘进行修复.</p>
+<p>8.Linux系统中文件繁多,在使用过程中,难免会碰到我们不认识的文件,在Windows下我们可以用”开始/查找”菜单快速判断某个文件属于哪个文件夹,在Linux中,下面这条命令行可以帮助我们快速判定某个文件属于哪个软件包:</p>
+<figure class="highlight bnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rpm -qf <span class="attribute">&lt;文件名&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>9.当每个软件包安装在Linux系统后,安装文件都会到RPM数据库中”报到”,所以,我们要查询某个已安装软件的属性时,只需到此数据库中查找即可.注意:此时的查询命令不同于1和8介绍的查询,这种方法只适用于已安装过的软件包!命令格式:</p>
+<figure class="highlight bnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rpm -参数 <span class="attribute">&lt;文件名&gt;</span></span><br></pre></td></tr></table></figure>
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E5%AE%89%E8%A3%85/" rel="tag"># 安装</a>
+              <a href="/tags/%E6%89%A7%E8%A1%8C/" rel="tag"># 执行</a>
+              <a href="/tags/%E7%B3%BB%E7%BB%9F/" rel="tag"># 系统</a>
+              <a href="/tags/%E6%9F%A5%E6%89%BE/" rel="tag"># 查找</a>
+              <a href="/tags/rpm/" rel="tag"># rpm</a>
+              <a href="/tags/%E8%BD%AF%E4%BB%B6/" rel="tag"># 软件</a>
+              <a href="/tags/%E5%8D%87%E7%BA%A7/" rel="tag"># 升级</a>
+              <a href="/tags/%E5%8A%9F%E8%83%BD/" rel="tag"># 功能</a>
+              <a href="/tags/Linux/" rel="tag"># Linux</a>
+              <a href="/tags/%E6%96%87%E4%BB%B6%E5%90%8D/" rel="tag"># 文件名</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2019/04/10/1530/" rel="prev" title="解决我检测到已有一个面板在运行,现在将退出">
+      <i class="fa fa-chevron-left"></i> 解决我检测到已有一个面板在运行,现在将退出
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2019/04/27/1093/" rel="next" title="centos6安装和配置Xen">
+      centos6安装和配置Xen <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="王殊勋"
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name">王殊勋</p>
+  <div class="site-description" itemprop="description">better late than never.<br>只要开始，虽晚不迟。</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">656</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">2058</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <!--添加网站运行时间 -->
+  <span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
+  <script>
+      var now = new Date(); 
+      function createtime() { 
+          var grt= new Date("12/01/2007 12:00:00");//此处修改你的建站时间或者网站上线时间 
+          now.setTime(now.getTime()+250); 
+          days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days); 
+          hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours); 
+          if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum); 
+          mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;} 
+          seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum); 
+          snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;} 
+          document.getElementById("timeDate").innerHTML = "本站已安全运行 "+dnum+" 天 "; 
+          document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒"; 
+      } 
+  setInterval("createtime()",250);
+  </script>
+  <span itemprop="copyrightYear">(2007 - 2021)</span>
+  <!-- 添加网站运行时间 -->
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">学无止境</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script size="300" alpha="0.6" zIndex="0" src="/lib/canvas-ribbon/canvas-ribbon.js"></script>
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

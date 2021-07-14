@@ -1,0 +1,812 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"shuxun","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"./public/search.xml"};
+  </script>
+
+  <meta name="description" content="专注互联网运维技术发展">
+<meta property="og:type" content="website">
+<meta property="og:title" content="学无止境">
+<meta property="og:url" content="http://shuxun,wang/index.html">
+<meta property="og:site_name" content="学无止境">
+<meta property="og:description" content="专注互联网运维技术发展">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:author" content="王殊勋">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://shuxun,wang/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : true,
+    isPost : false,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>学无止境</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">学无止境</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">注互联网运维技术发展</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-sitemap">
+
+    <a href="/sitemap.xml" rel="section"><i class="fa fa-sitemap fa-fw"></i>站点地图</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content index posts-expand">
+            
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://shuxun,wang/2021/07/13/1655/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="王殊勋">
+      <meta itemprop="description" content="专注互联网运维技术发展">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="学无止境">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/07/13/1655/" class="post-title-link" itemprop="url">信创版致信迁移注意事项</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-07-13 14:11:00" itemprop="dateCreated datePublished" datetime="2021-07-13T14:11:00+08:00">2021-07-13</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-07-14 15:14:53" itemprop="dateModified" datetime="2021-07-14T15:14:53+08:00">2021-07-14</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%90%84%E7%B1%BB%E6%9C%8D%E5%8A%A1/" itemprop="url" rel="index"><span itemprop="name">各类服务</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>host映射地址确认：<br>确保/etc/host中有如下映射，不存在会导致启动协同后无法登陆。</p>
+<figure class="highlight crmsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">166.166</span>.<span class="number">166.25</span> rcx-zookeeper-<span class="keyword">node</span><span class="title">-1</span> rcx-server-<span class="keyword">node</span><span class="title">-1</span> file-fdfs-<span class="keyword">node</span><span class="title">-1</span> file-server-<span class="keyword">node</span><span class="title">-1</span> rtc-server-<span class="keyword">node</span><span class="title">-1</span> rcx-rcdb-<span class="keyword">node</span><span class="title">-1-master</span>  rcx-rcdb-<span class="keyword">node</span><span class="title">-2-master</span> rcx-rcdb-<span class="keyword">node</span><span class="title">-3-master</span> rcx-rcdb-<span class="keyword">node</span><span class="title">-4-master</span> rcx-rcdb-<span class="keyword">node</span><span class="title">-1-vip</span> rcx-rcdb-<span class="keyword">node</span><span class="title">-2-vip</span> rcx-rcdb-<span class="keyword">node</span><span class="title">-3-vip</span> rcx-rcdb-<span class="keyword">node</span><span class="title">-4-vip</span> rce-redis-vip rce-elasticsearch-<span class="keyword">node</span><span class="title">-1</span> rce-mysql-<span class="keyword">node</span><span class="title">-1</span> rce-mysql-vip</span><br></pre></td></tr></table></figure>
+
+<p>关闭防火墙和selinux:</p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sed -i <span class="string">&quot;s/SELINUX=enforcing/SELINUX=disabled/&quot;</span> /etc/selinux<span class="built_in">/config </span>&amp;&amp; setenfoce 0</span><br><span class="line">systemctl stop firewalld</span><br><span class="line">systemctl <span class="builtin-name">disable</span> firewalld</span><br></pre></td></tr></table></figure>
+
+<p>手动安装supervisor:<br>脚本无法自动安装supervisor，不配置supervisor启动会失败。</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">cd</span> /opt/ansible-master/packages/middleware</span><br><span class="line"><span class="attribute">rpm</span> -ivh python<span class="number">3</span>-meld<span class="number">3</span>-<span class="number">2</span>.<span class="number">0</span>.<span class="number">0</span>-<span class="number">2</span>.ky<span class="number">10</span>.noarch.rpm</span><br><span class="line"><span class="attribute">rpm</span> -ivh supervisor-<span class="number">4</span>.<span class="number">0</span>.<span class="number">4</span>-<span class="number">3</span>.ky<span class="number">10</span>.noarch.rpm</span><br></pre></td></tr></table></figure>
+<p>检查是否安装成功,存在即为安装成功：</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ll <span class="regexp">/usr/</span>bin/supervisord</span><br></pre></td></tr></table></figure>
+<p>安装完成后，将原服务器supervisord配置文件覆盖到新服务器。</p>
+<p>修正库文件错误路径:<br>默认库文件路径错误，不修复fastdfs启动会失败。</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cp <span class="regexp">/usr/</span>lib<span class="regexp">/libfastcommon.so /u</span>sr<span class="regexp">/lib64/</span></span><br></pre></td></tr></table></figure>
+<p>迁移需要将旧服务器的/usr/lib64/libfastcommon.so拷贝到新服务器对应目录。</p>
+<p>主机名配置:<br>需要设置主机名为rcx-server-node-1，否则nginx会启动失败。</p>
+<figure class="highlight crmsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hostname rcx-server-<span class="keyword">node</span><span class="title">-1</span></span><br><span class="line">echo &#x27;rcx-server-<span class="keyword">node</span><span class="title">-1</span>&#x27; &gt; /etc/hostname</span><br></pre></td></tr></table></figure>
+
+<p>服务确认:<br>启动协同版致信。</p>
+<figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd <span class="regexp">/rcloud/</span>logs</span><br><span class="line"><span class="keyword">grep</span> -r -e <span class="string">&#x27;error&#x27;</span> &amp;&amp; <span class="keyword">grep</span> -r -e <span class="string">&#x27;ERROR&#x27;</span></span><br></pre></td></tr></table></figure>
+<p>没有错误日志为启动成功。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://shuxun,wang/2021/07/01/1335/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="王殊勋">
+      <meta itemprop="description" content="专注互联网运维技术发展">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="学无止境">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/07/01/1335/" class="post-title-link" itemprop="url">python判断是否为手机号</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-07-01 15:40:00" itemprop="dateCreated datePublished" datetime="2021-07-01T15:40:00+08:00">2021-07-01</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-07-14 15:16:02" itemprop="dateModified" datetime="2021-07-14T15:16:02+08:00">2021-07-14</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%BC%96%E7%A8%8B%E5%BC%80%E5%8F%91/" itemprop="url" rel="index"><span itemprop="name">编程开发</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>通过该程序可以判断一端数据是否为手机号码。</p>
+<figure class="highlight isbl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">import</span> <span class="variable">re</span></span><br><span class="line"><span class="variable">def</span> <span class="function"><span class="title">judge_Monile_phone</span>(<span class="variable">phone</span>):</span></span><br><span class="line"><span class="function">	<span class="variable"><span class="keyword">if</span></span> <span class="title">len</span>(<span class="variable">phone</span>)==<span class="number">11</span>:</span></span><br><span class="line"><span class="function">		<span class="variable">rp</span>=<span class="variable">re.compile</span>(<span class="string">&#x27;^0\d&#123;2,3&#125;\d&#123;7,8&#125;$|^1[358]\d&#123;9&#125;$|^147\d&#123;8&#125;&#x27;</span>)</span></span><br><span class="line">		<span class="variable">phoneMatch</span> = <span class="variable">rp.match</span>(<span class="variable">phone</span>)</span><br><span class="line">		<span class="variable"><span class="keyword">if</span></span> <span class="variable">phoneMatch</span>:</span><br><span class="line">			<span class="function"><span class="title">print</span>(<span class="string">&#x27;手机号正确!&#x27;</span>)</span></span><br><span class="line">		<span class="variable"><span class="keyword">else</span></span>:</span><br><span class="line">			<span class="function"><span class="title">print</span>(<span class="string">&quot;手机号码错误!&quot;</span>)</span></span><br><span class="line">	<span class="variable"><span class="keyword">else</span></span>:</span><br><span class="line">		<span class="function"><span class="title">print</span>(<span class="string">&quot;号码长度错误!&quot;</span>)</span></span><br><span class="line"><span class="variable"><span class="keyword">if</span></span> <span class="variable">__name__</span> == <span class="string">&quot;__main__&quot;</span>:</span><br><span class="line">	<span class="function"><span class="title">judge_Monile_phone</span>(<span class="string">&#x27;13412341234&#x27;</span>)</span></span><br></pre></td></tr></table></figure>
+
+<p>推荐python3运行该程序。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://shuxun,wang/2021/06/07/1580/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="王殊勋">
+      <meta itemprop="description" content="专注互联网运维技术发展">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="学无止境">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/06/07/1580/" class="post-title-link" itemprop="url">使用gunicorn启动flask项目</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-06-07 15:40:00" itemprop="dateCreated datePublished" datetime="2021-06-07T15:40:00+08:00">2021-06-07</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-07-14 15:16:23" itemprop="dateModified" datetime="2021-07-14T15:16:23+08:00">2021-07-14</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%BC%96%E7%A8%8B%E5%BC%80%E5%8F%91/" itemprop="url" rel="index"><span itemprop="name">编程开发</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>gunicorn安装非常简单，使用命令一条即可。</p>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip <span class="keyword">install</span> gunicorn</span><br></pre></td></tr></table></figure>
+
+<p>一般我们使用gunicorn，主要是为使用其异步的worker模型，还需要安装对应的异步模块。</p>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ pip <span class="keyword">install</span> greenlet <span class="comment"># 使用异步必须安装</span></span><br><span class="line">$ pip <span class="keyword">install</span> eventlet <span class="comment"># 使用eventlet workers</span></span><br><span class="line">$ pip <span class="keyword">install</span> gevent   <span class="comment"># 使用gevent workers</span></span><br></pre></td></tr></table></figure>
+
+<p>这里使用gunicorn来部署一个flask项目举例，此处flask框架的使用不过多阐述，不是本文的重点。</p>
+<p>如下例子，保存为app.py。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> flask <span class="keyword">import</span> Flask</span><br><span class="line">app = Flask(__name__)</span><br><span class="line"></span><br><span class="line"><span class="meta">@app.route(<span class="params"><span class="string">&quot;/&quot;</span></span>)</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">hello</span>():</span></span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;Hello World!&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>gunicorn通常使用的参数如下：</p>
+<figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">-c <span class="built_in">CONFIG</span>, --<span class="built_in">config</span>=<span class="built_in">CONFIG</span></span><br></pre></td></tr></table></figure>
+
+<p>设定配置文件。</p>
+<figure class="highlight fortran"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">-b <span class="keyword">BIND</span>, --<span class="keyword">bind</span>=<span class="keyword">BIND</span></span><br></pre></td></tr></table></figure>
+
+<p>设定服务需要绑定的端口。建议使用HOST:PORT。</p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">-w WORKERS, <span class="attribute">--workers</span>=WORKERS</span><br></pre></td></tr></table></figure>
+
+<p>设置工作进程数。建议服务器每一个核心可以设置2-4个。</p>
+<figure class="highlight diff"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="deletion">-k MODULE</span></span><br></pre></td></tr></table></figure>
+
+<p>选定异步工作方式使用的模块。<br>在shell中输入你的启动配置，比如：</p>
+<figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ gunicorn -w 3 -b 127.0.0.1:8080 <span class="keyword">app</span>:<span class="keyword">app</span></span><br></pre></td></tr></table></figure>
+
+<p>此处app:app中，第一个app为flask项目实例所在的包，第二个app为生成的flask项目实例这样运行正常就可以启动服务器了。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://shuxun,wang/2021/05/07/1447/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="王殊勋">
+      <meta itemprop="description" content="专注互联网运维技术发展">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="学无止境">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/05/07/1447/" class="post-title-link" itemprop="url">记录python脚本执行时间并写入文件</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-05-07 15:40:00" itemprop="dateCreated datePublished" datetime="2021-05-07T15:40:00+08:00">2021-05-07</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-07-14 15:14:58" itemprop="dateModified" datetime="2021-07-14T15:14:58+08:00">2021-07-14</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%BC%96%E7%A8%8B%E5%BC%80%E5%8F%91/" itemprop="url" rel="index"><span itemprop="name">编程开发</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>该脚本可以记录python程序运行时间，并写入日志。</p>
+<figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># coding=utf-8 #</span></span><br><span class="line">import <span class="built_in">time</span></span><br><span class="line"></span><br><span class="line">starttime = <span class="built_in">time</span>.<span class="built_in">time</span>()</span><br><span class="line"><span class="built_in">time</span>.sleep(<span class="number">2.1</span>) <span class="comment">#延时2.1s，此处可以是任何python需要执行的代码</span></span><br><span class="line">endtime = <span class="built_in">time</span>.<span class="built_in">time</span>()</span><br><span class="line">dtime = endtime - starttime</span><br><span class="line">filename = <span class="string">&#x27;test_text.txt&#x27;</span></span><br><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(filename, <span class="string">&#x27;w&#x27;</span>) <span class="keyword">as</span> file_object:</span><br><span class="line">    file_object.<span class="built_in">write</span>(<span class="string">&#x27;程序运行时间：%.8s s&#x27;</span> % dtime)</span><br><span class="line">print(<span class="string">&quot;程序运行时间：%.8s s&quot;</span> % dtime) <span class="comment">#显示到微秒</span></span><br></pre></td></tr></table></figure>
+
+<p>自行更换掉time.sleep(2.1)为您需要记录的python操作。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://shuxun,wang/2021/04/07/1333/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="王殊勋">
+      <meta itemprop="description" content="专注互联网运维技术发展">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="学无止境">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/04/07/1333/" class="post-title-link" itemprop="url">python查找指定时间范围的文件并保存目录结构复制</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-04-07 15:40:00" itemprop="dateCreated datePublished" datetime="2021-04-07T15:40:00+08:00">2021-04-07</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-07-14 15:16:01" itemprop="dateModified" datetime="2021-07-14T15:16:01+08:00">2021-07-14</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%BC%96%E7%A8%8B%E5%BC%80%E5%8F%91/" itemprop="url" rel="index"><span itemprop="name">编程开发</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>该脚本可以查找某个目录里指定时间范围的文件，并保存目录结构复制到新的路径。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">import</span> shutil</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"></span><br><span class="line">time0 = <span class="string">&quot;2021-01-27&quot;</span><span class="comment">#起始日期</span></span><br><span class="line">time1 = <span class="string">&quot;2021-03-02&quot;</span><span class="comment">#结束日期</span></span><br><span class="line">targetDir = <span class="string">r&quot;/home/backup&quot;</span><span class="comment">#目标目录</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;正在处理，请稍等.....&quot;</span>)</span><br><span class="line">curDir = <span class="string">r&quot;/home/flask&quot;</span><span class="comment">#原来的路径</span></span><br><span class="line"><span class="keyword">for</span> root, dirs, files <span class="keyword">in</span> os.walk(curDir):</span><br><span class="line">    <span class="comment">#先创建目标目录</span></span><br><span class="line">    curFolder = root[<span class="built_in">len</span>(curDir)+<span class="number">1</span>:]                    <span class="comment">#提取当前文件夹</span></span><br><span class="line">    tempTargetDir = os.path.join(targetDir, curFolder)  <span class="comment">#生成目标目录绝对路径</span></span><br><span class="line">    <span class="comment"># print(tempTargetDir)</span></span><br><span class="line">    <span class="keyword">if</span> os.path.exists(tempTargetDir):</span><br><span class="line">        shutil.rmtree(tempTargetDir)</span><br><span class="line">    <span class="comment">#再拷贝文件</span></span><br><span class="line">    t0 = time.mktime(time.strptime(time0, <span class="string">&quot;%Y-%m-%d&quot;</span>))</span><br><span class="line">    t1 = time.mktime(time.strptime(time1, <span class="string">&quot;%Y-%m-%d&quot;</span>))+<span class="number">3600</span>*<span class="number">24</span></span><br><span class="line">    <span class="keyword">for</span> fileName <span class="keyword">in</span> files:</span><br><span class="line">        absFileName = os.path.join(root, fileName)</span><br><span class="line">        <span class="keyword">if</span> os.path.splitext(absFileName)[<span class="number">1</span>] != <span class="string">&#x27;.py&#x27;</span> <span class="keyword">and</span> os.path.getmtime(absFileName) &gt;= t0 <span class="keyword">and</span> os.path.getmtime(absFileName) &lt;= t1:</span><br><span class="line">            <span class="keyword">if</span> <span class="keyword">not</span> os.path.exists(tempTargetDir):</span><br><span class="line">                os.makedirs(tempTargetDir)</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">&quot;正在拷贝文件：&quot;</span>, absFileName)</span><br><span class="line">            shutil.copy(absFileName, tempTargetDir)</span><br></pre></td></tr></table></figure>
+
+<p>推荐python3运行。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+
+  
+  <nav class="pagination">
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/132/">132</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+  </nav>
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="王殊勋"
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name">王殊勋</p>
+  <div class="site-description" itemprop="description">better late than never.<br>只要开始，虽晚不迟。</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">656</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">2058</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <!--添加网站运行时间 -->
+  <span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
+  <script>
+      var now = new Date(); 
+      function createtime() { 
+          var grt= new Date("12/01/2007 12:00:00");//此处修改你的建站时间或者网站上线时间 
+          now.setTime(now.getTime()+250); 
+          days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days); 
+          hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours); 
+          if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum); 
+          mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;} 
+          seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum); 
+          snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;} 
+          document.getElementById("timeDate").innerHTML = "本站已安全运行 "+dnum+" 天 "; 
+          document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒"; 
+      } 
+  setInterval("createtime()",250);
+  </script>
+  <span itemprop="copyrightYear">(2007 - 2021)</span>
+  <!-- 添加网站运行时间 -->
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">学无止境</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script size="300" alpha="0.6" zIndex="0" src="/lib/canvas-ribbon/canvas-ribbon.js"></script>
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

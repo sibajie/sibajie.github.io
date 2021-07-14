@@ -1,0 +1,886 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"shuxun","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"./public/search.xml"};
+  </script>
+
+  <meta name="description" content="专注互联网运维技术发展">
+<meta property="og:type" content="website">
+<meta property="og:title" content="学无止境">
+<meta property="og:url" content="http://shuxun,wang/page/58/index.html">
+<meta property="og:site_name" content="学无止境">
+<meta property="og:description" content="专注互联网运维技术发展">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:author" content="王殊勋">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://shuxun,wang/page/58/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : true,
+    isPost : false,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>学无止境</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">学无止境</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">注互联网运维技术发展</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-sitemap">
+
+    <a href="/sitemap.xml" rel="section"><i class="fa fa-sitemap fa-fw"></i>站点地图</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content index posts-expand">
+            
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://shuxun,wang/2016/04/13/1029/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="王殊勋">
+      <meta itemprop="description" content="专注互联网运维技术发展">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="学无止境">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2016/04/13/1029/" class="post-title-link" itemprop="url">Apache ab 压力测试</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2016-04-13 01:15:00" itemprop="dateCreated datePublished" datetime="2016-04-13T01:15:00+08:00">2016-04-13</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-07-14 15:14:55" itemprop="dateModified" datetime="2021-07-14T15:14:55+08:00">2021-07-14</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%90%84%E7%B1%BB%E6%9C%8D%E5%8A%A1/" itemprop="url" rel="index"><span itemprop="name">各类服务</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>压力测试是一种基本的质量保证行为,它是每个重要软件测试工作的一部分.压力测试的基本思路很简单:不是在常规条件下运行手动或自动测试,而是在计 算机数量较少或系统资源匮乏的条件下运行测试.通常要进行压力测试的资源包括内部内存、CPU 可用性、磁盘空间和网络带宽等.一般用并发来做压力测试.</p>
+<p>1.apache安装</p>
+<p>下载:</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">wget</span> http://httpd.apache.org/download.cgi下载httpd-<span class="number">2</span>.<span class="number">0</span>.<span class="number">58</span>.tar.gz</span><br></pre></td></tr></table></figure>
+
+<p>安装:<br>tar -zxvf  httpd-2.0.58.tar.gz<br>./configure –prefix=/usr/local/apache2test –enable-so –enable-shared=max –with-mpm=worker –enable-deflate –enable-headers –enable-rewrite –enable-proxy –enable-proxy –enable-ssl –with-ssl=/path/to/install/openssl_0.97i –enable-modules=all &amp;&amp; make &amp;&amp; make install</p>
+<p>(这是正式服务器上的apache2的编译参数,其中 <code>–with-mpm=worker –with-ssl=/path/to/install/openssl_0.97i</code>可以根据实际情况做出修改)<br>然后安装php,并且在 <code>/usr/local/apache2test/conf</code>目录下的httpd.conf里面的DSO支持之后加入</p>
+<figure class="highlight jboss-cli"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">AddType application/x-httpd-php <span class="string">.php</span> <span class="string">.phtml</span> <span class="string">.html</span> <span class="string">.htm</span></span><br><span class="line">AddType application/x-httpd-php-source <span class="string">.phps</span></span><br></pre></td></tr></table></figure>
+
+<p>最后将测试的php网页文件添加到 <code>/usr/local/apache2test/htdocs</code>目录下:</p>
+<figure class="highlight gauss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">make</span></span><br><span class="line"><span class="built_in">make</span> install</span><br></pre></td></tr></table></figure>
+
+<p>2.测试工具说明以及安装</p>
+<p>ab:</p>
+<p>ab是Apache超文本传输协议(HTTP)的性能测试工具. 其设计意图是描绘当前所安装的Apache的执行性能,主要是显示你安装的Apache每秒可以处理多少个请求;<br>概要:运行 <code>/usr/local/apache-install-path/bin/ab -help</code>查看ab的具体命令选项;<br>命令选项-c concurrency 一次产生的请求个数.默认是一次一个.<br>-n requests 在测试会话中所执行的请求个数. 默认时,仅执行一个请求,但通常其结果不  具有代表意义<br>运行结果:主要要注意的是以下内容<br>Time taken for tests: 总共执行所花费的时间.(以上 1000 次共多久)<br>Requests per second:  每秒平均可以处理多少个connection.<br>备注:每次仅仅能针对一个连接做重复的测试.</p>
+<p>Siege:</p>
+<p>是一个压力测试和评测工具,设计用于WEB开发这评估应用在压力下的承受能力:可以根据配置对一个WEB站点进行多用户的并发访问,记录每个用户所有请求过程的相应时间,并在一定数量的并发访问下重复进行.</p>
+<p>下载/安装:</p>
+<p>Siege时一个开放源代码项目,可以在<a target="_blank" rel="noopener" href="http://www.google.com/">http://www.google.com</a> 上查找<br>备注:最好选择2.5以上版本,因为高版本多包括一个辅助工具,能够做增量压力测试,低版本不包括此工具.</p>
+<p>安装:</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">.<span class="regexp">/configure –prefix=/</span>path<span class="regexp">/to/i</span>nstall &amp;&amp; make &amp;&amp; make install</span><br></pre></td></tr></table></figure>
+
+<p>使用说明:</p>
+<p>siege使用:</p>
+<p>在 <code>/path/to/install/bin/</code>目录下创建需要测试的链接文件,如<a target="_blank" rel="noopener" href="http://www.test.com.url,添加需要的测试的链接/">www.test.com.url,添加需要的测试的链接</a>.</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">http:<span class="regexp">//</span><span class="number">10.5</span>.<span class="number">3.122</span><span class="regexp">/test/g</span>oogle.php/</span><br><span class="line">http:<span class="regexp">//</span><span class="number">10.5</span>.<span class="number">3.122</span><span class="regexp">/test/</span>baidu.php/</span><br><span class="line">http:<span class="regexp">//</span><span class="number">10.5</span>.<span class="number">3.122</span><span class="regexp">/test/</span>sogou.php/</span><br></pre></td></tr></table></figure>
+
+<p>然后保存.<br>siege使用样例:</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">siege</span> -c <span class="number">20</span> -r <span class="number">2</span> -f www.chedong.com.url</span><br></pre></td></tr></table></figure>
+
+<p>参数说明:</p>
+<figure class="highlight haml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">-<span class="ruby">c <span class="number">20</span> 并发<span class="number">20</span>个用户</span></span><br><span class="line"><span class="ruby"></span>-<span class="ruby">r <span class="number">2</span> 重复循环<span class="number">2</span>次</span></span><br><span class="line"><span class="ruby"></span>-<span class="ruby">f www.test.com.url 任务列表<span class="symbol">:URL</span>列表</span></span><br></pre></td></tr></table></figure>
+
+<p>输出样例:</p>
+<figure class="highlight ldif"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">** Siege 2.59</span><br><span class="line">** Preparing 20 concurrent users for battle. 这次&quot;战斗&quot;准备了20个并发用户</span><br><span class="line"><span class="attribute">The server is now under siege.. done. 服务在&quot;围攻&quot;测试中:</span></span><br><span class="line"><span class="attribute">Transactions</span>: 40 hits 完成40次处理</span><br><span class="line"><span class="attribute">Availability</span>: 100.00 % 成功率</span><br><span class="line"><span class="attribute">Elapsed time</span>: 7.67 secs 总共用时</span><br><span class="line"><span class="attribute">Data transferred</span>: 877340 bytes 共数据传输:877340字节</span><br><span class="line"><span class="attribute">Response time</span>: 1.65 secs 相应用时1.65秒:显示网络连接的速度</span><br><span class="line"><span class="attribute">Transaction rate</span>: 5.22 trans/sec 平均每秒完成5.22次处理:表示服务器后台处理的速度</span><br><span class="line"></span><br><span class="line"><span class="attribute">Throughput</span>: 114385.92 bytes/sec 平均每秒传送数据:114385.92字节</span><br><span class="line"><span class="attribute">Concurrency</span>: 8.59 最高并发数 8.59</span><br><span class="line"><span class="attribute">Successful transactions</span>: 40 成功处理次数</span><br><span class="line"><span class="attribute">Failed transactions</span>: 0 失败处理次数</span><br></pre></td></tr></table></figure>
+
+<p>bombardment使用样例:</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">bombardment</span> www.test.com.url <span class="number">5</span> <span class="number">3</span> <span class="number">4</span> <span class="number">1</span></span><br></pre></td></tr></table></figure>
+
+<p>初始化URL列表:<a target="_blank" rel="noopener" href="http://www.test.com.url/">www.test.com.url</a><br>初始化为:5个用户<br>每次增加:3个用户<br>运行:4次<br>每个客户端之间的延迟为:1秒<br>输出样例和siege一致,但是会在每一次增量结束之后都有输出.</p>
+<p>3.测试方法说明</p>
+<p>测试步骤:</p>
+<p>方法1.安装apache2后,直接使用apache2的默认设置配置,不做任何修改,进行测试;<br>方法2.按照以前文档提出的Web容量规划和内存的大小,计算出相应的启动进程数,配置httpd.conf文件,再进行测试;</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">ServerLimit</span>             <span class="number">400</span></span><br><span class="line"><span class="attribute">StartServers</span>            <span class="number">20</span></span><br><span class="line"><span class="attribute">MinSpareServers</span>         <span class="number">20</span></span><br><span class="line"><span class="attribute">MaxSpareServers</span>         <span class="number">50</span></span><br><span class="line"><span class="attribute">MaxClients</span>       <span class="number">300</span></span><br><span class="line"><span class="attribute">MaxRequestsPerChild</span>     <span class="number">10000</span></span><br></pre></td></tr></table></figure>
+
+<p>方法3.超过极限设置,进行测试.(规划容量的2倍进行)</p>
+<p>1000个链接,分为不同的并发数请求,10、50、100、200、300、500</p>
+<p>ab测试:</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="regexp">/usr/</span>local<span class="regexp">/apache2.53/</span>bin<span class="regexp">/ab -n 1000 -c 10 http:/</span><span class="regexp">/10.5.3.122/</span>test<span class="regexp">/google.php/</span></span><br><span class="line"><span class="regexp">/usr/</span>local<span class="regexp">/apache2.53/</span>bin<span class="regexp">/ab -n 1000 -c 50 http:/</span><span class="regexp">/10.5.3.122/</span>test<span class="regexp">/google.php/</span></span><br><span class="line"><span class="regexp">/usr/</span>local<span class="regexp">/apache2.53/</span>bin<span class="regexp">/ab -n 1000 -c 100 http:/</span><span class="regexp">/10.5.3.122/</span>test<span class="regexp">/google.php/</span></span><br><span class="line"><span class="regexp">/usr/</span>local<span class="regexp">/apache2.53/</span>bin<span class="regexp">/ab -n 1000 -c 200 http:/</span><span class="regexp">/10.5.3.122/</span>test<span class="regexp">/google.php/</span></span><br><span class="line"><span class="regexp">/usr/</span>local<span class="regexp">/apache2.53/</span>bin<span class="regexp">/ab -n 1000 -c 300 http:/</span><span class="regexp">/10.5.3.122/</span>test<span class="regexp">/google.php/</span></span><br><span class="line"><span class="regexp">/usr/</span>local<span class="regexp">/apache2.53/</span>bin<span class="regexp">/ab -n 1000 -c 500 http:/</span><span class="regexp">/10.5.3.122/</span>test<span class="regexp">/google.php/</span></span><br></pre></td></tr></table></figure>
+
+<p>siege测试:</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="regexp">/usr/</span>local<span class="regexp">/siege/</span>bin/siege -c <span class="number">10</span> -r <span class="number">100</span> -f www.test.com.url</span><br><span class="line"><span class="regexp">/usr/</span>local<span class="regexp">/siege/</span>bin/siege -c <span class="number">50</span> -r <span class="number">20</span> -f www.test.com.url</span><br><span class="line"><span class="regexp">/usr/</span>local<span class="regexp">/siege/</span>bin/siege -c <span class="number">100</span> -r <span class="number">10</span> -f www.test.com.url</span><br><span class="line"><span class="regexp">/usr/</span>local<span class="regexp">/siege/</span>bin/siege -c <span class="number">200</span> -r <span class="number">5</span> -f www.test.com.url</span><br><span class="line"><span class="regexp">/usr/</span>local<span class="regexp">/siege/</span>bin/siege -c <span class="number">300</span> -r <span class="number">3</span> -f www.test.com.url</span><br><span class="line"><span class="regexp">/usr/</span>local<span class="regexp">/siege/</span>bin/siege -c <span class="number">500</span> -r <span class="number">2</span> -f www.test.com.url</span><br><span class="line">增量测试:</span><br><span class="line"><span class="regexp">/usr/</span>local<span class="regexp">/siege/</span>bin/bombardment www.test.com.url <span class="number">1</span> <span class="number">100</span> <span class="number">5</span> <span class="number">1</span></span><br><span class="line"><span class="regexp">/usr/</span>local<span class="regexp">/siege/</span>bin/bombardment www.test.com.url <span class="number">1</span> <span class="number">100</span> <span class="number">6</span> <span class="number">1</span></span><br></pre></td></tr></table></figure>
+
+<p>4.测试结果总结</p>
+<p>ab测试:测试并发连接数在50<del>500的情况下,方法2比方法1性能略有提升,但是相差在10个并发连接数左右,并且方法1方法2在测试并发数100的情况下,实际并发数都相差无几.<br>siege测试:测试并发数从50之后直到500,性能都有提升,并且在测试并发数100、200、500的情况下,提升相差10</del>30个实际并发数.<br>bombardment测试:相差不大.<br>本次测试的结果不太理想,性能的变化不显著,也不明显,可以所属于失败的测试结果.<br>分析原因:1.本身硬件配置不高,所以默认设置和修改后的设置变化不明显,对性能的提升也明显不足;<br>2.负载情况太少,由于系统性能原因,增量测试都不能过大的进行,系统性能load average过高;<br>3.测试页面程序也太少,没有太大说服力.</p>
+<p>ab压力测试</p>
+<p>以前安装好APACHE总是不知道该如何测试APACHE的性能,现在总算找到一个测试工具了.就是APACHE自带的测试工具AB(apache benchmark).在APACHE的bin目录下.</p>
+<figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line">格式: ./ab [<span class="keyword">options</span>] [http://]hostname[:port]/<span class="type">path</span></span><br><span class="line">参数:</span><br><span class="line">    -n requests     Number <span class="keyword">of</span> requests <span class="keyword">to</span> <span class="keyword">perform</span></span><br><span class="line">    //在测试会话中所执行的请求个数.默认时,仅执行一个请求</span><br><span class="line">    -c concurrency Number <span class="keyword">of</span> multiple requests <span class="keyword">to</span> make</span><br><span class="line">    //一次产生的请求个数.默认是一次一个. </span><br><span class="line">    -t timelimit    Seconds <span class="keyword">to</span> max. wait <span class="keyword">for</span> responses</span><br><span class="line">    //测试所进行的最大秒数.其内部隐含值是-n <span class="number">50000.</span>它可以使对服务器的测试限制在一个固定的总时间以内.默认时,没有时间限制.</span><br><span class="line">    -p postfile     File containing data <span class="keyword">to</span> POST</span><br><span class="line">    //包含了需要POST的数据的文件. </span><br><span class="line">    -T content-<span class="keyword">type</span> Content-<span class="keyword">type</span> <span class="keyword">header</span> <span class="keyword">for</span> POSTing</span><br><span class="line">    //POST数据所使用的Content-<span class="keyword">type</span>头信息.</span><br><span class="line">    -v verbosity    How much troubleshooting <span class="keyword">info</span> <span class="keyword">to</span> print</span><br><span class="line">    //设置显示信息的详细程度 - <span class="number">4</span>或更大值会显示头信息, <span class="number">3</span>或更大值可以显示响应代码(<span class="number">404</span>, <span class="number">200</span>等), <span class="number">2</span>或更大值可以显示警告和其他信息. -V 显示版本号并退出.</span><br><span class="line">    -w              Print <span class="keyword">out</span> results <span class="keyword">in</span> HTML <span class="keyword">tables</span></span><br><span class="line">    //以HTML表的格式输出结果.默认时,它是白色背景的两列宽度的一张表.</span><br><span class="line">    -i              Use HEAD <span class="keyword">instead</span> <span class="keyword">of</span> <span class="keyword">GET</span></span><br><span class="line">    // 执行HEAD请求,而不是<span class="keyword">GET</span>.</span><br><span class="line">    -x attributes   String <span class="keyword">to</span> <span class="keyword">insert</span> <span class="keyword">as</span> <span class="keyword">table</span> attributes</span><br><span class="line">    //</span><br><span class="line">    -y attributes   String <span class="keyword">to</span> <span class="keyword">insert</span> <span class="keyword">as</span> tr attributes</span><br><span class="line">    //</span><br><span class="line">    -z attributes   String <span class="keyword">to</span> <span class="keyword">insert</span> <span class="keyword">as</span> td <span class="keyword">or</span> th attributes</span><br><span class="line">    //</span><br><span class="line">    -C <span class="keyword">attribute</span>    <span class="keyword">Add</span> cookie, eg. <span class="string">&#x27;Apache=1234. (repeatable)</span></span><br><span class="line"><span class="string">    //-C cookie-name=value 对请求附加一个Cookie:行. 其典型形式是name=value的一个参数对.此参数可以重复.</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    -H attribute    Add Arbitrary header line, eg. &#x27;</span>Accept-<span class="keyword">Encoding</span>: gzip<span class="string">&#x27;</span></span><br><span class="line"><span class="string">                    Inserted after all normal header lines. (repeatable)</span></span><br><span class="line"><span class="string">    -A attribute    Add Basic WWW Authentication, the attributes</span></span><br><span class="line"><span class="string">                    are a colon separated username and password.</span></span><br><span class="line"><span class="string">    -P attribute    Add Basic Proxy Authentication, the attributes</span></span><br><span class="line"><span class="string">                    are a colon separated username and password.</span></span><br><span class="line"><span class="string">    //-P proxy-auth-username:password 对一个中转代理提供BASIC认证信任.用户名和密码由一个:隔开,并以base64编码形式发送.无论服务器是否需要(即, 是否发送了401认证需求代码),此字符串都会被发送.</span></span><br><span class="line"><span class="string">    -X proxy:port   Proxyserver and port number to use</span></span><br><span class="line"><span class="string">    -V              Print version number and exit</span></span><br><span class="line"><span class="string">    -k              Use HTTP KeepAlive feature</span></span><br><span class="line"><span class="string">    -d              Do not show percentiles served table.</span></span><br><span class="line"><span class="string">    -S              Do not show confidence estimators and warnings.</span></span><br><span class="line"><span class="string">    -g filename     Output collected data to gnuplot format file.</span></span><br><span class="line"><span class="string">    -e filename     Output CSV file with percentages served</span></span><br><span class="line"><span class="string">    -h              Display usage information (this message)</span></span><br><span class="line"><span class="string">    //-attributes 设置 属性的字符串. 缺陷程序中有各种静态声明的固定长度的缓冲区.另外,对命令行参数、服务器的响应头和其他外部输入的解析也很简单,这可能会有不良后果.它没有完整地实现 HTTP/1.x; 仅接受某些&#x27;</span>预想<span class="string">&#x27;的响应格式. strstr(3)的频繁使用可能会带来性能问题,即, 你可能是在测试ab而不是服务器的性能.</span></span><br></pre></td></tr></table></figure>
+
+<p>参数很多,一般我们用 -c 和 -n 参数就可以了. 例如:</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">.<span class="regexp">/ab -c 1000 -n 1000 http:/</span><span class="regexp">/127.0.0.1/i</span>ndex.php</span><br></pre></td></tr></table></figure>
+
+<p>这个表示同时处理1000个请求并运行1000次index.php文件.</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#/usr/local/xiaobai/apache2054/bin/ab -c 1000 -n 1000 http://127.0.0.1/index.html.zh-cn.gb2312 </span></span><br><span class="line"><span class="string">This</span> <span class="string">is</span> <span class="string">ApacheBench,</span> <span class="string">Version</span> <span class="number">2.0</span><span class="number">.41</span><span class="string">-dev</span> <span class="string">&lt;$Revision:</span> <span class="number">1.121</span><span class="number">.2</span><span class="number">.12</span> <span class="string">$&gt;</span> <span class="string">apache-2.0</span></span><br><span class="line"><span class="string">Copyright</span> <span class="string">(c)</span> <span class="number">1996 </span><span class="string">Adam</span> <span class="string">Twiss,</span> <span class="string">Zeus</span> <span class="string">Technology</span> <span class="string">Ltd,</span> <span class="string">http://www.zeustech.net/</span></span><br><span class="line"><span class="string">Copyright</span> <span class="string">(c)</span> <span class="number">1998</span><span class="number">-2002</span> <span class="string">The</span> <span class="string">Apache</span> <span class="string">Software</span> <span class="string">Foundation,</span> <span class="string">http://www.apache.org/</span></span><br><span class="line"></span><br><span class="line"><span class="string">Benchmarking</span> <span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span> <span class="string">(be</span> <span class="string">patient)</span></span><br><span class="line"><span class="string">Completed</span> <span class="number">100</span> <span class="string">requests</span></span><br><span class="line"><span class="string">Completed</span> <span class="number">200</span> <span class="string">requests</span></span><br><span class="line"><span class="string">Completed</span> <span class="number">300</span> <span class="string">requests</span></span><br><span class="line"><span class="string">Completed</span> <span class="number">400</span> <span class="string">requests</span></span><br><span class="line"><span class="string">Completed</span> <span class="number">500</span> <span class="string">requests</span></span><br><span class="line"><span class="string">Completed</span> <span class="number">600</span> <span class="string">requests</span></span><br><span class="line"><span class="string">Completed</span> <span class="number">700</span> <span class="string">requests</span></span><br><span class="line"><span class="string">Completed</span> <span class="number">800</span> <span class="string">requests</span></span><br><span class="line"><span class="string">Completed</span> <span class="number">900</span> <span class="string">requests</span></span><br><span class="line"><span class="string">Finished</span> <span class="number">1000 </span><span class="string">requests</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="attr">Server Software:</span>        <span class="string">Apache/2.0.54</span></span><br><span class="line"><span class="string">//平台apache</span> <span class="string">版本2.0.54</span></span><br><span class="line"><span class="attr">Server Hostname:</span>        <span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span></span><br><span class="line"><span class="string">//服务器主机名</span></span><br><span class="line"><span class="attr">Server Port:</span>            <span class="number">80</span></span><br><span class="line"><span class="string">//服务器端口</span></span><br><span class="line"></span><br><span class="line"><span class="attr">Document Path:</span>          <span class="string">/index.html.zh-cn.gb2312</span></span><br><span class="line"><span class="string">//测试的页面文档</span></span><br><span class="line"><span class="attr">Document Length:</span>        <span class="number">1018 </span><span class="string">bytes</span></span><br><span class="line"><span class="string">//文档大小</span></span><br><span class="line"></span><br><span class="line"><span class="attr">Concurrency Level:</span>      <span class="number">1000</span></span><br><span class="line"><span class="string">//并发数</span></span><br><span class="line"><span class="attr">Time taken for tests:</span>   <span class="number">8.188731</span> <span class="string">seconds</span></span><br><span class="line"><span class="string">//整个测试持续的时间</span></span><br><span class="line"><span class="attr">Complete requests:</span>      <span class="number">1000</span></span><br><span class="line"><span class="string">//完成的请求数量</span></span><br><span class="line"><span class="attr">Failed requests:</span>        <span class="number">0</span></span><br><span class="line"><span class="string">//失败的请求数量</span></span><br><span class="line"><span class="attr">Write errors:</span>           <span class="number">0</span></span><br><span class="line"></span><br><span class="line"><span class="attr">Total transferred:</span>      <span class="number">1361581</span> <span class="string">bytes</span></span><br><span class="line"><span class="string">//整个场景中的网络传输量</span></span><br><span class="line"><span class="attr">HTML transferred:</span>       <span class="number">1055666</span> <span class="string">bytes</span></span><br><span class="line"><span class="string">//整个场景中的HTML内容传输量</span></span><br><span class="line"><span class="attr">Requests per second:</span>    <span class="number">122.12</span> [<span class="comment">#/sec] (mean)</span></span><br><span class="line"><span class="string">//大家最关心的指标之一</span>,<span class="string">相当于</span> <span class="string">LR中的</span> <span class="string">每秒事务数</span>,<span class="string">后面括号中的</span> <span class="string">mean</span> <span class="string">表示这是一个平均值</span></span><br><span class="line"><span class="attr">Time per request:</span>       <span class="number">8188.731</span> [<span class="string">ms</span>] <span class="string">(mean)</span></span><br><span class="line"><span class="string">//大家最关心的指标之二</span>,<span class="string">相当于</span> <span class="string">LR中的</span> <span class="string">平均事务响应时间</span>,<span class="string">后面括号中的</span> <span class="string">mean</span> <span class="string">表示这是一个平均值</span></span><br><span class="line"><span class="attr">Time per request:</span>       <span class="number">8.189</span> [<span class="string">ms</span>] <span class="string">(mean</span>, <span class="string">across</span> <span class="string">all</span> <span class="string">concurrent</span> <span class="string">requests)</span></span><br><span class="line"><span class="string">//每个请求实际运行时间的平均值</span></span><br><span class="line"><span class="attr">Transfer rate:</span>          <span class="number">162.30</span> [<span class="string">Kbytes/sec</span>] <span class="string">received</span></span><br><span class="line"><span class="string">//平均每秒网络上的流量</span>,<span class="string">可以帮助排除是否存在网络流量过大导致响应时间延长的问题</span></span><br><span class="line"></span><br><span class="line"><span class="string">Connection</span> <span class="string">Times</span> <span class="string">(ms)</span></span><br><span class="line">              <span class="string">min</span> <span class="string">mean</span>[<span class="string">+/-sd</span>] <span class="string">median</span>   <span class="string">max</span></span><br><span class="line"><span class="attr">Connect:</span>        <span class="number">4</span> <span class="number">646</span> <span class="number">1078.7     </span><span class="number">89</span>    <span class="number">3291</span></span><br><span class="line"><span class="attr">Processing:</span>   <span class="number">165</span> <span class="number">992</span> <span class="number">493.1</span>    <span class="number">938</span>    <span class="number">4712</span></span><br><span class="line"><span class="attr">Waiting:</span>      <span class="number">118</span> <span class="number">934</span> <span class="number">480.6</span>    <span class="number">882</span>    <span class="number">4554</span></span><br><span class="line"><span class="attr">Total:</span>        <span class="number">813</span> <span class="number">1638 </span><span class="number">1338.9   </span><span class="number">1093    </span><span class="number">7785</span></span><br><span class="line"><span class="string">//网络上消耗的时间的分解</span>,<span class="string">各项数据的具体算法还不是很清楚</span></span><br><span class="line"></span><br><span class="line"><span class="string">Percentage</span> <span class="string">of</span> <span class="string">the</span> <span class="string">requests</span> <span class="string">served</span> <span class="string">within</span> <span class="string">a</span> <span class="string">certain</span> <span class="string">time</span> <span class="string">(ms)</span></span><br><span class="line"><span class="number">50</span><span class="string">%</span>   <span class="number">1093</span></span><br><span class="line"><span class="number">66</span><span class="string">%</span>   <span class="number">1247</span></span><br><span class="line"><span class="number">75</span><span class="string">%</span>   <span class="number">1373</span></span><br><span class="line"><span class="number">80</span><span class="string">%</span>   <span class="number">1493</span></span><br><span class="line"><span class="number">90</span><span class="string">%</span>   <span class="number">4061</span></span><br><span class="line"><span class="number">95</span><span class="string">%</span>   <span class="number">4398</span></span><br><span class="line"><span class="number">98</span><span class="string">%</span>   <span class="number">5608</span></span><br><span class="line"><span class="number">99</span><span class="string">%</span>   <span class="number">7368</span></span><br><span class="line"><span class="number">100</span><span class="string">%</span>   <span class="number">7785</span> <span class="string">(longest</span> <span class="string">request)</span></span><br><span class="line"><span class="string">//整个场景中所有请求的响应情况.在场景中每个请求都有一个响应时间</span>,<span class="string">其中50％的用户响应时间小于1093</span> <span class="string">毫秒</span>,<span class="number">60</span><span class="string">％</span> <span class="string">的用户响应时间小于1247</span> <span class="string">毫秒</span>,<span class="string">最大的响应时间小于7785</span> <span class="string">毫秒</span></span><br></pre></td></tr></table></figure>
+
+<p>由于对于并发请求,cpu实际上并不是同时处理的,而是按照每个请求获得的时间片逐个轮转处理的,所以基本上第一个Time per request时间约等于第二个Time per request时间乘以并发请求数.</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://shuxun,wang/2016/04/09/1025/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="王殊勋">
+      <meta itemprop="description" content="专注互联网运维技术发展">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="学无止境">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2016/04/09/1025/" class="post-title-link" itemprop="url">解决umount /home device is busy</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2016-04-09 15:11:00" itemprop="dateCreated datePublished" datetime="2016-04-09T15:11:00+08:00">2016-04-09</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-07-14 15:14:54" itemprop="dateModified" datetime="2021-07-14T15:14:54+08:00">2021-07-14</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" itemprop="url" rel="index"><span itemprop="name">操作系统</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>取消挂载 <code>/home</code>时出现:</p>
+<figure class="highlight vbnet"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="symbol">umount:</span> /home: device <span class="built_in">is</span> busy</span><br></pre></td></tr></table></figure>
+
+<p>原因是因为有程序在使用/home目录,我们可以使用fuser查看那些程序的进程,然后杀掉就可以了.</p>
+<figure class="highlight llvm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ fuser -m /home</span><br><span class="line"></span><br><span class="line">/home: <span class="number">10278</span><span class="keyword">c</span> <span class="number">10279</span><span class="keyword">c</span> <span class="number">10280</span><span class="keyword">c</span> <span class="number">10281</span><span class="keyword">c</span> <span class="number">10282</span><span class="keyword">c</span> <span class="number">10295</span> <span class="number">10365</span> <span class="number">18222</span><span class="keyword">c</span></span><br></pre></td></tr></table></figure>
+
+<p>命令:</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">kill</span> -<span class="number">9</span> pid</span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://shuxun,wang/2016/04/03/1179/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="王殊勋">
+      <meta itemprop="description" content="专注互联网运维技术发展">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="学无止境">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2016/04/03/1179/" class="post-title-link" itemprop="url">fdisk命令详解</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2016-04-03 23:46:00" itemprop="dateCreated datePublished" datetime="2016-04-03T23:46:00+08:00">2016-04-03</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-07-14 15:16:03" itemprop="dateModified" datetime="2021-07-14T15:16:03+08:00">2021-07-14</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" itemprop="url" rel="index"><span itemprop="name">操作系统</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>之前我写过关于分区的博客,但是具体如何给硬盘分区,今天我就简单介绍一下Linux下强大的分区工具fdisk吧!<br>首先,要查看当前电脑的分区,可以用命令fdisk -l查看,而且命令fdisk只有root有权限使用,普通用户无法使用.</p>
+<figure class="highlight tap"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">fdisk -l</span><br><span class="line"></span><br><span class="line">Disk /dev/sda: 250.1 GB,<span class="number"> 250059350016 </span>bytes</span><br><span class="line">255 heads,<span class="number"> 63 </span>sectors/track,<span class="number"> 30401 </span>cylinders</span><br><span class="line">Units = cylinders of<span class="number"> 16065 </span>*<span class="number"> 512 </span>=<span class="number"> 8225280 </span>bytes</span><br><span class="line">Sector size (logical/physical):<span class="number"> 512 </span>bytes /<span class="number"> 512 </span>bytes</span><br><span class="line">I/O size (minimum/optimal):<span class="number"> 512 </span>bytes /<span class="number"> 512 </span>bytes</span><br><span class="line">Disk identifier: 0xc27bc27b</span><br><span class="line">Device Boot      Start         End      Blocks   Id  System</span><br><span class="line">/dev/sda1   *          <span class="number"> 1 </span>      <span class="number"> 3917 </span>  <span class="number"> 31463271 </span>  <span class="number"> 7 </span> HPFS/NTFS</span><br><span class="line">/dev/sda2           <span class="number"> 3918 </span>     <span class="number"> 27268 </span> <span class="number"> 187563099 </span>   f  W95 Ext&#x27;d (LBA)</span><br><span class="line">/dev/sda3          <span class="number"> 27268 </span>     <span class="number"> 30402 </span>  <span class="number"> 25171968 </span> <span class="number"> 83 </span> Linux</span><br><span class="line">/dev/sda5           <span class="number"> 3918 </span>     <span class="number"> 14361 </span>   83891398+  <span class="number"> 7 </span> HPFS/NTFS</span><br><span class="line">/dev/sda6          <span class="number"> 14362 </span>     <span class="number"> 23499 </span>   73400953+  <span class="number"> 7 </span> HPFS/NTFS</span><br><span class="line">/dev/sda7          <span class="number"> 23500 </span>     <span class="number"> 27146 </span>  <span class="number"> 29294496 </span>   b  W95 FAT32</span><br><span class="line">/dev/sda8          <span class="number"> 27147 </span>     <span class="number"> 27268 </span>    <span class="number"> 975872 </span> <span class="number"> 82 </span> Linux swap / Solaris</span><br></pre></td></tr></table></figure>
+
+<p>我们可以看到硬盘分区的细节,共六列,依次表示设备文件名,起始扇区,结束扇区,容量大小,文件系统ID,文件系统类型.<br>这个只是查看分区,要是针对硬盘分区,需要在fdisk后边加上硬盘设备文件名,而不能加上分区名!</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fdisk <span class="regexp">/dev/</span>sda</span><br></pre></td></tr></table></figure>
+
+<p>可以看到如下提示:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Command (m <span class="keyword">for</span> <span class="built_in">help</span>):</span><br></pre></td></tr></table></figure>
+
+<p>我们不许要死记硬背fdisk的用法,此时按一下m即可很清晰的命令介绍:</p>
+<figure class="highlight maxima"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">Command action</span><br><span class="line">a   toggle a bootable flag</span><br><span class="line">b   edit bsd disklabel</span><br><span class="line">c   toggle the dos compatibility flag</span><br><span class="line">d   <span class="built_in">delete</span> a <span class="built_in">partition</span></span><br><span class="line">l   list known <span class="built_in">partition</span> types</span><br><span class="line">m   <span class="built_in">print</span> this menu</span><br><span class="line">n   add a <span class="built_in">new</span> <span class="built_in">partition</span></span><br><span class="line">o   create a <span class="built_in">new</span> empty DOS <span class="built_in">partition</span> table</span><br><span class="line">p   <span class="built_in">print</span> the <span class="built_in">partition</span> table</span><br><span class="line">q   <span class="built_in">quit</span> without <span class="built_in">saving</span> changes</span><br><span class="line">s   create a <span class="built_in">new</span> empty Sun disklabel</span><br><span class="line">t   change a <span class="built_in">partition</span>&#x27;s <span class="built_in">system</span> id</span><br><span class="line">u   change <span class="built_in">display</span>/entry <span class="built_in">units</span></span><br><span class="line">v   verify the <span class="built_in">partition</span> table</span><br><span class="line">w   write table to disk <span class="keyword">and</span> exit</span><br><span class="line">x   extra functionality (experts only)</span><br></pre></td></tr></table></figure>
+
+<p>英文都写的很清楚,使用习惯了我们就会记住常用的命令:</p>
+<figure class="highlight avrasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="symbol">p:</span>显示分区表</span><br><span class="line"><span class="symbol">n:</span>新增一个分区</span><br><span class="line"><span class="symbol">d:</span>删除一个分区</span><br><span class="line"><span class="symbol">w:</span>将之前的操作写入分区表,保存退出</span><br><span class="line"><span class="symbol">q:</span>退出,不保存之前的操作</span><br></pre></td></tr></table></figure>
+
+<p>在操作前后做好都按p查看一下分区表,一边考虑如何操作和检验操作结果是否正确!如果我们只是做练习,就不许要w保存了,否则它将会变成一条及其危险的命令.</p>
+<p>但是保存之后的分区能不能使用呢?答案是不能!用fdisk时有个l命令,可以查看各种文件系统的ID,我们也可以看到默认的ID是83,表示Linux的ext2/3/4文件系统(这么说我也不知道对不对),这个ID只是表示文件系统表示应该是什么,但不是非要搞成这种文件系统不成,我们要改变文件系统的ID,可以使用t命令,然后写上ID即可.比如83,但83并不代表文件系统就是ext3或者ext4,他只是表示这个分区最后应该格式化成ext2/3/4文件系统.也就是说,我们用fdisk分好区后文件系统不能立即使用,需要格式化为相应的文件系统才行.如果真的对硬盘进行分区的话,我们执行w命令后会发现有提示说需要重启才能使用.其实我们也可以用命令partprobe让内核读入分区表,这样就可以直接格式化文件系统而不需要重启系统了.</p>
+<p>至于格式化文件系统的命令,我将会在后面的文章里写出来……</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://shuxun,wang/2016/03/21/1538/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="王殊勋">
+      <meta itemprop="description" content="专注互联网运维技术发展">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="学无止境">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2016/03/21/1538/" class="post-title-link" itemprop="url">开启mysql查询缓存</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2016-03-21 03:55:00" itemprop="dateCreated datePublished" datetime="2016-03-21T03:55:00+08:00">2016-03-21</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-07-14 15:16:21" itemprop="dateModified" datetime="2021-07-14T15:16:21+08:00">2021-07-14</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%90%84%E7%B1%BB%E6%9C%8D%E5%8A%A1/" itemprop="url" rel="index"><span itemprop="name">各类服务</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>下面我用 mysql6.0 最为演示最常用的设置查询缓存.</p>
+<p>第一: query_cache_type 使用查询缓存的方式.</p>
+<p>一般,我们会把 query_cache_type 设置为 ON,默认情况下应该是ON.</p>
+<figure class="highlight gherkin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; select @<span class="meta">@query_cache_type;</span></span><br><span class="line"></span><br><span class="line">+——————–+</span><br><span class="line">|<span class="string"> @@query_cache_type </span>|</span><br><span class="line">+——————–+</span><br><span class="line">|<span class="string"> ON </span>|</span><br><span class="line">+——————–+</span><br></pre></td></tr></table></figure>
+
+<p>这样 当我们执行:</p>
+<figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select <span class="built_in">id</span>,<span class="built_in">name</span> <span class="keyword">from</span> tableName; </span><br></pre></td></tr></table></figure>
+
+<p>这样就会用到查询缓存.在 query_cache_type 打开的情况下,如果你不想使用缓存,需要指明.</p>
+<figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select sql_no_cache <span class="built_in">id</span>,<span class="built_in">name</span> <span class="keyword">from</span> tableName;</span><br></pre></td></tr></table></figure>
+
+<p>当然也可以禁用查询缓存:</p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; <span class="builtin-name">set</span> session <span class="attribute">uery_cache_type</span>=off;</span><br></pre></td></tr></table></figure>
+
+<p>这里我们不讨论这个,我们演示常用的设置.</p>
+<p>第二:系统变量 have_query_cache 设置查询缓存是否可用.</p>
+<figure class="highlight gherkin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; show variables like &#x27;have_query_cache&#x27;;</span><br><span class="line"></span><br><span class="line">+——————+——-+</span><br><span class="line">|<span class="string"> Variable_name </span>|<span class="string"> Value </span>|</span><br><span class="line">+——————+——-+</span><br><span class="line">|<span class="string"> have_query_cache </span>|<span class="string"> YES </span>|</span><br><span class="line">+——————+——-+</span><br></pre></td></tr></table></figure>
+
+<p>上面的显示,表示设置查询缓存是可用的.</p>
+<p>第三:系统变量 query_cache_size</p>
+<p>表示查询缓存大小,也就是分配内存大小给查询缓存,如果你分配大小为0,<br>那么 第一步 和 第二步 起不到作用,还是没有任何效果.</p>
+<figure class="highlight gherkin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; select @<span class="meta">@global.query_cache_size;</span></span><br><span class="line"></span><br><span class="line">+—————————+</span><br><span class="line">|<span class="string"> @@global.query_cache_size </span>|</span><br><span class="line">+—————————+</span><br><span class="line">|<span class="string"> 16777216 </span>|</span><br><span class="line">+—————————+</span><br></pre></td></tr></table></figure>
+
+<p>上面是 mysql6.0设置默认的,之前的版本好像默认是0的,那么就要自己设置下.<br>设置 set @@global.query_cache_size=1000000; 这里是设置1M左右,900多K.<br>再次查看下</p>
+<figure class="highlight gherkin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">select @<span class="meta">@global.query_cache_size;</span></span><br><span class="line">+—————————+</span><br><span class="line">|<span class="string"> @@global.query_cache_size </span>|</span><br><span class="line">+—————————+</span><br><span class="line">|<span class="string"> 999424 </span>|</span><br><span class="line">+—————————+</span><br></pre></td></tr></table></figure>
+
+<p>显示我们设置新的大小,表示设置成功.</p>
+<p>第四: query_cache_limit 控制缓存查询结果的最大值</p>
+<p>例如: 如果查询结果很大, 也缓存????这个明显是不可能的.<br>MySql 可以设置一个最大的缓存值,当你查询缓存数结果数据超过这个值就不会.<br>进行缓存.缺省为1M,也就是超过了1M查询结果就不会缓存.</p>
+<figure class="highlight gherkin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; select @<span class="meta">@global.query_cache_limit;</span></span><br><span class="line"></span><br><span class="line">+—————————-+</span><br><span class="line">|<span class="string"> @@global.query_cache_limit </span>|</span><br><span class="line">+—————————-+</span><br><span class="line">|<span class="string"> 1048576 </span>|</span><br><span class="line">+—————————-+</span><br></pre></td></tr></table></figure>
+
+<p>这个是默认的数值,如果需要修改,就像设置缓存大小一样设置,使用set重新指定大小.<br>好了,通过4个步骤就可以 打开了查询缓存,具体值的大小和查询的方式 这个因不同的情况来指定了.</p>
+<p>可以使用下面的语句检查MySQL服务器是否提供查询缓存功能:</p>
+<figure class="highlight asciidoc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; SHOW VARIABLES LIKE <span class="emphasis">&#x27;have_query_cache&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="code">+------------------+</span>-------+</span><br><span class="line"><span class="section">| Variable_name    | Value |</span></span><br><span class="line"><span class="section">+------------------+-------+</span></span><br><span class="line"><span class="section">| have_query_cache | YES   |</span></span><br><span class="line"><span class="section">+------------------+-------+</span></span><br></pre></td></tr></table></figure>
+
+<p>可以使用FLUSH QUERY CACHE语句来清理查询缓存碎片以提高内存使用性能.该语句不从缓存中移出任何查询.<br>RESET QUERY CACHE语句从查询缓存中移出所有查询.FLUSH TABLES语句也执行同样的工作.<br>为了监视查询缓存性能,使用SHOW STATUS查看缓存状态变量:</p>
+<figure class="highlight gherkin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; SHOW STATUS LIKE &#x27;Qcache%&#x27;;</span><br><span class="line"></span><br><span class="line">+-------------------------+--------+</span><br><span class="line">|<span class="string">变量名                   </span>|<span class="string">值 </span>|</span><br><span class="line">+-------------------------+--------+</span><br><span class="line">|<span class="string"> Qcache_free_blocks      </span>|<span class="string"> 36     </span>|</span><br><span class="line">|<span class="string"> Qcache_free_memory      </span>|<span class="string"> 138488 </span>|</span><br><span class="line">|<span class="string"> Qcache_hits             </span>|<span class="string"> 79570  </span>|</span><br><span class="line">|<span class="string"> Qcache_inserts          </span>|<span class="string"> 27087  </span>|</span><br><span class="line">|<span class="string"> Qcache_lowmem_prunes    </span>|<span class="string"> 3114   </span>|</span><br><span class="line">|<span class="string"> Qcache_not_cached       </span>|<span class="string"> 22989  </span>|</span><br><span class="line">|<span class="string"> Qcache_queries_in_cache </span>|<span class="string"> 415    </span>|</span><br><span class="line">|<span class="string"> Qcache_total_blocks     </span>|<span class="string"> 912    </span>|</span><br><span class="line">+-------------------------+--------+</span><br></pre></td></tr></table></figure>
+
+<p>这些变量的描述见5.3.4节,”服务器状态变量”.这里描述它们的一些应用.</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://shuxun,wang/2016/03/14/1445/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="王殊勋">
+      <meta itemprop="description" content="专注互联网运维技术发展">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="学无止境">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2016/03/14/1445/" class="post-title-link" itemprop="url">关于本站所有linux教程的说明</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2016-03-14 17:45:00" itemprop="dateCreated datePublished" datetime="2016-03-14T17:45:00+08:00">2016-03-14</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-07-14 15:16:13" itemprop="dateModified" datetime="2021-07-14T15:16:13+08:00">2021-07-14</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E9%94%99%E8%AF%AF%E8%A7%A3%E5%86%B3/" itemprop="url" rel="index"><span itemprop="name">错误解决</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>本站所有linux教程全部基于Centos,如果您是其他系统,请根据具体的情况来操作,而且就算是一样的系统,导致一个问题的原因也是很多的,所以解决了站长问题的方法,不一定能解决大家的问题,还望您包含.</p>
+<p>如果您希望得到我的帮助,可以联系QQ:53273291 我会尽力帮助大家的.</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+
+  
+  <nav class="pagination">
+    <a class="extend prev" rel="prev" href="/page/57/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/57/">57</a><span class="page-number current">58</span><a class="page-number" href="/page/59/">59</a><span class="space">&hellip;</span><a class="page-number" href="/page/132/">132</a><a class="extend next" rel="next" href="/page/59/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+  </nav>
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="王殊勋"
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name">王殊勋</p>
+  <div class="site-description" itemprop="description">better late than never.<br>只要开始，虽晚不迟。</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">656</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">2058</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <!--添加网站运行时间 -->
+  <span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
+  <script>
+      var now = new Date(); 
+      function createtime() { 
+          var grt= new Date("12/01/2007 12:00:00");//此处修改你的建站时间或者网站上线时间 
+          now.setTime(now.getTime()+250); 
+          days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days); 
+          hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours); 
+          if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum); 
+          mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;} 
+          seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum); 
+          snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;} 
+          document.getElementById("timeDate").innerHTML = "本站已安全运行 "+dnum+" 天 "; 
+          document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒"; 
+      } 
+  setInterval("createtime()",250);
+  </script>
+  <span itemprop="copyrightYear">(2007 - 2021)</span>
+  <!-- 添加网站运行时间 -->
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">学无止境</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script size="300" alpha="0.6" zIndex="0" src="/lib/canvas-ribbon/canvas-ribbon.js"></script>
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

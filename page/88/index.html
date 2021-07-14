@@ -1,0 +1,867 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"shuxun","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"./public/search.xml"};
+  </script>
+
+  <meta name="description" content="专注互联网运维技术发展">
+<meta property="og:type" content="website">
+<meta property="og:title" content="学无止境">
+<meta property="og:url" content="http://shuxun,wang/page/88/index.html">
+<meta property="og:site_name" content="学无止境">
+<meta property="og:description" content="专注互联网运维技术发展">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:author" content="王殊勋">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://shuxun,wang/page/88/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : true,
+    isPost : false,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>学无止境</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">学无止境</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">注互联网运维技术发展</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-sitemap">
+
+    <a href="/sitemap.xml" rel="section"><i class="fa fa-sitemap fa-fw"></i>站点地图</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content index posts-expand">
+            
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://shuxun,wang/2014/03/20/1600/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="王殊勋">
+      <meta itemprop="description" content="专注互联网运维技术发展">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="学无止境">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2014/03/20/1600/" class="post-title-link" itemprop="url">限制CPU使用率的方法</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2014-03-20 13:24:00" itemprop="dateCreated datePublished" datetime="2014-03-20T13:24:00+08:00">2014-03-20</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-07-14 15:16:09" itemprop="dateModified" datetime="2021-07-14T15:16:09+08:00">2021-07-14</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" itemprop="url" rel="index"><span itemprop="name">操作系统</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>1,apache本身的限制功能(RLimitCPU)</p>
+<p>引用国外这个帖子:</p>
+<p>The PHP test can be used to show that the problem is evident, but it is not conclusive to prove that there is no limit put in place.</p>
+<p>The reason is that it depends on how PHP is configured on the server. If the PHP scripting engine is setup as a CGI application which is forked by Apache, then the RLimit* operatives will apply and the PHP script can prove this. If they run within httpd however, the limits would not apply to the PHP engine.</p>
+<p>这个限制将施于Apache子服务请求衍生出的进程,而不是Apache子进程本身.这个范围包括CGI脚本和SSI执行命令,但不包括所有从Apache父进程衍生出的进程.比如说管道日志.<br>如果不子进程不衍生进程,或非常占资源的这个进程不属于衍生出来的进程,那不就是没办法了吗?所以呀,这个办法不行地.</p>
+<p>2,通过系统的 ulimit命令限制资源的使用</p>
+<p>设置文件在:</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="regexp">/etc/</span>security/limits.conf</span><br></pre></td></tr></table></figure>
+
+<p>比如:</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">xok_la</span>           hard    cpu             <span class="number">1</span></span><br><span class="line"><span class="attribute">xok_la</span>           hard    fsize           <span class="number">50000</span></span><br><span class="line"><span class="attribute">xok_la</span>           hard    memlock         <span class="number">1000</span></span><br><span class="line"><span class="attribute">xok_la</span>           hard    nofile          <span class="number">50</span></span><br><span class="line"><span class="attribute">xok_la</span>           hard    nproc           <span class="number">50</span></span><br></pre></td></tr></table></figure>
+
+<p>这种方式限制是可以的,他是基于用户来限制的,可以限制内存,CPU占用时间,打开的文件数等等.前提是你要登陆到这个系统上.如果只是以这个用户来单独运行文件的话,就不行…….所以我还是要放弃.</p>
+<p>3,安装CPU Usage Limiter for Linux</p>
+<p>What is it?<br>cpulimit is a simple program that attempts to limit the cpu usage of a process (expressed in percentage, not in cpu time). This is useful to control batch jobs, when you don’t want them to eat too much cpu. It does not act on the nice value or other scheduling priority stuff, but on the real cpu usage. Also, it is able to adapt itself to the overall system load, dynamically and quickly.</p>
+<p>可以限制程序使用CPU的百分比,而不是时间.很好,很舒服.</p>
+<p>开始安装吧.</p>
+<p>官方地址:<a target="_blank" rel="noopener" href="http://cpulimit.sourceforge.net/">http://cpulimit.sourceforge.net/</a></p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">cd <span class="regexp">/root/i</span>nstall/</span><br><span class="line">svn checkout https:<span class="regexp">//</span>cpulimit.svn.sourceforge.net<span class="regexp">/svnroot/</span>cpulimit/trunk cpulimit</span><br><span class="line">cd cpulimit</span><br><span class="line">make  </span><br><span class="line">cp .<span class="regexp">/cpulimit /u</span>sr/sbin</span><br></pre></td></tr></table></figure>
+
+<p>如此简单,很愉快吧?</p>
+<p>限制方法:</p>
+<p>如果限制进程名,比如将httpd这个进程名的CPU限制在40%</p>
+<figure class="highlight jboss-cli"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cpulimit <span class="params">--exe</span> httpd <span class="params">--limit</span> 40</span><br><span class="line">cpulimit <span class="params">--exe</span> <span class="string">/usr/local/bin/httpd</span> <span class="params">--limit</span> 40</span><br></pre></td></tr></table></figure>
+
+<p>将pid为2960的进程的CPU限制在55%</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">cpulimit</span> --pid <span class="number">2960</span> --limit <span class="number">55</span></span><br></pre></td></tr></table></figure>
+
+<p>慢慢对比top 命令那里的CPU变化.嘿嘿,有效果了吧?.<br>再来个完美的<br>自动限制当前进程使用CPU超过20%的进程,将他限制为10%</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">cpulimit</span> --pid `ps aux|awk &#x27;&#123;if($<span class="number">3</span> &gt; <span class="number">20</span>) print $<span class="number">2</span>&#125;&#x27;` --limit <span class="number">10</span></span><br></pre></td></tr></table></figure>
+
+<p>cpulimit命令:</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">Error: You must specify a target process, by name or by PID</span><br><span class="line">Usage: cpulimit TARGET [OPTIONS...]</span><br><span class="line">TARGET must be exactly one of these:</span><br><span class="line">-p, --pid=N        pid of the process (implies -z)</span><br><span class="line">-e, --exe=FILE     name of the executable program file or absolute path name</span><br><span class="line">OPTIONS</span><br><span class="line">-l, --limit=N      percentage of cpu allowed from <span class="number">0</span> to <span class="number">100</span> (required)</span><br><span class="line">-v, --verbose      show control statistics</span><br><span class="line">-z, --lazy         <span class="keyword">exit</span> <span class="keyword">if</span> there is no suitable target process, or <span class="keyword">if</span> it dies</span><br><span class="line">-h, --help         display this help and <span class="keyword">exit</span></span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://shuxun,wang/2014/03/13/1212/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="王殊勋">
+      <meta itemprop="description" content="专注互联网运维技术发展">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="学无止境">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2014/03/13/1212/" class="post-title-link" itemprop="url">Linux安装Xcache缓存器</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2014-03-13 23:39:00" itemprop="dateCreated datePublished" datetime="2014-03-13T23:39:00+08:00">2014-03-13</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-07-14 15:16:02" itemprop="dateModified" datetime="2021-07-14T15:16:02+08:00">2021-07-14</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%90%84%E7%B1%BB%E6%9C%8D%E5%8A%A1/" itemprop="url" rel="index"><span itemprop="name">各类服务</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>由于国内网站备案比较麻烦,所以笔者便把网站放到了美国.虽然网站免去了备案的困扰,但是从访问速度上来看,一般要比放于国内的网站慢2-3倍,所以便想办法对网站做了一些简单的优化,比如使用缓存系统来提升网站页面访问速度.<br>目前用于Web的缓存系统很多,包括squid、varnish、Nginx自带的proxy_cache、FastCGI中的fastcgi_cache、APC、Xcache等.<br>像squid、varnish、Nginx自带的proxy_cache这类系统,属于重量级产品,配置维护比较麻烦,不适合小型网站,而且一般用这类系统缓存静态内容,比如图片、css、JavaScript等;像FastCGI中的fastcgi_cache,它主要用于缓存动态内容,所以在访问使用fastcgi_cache的网站时速度极快,但是笔者使用时发现其维护比较麻烦,特别是每次网站有数据要更新后,如果不等到缓冲期过期后得需要手动清除缓存才能看到网站更新的内容;至于APC个人感觉性能就一般了,拿它和Xcache比较时发现访问使用Xcache网站的速度明显高于使用APC网站的速度(笔者没有具体测试),所以最终选择了使用Xcache.<br>我们都知道PHP是一种动态语言,它在执行时是以解释的方式执行,所以 PHP代码每次执行时都会被解析和转换成操作码(opcode).而Xcache是一个开源的操作码缓存器/优化器,它通过把解析/转换PHP后的操作码缓存到文件(直到原始代码被修改)从而避免重复的解析过程,提高了代码的执行速度,通常能够提高页面生成速率2-5倍,降低了服务器负载,提高了用户访问网站的速度.</p>
+<p>一、安装Xcache</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$ wget http:<span class="regexp">//</span>xcache.lighttpd.net<span class="regexp">/pub/</span>Releases<span class="regexp">/1.3.0/</span>xcache-<span class="number">1.3</span>.<span class="number">0</span>.tar.gz</span><br><span class="line">$ tar zxvf xcache-<span class="number">1.3</span>.<span class="number">0</span>.tar.gz</span><br><span class="line">$ cd xcache-<span class="number">1.3</span>.<span class="number">0</span></span><br><span class="line">$ <span class="regexp">/usr/</span>local<span class="regexp">/php/</span>bin/phpize</span><br><span class="line">$ ./configure --enable-xcache</span><br><span class="line">$ make &amp;&amp; make install</span><br></pre></td></tr></table></figure>
+
+<p>注:–enable-xcache表示启用Xcache支持;–enable-xcache-coverager表示包含用于测量加速器功效的附加特性;–enable-xcache-optimizer表示启用操作码优化<br>安装完毕后系统会提示xcache.so模块生成路径,本次生成路径为 <code>/usr/local/php/lib/php/extensions/no-debug-non-zts-20060613/</code>,然后把xcache.so移动到 <code>/usr/local/php/include/php/ext</code>目录下.</p>
+<p>二、配置管理Xcache</p>
+<p>1、修改php配置文件<br>配置时我们可以参考xcache的配置模板xcache.ini,此文件位于Xcache安装程序中</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ vi <span class="regexp">/usr/</span>local<span class="regexp">/php/</span>lib/php.ini</span><br></pre></td></tr></table></figure>
+
+<p>然后添加如下内容</p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">extension_dir</span>=/usr/local/php/include/php/ext</span><br><span class="line"><span class="section">[xcache-common]</span></span><br><span class="line"><span class="attr">extension</span> = xcache.so</span><br><span class="line"><span class="section">[xcache.admin]</span></span><br><span class="line"><span class="attr">xcache.admin.enable_auth</span> = <span class="literal">On</span></span><br><span class="line"><span class="attr">xcache.admin.user</span> = <span class="string">&quot;xcache&quot;</span></span><br><span class="line"><span class="attr">xcache.admin.pass</span> = <span class="string">&quot;&quot;</span></span><br><span class="line"><span class="section">[xcache]</span></span><br><span class="line"><span class="attr">xcache.shm_scheme</span> =<span class="string">&quot;mmap&quot;</span></span><br><span class="line"><span class="attr">xcache.size</span>=<span class="number">60</span>M</span><br><span class="line"><span class="attr">xcache.count</span> =<span class="number">1</span></span><br><span class="line"><span class="attr">xcache.slots</span> =<span class="number">8</span>K</span><br><span class="line"><span class="attr">xcache.ttl</span>=<span class="number">0</span></span><br><span class="line"><span class="attr">xcache.gc_interval</span> =<span class="number">0</span></span><br><span class="line"><span class="attr">xcache.var_size</span>=<span class="number">4</span>M</span><br><span class="line"><span class="attr">xcache.var_count</span> =<span class="number">1</span></span><br><span class="line"><span class="attr">xcache.var_slots</span> =<span class="number">8</span>K</span><br><span class="line"><span class="attr">xcache.var_ttl</span>=<span class="number">0</span></span><br><span class="line"><span class="attr">xcache.var_maxttl</span>=<span class="number">0</span></span><br><span class="line"><span class="attr">xcache.var_gc_interval</span> =<span class="number">300</span></span><br><span class="line"><span class="attr">xcache.test</span> =<span class="literal">Off</span></span><br><span class="line"><span class="attr">xcache.readonly_protection</span> = <span class="literal">On</span></span><br><span class="line"><span class="attr">xcache.mmap_path</span> =<span class="string">&quot;/tmp/xcache&quot;</span></span><br><span class="line"><span class="attr">xcache.coredump_directory</span> =<span class="string">&quot;&quot;</span></span><br><span class="line"><span class="attr">xcache.cacher</span> =<span class="literal">On</span></span><br><span class="line"><span class="attr">xcache.stat</span>=<span class="literal">On</span></span><br><span class="line"><span class="attr">xcache.optimizer</span> =<span class="literal">Off</span></span><br><span class="line"><span class="section">[xcache.coverager]</span></span><br><span class="line"><span class="attr">xcache.coverager</span> =<span class="literal">On</span></span><br><span class="line"><span class="attr">xcache.coveragedump_directory</span> =<span class="string">&quot;&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>2、生成Xcache缓存文件</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ touch <span class="regexp">/tmp/</span>xcache</span><br><span class="line">$ chmod <span class="number">777</span> <span class="regexp">/tmp/</span>xcache</span><br></pre></td></tr></table></figure>
+
+<p>3、生成Xcache管理员的秘密(MD5密文)</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> <span class="built_in">echo</span> -n <span class="string">&quot;123456&quot;</span> | md5sum</span></span><br><span class="line">e10adc3949ba59abbe56e057f20f883e</span><br></pre></td></tr></table></figure>
+
+<p>然后将上述生成的MD5密文粘贴到php.ini文件中xcache.admin.pass = “”选项,xcache.admin.pass= “e10adc3949ba59abbe56e057f20f883e”<br>4、拷贝Xcache管理程序到网站根目录下</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ cp -a <span class="regexp">/tmp/</span>xcache-<span class="number">1.3</span>.<span class="number">0</span><span class="regexp">/admin/</span><span class="regexp">/usr/</span>local<span class="regexp">/nginx/</span>html/</span><br></pre></td></tr></table></figure>
+
+<p>然后重新启动PHP,然后访问<a target="_blank" rel="noopener" href="http://localhost/admin">http://localhost/admin</a> ,用户名为xcache 密码为123456;另外,还可以通过phpinfo来验证PHP是否支持Xcache.</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://shuxun,wang/2014/03/10/1369/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="王殊勋">
+      <meta itemprop="description" content="专注互联网运维技术发展">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="学无止境">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2014/03/10/1369/" class="post-title-link" itemprop="url">The file is absent or does not have execute permission This file is needed to run this program.</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2014-03-10 10:54:00" itemprop="dateCreated datePublished" datetime="2014-03-10T10:54:00+08:00">2014-03-10</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-07-14 15:14:46" itemprop="dateModified" datetime="2021-07-14T15:14:46+08:00">2021-07-14</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E9%94%99%E8%AF%AF%E8%A7%A3%E5%86%B3/" itemprop="url" rel="index"><span itemprop="name">错误解决</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>运行:</p>
+<figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$ </span>./startup.sh</span><br></pre></td></tr></table></figure>
+
+<p>提示:</p>
+<figure class="highlight smali"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Cannot find ./catalina.sh</span><br><span class="line">The file is absent<span class="built_in"> or </span>does<span class="built_in"> not </span>have<span class="built_in"> execute </span>permission</span><br><span class="line">This file is needed to run this program.</span><br></pre></td></tr></table></figure>
+
+<p>说明catalina.sh没有执行权限.把 <code>~/apache-tomcat-6.0.33/bin/</code>目录下的所有sh文件的权限都设为755(当然<br>也包括catalina.sh)即可:</p>
+<figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$ </span>chmod <span class="number">755</span> *.sh</span><br></pre></td></tr></table></figure>
+
+<p>再次运行startup.sh,显示的结果正常:</p>
+<figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$ ./startup.sh</span><br><span class="line"></span><br><span class="line">Using CATALINA_BASE: <span class="regexp">/root/</span>apache-tomcat-<span class="number">6.0</span>.<span class="number">33</span></span><br><span class="line">Using CATALINA_HOME: <span class="regexp">/root/</span>apache-tomcat-<span class="number">6.0</span>.<span class="number">33</span></span><br><span class="line">Using CATALINA_TMPDIR: <span class="regexp">/root/</span>apache-tomcat-<span class="number">6.0</span>.<span class="number">33</span>/temp</span><br><span class="line">Using JRE_HOME: /usr</span><br><span class="line">Using <span class="keyword">CLASSPATH</span>: <span class="regexp">/root/</span>apache-tomcat-<span class="number">6.0</span>.<span class="number">33</span><span class="regexp">/bin/</span>bootstrap.jar</span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://shuxun,wang/2014/03/10/1164/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="王殊勋">
+      <meta itemprop="description" content="专注互联网运维技术发展">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="学无止境">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2014/03/10/1164/" class="post-title-link" itemprop="url">Curl development headers with SSL support... not found</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2014-03-10 08:23:00" itemprop="dateCreated datePublished" datetime="2014-03-10T08:23:00+08:00">2014-03-10</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-07-14 15:15:59" itemprop="dateModified" datetime="2021-07-14T15:15:59+08:00">2021-07-14</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E9%94%99%E8%AF%AF%E8%A7%A3%E5%86%B3/" itemprop="url" rel="index"><span itemprop="name">错误解决</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>I’m trying to install phusion passenger nginx module, but it fails:</p>
+<figure class="highlight elm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">Curl</span> development headers with <span class="type">SSL</span> sup<span class="keyword">port</span>... not found</span><br></pre></td></tr></table></figure>
+<p>I solved this problem by installing:</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">yum</span> install zlib-devel e<span class="number">2</span>fsprogs-devel krb<span class="number">5</span>-devel</span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://shuxun,wang/2014/03/03/1117/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="王殊勋">
+      <meta itemprop="description" content="专注互联网运维技术发展">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="学无止境">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2014/03/03/1117/" class="post-title-link" itemprop="url">CentOS磁盘配额</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2014-03-03 16:55:00" itemprop="dateCreated datePublished" datetime="2014-03-03T16:55:00+08:00">2014-03-03</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-07-14 15:16:27" itemprop="dateModified" datetime="2021-07-14T15:16:27+08:00">2021-07-14</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" itemprop="url" rel="index"><span itemprop="name">操作系统</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>磁盘配额可以限制指定账户能够使用的磁盘空间,这样可以避免因某个用户的过度使用磁盘空间造成其他用户无法正常工作甚至影响系统运行.<br>在Centos6中默认的ext系列的文件系统没有挂载磁盘配额,需要我们手动来挂载.<br>挂载选项:</p>
+<figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">usrquota   对用户进行管理</span><br><span class="line">grpquota   对组进行管理</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">[root@centos6.<span class="number">9</span> ~]$ mount -o defaults,usrquota,grpquota <span class="regexp">/dev/</span>sdb1 <span class="regexp">/test/</span>  </span><br><span class="line">#-o后面跟的是挂载选项,把sdb1挂载到<span class="regexp">/test/</span>目录.defaults是默认的挂载选项</span><br></pre></td></tr></table></figure>
+
+<p>上面是分区没有挂载的情况,如果分区已经挂载可以用这种方法:</p>
+<figure class="highlight subunit"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">[root@centos6.9 ~]#vim /etc/fstab        #fstab文件是挂载的配置文件,每行定义都一个要挂载的文件系统</span><br><span class="line"></span><br><span class="line">UUID=80f63701<span class="string">-5</span>c1b<span class="string">-4</span>dc1<span class="string">-9864</span><span class="string">-7</span>c1247ed8561 /                       ext4    defaults        1 1</span><br><span class="line">UUID=87c9aa50<span class="string">-7</span>b7a<span class="string">-459</span>e-babc<span class="string">-87</span>bfaf5b49f2 /boot                   ext4    defaults        1 2</span><br><span class="line">UUID=2f7f0957<span class="string">-6978</span><span class="string">-4028</span>-ac0d<span class="string">-966</span>fb8d486e5 swap                    swap    defaults        0 0</span><br><span class="line">sysfs                   /sys                    sysfs   defaults        0 0</span><br><span class="line">proc                    /proc                   proc    defaults        0 0</span><br><span class="line">UUID=a30c64e6-fd9c<span class="string">-4886</span><span class="string">-926</span>c<span class="string">-2</span>cb13c7c2225  /test ext4   defaults        0 0</span><br></pre></td></tr></table></figure>
+
+<p>在文件里面追加一行格式是:设备文件可以写设备文件的名字、LABEL、UUID系统默认用的是UUID,然后是要挂载到的文件、文件系统的类型、挂载选项:默认是defaults,后面的两个数字第一个表示转储频率:0不做备份、1每天转储、2每隔一天转储、第二个表示自检次序:0不自检、1首先自检,这个两个数字都写0就可以了.</p>
+<figure class="highlight llvm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">UUID<span class="operator">=</span>a<span class="number">30</span><span class="keyword">c</span><span class="number">64e6</span>-fd<span class="number">9</span><span class="keyword">c</span><span class="number">-4886</span><span class="number">-926</span><span class="keyword">c</span><span class="number">-2</span>cb<span class="number">13</span><span class="keyword">c</span><span class="number">7</span><span class="keyword">c</span><span class="number">2225</span>  /test ext<span class="number">4</span>   defaults<span class="punctuation">,</span>usrquota<span class="punctuation">,</span>grpquota <span class="number">0</span> <span class="number">0</span>  #我们在defaults的后面加上usrquota grpquota这两个选项<span class="punctuation">,</span>用<span class="punctuation">,</span>号分隔<span class="punctuation">,</span>然后保存退出</span><br><span class="line"></span><br><span class="line">[root<span class="title">@centos6.9</span> ~]#mount -o remount /dev/sdb<span class="number">1</span> /test/   #用remount选项重新挂载分区</span><br></pre></td></tr></table></figure>
+
+<p>注:mount命令只能临时挂载分区重启之后就会失效,想要永久挂载需要写在fstab文件中.所以第一种方法想要保存的话,还要需要把配置写进fstab文件.</p>
+<p>挂载之后可以用mount命令来查看有没有生效:</p>
+<figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">root@centos6.9 ~]#mount</span><br><span class="line">/dev/sda2 <span class="keyword">on</span> / <span class="keyword">type</span> ext4 (rw) #因为有点多,所以我这里删除了几个挂载</span><br><span class="line">proc <span class="keyword">on</span> /proc <span class="keyword">type</span> proc (rw)</span><br><span class="line">sysfs <span class="keyword">on</span> /sys <span class="keyword">type</span> sysfs (rw)</span><br><span class="line">tmpfs <span class="keyword">on</span> /dev/shm <span class="keyword">type</span> tmpfs (rw,rootcontext=<span class="string">&quot;system_u:object_r:tmpfs_t:s0&quot;</span>)</span><br><span class="line">/dev/sda1 <span class="keyword">on</span> /<span class="keyword">boot</span> <span class="keyword">type</span> ext4 (rw) fuse.gvfs-fuse-daemon (rw,nosuid,nodev)</span><br><span class="line">/dev/sdb1 <span class="keyword">on</span> /<span class="keyword">test</span> <span class="keyword">type</span> ext4 (rw,usrquota,grpquota)  #()里的是挂载项rw表示这个分区可以读写,可以看到我们刚才添加的选项已经生效了</span><br></pre></td></tr></table></figure>
+
+<p>配置分区的配额:</p>
+<p>初始化数据库:quotacheck:</p>
+<figure class="highlight jboss-cli"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">quotacheck [-gucbfinvdmMR] [-F &lt;quota-format&gt;] filesystem|-a      <span class="comment">#格式</span></span><br><span class="line"><span class="comment">#quotacheck的一些选项</span></span><br><span class="line">-u, <span class="params">--user</span>                检查用户文件</span><br><span class="line">-g, <span class="params">--group</span>               检查组文件</span><br><span class="line">-c, <span class="params">--create-files</span>        创建新的配额文件</span><br><span class="line">-b, <span class="params">--backup</span>              创建旧配额文件的备份</span><br><span class="line">-f, <span class="params">--force</span>               即使启用了配额,也强制强制检查</span><br><span class="line">-i, <span class="params">--interactive</span>         交互方式</span><br><span class="line">-n, <span class="params">--use-first-dquot</span>     使用重复结构的第一个副本</span><br><span class="line">-v, <span class="params">--verbose</span>             执行过程的详细信息</span><br><span class="line">-d, <span class="params">--debug</span>               更详细的信息</span><br><span class="line">-m, <span class="params">--no-remount</span>          不重新安装文件系统只读</span><br><span class="line">-M, <span class="params">--try-remount</span>         尝试重新安装文件系统的只读的,即使失败也要继续</span><br><span class="line">-R, <span class="params">--exclude-root</span>        检查所有文件系统时排除root</span><br><span class="line">-F, <span class="params">--format=formatname</span>   检查特定格式的配额文件</span><br><span class="line">-a, <span class="params">--all</span>                 检查所有</span><br><span class="line">-h, <span class="params">--help</span>                帮助</span><br><span class="line">[root@centos6.9 test]<span class="comment">#quotacheck -cug /test/  #初始化,创建用户和组的配置文件</span></span><br><span class="line">[root@centos6.9 test]<span class="comment">#ll</span></span><br><span class="line">-rw<span class="params">-------</span>. 1 root root  6144 Jun 19 04<span class="function">:19</span> aquota.group   <span class="comment">#这个是组的配置文件</span></span><br><span class="line">-rw<span class="params">-------</span>. 1 root root  6144 Jun 19 04<span class="function">:19</span> aquota.user   <span class="comment">#这个是用户的配置文件</span></span><br><span class="line">drwx<span class="params">------</span>. 2 root root 16384 Jun 19 03<span class="function">:08</span> lost+found</span><br></pre></td></tr></table></figure>
+
+<p>注:如果提示不能创建文件、权限不足,有很大的可能是SELinux安全机制引起的,用setenforce 0命令把它关闭就行了,用getenforce检查SELinux的状态</p>
+<p>开启磁盘配额:quotaon:</p>
+<figure class="highlight pf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">quotaon [-guvp] [-F quotaformat] [-x <span class="keyword">state</span>] -a</span><br><span class="line">quotaon [-guvp] [-F quotaformat] [-x <span class="keyword">state</span>] filesys    <span class="comment">#命令格式 </span></span><br><span class="line">-a, --all                为所有文件系统启用配额</span><br><span class="line">-f, --off                关闭配额</span><br><span class="line">-u, --user               对用户配额进行操作</span><br><span class="line">-g, --group              对组配额进行操作</span><br><span class="line">-p, --print-state        查看分区配额状态</span><br><span class="line">-x, --xfs-command=cmd    对xfs分区进行操作</span><br><span class="line">-F, --format=formatname  按照具体配额格式操作</span><br><span class="line">-v, --verbose            详细信息</span><br><span class="line">-h, --help               帮助</span><br><span class="line">[root@centos6.<span class="number">9</span> test]<span class="comment">#quotaon /test/ #开启/test/的配额功能</span></span><br><span class="line">[root@centos6.<span class="number">9</span> test]<span class="comment">#quotaon -p /test/     #检查状态</span></span><br><span class="line"><span class="keyword">group</span> quota <span class="keyword">on</span> /test (/dev/sdb1) is <span class="keyword">on</span>      <span class="comment">#已经开启</span></span><br><span class="line"><span class="keyword">user</span> quota <span class="keyword">on</span> /test (/dev/sdb1) is <span class="keyword">on</span></span><br></pre></td></tr></table></figure>
+
+<p>关闭磁盘配额:quotaoff 参数和quotaon的一样:</p>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@centos6.<span class="number">9</span> <span class="keyword">test</span>]<span class="comment">#quotaoff -p /test/        #检查状态</span></span><br><span class="line">group quota <span class="keyword">on</span> /<span class="keyword">test</span> (/dev/sdb1) is <span class="keyword">off</span>         <span class="comment">#关闭状态</span></span><br><span class="line">user quota <span class="keyword">on</span> /<span class="keyword">test</span> (/dev/sdb1) is <span class="keyword">off</span></span><br></pre></td></tr></table></figure>
+
+<p>编辑配额 edquota:</p>
+<figure class="highlight prolog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">[root@centos6<span class="number">.9</span> test]#edquota -h        #查看帮助</span><br><span class="line">edquota [-rm] [-u] [-<span class="symbol">F</span> formatname] [-p username] [-f filesystem] username ...</span><br><span class="line">edquota [-rm] -g [-<span class="symbol">F</span> formatname] [-p groupname] [-f filesystem] groupname ...</span><br><span class="line">edquota [-u|g] [-<span class="symbol">F</span> formatname] [-f filesystem] -t</span><br><span class="line">edquota [-u|g] [-<span class="symbol">F</span> formatname] [-f filesystem] -<span class="symbol">T</span> username|groupname ...</span><br><span class="line">#选项</span><br><span class="line">-u, --user                    编辑用户</span><br><span class="line">-g, --group                   编辑组</span><br><span class="line">-r, --remote                  通过<span class="symbol">RPC</span>编辑远程配额</span><br><span class="line">-m, --no-mixed-pathnames      从<span class="symbol">NFSv4</span>挂载点修剪主斜线</span><br><span class="line">-<span class="symbol">F</span>, --format=formatname       编辑具体格式的配额</span><br><span class="line">-p, --prototype=name          复制其他用户或组的配置</span><br><span class="line">    --always-resolve          总是尝试解析名称,即使它只是由数字组成</span><br><span class="line">-f, --filesystem=filesystem   仅在特定文件系统上编辑数据</span><br><span class="line">-t, --edit-period             编辑宽限期</span><br><span class="line">-<span class="symbol">T</span>, --edit-times              编辑单个用户或组的宽限时间</span><br><span class="line">-h, --help                    查看帮助</span><br><span class="line">-<span class="symbol">V</span>, --version                 查看版本信息</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">[root@centos6<span class="number">.9</span> ~]#edquota admin   #编辑admin用户</span><br><span class="line"><span class="symbol">Disk</span> quotas for user admin (uid <span class="number">500</span>):</span><br><span class="line">  <span class="symbol">Filesystem</span>       blocks       soft       hard     inodes     soft     hard</span><br><span class="line">  /dev/sdb1           <span class="number">0</span>          <span class="number">0</span>          <span class="number">0</span>          <span class="number">0</span>        <span class="number">0</span>        <span class="number">0</span></span><br></pre></td></tr></table></figure>
+
+<p>直接修改数字就可以配置配额了,可以用M、G:</p>
+<figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">Filesystem</span>:<span class="string">文件系统名</span></span><br><span class="line"><span class="attr">blocks</span>    :<span class="string">已经使用的块数,一块等于1K</span></span><br><span class="line"><span class="attr">soft</span>      :<span class="string">数据块的软限制,0表示禁用</span></span><br><span class="line"><span class="attr">hard</span>      :<span class="string">数据块的硬限制,0表示禁用,可用</span></span><br><span class="line"><span class="attr">inodes</span>    :<span class="string">已经创建的文件个数,如果有*表示超出软限制</span></span><br><span class="line"><span class="attr">soft</span>      :<span class="string">创建的文件个数的软限制,0表示禁用</span></span><br><span class="line"><span class="attr">hard</span>      :<span class="string">创建的文件个数的硬限制,0表示禁用</span></span><br><span class="line"><span class="attr">Disk</span> <span class="string">quotas for user admin (uid 500):</span></span><br><span class="line">  <span class="attr">Filesystem</span>                   <span class="string">blocks       soft       hard     inodes     soft     hard</span></span><br><span class="line">  <span class="meta">/dev/sdb1</span>                         <span class="string">0         800      1M           0        8       10</span></span><br><span class="line"><span class="comment">#因为是测试所以只给了1M空间,和10文件,软限制给了800k和8个文件</span></span><br></pre></td></tr></table></figure>
+
+<p>实验文件大小限制:</p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">[admin@centos6.9 test]<span class="variable">$dd</span> <span class="attribute">if</span>=/dev/zero <span class="attribute">of</span>=/test/1 <span class="attribute">bs</span>=1M <span class="attribute">count</span>=1  #创建1个1M的文件</span><br><span class="line">sdb1: warning,<span class="built_in"> user </span>block quota exceeded.</span><br><span class="line">1+0 records <span class="keyword">in</span></span><br><span class="line">1+0 records out</span><br><span class="line">1048576 bytes (1.0 MB) copied, 0.00242046 s, 433 MB/s #创建成功</span><br><span class="line">[admin@centos6.9 test]<span class="variable">$ll</span> -h  #查看/test目录下的文件详细信息</span><br><span class="line">-rw-rw-r--. 1 admin admin 1.0M Jun 19 06:09 1 #刚刚创建的文件</span><br><span class="line">-rw-------. 1 root  root  7.0K Jun 19 06:08 aquota.group</span><br><span class="line">-rw-------. 1 root  root  7.0K Jun 19 06:13 aquota.user</span><br><span class="line">drwx------. 2 root  root   16K Jun 19 03:08 lost+found</span><br><span class="line"></span><br><span class="line">[admin@centos6.9 test]<span class="variable">$dd</span> <span class="attribute">if</span>=/dev/zero <span class="attribute">of</span>=/test/2 <span class="attribute">bs</span>=1M <span class="attribute">count</span>=1 #在创建1个文件2</span><br><span class="line">sdb1: write failed,<span class="built_in"> user </span>block limit reached.</span><br><span class="line">dd: writing `/test/2<span class="string">&#x27;: Disk quota exceeded #提示超过了磁盘配额</span></span><br><span class="line"><span class="string">1+0 records in</span></span><br><span class="line"><span class="string">0+0 records out</span></span><br><span class="line"><span class="string">0 bytes (0 B) copied, 0.00140152 s, 0.0 kB/s #创建失败</span></span><br></pre></td></tr></table></figure>
+
+<p>验证创建文件个数的限制:</p>
+<figure class="highlight tap"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">[admin@centos6.9 test]$touch &#123;1..8&#125; <span class="comment">#创建8个文件</span></span><br><span class="line">[admin@centos6.9 test]$ll</span><br><span class="line">-rw-rw-r--.<span class="number"> 1 </span>admin admin    <span class="number"> 0 </span>Jun<span class="number"> 19 </span>06:26<span class="number"> 1 </span></span><br><span class="line">-rw-rw-r--.<span class="number"> 1 </span>admin admin    <span class="number"> 0 </span>Jun<span class="number"> 19 </span>06:26 2</span><br><span class="line">-rw-rw-r--.<span class="number"> 1 </span>admin admin    <span class="number"> 0 </span>Jun<span class="number"> 19 </span>06:26 3</span><br><span class="line">-rw-rw-r--.<span class="number"> 1 </span>admin admin    <span class="number"> 0 </span>Jun<span class="number"> 19 </span>06:26 4</span><br><span class="line">-rw-rw-r--.<span class="number"> 1 </span>admin admin    <span class="number"> 0 </span>Jun<span class="number"> 19 </span>06:26 5</span><br><span class="line">-rw-rw-r--.<span class="number"> 1 </span>admin admin    <span class="number"> 0 </span>Jun<span class="number"> 19 </span>06:26 6</span><br><span class="line">-rw-rw-r--.<span class="number"> 1 </span>admin admin    <span class="number"> 0 </span>Jun<span class="number"> 19 </span>06:26 7</span><br><span class="line">-rw-rw-r--.<span class="number"> 1 </span>admin admin    <span class="number"> 0 </span>Jun<span class="number"> 19 </span>06:29 8</span><br><span class="line">-rw-------.<span class="number"> 1 </span>root  root  <span class="number"> 7168 </span>Jun<span class="number"> 19 </span>06:26 aquota.group</span><br><span class="line">-rw-------.<span class="number"> 1 </span>root  root  <span class="number"> 7168 </span>Jun<span class="number"> 19 </span>06:26 aquota.user</span><br><span class="line">drwx------.<span class="number"> 2 </span>root  root <span class="number"> 16384 </span>Jun<span class="number"> 19 </span>03:08 lost+found</span><br><span class="line">[admin@centos6.9 test]$touch<span class="number"> 9 </span><span class="comment">#创建第九个文件</span></span><br><span class="line">sdb1: warning, user file quota exceeded. <span class="comment">#触发了软限制,提示将超出用户文件配额.</span></span><br><span class="line">[admin@centos6.9 test]$ll <span class="comment">#查看文件</span></span><br><span class="line">-rw-rw-r--.<span class="number"> 1 </span>admin admin    <span class="number"> 0 </span>Jun<span class="number"> 19 </span>06:26 1</span><br><span class="line">-rw-rw-r--.<span class="number"> 1 </span>admin admin    <span class="number"> 0 </span>Jun<span class="number"> 19 </span>06:26 2</span><br><span class="line">-rw-rw-r--.<span class="number"> 1 </span>admin admin    <span class="number"> 0 </span>Jun<span class="number"> 19 </span>06:26 3</span><br><span class="line">-rw-rw-r--.<span class="number"> 1 </span>admin admin    <span class="number"> 0 </span>Jun<span class="number"> 19 </span>06:26 4</span><br><span class="line">-rw-rw-r--.<span class="number"> 1 </span>admin admin    <span class="number"> 0 </span>Jun<span class="number"> 19 </span>06:26 5</span><br><span class="line">-rw-rw-r--.<span class="number"> 1 </span>admin admin    <span class="number"> 0 </span>Jun<span class="number"> 19 </span>06:26 6</span><br><span class="line">-rw-rw-r--.<span class="number"> 1 </span>admin admin    <span class="number"> 0 </span>Jun<span class="number"> 19 </span>06:26 7</span><br><span class="line">-rw-rw-r--.<span class="number"> 1 </span>admin admin    <span class="number"> 0 </span>Jun<span class="number"> 19 </span>06:29 8</span><br><span class="line">-rw-rw-r--.<span class="number"> 1 </span>admin admin    <span class="number"> 0 </span>Jun<span class="number"> 19 </span>06:29<span class="number"> 9 </span><span class="comment">#但是还是创建成功了</span></span><br><span class="line">[admin@centos6.9 test]$touch<span class="number"> 10 </span><span class="comment">#创建第十个文件</span></span><br><span class="line">[admin@centos6.9 test]$touch<span class="number"> 11 </span><span class="comment">#创建第十一个文件</span></span><br><span class="line">sdb1: write failed, user file limit reached.</span><br><span class="line">touch: cannot touch `11&#x27;: Disk quota exceeded <span class="comment">#报警,不能创建,超过了磁盘配额</span></span><br></pre></td></tr></table></figure>
+
+<p>直接在shell中编辑配额:setquota, 它和quotaon只有两个不同选项:</p>
+<figure class="highlight tap"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">-b, --batch <span class="comment">#从标准输入读取限制</span></span><br><span class="line">-c, --continue-batch <span class="comment">#在出现错误的情况下继续输入处理</span></span><br><span class="line"></span><br><span class="line">Disk quotas for user admin (uid 500):</span><br><span class="line">  Filesystem                   blocks       soft       hard     inodes     soft     hard</span><br><span class="line">  /dev/sdb1                     <span class="number"> 1024 </span>      <span class="number"> 800 </span>     <span class="number"> 1024 </span>       <span class="number"> 10 </span>      <span class="number"> 8 </span>      10</span><br><span class="line">[root@centos6.9 ~]<span class="comment">#setquota admin 1M 2M 10 20 /test/    #设置软限制1M,硬限制2M.文件软10个,硬限制20个</span></span><br><span class="line">[root@centos6.9 ~]<span class="comment">#edquota admin 查看</span></span><br><span class="line">Disk quotas for user admin (uid 500):</span><br><span class="line">  Filesystem                   blocks       soft       hard     inodes     soft     hard</span><br><span class="line">  /dev/sdb1                     <span class="number"> 1024 </span>     <span class="number"> 1024 </span>     <span class="number"> 2048 </span>       <span class="number"> 10 </span>     <span class="number"> 10 </span>      20</span><br><span class="line"><span class="comment">#配额设置被更改了 </span></span><br></pre></td></tr></table></figure>
+
+<p>用一个用户的权限来为另一个用户创建配额权限:</p>
+<figure class="highlight tap"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[root@centos6.9 ~]<span class="comment">#useradd test1 #创建一个yoghurt</span></span><br><span class="line">[root@centos6.9 ~]<span class="comment">#edquota -p admin test1 #复制admin的权限给test1</span></span><br><span class="line">[root@centos6.9 ~]<span class="comment">#quota test1  #查看test1用户的权限</span></span><br><span class="line">Disk quotas for user test1 (uid 501):</span><br><span class="line">  Filesystem                   blocks       soft       hard     inodes     soft     hard</span><br><span class="line">  /dev/sdb1                        <span class="number"> 0 </span>     <span class="number"> 1024 </span>     <span class="number"> 2048 </span>        <span class="number"> 0 </span>     <span class="number"> 10 </span>      20</span><br></pre></td></tr></table></figure>
+
+<p>查看用户权限,除了进入配置文件还可以用quota 用户名来查看:</p>
+<figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">admin</span>@centos6<span class="number">.9</span> test]$quota <span class="keyword">admin</span></span><br><span class="line">Disk quotas <span class="keyword">for</span> <span class="keyword">user</span> <span class="keyword">admin</span> (uid <span class="number">500</span>): </span><br><span class="line">     Filesystem  blocks   quota   <span class="keyword">limit</span>   grace   files   quota   <span class="keyword">limit</span>   grace</span><br><span class="line">      /dev/sdb1       <span class="number">0</span>    <span class="number">1024</span>    <span class="number">2048</span>              <span class="number">10</span>*      <span class="number">8</span>      <span class="number">10</span>   <span class="number">6</span>days</span><br></pre></td></tr></table></figure>
+
+<p>注:上面可以看到已创建文件的后面的*号,表示超过的软限制.软限制:用户可以在超过,一般用来提示用户即将超过限制,但是软限制是有宽限期,如果过了宽限期用户也是不能创建文件的.宽限期管理员可以用edquota的t和T选项来设置.</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+
+  
+  <nav class="pagination">
+    <a class="extend prev" rel="prev" href="/page/87/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/87/">87</a><span class="page-number current">88</span><a class="page-number" href="/page/89/">89</a><span class="space">&hellip;</span><a class="page-number" href="/page/132/">132</a><a class="extend next" rel="next" href="/page/89/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+  </nav>
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="王殊勋"
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name">王殊勋</p>
+  <div class="site-description" itemprop="description">better late than never.<br>只要开始，虽晚不迟。</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">656</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">2058</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <!--添加网站运行时间 -->
+  <span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
+  <script>
+      var now = new Date(); 
+      function createtime() { 
+          var grt= new Date("12/01/2007 12:00:00");//此处修改你的建站时间或者网站上线时间 
+          now.setTime(now.getTime()+250); 
+          days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days); 
+          hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours); 
+          if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum); 
+          mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;} 
+          seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum); 
+          snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;} 
+          document.getElementById("timeDate").innerHTML = "本站已安全运行 "+dnum+" 天 "; 
+          document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒"; 
+      } 
+  setInterval("createtime()",250);
+  </script>
+  <span itemprop="copyrightYear">(2007 - 2021)</span>
+  <!-- 添加网站运行时间 -->
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">学无止境</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script size="300" alpha="0.6" zIndex="0" src="/lib/canvas-ribbon/canvas-ribbon.js"></script>
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

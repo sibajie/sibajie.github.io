@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"shuxun","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"./public/search.xml"};
+  </script>
+
+  <meta name="description" content="在同步服务器上开启sersync,将监控路径中的文件同步到目标服务器,因此需要在同步服务器配置sersync,在同步目标服务器配置rsync. 一、同步目标服务器配置rsync 1234567891011121314151617181920212223242526272829rpm -qa |grep rsyncrsync-2.6.8-3.1rpm -e rsync-2.6.8-3.1#unist">
+<meta property="og:type" content="article">
+<meta property="og:title" content="centos安装sersync">
+<meta property="og:url" content="http://shuxun,wang/2018/06/14/1111/index.html">
+<meta property="og:site_name" content="学无止境">
+<meta property="og:description" content="在同步服务器上开启sersync,将监控路径中的文件同步到目标服务器,因此需要在同步服务器配置sersync,在同步目标服务器配置rsync. 一、同步目标服务器配置rsync 1234567891011121314151617181920212223242526272829rpm -qa |grep rsyncrsync-2.6.8-3.1rpm -e rsync-2.6.8-3.1#unist">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2018-06-14T07:19:00.000Z">
+<meta property="article:modified_time" content="2021-07-14T07:15:22.088Z">
+<meta property="article:author" content="王殊勋">
+<meta property="article:tag" content="etc">
+<meta property="article:tag" content="文件">
+<meta property="article:tag" content="配置">
+<meta property="article:tag" content="参数">
+<meta property="article:tag" content="服务器">
+<meta property="article:tag" content="模块">
+<meta property="article:tag" content="start">
+<meta property="article:tag" content="同步">
+<meta property="article:tag" content="sersync2">
+<meta property="article:tag" content="execute">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://shuxun,wang/2018/06/14/1111/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>centos安装sersync | 学无止境</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">学无止境</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">注互联网运维技术发展</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-sitemap">
+
+    <a href="/sitemap.xml" rel="section"><i class="fa fa-sitemap fa-fw"></i>站点地图</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://shuxun,wang/2018/06/14/1111/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="王殊勋">
+      <meta itemprop="description" content="专注互联网运维技术发展">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="学无止境">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          centos安装sersync
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2018-06-14 15:19:00" itemprop="dateCreated datePublished" datetime="2018-06-14T15:19:00+08:00">2018-06-14</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-07-14 15:15:22" itemprop="dateModified" datetime="2021-07-14T15:15:22+08:00">2021-07-14</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%90%84%E7%B1%BB%E6%9C%8D%E5%8A%A1/" itemprop="url" rel="index"><span itemprop="name">各类服务</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>在同步服务器上开启sersync,将监控路径中的文件同步到目标服务器,因此需要在同步服务器配置sersync,在同步目标服务器配置rsync.</p>
+<p>一、同步目标服务器配置rsync</p>
+<figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">rpm -qa |grep rsync</span><br><span class="line">rsync-2.6.8-3.1</span><br><span class="line">rpm -<span class="keyword">e</span> rsync-2.6.8-3.1</span><br><span class="line">#unistall系统自带安装的rsync,安装3.0版的rsync</span><br><span class="line">wget -c http:<span class="comment">//rsync.samba.org/ftp/rsync/rsync-3.0.8.tar.gz</span></span><br><span class="line">tar xf rsync-3.0.8.tar.gz</span><br><span class="line">./configure --prefix=/usr &amp;&amp; make &amp;&amp; make install</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">vi /etc/rsyncd.<span class="keyword">conf</span></span><br><span class="line">#添加下面的代码到rsyncd.<span class="keyword">conf</span>中</span><br><span class="line"></span><br><span class="line">uid = nobody</span><br><span class="line">gid = nobody</span><br><span class="line"><span class="keyword">use</span> chroot = <span class="keyword">no</span></span><br><span class="line">strict modes = yes</span><br><span class="line">max connections = 200</span><br><span class="line">pid <span class="keyword">file</span> = /<span class="keyword">var</span>/<span class="keyword">run</span>/rsyncd.pid</span><br><span class="line">lock <span class="keyword">file</span> = /<span class="keyword">var</span>/<span class="keyword">run</span>/rsync.lock</span><br><span class="line"><span class="keyword">log</span> <span class="keyword">file</span> = /<span class="keyword">var</span>/<span class="keyword">log</span>/rsyncd.<span class="keyword">log</span></span><br><span class="line">[<span class="keyword">test</span>]</span><br><span class="line">path = /home/</span><br><span class="line">comment = <span class="keyword">test</span></span><br><span class="line"><span class="keyword">read</span> only = <span class="keyword">no</span></span><br><span class="line">write only = <span class="keyword">no</span></span><br><span class="line">ignore errors = yes</span><br><span class="line"><span class="keyword">list</span> = yes</span><br><span class="line">uid = root</span><br><span class="line">gid = root</span><br></pre></td></tr></table></figure>
+
+<p>启动rsync服务:</p>
+<figure class="highlight ada"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rsync <span class="comment">--daemon</span></span><br></pre></td></tr></table></figure>
+
+<p>二、配置sersync2</p>
+<p>sersync2是金山逍遥网技术支持部平台组周洋童鞋,开发的一款基于 inotify + rsync 的大量文件的多服务器自动同步程序,目前已开源,开源协议为 New BSD License,项目的下载地址:</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http:<span class="regexp">//</span>code.google.com<span class="regexp">/p/</span>sersync/</span><br></pre></td></tr></table></figure>
+
+<p>这个配置超简单的,下载文件,解压即可.</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">wget</span> -c http://sersync.googlecode.com/files/sersync<span class="number">2</span>.<span class="number">5</span>_<span class="number">64</span>bit_binary_stable_final.tar.gz</span><br><span class="line"><span class="attribute">tar</span> xf sersync<span class="number">2</span>.<span class="number">5</span>_<span class="number">64</span>bit_binary_stable_final.tar.gz</span><br><span class="line"><span class="attribute">cd</span> GNU-Linux-x<span class="number">86</span></span><br><span class="line"><span class="attribute">mkdir</span> /etc/sersync<span class="number">2</span></span><br><span class="line"><span class="attribute">cp</span> confxml.xml /etc/sersync<span class="number">2</span></span><br><span class="line"><span class="attribute">cp</span> sersync<span class="number">2</span> /usr/bin</span><br></pre></td></tr></table></figure>
+
+<p>配置sersync2:</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">sersync</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">localpath</span> <span class="attr">watch</span>=<span class="string">&quot;/data/bb&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">remote</span> <span class="attr">ip</span>=<span class="string">&quot;192.168.1.4&quot;</span> <span class="attr">name</span>=<span class="string">&quot;test&quot;</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">remote</span> <span class="attr">ip</span>=<span class="string">&quot;192.168.1.6&quot;</span> <span class="attr">name</span>=<span class="string">&quot;test&quot;</span>/&gt;</span></span><br><span class="line"><span class="comment">&lt;!--&lt;remote ip=&quot;192.168.8.40&quot; name=&quot;tongbu&quot;/&gt;--&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">localpath</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">rsync</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">commonParams</span> <span class="attr">params</span>=<span class="string">&quot;-artuz&quot;</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">auth</span> <span class="attr">start</span>=<span class="string">&quot;false&quot;</span> <span class="attr">users</span>=<span class="string">&quot;root&quot;</span> <span class="attr">passwordfile</span>=<span class="string">&quot;/etc/rsync.pas&quot;</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">userDefinedPort</span> <span class="attr">start</span>=<span class="string">&quot;false&quot;</span> <span class="attr">port</span>=<span class="string">&quot;874&quot;</span>/&gt;</span><span class="comment">&lt;!-- port=874 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">timeout</span> <span class="attr">start</span>=<span class="string">&quot;false&quot;</span> <span class="attr">time</span>=<span class="string">&quot;100&quot;</span>/&gt;</span><span class="comment">&lt;!-- timeout=100 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">ssh</span> <span class="attr">start</span>=<span class="string">&quot;false&quot;</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">rsync</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">failLog</span> <span class="attr">path</span>=<span class="string">&quot;/var/log/rsync_fail.log&quot;</span> <span class="attr">timeToExecute</span>=<span class="string">&quot;60&quot;</span>/&gt;</span><span class="comment">&lt;!--default every 60mins execute once--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">crontab</span> <span class="attr">start</span>=<span class="string">&quot;false&quot;</span> <span class="attr">schedule</span>=<span class="string">&quot;600&quot;</span>&gt;</span><span class="comment">&lt;!--600mins--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">crontabfilter</span> <span class="attr">start</span>=<span class="string">&quot;false&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">exclude</span> <span class="attr">expression</span>=<span class="string">&quot;*.php&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">exclude</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">exclude</span> <span class="attr">expression</span>=<span class="string">&quot;info/*&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">exclude</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">crontabfilter</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">crontab</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">plugin</span> <span class="attr">start</span>=<span class="string">&quot;false&quot;</span> <span class="attr">name</span>=<span class="string">&quot;command&quot;</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">sersync</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>表明要将同步服务器上本地的/data/bb 路径下的文件,同步到远程服务器 192.168.1.4 与 192.168.1.6上的test 模块下.<br>接下来,运行sersync2：</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sersync2 -r -o <span class="regexp">/etc/</span>sersync2/confxml.xml</span><br><span class="line"><span class="comment">#-r 在开启实时监控之前对同步服务器目录与远程目标机目录进行一次整体同步</span></span><br></pre></td></tr></table></figure>
+
+<p>运行完了输出：</p>
+<figure class="highlight tcl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">set</span> the system param</span><br><span class="line">execute:echo <span class="number">50000000</span> &gt; /<span class="keyword">proc</span>/sys/fs/inotify/max_user_watches<span class="title"></span></span><br><span class="line"><span class="title">execute:echo</span> 327679 &gt; /<span class="keyword">proc</span>/sys/fs/inotify/max_queued_events<span class="title"></span></span><br><span class="line"><span class="title">parse</span> the<span class="title"> command</span> param<span class="title"></span></span><br><span class="line"><span class="title">option:</span> -r<span class="title"> rsync</span> all<span class="title"> the</span> local<span class="title"> files</span> to<span class="title"> the</span> remote<span class="title"> servers</span> before<span class="title"> the</span> sersync<span class="title"> work</span></span><br><span class="line">option: -d<span class="title"> run</span> as<span class="title"> a</span> daemon<span class="title"></span></span><br><span class="line"><span class="title">option:</span> -o<span class="title"> config</span> xml<span class="title"> name:</span> /etc/sersync2/confxml.xml<span class="title"></span></span><br><span class="line"><span class="title">daemon</span> thread<span class="title"> num:</span> 10<span class="title"></span></span><br><span class="line"><span class="title">parse</span> xml<span class="title"> config</span> file<span class="title"></span></span><br><span class="line"><span class="title">host</span> ip :<span class="title"> localhost</span> host<span class="title"> port:</span> 8008<span class="title"></span></span><br><span class="line"><span class="title">daemon</span> start,sersync<span class="title"> run</span> behind<span class="title"> the</span> console<span class="title"></span></span><br><span class="line"><span class="title">config</span> xml<span class="title"> parse</span> success<span class="title"></span></span><br><span class="line"><span class="title">please</span> set /etc/rsyncd.conf<span class="title"> max</span> connections=0<span class="title"> Manually</span></span><br><span class="line">sersync<span class="title"> working</span> thread 112 = 1(primary<span class="title"> thread)</span> + 1(fail<span class="title"> retry</span> thread) + 10(daemon<span class="title"> sub</span> threads)<span class="title"></span></span><br><span class="line"><span class="title">Max</span> threads<span class="title"> numbers</span> is: 32 = 12(Thread<span class="title"> pool</span> nums) + 20(Sub<span class="title"> threads)</span></span><br><span class="line">please<span class="title"> according</span> your<span class="title"> cpu</span> ,use -n<span class="title"> param</span> to<span class="title"> adjust</span> the<span class="title"> cpu</span> rate<span class="title"></span></span><br><span class="line"><span class="title"></span></span><br><span class="line"><span class="title">rsync</span> the<span class="title"> directory</span> recursivly<span class="title"> to</span> the<span class="title"> remote</span> servers<span class="title"> once</span></span><br><span class="line">working<span class="title"> please</span> wait...<span class="title"></span></span><br><span class="line"><span class="title">execute</span> command:<span class="title"> cd</span> /data/bb &amp;&amp;<span class="title"> rsync</span> -artuz -R --delete ./ 192.168.1.4::test &gt;/dev/null 2&gt;&amp;1<span class="title"></span></span><br><span class="line"><span class="title">run</span> the<span class="title"> sersync:</span></span><br><span class="line">watch<span class="title"> path</span> is: /data/bb<span class="title"></span></span><br><span class="line"><span class="title">sersync2的参数</span></span><br><span class="line">sersync2 -h<span class="title"></span></span><br><span class="line"><span class="title">set</span> the<span class="title"> system</span> param<span class="title"></span></span><br><span class="line"><span class="title">execute:echo</span> 50000000 &gt; /<span class="keyword">proc</span>/sys/fs/inotify/max_user_watches<span class="title"></span></span><br><span class="line"><span class="title">execute:echo</span> 327679 &gt; /<span class="keyword">proc</span>/sys/fs/inotify/max_queued_events<span class="title"></span></span><br><span class="line"><span class="title">parse</span> the<span class="title"> command</span> param</span><br></pre></td></tr></table></figure>
+
+<p>参数含义:</p>
+<figure class="highlight vala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#参数-d:启用守护进程模式</span></span><br><span class="line"><span class="meta">#参数-r:在监控前,将监控目录与远程主机用rsync命令推送一遍</span></span><br><span class="line"><span class="meta">#参数-n: 指定开启守护线程的数量,默认为10个</span></span><br><span class="line"><span class="meta">#参数-o:指定配置文件,默认使用confxml.xml文件</span></span><br><span class="line"><span class="meta">#参数-m:单独启用其他模块,使用 -m refreshCDN 开启刷新CDN模块</span></span><br><span class="line"><span class="meta">#参数-m:单独启用其他模块,使用 -m socket 开启socket模块</span></span><br><span class="line"><span class="meta">#参数-m:单独启用其他模块,使用 -m http 开启http模块</span></span><br><span class="line"><span class="meta">#不加-m参数,则默认执行同步程序</span></span><br></pre></td></tr></table></figure>
+
+<p>索性一次性运行：</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sersync2 -r -d -o <span class="regexp">/etc/</span>sersync2/confxml.xml</span><br></pre></td></tr></table></figure>
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/etc/" rel="tag"># etc</a>
+              <a href="/tags/%E6%96%87%E4%BB%B6/" rel="tag"># 文件</a>
+              <a href="/tags/%E9%85%8D%E7%BD%AE/" rel="tag"># 配置</a>
+              <a href="/tags/%E5%8F%82%E6%95%B0/" rel="tag"># 参数</a>
+              <a href="/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/" rel="tag"># 服务器</a>
+              <a href="/tags/%E6%A8%A1%E5%9D%97/" rel="tag"># 模块</a>
+              <a href="/tags/start/" rel="tag"># start</a>
+              <a href="/tags/%E5%90%8C%E6%AD%A5/" rel="tag"># 同步</a>
+              <a href="/tags/sersync2/" rel="tag"># sersync2</a>
+              <a href="/tags/execute/" rel="tag"># execute</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2018/06/13/1024/" rel="prev" title="解决centos-6出现 /usr/bin/ld cannot find lc">
+      <i class="fa fa-chevron-left"></i> 解决centos-6出现 /usr/bin/ld cannot find lc
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2018/06/30/1318/" rel="next" title="OpenVZ 安装 PPTP 完整无错教程">
+      OpenVZ 安装 PPTP 完整无错教程 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="王殊勋"
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name">王殊勋</p>
+  <div class="site-description" itemprop="description">better late than never.<br>只要开始，虽晚不迟。</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">656</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">2058</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <!--添加网站运行时间 -->
+  <span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
+  <script>
+      var now = new Date(); 
+      function createtime() { 
+          var grt= new Date("12/01/2007 12:00:00");//此处修改你的建站时间或者网站上线时间 
+          now.setTime(now.getTime()+250); 
+          days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days); 
+          hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours); 
+          if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum); 
+          mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;} 
+          seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum); 
+          snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;} 
+          document.getElementById("timeDate").innerHTML = "本站已安全运行 "+dnum+" 天 "; 
+          document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒"; 
+      } 
+  setInterval("createtime()",250);
+  </script>
+  <span itemprop="copyrightYear">(2007 - 2021)</span>
+  <!-- 添加网站运行时间 -->
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">学无止境</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script size="300" alpha="0.6" zIndex="0" src="/lib/canvas-ribbon/canvas-ribbon.js"></script>
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

@@ -1,0 +1,858 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"shuxun","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"./public/search.xml"};
+  </script>
+
+  <meta name="description" content="专注互联网运维技术发展">
+<meta property="og:type" content="website">
+<meta property="og:title" content="学无止境">
+<meta property="og:url" content="http://shuxun,wang/page/17/index.html">
+<meta property="og:site_name" content="学无止境">
+<meta property="og:description" content="专注互联网运维技术发展">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:author" content="王殊勋">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://shuxun,wang/page/17/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : true,
+    isPost : false,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>学无止境</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">学无止境</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">注互联网运维技术发展</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-sitemap">
+
+    <a href="/sitemap.xml" rel="section"><i class="fa fa-sitemap fa-fw"></i>站点地图</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content index posts-expand">
+            
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://shuxun,wang/2019/02/12/1551/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="王殊勋">
+      <meta itemprop="description" content="专注互联网运维技术发展">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="学无止境">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/02/12/1551/" class="post-title-link" itemprop="url">批量删除.svn文件</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-02-12 12:30:00" itemprop="dateCreated datePublished" datetime="2019-02-12T12:30:00+08:00">2019-02-12</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-07-14 15:14:59" itemprop="dateModified" datetime="2021-07-14T15:14:59+08:00">2021-07-14</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%BC%96%E7%A8%8B%E5%BC%80%E5%8F%91/" itemprop="url" rel="index"><span itemprop="name">编程开发</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>在记事本输入以下代码:</p>
+<figure class="highlight taggerscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Windows Registry Editor Version 5.00</span><br><span class="line">[HKEY_LOCAL_MACHINE<span class="symbol">\S</span>OFTWARE<span class="symbol">\C</span>lasses<span class="symbol">\F</span>older<span class="symbol">\s</span>hell<span class="symbol">\D</span>eleteSVN]</span><br><span class="line">@=&quot;Delete SVN Folders&quot;</span><br><span class="line">[HKEY_LOCAL_MACHINE<span class="symbol">\S</span>OFTWARE<span class="symbol">\C</span>lasses<span class="symbol">\F</span>older<span class="symbol">\s</span>hell<span class="symbol">\D</span>eleteSVN<span class="symbol">\c</span>ommand]</span><br><span class="line">@=&quot;cmd.exe /c <span class="symbol">\&quot;</span>TITLE Removing SVN Folders in <span class="variable">%1 &amp;&amp; COLOR 9A &amp;&amp; FOR /r \&quot;%</span>1<span class="symbol">\&quot;</span> <span class="variable">%%</span>f IN (.svn) DO RD /s /q <span class="symbol">\&quot;</span><span class="variable">%%</span>f<span class="symbol">\&quot;</span> <span class="symbol">\&quot;</span>&quot;</span><br></pre></td></tr></table></figure>
+
+<p>保存为以.reg作为扩展名的文件,双击此reg文件导入注册表.导入后,在需要删除.svn文件的时候,右键点击此文件夹,会在关联菜单看到”Delete SVN Folders”选项,执行即可迅速删除该文件夹下的所有.svn文件.</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://shuxun,wang/2019/02/10/1110/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="王殊勋">
+      <meta itemprop="description" content="专注互联网运维技术发展">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="学无止境">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/02/10/1110/" class="post-title-link" itemprop="url">centos安装openvpn及其配置</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-02-10 01:12:00" itemprop="dateCreated datePublished" datetime="2019-02-10T01:12:00+08:00">2019-02-10</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-07-14 15:16:26" itemprop="dateModified" datetime="2021-07-14T15:16:26+08:00">2021-07-14</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%90%84%E7%B1%BB%E6%9C%8D%E5%8A%A1/" itemprop="url" rel="index"><span itemprop="name">各类服务</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>OpenVPN是一个用于创建虚拟专用网络加密通道的软件包,允许参与建立VPN的单点使用公开密钥、电子证书、或者用户名/密码来进行身份验 证,能在Solaris、Linux、OpenBSD、FreeBSD、NetBSD、Mac OS X与Windows上运行,並包含了许多安全性的功能.本文一步一步介绍了在CentOS 5.5上安装openvpn的过程.</p>
+<p>一、下载软件包</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ cd /opt</span><br><span class="line">$ wget http:<span class="regexp">//</span>www.oberhumer.com<span class="regexp">/opensource/</span>lzo<span class="regexp">/download/</span>lzo-<span class="number">2.04</span>.tar.gz</span><br><span class="line">$ wget http:<span class="regexp">//</span>openvpn.net<span class="regexp">/release/</span>openvpn-<span class="number">2.1</span>_rc22.tar.gz</span><br></pre></td></tr></table></figure>
+
+<p>二、解压及安装</p>
+<figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$ </span>tar zxvf lzo*</span><br><span class="line"><span class="variable">$ </span>tar zxvf openvpn*</span><br></pre></td></tr></table></figure>
+
+<p>进入相应文件夹下,执行以下命令编译安装:</p>
+<figure class="highlight gauss"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ./configure &amp;&amp; <span class="built_in">make</span> &amp;&amp; <span class="built_in">make</span> install</span><br></pre></td></tr></table></figure>
+
+<p>三、服务器端设置:</p>
+<p>1.用easy-rsa生成服务器证书客户端证书</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ cp <span class="regexp">/opt/</span>openvpn-<span class="number">2.1</span>_rc22<span class="regexp">/easy-rsa/</span><span class="number">2.0</span> -r <span class="regexp">/etc/</span>openvpn</span><br><span class="line">$ cd <span class="regexp">/etc/</span>openvpn/<span class="number">2.0</span></span><br></pre></td></tr></table></figure>
+
+<p>编辑所需的参数再调用之:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> vim vars</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> <span class="built_in">source</span> ./vars</span></span><br></pre></td></tr></table></figure>
+
+<p>下面这个命令在第一次安装时可以运行,以后在添加客户端时千万别运行,这个命令会清除所有已经生成的证书密钥.</p>
+<figure class="highlight gams"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="symbol">$</span> ./clean-<span class="keyword">all</span></span><br></pre></td></tr></table></figure>
+
+<p>生成服务器端ca证书:</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$</span> ./<span class="built_in">build-ca</span></span><br></pre></td></tr></table></figure>
+
+<p>生成服务器端密钥证书, 后面这个server-name就是服务器名,可以自定义.</p>
+<figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ./build-<span class="keyword">server</span>-key <span class="keyword">server</span>-<span class="type">name</span></span><br></pre></td></tr></table></figure>
+
+<p>一路Enter之后证书生成.</p>
+<p>再依次生成所需客户端证书密钥文件:</p>
+<figure class="highlight n1ql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ ./<span class="keyword">build</span>-<span class="keyword">key</span> client-name1</span><br><span class="line">$ ./<span class="keyword">build</span>-<span class="keyword">key</span> client-name2</span><br></pre></td></tr></table></figure>
+
+<p>再生成 diffie hellman 参数:</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$</span> ./<span class="built_in">build-dh</span></span><br></pre></td></tr></table></figure>
+
+<p>创建并编辑服务器端配置文件:</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cp <span class="regexp">/opt/</span>openvpn-<span class="number">2.1</span>_rc22<span class="regexp">/sample-config-files/</span>server.conf <span class="regexp">/etc/</span>openvpn/</span><br><span class="line">vi <span class="regexp">/etc/</span>openvpn/server.conf</span><br></pre></td></tr></table></figure>
+
+<p>编辑成下面的内容:</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">port</span> <span class="number">1494</span></span><br><span class="line"><span class="attribute">proto</span> udp</span><br><span class="line"><span class="attribute">dev</span> tun</span><br><span class="line"><span class="attribute">ca</span> ca.crt</span><br><span class="line"><span class="attribute">cert</span> server.crt</span><br><span class="line"><span class="attribute">key</span> server.key</span><br><span class="line"><span class="attribute">dh</span> dh<span class="number">1024</span>.pem</span><br><span class="line"><span class="attribute">server</span> <span class="number">10.1.0.0</span> <span class="number">255.255.255.0</span></span><br><span class="line"><span class="attribute">push</span> <span class="string">&quot;route 10.1.0.0 255.255.255.0&quot;</span></span><br><span class="line"><span class="attribute">push</span> <span class="string">&quot;route 10.1.1.0 255.255.255.0&quot;</span></span><br><span class="line"><span class="attribute">client</span>-config-dir /etc/vpn/ccd</span><br><span class="line"><span class="attribute">route</span> <span class="number">10.1.1.0</span> <span class="number">255.255.255.0</span></span><br><span class="line"><span class="attribute">client</span>-to-client</span><br><span class="line"><span class="attribute">keepalive</span> <span class="number">10</span> <span class="number">120</span></span><br><span class="line"><span class="attribute">user</span> nobody</span><br><span class="line"><span class="attribute">group</span> nobody</span><br><span class="line"><span class="attribute">persist</span>-key</span><br><span class="line"><span class="attribute">persist</span>-tun</span><br><span class="line"><span class="attribute">log</span>-append openvpn.log</span><br><span class="line"><span class="attribute">verb</span> <span class="number">3</span></span><br></pre></td></tr></table></figure>
+
+<p>其中 ca.crt, server.key,server.crt 可以用以前贴出的 ca 工具创建,dh1024.pem 用 OpenVPN 自带的工具创建.<br>这个配置文件创建了两个网段:10.1.0.* 和 10.1.1.*,VPN 服务器将从这两个网段中给 Client 分配 IP 地址.VPN Server 自身 IP 将是 10.0.0.1.<br>“client- config-dir”指明 Client 的专有配置文件目录.在这个目录下可以针对特定用户建立配置文件.例如,要为用户 abc 指定一个 IP 地址(如10.1.1.5)而不是让 VPN Server 自动分配,可以在配置目录 <code>/etc/vpn/ccd</code>下建立一个 abc 文件,内容如下:</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">ifconfig</span>-push <span class="number">10.1.1.5</span> <span class="number">10.1.1.6</span></span><br></pre></td></tr></table></figure>
+
+<p>那么 VPN Server 就会自动给 abc 用户分配 10.1.1.5 这个地址.注意第一个IP地址 的最后一个数字(这里是 5)必须是 4*n + 1 的数.<br>问题是,VPN Server 怎么知道哪个用户是 abc 呢?它是 Client 数字证书中的 Common Name 域来判断的.就是说,在连接协商时如果 Client 端数字证书的 Common Name 是 abc,那么 VPN Server 就找配置目录下 abc 这个文件.<br>修改完成之后,到VPN目录下执行:</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="regexp">/usr/</span>local<span class="regexp">/sbin/</span>openvpn --config <span class="regexp">/etc/</span>openvpn/server.conf;</span><br></pre></td></tr></table></figure>
+
+<p>每次都运行上面这个命令有点麻烦,这里有一个script,把它复制到 <code>/etc/init.d</code> 文件夹下,可以实现启动,状态查询,重启等.该文件适应于CentOS 5.5, 如果密钥及配置文件位置不一样,也许要作一些小的修改.<br>再在rcX.d文件夹下作几个软链接就可以实现开机自动启动了.<br>也可以修改 <code>/etc/rc.local</code>文件实现开机启动.</p>
+<p>密钥分发:</p>
+<p>把ca.crt 及相应client 的三个密钥证书文件一共四个分别分发出去就可以了.注意不需要将ca.key分发出去,<br>ca.key应该保密.</p>
+<p>四、客户端配置</p>
+<p>1.Linux</p>
+<p>相应比较简单,安装好openvpn后,把收到的ca及lient文件放到相应的位置,配置好client.conf就可以了.</p>
+<p>2.Windows</p>
+<p>到openvpn官方网站下载windows安装包进行安装,在安装文件夹下有下个config文件夹,把你的ca及client文件放到该文件夹下,从sample-config下拷贝一个client.ovpn并作相应修改即可.</p>
+<p>五、固定IP地址分配</p>
+<p>在服务器端配置文件(server.conf)里取消下面行的注释:</p>
+<figure class="highlight abnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">;client-config-dir ccd</span></span><br><span class="line"><span class="comment">;route 10.8.0.0 255.255.255.252</span></span><br></pre></td></tr></table></figure>
+
+<p>在 <code>/etc/openvpn</code>文件夹下新建名为ccd文件夹,在ccd 文件夹里以客户名为名新建文件,内容格式如下:</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">ifconfig</span>-push <span class="number">10.8.0.20</span> <span class="number">10.8.0.120</span></span><br></pre></td></tr></table></figure>
+
+<p>客户端启动后即获得IP地: 10.8.0.20.<br>但要注意上面格式只对linux有效,如果客户端为windows,则客户端会连接不成功.因为openvpn在windows下时,<br>其local IP 与 remote IP 必须在网址掩码为255.255.255.252的同一网段内,而且不能取头尾两端的IP,因此一个openvpn连接在windows下最少要占用4个ip地址.<br>windows 下的 客户端IP配置必须为如下形式:</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">ifconfig</span>-push <span class="number">10.8.0.30</span> <span class="number">10.8.0.29</span></span><br></pre></td></tr></table></figure>
+
+<p>因为10.8.0.28/30网段包含以下IP: 10.8.0.28-31, 去除头尾,只有29与30可用.其他类推.</p>
+<p>六、访问外网设置</p>
+<p>开启服务器端路由转发功能:</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ echo <span class="number">1</span> &gt; <span class="regexp">/proc/</span>sys<span class="regexp">/net/i</span>pv4/ip_forward</span><br></pre></td></tr></table></figure>
+
+<p>为了使CentOS重启后仍然开启路由转发功能我们需要再执行下列命令:</p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sysctl -w net.ipv4.<span class="attribute">ip_forward</span>=1</span><br></pre></td></tr></table></figure>
+
+<p>添加iptables转发规则:</p>
+<p>因为我的CentOS是ADSL拨号上网,所以把出口设置成ppp0,请根据实际情况设置, 如eth0:</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">iptables</span> -t nat -A POSTROUTING -s <span class="number">10.8.0.0</span>/<span class="number">24</span> -o ppp<span class="number">0</span> -j MASQUERADE</span><br></pre></td></tr></table></figure>
+
+<p>必须保证server.conf配置中,有下面三个配置:</p>
+<figure class="highlight avrasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">push</span> <span class="string">&quot;dhcp-option DNS 10.8.0.1&quot;</span></span><br><span class="line"><span class="keyword">push</span> <span class="string">&quot;dhcp-option DNS 202.103.44.150&quot;</span> <span class="meta">#客户端获得的DNS地址</span></span><br><span class="line"><span class="keyword">push</span> <span class="string">&quot;dhcp-option DNS 202.103.24.68&quot;</span> <span class="meta">#客户端获得的DNS地址.</span></span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://shuxun,wang/2019/02/05/1485/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="王殊勋">
+      <meta itemprop="description" content="专注互联网运维技术发展">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="学无止境">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/02/05/1485/" class="post-title-link" itemprop="url">解决Generating SSH1 RSA host key   [FAILED]</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-02-05 18:44:00" itemprop="dateCreated datePublished" datetime="2019-02-05T18:44:00+08:00">2019-02-05</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-07-14 15:15:56" itemprop="dateModified" datetime="2021-07-14T15:15:56+08:00">2021-07-14</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E9%94%99%E8%AF%AF%E8%A7%A3%E5%86%B3/" itemprop="url" rel="index"><span itemprop="name">错误解决</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>出现这个错误的原因是没有权限,</p>
+<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">su - root</span></span><br></pre></td></tr></table></figure>
+
+<p>输入密码.<br>重新执行:</p>
+<figure class="highlight inform7"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">/etc/init.d/sshd start</span><br><span class="line">Generating SSH1 RSA host key:                              <span class="comment">[  OK  ]</span></span><br><span class="line">Generating SSH2 RSA host key:                              <span class="comment">[  OK  ]</span></span><br><span class="line">Generating SSH2 DSA host key:                              <span class="comment">[  OK  ]</span></span><br><span class="line">Starting sshd:                                             <span class="comment">[  OK  ]</span></span><br></pre></td></tr></table></figure>
+
+<p>成功!</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://shuxun,wang/2019/02/01/1004/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="王殊勋">
+      <meta itemprop="description" content="专注互联网运维技术发展">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="学无止境">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/02/01/1004/" class="post-title-link" itemprop="url">解决安装ubuntu时卡在"正在探测文件系统"</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-02-01 22:17:00" itemprop="dateCreated datePublished" datetime="2019-02-01T22:17:00+08:00">2019-02-01</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-07-14 15:16:15" itemprop="dateModified" datetime="2021-07-14T15:16:15+08:00">2021-07-14</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E9%94%99%E8%AF%AF%E8%A7%A3%E5%86%B3/" itemprop="url" rel="index"><span itemprop="name">错误解决</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>安装前如果是硬盘安装就打开终端,输入:</p>
+<figure class="highlight jboss-cli"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo umount -l <span class="string">/isodevice</span></span><br></pre></td></tr></table></figure>
+
+<p>如果是光盘安装就打开终端,输入:</p>
+<figure class="highlight jboss-cli"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo umount -l <span class="string">/cdrom</span></span><br></pre></td></tr></table></figure>
+
+<p>可以解决这个问题.</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://shuxun,wang/2019/02/01/1228/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="王殊勋">
+      <meta itemprop="description" content="专注互联网运维技术发展">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="学无止境">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/02/01/1228/" class="post-title-link" itemprop="url">linux权限</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-02-01 13:24:00" itemprop="dateCreated datePublished" datetime="2019-02-01T13:24:00+08:00">2019-02-01</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-07-14 15:14:54" itemprop="dateModified" datetime="2021-07-14T15:14:54+08:00">2021-07-14</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" itemprop="url" rel="index"><span itemprop="name">操作系统</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>755 代表用户对该文件拥有读,写,执行的权限,同组其他人员拥有执行和读的权限,没有写的权限,其他用户的权限和同组人员权限一样.<br>777代表,user,group ,others ,都有读写和可执行权限.<br>在Unix和Linux的各种操作系统下,每个文件(文件夹也被看作是文件)都按读、写、运行设定权限.<br>例如我用ls -l命令列文件表时,得到如下输出:</p>
+<figure class="highlight brainfuck"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="literal">-</span><span class="comment">rw</span><span class="literal">-</span><span class="comment">r</span>--<span class="comment">r</span>-- <span class="comment">1</span> <span class="comment">apple</span> <span class="comment">users</span> <span class="comment">2254</span> <span class="comment">2006</span><span class="literal">-</span><span class="comment">05</span><span class="literal">-</span><span class="comment">20</span> <span class="comment">13:47</span> <span class="comment">tt</span><span class="string">.</span><span class="comment">htm</span></span><br></pre></td></tr></table></figure>
+
+<p>从第二个字符起rw-是说用户apple有读、写权,没有运行权,接着的r–表示用户组users只有读权限,没有运行权,最后的r–指其他人(others)只有读权限,没有写权和运行权.这是系统默认设置,我可以改写tt.htm,同组的人和其他人只有权读,没人有权运行,因为只是一个html文件,不必运行.这在Novell的directory services之前很先进.<br>读、写、运行三项权限可以用数字表示,就是r=4,w=2,x=1.所以,上面的例子中的rw-r–r–用数字表示成644.<br>反过来说777就是rwxrwxrwx,意思是该登录用户(可以用命令id查看)、他所在的组和其他人都有最高权限.<br>再多说一句.我用chmod o-r tt.htm命令改权限,o-r是others的权限中减掉读.结果是:</p>
+<figure class="highlight dns"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">-rw-r----- <span class="number">1</span> bu users <span class="number">2254 2006</span>-<span class="number">05-20 13:47</span> tt.htm</span><br></pre></td></tr></table></figure>
+
+<p>如果用命令chmod 777 tt.htm,结果是:</p>
+<figure class="highlight dns"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">-rwxrwxrwx <span class="number">1</span> bu users <span class="number">2254 2006</span>-<span class="number">05-20 13:47</span> tt.htm</span><br></pre></td></tr></table></figure>
+
+<p>任何人都有读、写、运行三项权限.</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+
+  
+  <nav class="pagination">
+    <a class="extend prev" rel="prev" href="/page/16/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/16/">16</a><span class="page-number current">17</span><a class="page-number" href="/page/18/">18</a><span class="space">&hellip;</span><a class="page-number" href="/page/132/">132</a><a class="extend next" rel="next" href="/page/18/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+  </nav>
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="王殊勋"
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name">王殊勋</p>
+  <div class="site-description" itemprop="description">better late than never.<br>只要开始，虽晚不迟。</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">656</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">2058</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <!--添加网站运行时间 -->
+  <span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
+  <script>
+      var now = new Date(); 
+      function createtime() { 
+          var grt= new Date("12/01/2007 12:00:00");//此处修改你的建站时间或者网站上线时间 
+          now.setTime(now.getTime()+250); 
+          days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days); 
+          hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours); 
+          if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum); 
+          mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;} 
+          seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum); 
+          snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;} 
+          document.getElementById("timeDate").innerHTML = "本站已安全运行 "+dnum+" 天 "; 
+          document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒"; 
+      } 
+  setInterval("createtime()",250);
+  </script>
+  <span itemprop="copyrightYear">(2007 - 2021)</span>
+  <!-- 添加网站运行时间 -->
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">学无止境</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script size="300" alpha="0.6" zIndex="0" src="/lib/canvas-ribbon/canvas-ribbon.js"></script>
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"shuxun","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"./public/search.xml"};
+  </script>
+
+  <meta name="description" content="我在检查一台Centos5.5服务器的安全环境时,发现很多IP在恶意扫描此服务器的端口,本来想部署snort防入侵环境的,后来发现snort环境部署非常复杂,而以上的恶意扫描完全可以用PortSentry来实现.PortSentry是入侵检测工具中配置最简单、效果最直接的工具之一.PortSentry是Abacus工程的一个组成部分.Abacus工程的目标是建立一个基于主机的网络入侵检测系统,可以">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CentOS下安装PortSentry防止恶意扫描">
+<meta property="og:url" content="http://shuxun,wang/2019/03/30/1146/index.html">
+<meta property="og:site_name" content="学无止境">
+<meta property="og:description" content="我在检查一台Centos5.5服务器的安全环境时,发现很多IP在恶意扫描此服务器的端口,本来想部署snort防入侵环境的,后来发现snort环境部署非常复杂,而以上的恶意扫描完全可以用PortSentry来实现.PortSentry是入侵检测工具中配置最简单、效果最直接的工具之一.PortSentry是Abacus工程的一个组成部分.Abacus工程的目标是建立一个基于主机的网络入侵检测系统,可以">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2019-03-29T21:02:00.000Z">
+<meta property="article:modified_time" content="2021-07-14T07:14:58.370Z">
+<meta property="article:author" content="王殊勋">
+<meta property="article:tag" content="启动">
+<meta property="article:tag" content="端口">
+<meta property="article:tag" content="配置">
+<meta property="article:tag" content="服务器">
+<meta property="article:tag" content="主机">
+<meta property="article:tag" content="portsentry">
+<meta property="article:tag" content="扫描检测模式">
+<meta property="article:tag" content="文件中">
+<meta property="article:tag" content="秘密扫描">
+<meta property="article:tag" content="psionic">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://shuxun,wang/2019/03/30/1146/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>CentOS下安装PortSentry防止恶意扫描 | 学无止境</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">学无止境</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">注互联网运维技术发展</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-sitemap">
+
+    <a href="/sitemap.xml" rel="section"><i class="fa fa-sitemap fa-fw"></i>站点地图</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://shuxun,wang/2019/03/30/1146/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="王殊勋">
+      <meta itemprop="description" content="专注互联网运维技术发展">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="学无止境">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          CentOS下安装PortSentry防止恶意扫描
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-03-30 05:02:00" itemprop="dateCreated datePublished" datetime="2019-03-30T05:02:00+08:00">2019-03-30</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-07-14 15:14:58" itemprop="dateModified" datetime="2021-07-14T15:14:58+08:00">2021-07-14</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%90%84%E7%B1%BB%E6%9C%8D%E5%8A%A1/" itemprop="url" rel="index"><span itemprop="name">各类服务</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>我在检查一台Centos5.5服务器的安全环境时,发现很多IP在恶意扫描此服务器的端口,本来想部署snort防入侵环境的,后来发现snort环境部署非常复杂,而以上的恶意扫描完全可以用PortSentry来实现.PortSentry是入侵检测工具中配置最简单、效果最直接的工具之一.PortSentry是Abacus工程的一个组成部分.Abacus工程的目标是建立一个基于主机的网络入侵检测系统,可以从<a target="_blank" rel="noopener" href="http://www.psonic.com/">http://www.psonic.com</a> 得到关于Abacus工程更为详细的信息.虽然PortSentry被cisco收购后不再开发,但丝毫不影响此软件的强大功能.PortSentry可以实时检测几乎所有类型的网络扫描,并对扫描行为做出反应.一旦发现可疑的行为,PortSentry可以采取如下一些特定措施来加强防范:<br>给出虚假的路由信息,把所有的信息流都重定向到一个不存在的主机;<br>自动将对服务器进行端口扫描的主机加到TCP-Wrappers的 <code>/etc/hosts.deny</code>文件中去,我个人比较喜欢这种方式,因为线上许多环境并非都能打开iptables,这个选项也是PortSentry默认的功能;<br>利用Netfilter机制,用包过滤程序,比如iptables和ipchain等,把所有非法数据包(来自对服务器进行端口扫描的主机)都过滤掉;<br>通过syslog()函数给出一个目志消息,甚至可以返回给扫描者一段警告信息.</p>
+<p>一、PortSentry的安装</p>
+<p>下面详细介绍PortSentry工具的安装和配置方法.<br>从<a target="_blank" rel="noopener" href="http://sourceforge.net/projects/sentrytools/">http://sourceforge.net/projects/sentrytools/</a> 下载软件的最新版 portsentry-1.2.tar.gz,用root用户执行如下命令进行安装:</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$</span> tar zxvf portsentry<span class="literal">-1</span>.<span class="number">2</span>.tar.gz</span><br><span class="line"><span class="variable">$</span> <span class="built_in">cd</span> portsentry<span class="literal">-1</span>.<span class="number">2</span>_beta</span><br><span class="line"><span class="variable">$</span> make</span><br><span class="line"><span class="variable">$</span> make install</span><br></pre></td></tr></table></figure>
+
+<p>进行到这步时发现报错,系统生成不了protsentry执行文件,<br>我们查看Makefile文件时发现,make后面根据操作系统的不同有许多选项.<br>所以我们重新执行此步操作,将目录删除重新解压缩.<br>然后我们执行make linux,发现系统仍然报错,如下:</p>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">SYSTYPE=linux</span><br><span class="line">Making</span><br><span class="line"><span class="keyword">cc</span> -O -Wall -DLINUX -DSUPPORT_STEALTH -<span class="keyword">o</span> ./portsentry ./portsentry.<span class="keyword">c</span></span><br><span class="line">./portsentry_io.<span class="keyword">c</span> ./portsentry_util.<span class="keyword">c</span></span><br><span class="line">./portsentry.<span class="keyword">c</span>: In <span class="function"><span class="keyword">function</span> ?.<span class="title">ortSentryModeTCP</span>?.</span></span><br><span class="line">./portsentry.<span class="keyword">c</span>:<span class="number">1187</span>: warnin<span class="variable">g:</span> pointer targets in passing <span class="keyword">argument</span> <span class="number">3</span> of ?.ccept?.differ in signedness</span><br><span class="line">./portsentry.<span class="keyword">c</span>: In <span class="function"><span class="keyword">function</span> ?.<span class="title">ortSentryModeUDP</span>?.</span></span><br><span class="line">./portsentry.<span class="keyword">c</span>:<span class="number">1384</span>: warnin<span class="variable">g:</span> pointer targets in passing <span class="keyword">argument</span> <span class="number">6</span> of ?.ecvfrom?.differ in signedness</span><br><span class="line">./portsentry.<span class="keyword">c</span>: In <span class="function"><span class="keyword">function</span> ?.<span class="title">sage</span>?.</span></span><br><span class="line">./portsentry.<span class="keyword">c</span>:<span class="number">1584</span>: error: missing terminating <span class="comment">&quot; character</span></span><br><span class="line">./portsentry.<span class="keyword">c</span>:<span class="number">1585</span>: error: ?.ourceforget?.undeclared (<span class="keyword">first</span> use in this <span class="function"><span class="keyword">function</span>)</span></span><br><span class="line">./portsentry.<span class="keyword">c</span>:<span class="number">1585</span>: error: (Each undeclared identifier <span class="keyword">is</span> reported <span class="keyword">only</span> once</span><br><span class="line">./portsentry.<span class="keyword">c</span>:<span class="number">1585</span>: error: <span class="keyword">for</span> each <span class="function"><span class="keyword">function</span> <span class="title">it</span> <span class="title">appears</span> <span class="title">in</span>.)</span></span><br><span class="line">./portsentry.<span class="keyword">c</span>:<span class="number">1585</span>: error: expected ?.?.before ?.ot?</span><br><span class="line">./portsentry.<span class="keyword">c</span>:<span class="number">1585</span>: error: stray ?.?.in program</span><br><span class="line">./portsentry.<span class="keyword">c</span>:<span class="number">1585</span>: error: missing terminating <span class="comment">&quot; character</span></span><br><span class="line">./portsentry.<span class="keyword">c</span>:<span class="number">1595</span>: error: expected ?.?.before ?.?.token</span><br><span class="line"><span class="keyword">make</span>: *** [linux] Error <span class="number">1</span></span><br></pre></td></tr></table></figure>
+
+<p>解决方法:</p>
+<p>我们打开portsentry.c文件,在1590行左右,我们将带有Copyright 1997-2003字样的那行调整为一行即可,<br>调整后我们再执行make linux&amp;&amp; make install后,PortSentry顺利安装成功,其安装路径为 <code>/usr/local/psionic/portsentry</code>,如下所示表示成功安装此软件:</p>
+<figure class="highlight asciidoc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Edit /usr/local/psionic/portsentry/portsentry.conf and change</span><br><span class="line">your settings if you haven&#x27;t already. (route, etc)</span><br><span class="line"><span class="symbol">WARNING: </span>This version and above now use a new</span><br><span class="line">directory structure for storing the program</span><br><span class="line">and config files (/usr/local/psionic/portsentry).</span><br><span class="line">Please make sure you delete the old files when</span><br><span class="line">the testing of this install is complete.</span><br></pre></td></tr></table></figure>
+
+<p>二、PortSentry的配置</p>
+<p>1．修改配置文件portsentry.conf</p>
+<p>通过PortSentry进行入侵检测,首先需要为它定制一份需要监视的端口清单,以及相应的阻止对策.然后启动后台进程对这些端口进行检测,一旦发现有人扫描这些端口,就启动相应的对策进行阻拦.</p>
+<p>(1)设置端口清单</p>
+<p>下面给出portsentry.conf中关于端口的默认配置情况:</p>
+<figure class="highlight dns"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">$ Un-comment these if you are really anal<span class="comment">;</span></span><br><span class="line"></span><br><span class="line">#TCP_PORTS=&quot;<span class="number">1,7,9,11</span>,<span class="number">15,70,79,80</span>,<span class="number">109,110,111,119</span>,<span class="number">138,139,143</span>,<span class="number">512,513</span>,<span class="number">514,515</span>,<span class="number">540,636</span>,<span class="number">1080,1424</span>,<span class="number">2000,2001</span>,[..]</span><br><span class="line">#UDP_PORTS=&quot;<span class="number">1,7,9,66</span>,<span class="number">67,68,69,111</span>,<span class="number">137,138,161,162</span>,<span class="number">474,513</span>,<span class="number">517,518</span>,<span class="number">635,640</span>,<span class="number">641,666</span>,<span class="number">700,2049</span>,<span class="number">31335,27444</span>,<span class="number">34555</span>,[..]</span><br><span class="line">#Use these if you just want to be aware:</span><br><span class="line">TCP_PORTS=&quot;<span class="number">1,11,15,79</span>,<span class="number">111,119,143</span>,<span class="number">540,635</span>,<span class="number">1080,1524</span>,<span class="number">2000,5742</span>,<span class="number">6667,12345</span>,<span class="number">12346,20034</span>,<span class="number">27665,31337</span>,<span class="number">32771,32772</span>,[..]</span><br><span class="line">UDP_PORTS=&quot;<span class="number">1,7,9,69</span>,<span class="number">161,162,513</span>,<span class="number">635,640</span>,<span class="number">641,700</span>,<span class="number">37444,34555</span>,<span class="number">31335,32770</span>,<span class="number">32771,32772</span>,<span class="number">32773,32774</span>,<span class="number">31337,54321</span>&quot;</span><br><span class="line">#Use these for juse bare-bones</span><br><span class="line">#TCP_PORTS=&quot;<span class="number">1,11,15,110</span>,<span class="number">111,143,540</span>,<span class="number">635,180</span>,<span class="number">1524,2000</span>,<span class="number">12345,12346</span>,<span class="number">20034,32771</span>,<span class="number">32772,32773</span>,<span class="number">32774,49724</span>,<span class="number">54320</span>&quot;</span><br><span class="line">#UDP_PORTS=&quot;<span class="number">1,7,9,69</span>,<span class="number">161,162,513</span>,<span class="number">640,700</span>,<span class="number">32770,32771</span>,<span class="number">32772,32773</span>,<span class="number">32774,31337</span>,<span class="number">54321</span>&quot;</span><br></pre></td></tr></table></figure>
+
+<p>可以有选择地去掉前面的注释来启用默认配置,也可以根据自己的实际情况定制一份新的清单,格式和原来的一样即可.端口列表要根据具体情况而定,假如服务器为Web服务器,那么Web端口就不需要监视.反之,如果是FTP服务器,那么监视Web端口也是有必要的.</p>
+<p>(2)portsentry.conf里的相关文件</p>
+<p>在portsentry.conf中自动配置了许多文件,我们看下它们有哪些用途:</p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#此文件记录允许合法扫描服务器的主机地址</span></span><br><span class="line"><span class="attr">IGNORE_FILE</span>=<span class="string">&quot;/usr/local/psionic/portsentry/portsentry.ignore&quot;</span></span><br><span class="line"><span class="comment">#此文件中保留了以往所有入侵主机的IP历史记录</span></span><br><span class="line"><span class="attr">HISTROY_FILE</span>=<span class="string">&quot;/usr/local/psionic/portsentry/portsentry.history&quot;</span></span><br><span class="line"><span class="comment">#此文件中是已经被阻止连接的主机IP记录</span></span><br><span class="line"><span class="attr">BLOCKED_FILE</span>=<span class="string">&quot;/usr/local/psionic/portsentry/portsentry.blocked&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>(3)设置路由重定向</p>
+<p>通过配置portsentry.conf文件,可以设置一条虚拟路由记录,把数据包重定向到一个未知的主机．使之无法获取信息.相应配置代码如下:</p>
+<figure class="highlight vala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#Generic</span></span><br><span class="line"><span class="meta">#KILL_ROUTE=&quot;/sbin/route add $TARGET$ 333.444.555.666&quot;</span></span><br><span class="line"><span class="meta">#Generic Linux</span></span><br><span class="line">KILL_ROUTE=<span class="string">&quot;/sbin/route add -host $TARGET$ gw 333.444.555.666</span></span><br></pre></td></tr></table></figure>
+
+<p>针对不同的平台有不同的路由命令,在配置文件中选择适台自己平台的命令即可.我的服务器是Centos5.5 x86_64,以上语法适合Linux平台的机器;PortSentry非常人性化,下面都有系统对应的配置文件,我们只需要依样操作即可.</p>
+<p>(4)我们还可以利用Linux中的iptables命令,可以切断攻击主机的连接:</p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">KILL_ROUTE</span>=<span class="string">&quot;/usr/local/sbin/iptables -I INPUT -s $TARGET$ -j DROP&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>也可以直接把攻击者的IP记录到/etc/hosts.deny文件中,利用TCP_Wrappers保护机制来防止攻击:</p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">KILL_HOSTS_DENY</span>=<span class="string">&quot;ALL:$TARGET$ # Portsentry blocked&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>系统默认是利用TCP_Wrappers来切断与主机之间的连接.</p>
+<p>(5)定制警告信息</p>
+<p>我们也可以定制一条警告信息,警告攻击者.不过,手册上建议不要使用该选项,因为这样做可能会暴露主机的IDS系统.</p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">PORT_BANNER</span>=<span class="string">&quot;** UNAUTHORIZED ACCESS PROHIBITED *** YOUR CONNECTION ATTEMPT HAS BEEN LOGGED. GO AWAY.&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>修改完毕后,改变文件的权限．以保证其安全性:</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chmod <span class="number">600</span> <span class="regexp">/usr/</span>local<span class="regexp">/psionic/</span>portsentry/portsentry.conf</span><br></pre></td></tr></table></figure>
+
+<p>2．配置portsentry.ignore文件</p>
+<p><code>/usr/psionic/portsentry/portsentry.ignore</code>文件中设置了希望PortSentry忽略的主机IP,即允许合法扫描的主机地址下面是配置情况:</p>
+<figure class="highlight accesslog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">#Put hosts in here you never want blocked,This includes the IP addresses</span><br><span class="line">#of all local interfaces on the protected host(i.e virtual host,mult-home)</span><br><span class="line">#keep <span class="number">127</span>.<span class="number">0</span>.<span class="number">0</span>.<span class="number">1</span> and <span class="number">0</span>.<span class="number">0</span>.<span class="number">0</span>.<span class="number">0</span> to keep people from playing games.</span><br><span class="line"><span class="number">127.0.0.1</span>/<span class="number">32</span></span><br><span class="line"><span class="number">0.0.0.0</span></span><br><span class="line">#Exclude all local interfaces</span><br><span class="line"><span class="number">192.168.1.103</span></span><br><span class="line"><span class="number">192.168.1.102</span></span><br><span class="line"><span class="number">127.0.0.1</span></span><br></pre></td></tr></table></figure>
+
+<p>记得带上本机地址,以防万一.<br>修改完成后同样需要改变文件默认的权限:</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chmod <span class="number">600</span> <span class="regexp">/usr/</span>local<span class="regexp">/psionic/</span>portsentry/portsentry.ignore</span><br></pre></td></tr></table></figure>
+
+<p>三、启动检测模式</p>
+<p>最后介绍一下PortSentry的启动检测模式.对应TCP和UDF两种协议方式．分别有三种启动模式,即基本、秘密和高级秘密扫描检测模式.</p>
+<figure class="highlight elm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">portsentry-tcp,TCP的基本端口绑定模式;</span><br><span class="line">portsentry-udp,UDP的基本端口绑定模式;</span><br><span class="line">portsentry-stcp,TCP的秘密扫描检测模式;</span><br><span class="line">portsentry-sudp,UDP的秘密扫描检测模式;</span><br><span class="line">portsentry-atcp,TCP的高级秘密扫描检测模式;</span><br><span class="line">portsentry-audp,UDP的高级秘密扫描检测模式.</span><br></pre></td></tr></table></figure>
+
+<p>一般情况下,建议使用秘密扫描检测模式或高级秘密扫描检测模式.<br>使用高级秘密扫描检测模式(Advanced Stealth Scan Detection Mode),PortSentry会自动检查服务器上正在运行的端口, 然后把这些端口从配置文件中移去, 只监控其它的端口.这样会加快对端口扫描的反应速度,并且只占用很少的CPU时间,这种模式非常智能,我比较喜欢用.<br>启动PortSentry的命令如下:</p>
+<figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">#<span class="regexp">/usr/</span>local<span class="regexp">/psionic/</span>portsentry/portsentry -atcp</span><br></pre></td></tr></table></figure>
+
+<p>可以把启动命令加到 <code>/etc/rc.d/rc.local</code> 脚本文件中,果想让它和其它后台进程一样可以随时启动、停止并查看进程状态, 可以去这样当重新启动计算机的时候PortSentry就会自动运行.</p>
+<p>四、测试</p>
+<p>我们在192.168.1.102上启动PortSentry后,我们先暂时清掉portsentry.ignore里的文件,我们在另一台192.168.1.104的机器上启动扫描命令nmap -sS 192.168.1.102,稍等片刻我们就会发现/etc/hosts.deny里会出现ALL:192.168.1.104的字样,证明此软件配置都是生效的.<br>为了证明其有效性,我拿自己的线上的一台LVS机器布署了portsentry1.2,查看日志发现:</p>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost portsentry_beta]# tail /var/<span class="built_in">log</span>/<span class="keyword">messages</span></span><br><span class="line">Jun  <span class="number">6</span> <span class="number">13</span>:<span class="number">11</span>:<span class="number">07</span> localhost portsentry[<span class="number">2555</span>]: attackaler<span class="variable">t:</span> TCP SYN/Normal scan from hos<span class="variable">t:</span> adsl-<span class="number">65</span>-<span class="number">9</span>-<span class="number">251</span>-<span class="number">89</span>.mia.bellsouth.net/<span class="number">65.9</span>.<span class="number">251.89</span> <span class="keyword">to</span> TCP por<span class="variable">t:</span> <span class="number">80</span></span><br><span class="line">Jun  <span class="number">6</span> <span class="number">13</span>:<span class="number">11</span>:<span class="number">07</span> localhost portsentry[<span class="number">2555</span>]: attackaler<span class="variable">t:</span> Host <span class="number">65.9</span>.<span class="number">251.89</span> <span class="built_in">has</span> been blocked via wrappers with strin<span class="variable">g:</span> <span class="string">&quot;ALL: 65.9.251.89&quot;</span></span><br><span class="line">Jun  <span class="number">6</span> <span class="number">13</span>:<span class="number">11</span>:<span class="number">07</span> localhost portsentry[<span class="number">2555</span>]: attackaler<span class="variable">t:</span> TCP SYN/Normal scan from hos<span class="variable">t:</span> adsl-<span class="number">65</span>-<span class="number">9</span>-<span class="number">251</span>-<span class="number">89</span>.mia.bellsouth.net/<span class="number">65.9</span>.<span class="number">251.89</span> <span class="keyword">to</span> TCP por<span class="variable">t:</span> <span class="number">80</span></span><br><span class="line">Jun  <span class="number">6</span> <span class="number">13</span>:<span class="number">11</span>:<span class="number">07</span> localhost portsentry[<span class="number">2555</span>]: attackaler<span class="variable">t:</span> Hos<span class="variable">t:</span> adsl-<span class="number">65</span>-<span class="number">9</span>-<span class="number">251</span>-<span class="number">89</span>.mia.bellsouth.net/<span class="number">65.9</span>.<span class="number">251.89</span> <span class="keyword">is</span> already blocked Ignoring</span><br><span class="line">Jun  <span class="number">6</span> <span class="number">13</span>:<span class="number">11</span>:<span class="number">08</span> localhost portsentry[<span class="number">2555</span>]: attackaler<span class="variable">t:</span> TCP SYN/Normal scan from hos<span class="variable">t:</span> adsl-<span class="number">65</span>-<span class="number">9</span>-<span class="number">251</span>-<span class="number">89</span>.mia.bellsouth.net/<span class="number">65.9</span>.<span class="number">251.89</span> <span class="keyword">to</span> TCP por<span class="variable">t:</span> <span class="number">80</span></span><br><span class="line">Jun  <span class="number">6</span> <span class="number">13</span>:<span class="number">11</span>:<span class="number">08</span> localhost portsentry[<span class="number">2555</span>]: attackaler<span class="variable">t:</span> Hos<span class="variable">t:</span> adsl-<span class="number">65</span>-<span class="number">9</span>-<span class="number">251</span>-<span class="number">89</span>.mia.bellsouth.net/<span class="number">65.9</span>.<span class="number">251.89</span> <span class="keyword">is</span> already blocked Ignoring</span><br><span class="line">Jun  <span class="number">6</span> <span class="number">13</span>:<span class="number">19</span>:<span class="number">57</span> localhost portsentry[<span class="number">2555</span>]: attackaler<span class="variable">t:</span> TCP SYN/Normal scan from hos<span class="variable">t:</span> ns38534.ovh.net/<span class="number">91.121</span>.<span class="number">14.153</span> <span class="keyword">to</span> TCP por<span class="variable">t:</span> <span class="number">80</span></span><br><span class="line">Jun  <span class="number">6</span> <span class="number">13</span>:<span class="number">19</span>:<span class="number">57</span> localhost portsentry[<span class="number">2555</span>]: attackaler<span class="variable">t:</span> Host <span class="number">91.121</span>.<span class="number">14.153</span> <span class="built_in">has</span> been blocked via wrappers with strin<span class="variable">g:</span> <span class="string">&quot;ALL: 91.121.14.153&quot;</span></span><br><span class="line">Jun  <span class="number">6</span> <span class="number">13</span>:<span class="number">35</span>:<span class="number">44</span> localhost portsentry[<span class="number">2555</span>]: attackaler<span class="variable">t:</span> TCP SYN/Normal scan from hos<span class="variable">t:</span> <span class="number">61.156</span>.<span class="number">31.43</span>/<span class="number">61.156</span>.<span class="number">31.43</span> <span class="keyword">to</span> TCP por<span class="variable">t:</span> <span class="number">80</span></span><br><span class="line">Jun  <span class="number">6</span> <span class="number">13</span>:<span class="number">35</span>:<span class="number">44</span> localhost portsentry[<span class="number">2555</span>]: attackaler<span class="variable">t:</span> Host <span class="number">61.156</span>.<span class="number">31.43</span> <span class="built_in">has</span> been blocked via wrappers with strin<span class="variable">g:</span> <span class="string">&quot;ALL: 61.156.31.43&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>检查了下/etc/hosts.deny,发现如下恶意IP:</p>
+<figure class="highlight ada"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ALL</span>: <span class="number">113.57</span>.<span class="number">224.3</span></span><br><span class="line"><span class="keyword">ALL</span>: <span class="number">124.238</span>.<span class="number">249.246</span></span><br><span class="line"><span class="keyword">ALL</span>: <span class="number">65.9</span>.<span class="number">251.89</span></span><br><span class="line"><span class="keyword">ALL</span>: <span class="number">91.121</span>.<span class="number">14.153</span></span><br><span class="line"><span class="keyword">ALL</span>: <span class="number">61.156</span>.<span class="number">31.43</span></span><br></pre></td></tr></table></figure>
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E5%90%AF%E5%8A%A8/" rel="tag"># 启动</a>
+              <a href="/tags/%E7%AB%AF%E5%8F%A3/" rel="tag"># 端口</a>
+              <a href="/tags/%E9%85%8D%E7%BD%AE/" rel="tag"># 配置</a>
+              <a href="/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/" rel="tag"># 服务器</a>
+              <a href="/tags/%E4%B8%BB%E6%9C%BA/" rel="tag"># 主机</a>
+              <a href="/tags/portsentry/" rel="tag"># portsentry</a>
+              <a href="/tags/%E6%89%AB%E6%8F%8F%E6%A3%80%E6%B5%8B%E6%A8%A1%E5%BC%8F/" rel="tag"># 扫描检测模式</a>
+              <a href="/tags/%E6%96%87%E4%BB%B6%E4%B8%AD/" rel="tag"># 文件中</a>
+              <a href="/tags/%E7%A7%98%E5%AF%86%E6%89%AB%E6%8F%8F/" rel="tag"># 秘密扫描</a>
+              <a href="/tags/psionic/" rel="tag"># psionic</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2019/03/22/1131/" rel="prev" title="Centos快速安装heartbeat">
+      <i class="fa fa-chevron-left"></i> Centos快速安装heartbeat
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2019/04/02/1230/" rel="next" title="Linux设置程序的开机自启动与Linux服务">
+      Linux设置程序的开机自启动与Linux服务 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="王殊勋"
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name">王殊勋</p>
+  <div class="site-description" itemprop="description">better late than never.<br>只要开始，虽晚不迟。</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">656</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">2058</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <!--添加网站运行时间 -->
+  <span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
+  <script>
+      var now = new Date(); 
+      function createtime() { 
+          var grt= new Date("12/01/2007 12:00:00");//此处修改你的建站时间或者网站上线时间 
+          now.setTime(now.getTime()+250); 
+          days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days); 
+          hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours); 
+          if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum); 
+          mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;} 
+          seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum); 
+          snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;} 
+          document.getElementById("timeDate").innerHTML = "本站已安全运行 "+dnum+" 天 "; 
+          document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒"; 
+      } 
+  setInterval("createtime()",250);
+  </script>
+  <span itemprop="copyrightYear">(2007 - 2021)</span>
+  <!-- 添加网站运行时间 -->
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">学无止境</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script size="300" alpha="0.6" zIndex="0" src="/lib/canvas-ribbon/canvas-ribbon.js"></script>
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

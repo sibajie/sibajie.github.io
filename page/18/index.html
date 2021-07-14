@@ -1,0 +1,838 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"shuxun","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"./public/search.xml"};
+  </script>
+
+  <meta name="description" content="专注互联网运维技术发展">
+<meta property="og:type" content="website">
+<meta property="og:title" content="学无止境">
+<meta property="og:url" content="http://shuxun,wang/page/18/index.html">
+<meta property="og:site_name" content="学无止境">
+<meta property="og:description" content="专注互联网运维技术发展">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:author" content="王殊勋">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://shuxun,wang/page/18/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : true,
+    isPost : false,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>学无止境</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">学无止境</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">注互联网运维技术发展</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-sitemap">
+
+    <a href="/sitemap.xml" rel="section"><i class="fa fa-sitemap fa-fw"></i>站点地图</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content index posts-expand">
+            
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://shuxun,wang/2019/02/01/1624/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="王殊勋">
+      <meta itemprop="description" content="专注互联网运维技术发展">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="学无止境">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/02/01/1624/" class="post-title-link" itemprop="url">用linux脚本自动发送和收取邮件</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-02-01 02:37:00" itemprop="dateCreated datePublished" datetime="2019-02-01T02:37:00+08:00">2019-02-01</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-07-14 15:16:09" itemprop="dateModified" datetime="2021-07-14T15:16:09+08:00">2021-07-14</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" itemprop="url" rel="index"><span itemprop="name">操作系统</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>1.命令行模式下的发送邮件</p>
+<p>1.1 安装sendemail</p>
+<p>在Ubuntu下可以用新立得软件包管理器搜索安装,或者在终端运行:</p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-<span class="builtin-name">get</span> install sendemail</span><br></pre></td></tr></table></figure>
+
+<p>建议在安装前先安装另外两个包:libio-socket-ssl-perl, libnet-ssleay-perl.</p>
+<p>2.2 使用sendemail和举例</p>
+<p>如果你想用你的邮箱<a href="mailto:&#99;&#104;&#114;&#x69;&#115;&#116;&#x40;&#103;&#x6d;&#97;&#x69;&#108;&#x2e;&#99;&#111;&#109;">&#99;&#104;&#114;&#x69;&#115;&#116;&#x40;&#103;&#x6d;&#97;&#x69;&#108;&#x2e;&#99;&#111;&#109;</a>发送邮件到<a href="mailto:&#98;&#x75;&#100;&#100;&#x68;&#x61;&#64;&#x71;&#113;&#x2e;&#x63;&#111;&#109;">&#98;&#x75;&#100;&#100;&#x68;&#x61;&#64;&#x71;&#113;&#x2e;&#x63;&#111;&#109;</a>,在终端输入:</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sendemail -s smtp<span class="selector-class">.gmail</span><span class="selector-class">.com</span> -f christ@gmail<span class="selector-class">.com</span> -t buddha@qq<span class="selector-class">.com</span> -u hello -m <span class="string">&quot;A hello from Christans to buddhists via gmail&quot;</span> -xu christ -xp password -o tls=<span class="attribute">auto</span></span><br></pre></td></tr></table></figure>
+
+<p>解释:</p>
+<figure class="highlight haml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">-<span class="ruby">s smtp.gmail.com 指定服务器域名,邮件发送一般通过SMTP协议实现,其域名一般为smtp.***.com,比如qq邮箱的服务器为smtp.qq.com,<span class="number">163</span>邮箱则为smtp.<span class="number">163</span>.com</span></span><br><span class="line"><span class="ruby"></span>-<span class="ruby">f christ<span class="variable">@gmail</span>.com指定发送邮箱地址</span></span><br><span class="line"><span class="ruby"></span>-<span class="ruby">t buddha<span class="variable">@qq</span>.com 指定目的邮箱地址</span></span><br><span class="line"><span class="ruby"></span>-<span class="ruby">u hello 邮件标题</span></span><br><span class="line"><span class="ruby"></span>-<span class="ruby">m <span class="string">&quot;A hello from Christans to buddhists via gmail&quot;</span> 邮件正文,较长的正文可以先存在文本文件中,不妨命名为mail.txt,然后换用-o message-file=mail.txt</span></span><br><span class="line"><span class="ruby"></span>-<span class="ruby">xu christ 指定邮箱用户名,即邮箱地址@之前的部分</span></span><br><span class="line"><span class="ruby"></span>-<span class="ruby">xp password 指定发送邮箱的密码</span></span><br><span class="line"><span class="ruby"></span>-<span class="ruby">o tls=auto 加密方式在none, tls, ssl中自动选择</span></span><br></pre></td></tr></table></figure>
+
+<p>如果想在邮件中粘帖附件:</p>
+<figure class="highlight gcode"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">-a attachme<span class="symbol">nt_file1</span> attachme<span class="symbol">nt_file2</span> attachme<span class="symbol">nt_file3</span></span><br></pre></td></tr></table></figure>
+
+<p>2.命令行模式下的收取邮件</p>
+<p>通过邮件客户端收取email邮件主要有两种方式:POP3和IMAP,邮件客户端通过POP3下载服务器上的邮件,但是IMAP默认只下载邮件的主题.基于命令行方式自动化的意义,采用POP3更合适.</p>
+<p>2.1 安装getmail4</p>
+<p>在Ubuntu下可以用新立得软件包管理器搜索安装,或者:</p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-<span class="builtin-name">get</span> install getmail4</span><br></pre></td></tr></table></figure>
+
+<p>2.2 配置getmail4和简单举例</p>
+<p>安装完毕后在终端执行一下命令:</p>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">cd</span> ~</span><br><span class="line"><span class="built_in">mkdir</span> .getmail</span><br><span class="line"><span class="keyword">cd</span> .getmail</span><br><span class="line"><span class="built_in">mkdir</span> maildir</span><br><span class="line"><span class="keyword">cd</span> maildir</span><br><span class="line"><span class="built_in">mkdir</span> <span class="keyword">new</span> cur tmp</span><br></pre></td></tr></table></figure>
+
+<p>后在 .getmail/下建立一个配置文件,如果这个配置文件是为收取<a href="mailto:&#98;&#x75;&#100;&#x64;&#104;&#97;&#x40;&#x71;&#113;&#x2e;&#x63;&#111;&#109;">&#98;&#x75;&#100;&#x64;&#104;&#97;&#x40;&#x71;&#113;&#x2e;&#x63;&#111;&#109;</a>这个邮箱配置的,不妨命名为getmailrc.buddha,然后编辑该文件,#后是注释:</p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># This is a configuration file for buddha@qq.com</span></span><br><span class="line"><span class="section">[retriever]</span></span><br><span class="line"><span class="attr">type</span> = SimplePOP3Retriever</span><br><span class="line"><span class="attr">server</span> = pop.qq.com  <span class="comment">#如果是gmail则改为pop.gmail.com</span></span><br><span class="line"><span class="attr">username</span> = budda</span><br><span class="line"><span class="attr">password</span> = password</span><br><span class="line"><span class="section">[destination]</span></span><br><span class="line"><span class="attr">type</span> = Maildir</span><br><span class="line"><span class="attr">path</span> = ~/.getmail/maildir/  <span class="comment">#就是刚才在~/.getmail/建立的目录,注意该目录下一定要有new,cur,tmp这三个子目录</span></span><br><span class="line"><span class="section">[options]</span></span><br><span class="line"><span class="attr">read_all</span> = <span class="literal">False</span> <span class="comment">#只接受以前没有收取的邮件,如果改成True则收取邮箱中所有邮件</span></span><br><span class="line"><span class="attr">delete</span> = <span class="literal">False</span> <span class="comment">#下载邮件后不在服务器上删除该邮件,如果改成True则删除</span></span><br><span class="line"><span class="comment"># configuration file ends here</span></span><br></pre></td></tr></table></figure>
+
+<p>编辑好了之后在终端运行:</p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">getmail <span class="attribute">--rcfile</span>=getmailrc.buddha</span><br></pre></td></tr></table></figure>
+
+<p>getmail会自动收取邮件,下载的邮件会保存在 <code>~/.getmail/maildir/new/</code>下.</p>
+<p>2.3 用munpack从邮件中抽取附件</p>
+<p>邮件正文和附件是作为一个整体文件被保存的,附件以MIME格式附着在整体文件最后,必须用程序抽取出来.<br>在Ubuntu下可以用新立得软件包管理器搜索安装mpack,或者:</p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-<span class="builtin-name">get</span> install mpack</span><br></pre></td></tr></table></figure>
+
+<p>在终端中运行:</p>
+<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">munpack mail_file</span></span><br></pre></td></tr></table></figure>
+
+<p>程序会自动识别附件并抽取出来.</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://shuxun,wang/2019/01/30/1483/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="王殊勋">
+      <meta itemprop="description" content="专注互联网运维技术发展">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="学无止境">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/01/30/1483/" class="post-title-link" itemprop="url">解决Fatal error Class 'ZipArchive' not found</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-01-30 12:47:00" itemprop="dateCreated datePublished" datetime="2019-01-30T12:47:00+08:00">2019-01-30</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-07-14 15:14:57" itemprop="dateModified" datetime="2021-07-14T15:14:57+08:00">2021-07-14</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E9%94%99%E8%AF%AF%E8%A7%A3%E5%86%B3/" itemprop="url" rel="index"><span itemprop="name">错误解决</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>出现这个错误说明是程序在调用’ZipArchive’ 这个类的时候没有成功,原因是由于在安装php的时候没有增加php zip的支持(非zlib).</p>
+<p>在Windows下的解决办法是:</p>
+<p>1、修改php配置文件:</p>
+<p>在php.ini文件中,将extension=php_zip.dll前面的分号”;”去除;(如果没有,请添加extension=php_zip.dll此行并确保php_zip.dll文件存在相应的目录),然后同样在php.ini文件中,将:</p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">zlib.output_compression</span> = <span class="literal">Off</span> <span class="comment">;</span></span><br></pre></td></tr></table></figure>
+
+<p>改为</p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">zlib.output_compression</span> = <span class="literal">On</span> <span class="comment">;</span></span><br></pre></td></tr></table></figure>
+
+<p>2、重启Apache服务器</p>
+<p>在Unix/Linux下的解决办法:</p>
+<p>1、安装php的zip模块</p>
+<p>在Linux下没有php_zip.dll这个文件(有也不会起作用的),所以需要重新编译一下php的zip模块.具体安装方法如下:</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">cd <span class="regexp">/usr/</span>src</span><br><span class="line">wget http:<span class="regexp">//</span>pecl.php.net<span class="regexp">/get/</span>zip</span><br><span class="line">tar -zxvf zip</span><br><span class="line">cd zip-<span class="number">1</span>.x.x</span><br><span class="line">phpize</span><br><span class="line">./configure</span><br><span class="line">make</span><br><span class="line">sudo make instal</span><br></pre></td></tr></table></figure>
+
+<p>其中, 在最后使用make install命令的时候,可能需要用到root的权限,所以建议使用sudo来运行.安装完之后,屏幕上会提示zip.so的位置.然后将其记录下来,如:<code>/usr/local/lib/php/extensions/zip.so</code>.</p>
+<p>2、修改php配置文件</p>
+<p>使用root权限修改php.ini(通常可能会在 <code>/usr/local/lib/</code>文件夹下,不过视当初安装php而定,可以通过phpinfo()来查看),增加:</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">extension = <span class="regexp">/usr/</span>local<span class="regexp">/lib/</span>php<span class="regexp">/extensions/</span>zip.so</span><br></pre></td></tr></table></figure>
+
+<p>然后同样在php.ini文件中:</p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">zlib.output_compression</span> = <span class="literal">Off</span> <span class="comment">;</span></span><br></pre></td></tr></table></figure>
+
+<p>改为:</p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">zlib.output_compression</span> = <span class="literal">On</span> <span class="comment">;</span></span><br></pre></td></tr></table></figure>
+
+<p>3、最后别忘了重启一下</p>
+<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">service httpd restart</span></span><br></pre></td></tr></table></figure>
+
+<p>这个针对php的zip模块就安装完成了,能够在php中使用ZipArchive类了.</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://shuxun,wang/2019/01/24/1645/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="王殊勋">
+      <meta itemprop="description" content="专注互联网运维技术发展">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="学无止境">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/01/24/1645/" class="post-title-link" itemprop="url">C preprocessor "/lib/cpp" fails sanity check</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-01-24 18:39:00" itemprop="dateCreated datePublished" datetime="2019-01-24T18:39:00+08:00">2019-01-24</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-07-14 15:14:59" itemprop="dateModified" datetime="2021-07-14T15:14:59+08:00">2021-07-14</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E9%94%99%E8%AF%AF%E8%A7%A3%E5%86%B3/" itemprop="url" rel="index"><span itemprop="name">错误解决</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>原因:</p>
+<p>缺少包安装<code>linux-kernel-headers</code>.</p>
+<p>解决:</p>
+<p>有桌面系统进入yast2 搜索linux-kernel-headers安装.<br>没有桌面系统去<a target="_blank" rel="noopener" href="http://rpm.pbone.net/">http://rpm.pbone.net/</a> 搜索下载rpm安装.<br>下载地址:</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">ftp</span>://ftp.pbone.net/mirror/ftp.opensuse.org/distribution/<span class="number">11</span>.<span class="number">2</span>/repo/oss/suse/noarch/linux-kernel-headers-<span class="number">2</span>.<span class="number">6</span>.<span class="number">31</span>-<span class="number">3</span>.<span class="number">4</span>.noarch.rpm</span><br><span class="line"><span class="attribute">rpm</span> -ivh linux-kernel-headers-<span class="number">2</span>.<span class="number">6</span>.<span class="number">31</span>-<span class="number">3</span>.<span class="number">4</span>.noarch.rpm</span><br></pre></td></tr></table></figure>
+<p>成功安装.</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://shuxun,wang/2019/01/24/1162/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="王殊勋">
+      <meta itemprop="description" content="专注互联网运维技术发展">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="学无止境">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/01/24/1162/" class="post-title-link" itemprop="url">cp omitting directory 的解决办法</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-01-24 11:52:00" itemprop="dateCreated datePublished" datetime="2019-01-24T11:52:00+08:00">2019-01-24</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-07-14 15:15:18" itemprop="dateModified" datetime="2021-07-14T15:15:18+08:00">2021-07-14</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E9%94%99%E8%AF%AF%E8%A7%A3%E5%86%B3/" itemprop="url" rel="index"><span itemprop="name">错误解决</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>linux下面执行cp命令时提示如下信息:</p>
+<figure class="highlight avrasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="symbol">cp:</span> omitting directory</span><br></pre></td></tr></table></figure>
+<p>可以用下面的办法来解决:</p>
+<figure class="highlight avrasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">cp</span> -r orginal_file new_file</span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://shuxun,wang/2019/01/23/1183/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="王殊勋">
+      <meta itemprop="description" content="专注互联网运维技术发展">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="学无止境">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/01/23/1183/" class="post-title-link" itemprop="url">Gem中mysql错误</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-01-23 01:10:00" itemprop="dateCreated datePublished" datetime="2019-01-23T01:10:00+08:00">2019-01-23</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-07-14 15:15:28" itemprop="dateModified" datetime="2021-07-14T15:15:28+08:00">2021-07-14</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E9%94%99%E8%AF%AF%E8%A7%A3%E5%86%B3/" itemprop="url" rel="index"><span itemprop="name">错误解决</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>Gem使用中遇到错误:</p>
+<figure class="highlight subunit"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">henry@henry-laptop:~/Soft/Ruby/RubyGem/rubygems<span class="string">-0</span>.9.0$ sudo gem update --system     Updating RubyGems...</span><br><span class="line">Bulk updating Gem source index for: http://gems.rubyforge.org</span><br><span class="line">Attempting remote update of rubygems-update</span><br><span class="line"><span class="keyword">ERROR:  </span>While executing gem ... (Errno::ENOENT)</span><br><span class="line">No such file or directory - getcwd</span><br><span class="line">henry@henry-laptop:~/Soft/Ruby/RubyGem/rubygems<span class="string">-0</span>.9.0$ sudo gem update rails</span><br><span class="line">sudo: cannot get working directory</span><br><span class="line">Updating installed gems...</span><br><span class="line">Attempting remote update of rails</span><br><span class="line">Install required dependency rake? [Yn]  y</span><br><span class="line"><span class="keyword">ERROR:  </span>While executing gem ... (Errno::ENOENT)</span><br><span class="line">No such file or directory - getcwd</span><br><span class="line">henry@henry-laptop:~/Soft/Ruby/RubyGem/rubygems<span class="string">-0</span>.9.0$ cd ~</span><br><span class="line">henry@henry-laptop:~$ sudo gem update --system</span><br></pre></td></tr></table></figure>
+
+<p>后面运行正常,看来Gem还会挑剔目录～</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+
+  
+  <nav class="pagination">
+    <a class="extend prev" rel="prev" href="/page/17/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/17/">17</a><span class="page-number current">18</span><a class="page-number" href="/page/19/">19</a><span class="space">&hellip;</span><a class="page-number" href="/page/132/">132</a><a class="extend next" rel="next" href="/page/19/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+  </nav>
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="王殊勋"
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name">王殊勋</p>
+  <div class="site-description" itemprop="description">better late than never.<br>只要开始，虽晚不迟。</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">656</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">2058</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <!--添加网站运行时间 -->
+  <span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
+  <script>
+      var now = new Date(); 
+      function createtime() { 
+          var grt= new Date("12/01/2007 12:00:00");//此处修改你的建站时间或者网站上线时间 
+          now.setTime(now.getTime()+250); 
+          days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days); 
+          hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours); 
+          if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum); 
+          mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;} 
+          seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum); 
+          snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;} 
+          document.getElementById("timeDate").innerHTML = "本站已安全运行 "+dnum+" 天 "; 
+          document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒"; 
+      } 
+  setInterval("createtime()",250);
+  </script>
+  <span itemprop="copyrightYear">(2007 - 2021)</span>
+  <!-- 添加网站运行时间 -->
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">学无止境</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script size="300" alpha="0.6" zIndex="0" src="/lib/canvas-ribbon/canvas-ribbon.js"></script>
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

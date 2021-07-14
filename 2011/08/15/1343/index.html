@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"shuxun","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"./public/search.xml"};
+  </script>
+
+  <meta name="description" content="1.简介 read是一个buildin命令,主要完成对参数的赋值,类似C语言中的scanf.其不仅可以赋值变量,还可以赋值数组;其输入不仅是屏幕,还可以是文件描述符. 2.man中选项说明 1234567891011121314151617181920212223242526272829303132333435-a anameThe words are assigned to sequential">
+<meta property="og:type" content="article">
+<meta property="og:title" content="read命令详解">
+<meta property="og:url" content="http://shuxun,wang/2011/08/15/1343/index.html">
+<meta property="og:site_name" content="学无止境">
+<meta property="og:description" content="1.简介 read是一个buildin命令,主要完成对参数的赋值,类似C语言中的scanf.其不仅可以赋值变量,还可以赋值数组;其输入不仅是屏幕,还可以是文件描述符. 2.man中选项说明 1234567891011121314151617181920212223242526272829303132333435-a anameThe words are assigned to sequential">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2011-08-15T10:08:00.000Z">
+<meta property="article:modified_time" content="2021-07-14T07:14:54.874Z">
+<meta property="article:author" content="王殊勋">
+<meta property="article:tag" content="localhost">
+<meta property="article:tag" content="root">
+<meta property="article:tag" content="read">
+<meta property="article:tag" content="input">
+<meta property="article:tag" content="test">
+<meta property="article:tag" content="line">
+<meta property="article:tag" content="字符">
+<meta property="article:tag" content="举例">
+<meta property="article:tag" content="tao">
+<meta property="article:tag" content="赋值">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://shuxun,wang/2011/08/15/1343/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>read命令详解 | 学无止境</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">学无止境</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">注互联网运维技术发展</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-sitemap">
+
+    <a href="/sitemap.xml" rel="section"><i class="fa fa-sitemap fa-fw"></i>站点地图</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://shuxun,wang/2011/08/15/1343/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="王殊勋">
+      <meta itemprop="description" content="专注互联网运维技术发展">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="学无止境">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          read命令详解
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2011-08-15 18:08:00" itemprop="dateCreated datePublished" datetime="2011-08-15T18:08:00+08:00">2011-08-15</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-07-14 15:14:54" itemprop="dateModified" datetime="2021-07-14T15:14:54+08:00">2021-07-14</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%BC%96%E7%A8%8B%E5%BC%80%E5%8F%91/" itemprop="url" rel="index"><span itemprop="name">编程开发</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>1.简介</p>
+<p>read是一个buildin命令,主要完成对参数的赋值,类似C语言中的scanf.其不仅可以赋值变量,还可以赋值数组;其输入不仅是屏幕,还可以是文件描述符.</p>
+<p>2.man中选项说明</p>
+<figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">-a aname</span><br><span class="line">The words are assigned <span class="keyword">to</span> sequential indices  <span class="keyword">of</span>  the  <span class="keyword">array</span>  variable</span><br><span class="line">aname,  starting  at  <span class="number">0.</span>   aname  <span class="keyword">is</span>  unset  <span class="keyword">before</span> <span class="keyword">any</span> <span class="built_in">new</span> <span class="keyword">values</span> are</span><br><span class="line">assigned.  Other <span class="type">name</span> arguments are ignored.</span><br><span class="line">-d delim</span><br><span class="line">The first <span class="type">character</span> <span class="keyword">of</span> delim <span class="keyword">is</span> used  <span class="keyword">to</span>  terminate  the  <span class="keyword">input</span>  <span class="type">line</span>,</span><br><span class="line">rather than newline.</span><br><span class="line">-e     <span class="keyword">If</span>  the  standard <span class="keyword">input</span> <span class="keyword">is</span> coming <span class="keyword">from</span> a terminal, readline (see <span class="keyword">READ</span>-</span><br><span class="line"><span class="type">LINE</span> above) <span class="keyword">is</span> used <span class="keyword">to</span> obtain the <span class="type">line</span>.</span><br><span class="line">-n nchars</span><br><span class="line"><span class="keyword">read</span> <span class="keyword">returns</span> <span class="keyword">after</span> reading nchars characters rather than waiting <span class="keyword">for</span> a</span><br><span class="line">complete <span class="type">line</span> <span class="keyword">of</span> <span class="keyword">input</span>.</span><br><span class="line">-p prompt</span><br><span class="line">Display  prompt  <span class="keyword">on</span> standard error, <span class="keyword">without</span> a <span class="keyword">trailing</span> newline, <span class="keyword">before</span></span><br><span class="line">attempting <span class="keyword">to</span> <span class="keyword">read</span> <span class="keyword">any</span> <span class="keyword">input</span>.  The prompt <span class="keyword">is</span> displayed <span class="keyword">only</span>  <span class="keyword">if</span>  <span class="keyword">input</span></span><br><span class="line"><span class="keyword">is</span> coming <span class="keyword">from</span> a terminal.</span><br><span class="line">-r     Backslash  does <span class="keyword">not</span> act <span class="keyword">as</span> an <span class="keyword">escape</span> <span class="type">character</span>.  The backslash <span class="keyword">is</span> con-</span><br><span class="line">sidered <span class="keyword">to</span> be part <span class="keyword">of</span> the <span class="type">line</span>.  <span class="keyword">In</span>  particular,  a  backslash-newline</span><br><span class="line">pair may <span class="keyword">not</span> be used <span class="keyword">as</span> a <span class="type">line</span> continuation.</span><br><span class="line">-s     Silent  mode.   <span class="keyword">If</span> <span class="keyword">input</span> <span class="keyword">is</span> coming <span class="keyword">from</span> a terminal, characters are <span class="keyword">not</span></span><br><span class="line">echoed.</span><br><span class="line">-t timeout</span><br><span class="line">Cause <span class="keyword">read</span> <span class="keyword">to</span> <span class="type">time</span> <span class="keyword">out</span> <span class="keyword">and</span> <span class="keyword">return</span> failure <span class="keyword">if</span> a complete <span class="type">line</span> <span class="keyword">of</span>  <span class="keyword">input</span></span><br><span class="line"><span class="keyword">is</span> <span class="keyword">not</span> <span class="keyword">read</span> <span class="keyword">within</span> timeout seconds.  This <span class="keyword">option</span> has <span class="keyword">no</span> effect <span class="keyword">if</span> <span class="keyword">read</span></span><br><span class="line"><span class="keyword">is</span> <span class="keyword">not</span> reading <span class="keyword">input</span> <span class="keyword">from</span> the terminal <span class="keyword">or</span> a pipe.</span><br><span class="line">-u fd  <span class="keyword">Read</span> <span class="keyword">input</span> <span class="keyword">from</span> file descriptor fd.</span><br><span class="line">-a 后跟一个变量,该变量会被认为是个数组,然后给其赋值,默认是以空格为分割符.</span><br><span class="line">-d 后面跟一个标志符,其实只有其后的第一个字符有用,作为结束的标志,会举例说  明.</span><br><span class="line">-p 后面跟提示信息,即在输入前打印提示信息.</span><br><span class="line">-e 在输入的时候可以时候命令补全功能.</span><br><span class="line">-n 后跟一个数字,定义输入文本的长度,很实用.</span><br><span class="line">-r 屏蔽,如果没有该选项,则作为一个转义字符,有的话 就是个正常的字符了.</span><br><span class="line">-s 安静模式,在输入字符时不再屏幕上显示,例如<span class="keyword">login</span>时输入密码.</span><br><span class="line">-t 后面跟秒数,定义输入字符的等待时间.</span><br><span class="line">-u 后面跟fd,从文件描述符中读入,该文件描述符可以是exec新开启的.</span><br></pre></td></tr></table></figure>
+
+<p>3.举例</p>
+<figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line">-a举例:</span><br><span class="line">root<span class="variable">@localhost</span><span class="symbol">:~/test</span><span class="comment">#read -a tao</span></span><br><span class="line">qq ww ee rr</span><br><span class="line">root<span class="variable">@localhost</span><span class="symbol">:~/test</span><span class="comment">#echo $&#123;tao[1]&#125;</span></span><br><span class="line">Ww</span><br><span class="line"></span><br><span class="line">-b举例:</span><br><span class="line">root<span class="variable">@localhost</span><span class="symbol">:~/test</span><span class="comment">#read -d eof -a tao</span></span><br><span class="line">ww</span><br><span class="line">dd</span><br><span class="line">gg</span><br><span class="line">hh  (输入一个e)</span><br><span class="line">root<span class="variable">@localhost</span><span class="symbol">:~/test</span><span class="comment">#echo $&#123;tao[3]&#125;</span></span><br><span class="line">Hh</span><br><span class="line"></span><br><span class="line">-n举例:</span><br><span class="line">root<span class="variable">@localhost</span><span class="symbol">:~/test</span><span class="comment">#read -n3 -p &quot;you can input 3 word:&quot;</span></span><br><span class="line">you can input <span class="number">3</span> <span class="symbol">word:</span>xxx</span><br><span class="line">(输入<span class="number">3</span>个字符后自动退出!)</span><br><span class="line"></span><br><span class="line">-s举例:</span><br><span class="line">root<span class="variable">@localhost</span><span class="symbol">:~/test</span><span class="comment">#read -p password: -s passwd</span></span><br><span class="line"><span class="symbol">password:</span></span><br><span class="line">(这时候输入就不再显示在屏幕上了!)</span><br><span class="line"></span><br><span class="line">-e举例:</span><br><span class="line">root<span class="variable">@localhost</span><span class="symbol">:~/test</span><span class="comment">#read -e file</span></span><br><span class="line">(tab键补全)</span><br><span class="line">exp1               file               ngis_post.sh       text</span><br><span class="line">exp5               linux<span class="number">-2.6</span>.<span class="number">27.54</span>/   test               xen<span class="number">-3.0</span>.<span class="number">1</span>-install/</span><br><span class="line"></span><br><span class="line">-u举例:</span><br><span class="line">root<span class="variable">@localhost</span><span class="symbol">:~/test</span><span class="comment">#exec 3&lt;file</span></span><br><span class="line">root<span class="variable">@localhost</span><span class="symbol">:~/test</span><span class="comment">#read -u 3 tao</span></span><br><span class="line">root<span class="variable">@localhost</span><span class="symbol">:~/test</span><span class="comment">#echo $tao</span></span><br><span class="line">hello world!</span><br><span class="line"><span class="comment">#注意看下读入的次序:</span></span><br><span class="line">root<span class="variable">@localhost</span><span class="symbol">:~/test</span><span class="comment">#cat file</span></span><br><span class="line">hello world!</span><br><span class="line">i am good</span><br><span class="line">root<span class="variable">@localhost</span><span class="symbol">:~/test</span><span class="comment">#exec 3&lt;file</span></span><br><span class="line">root<span class="variable">@localhost</span><span class="symbol">:~/test</span><span class="comment">#read -u 3 tao</span></span><br><span class="line">root<span class="variable">@localhost</span><span class="symbol">:~/test</span><span class="comment">#echo $tao</span></span><br><span class="line">hello world!</span><br><span class="line">root<span class="variable">@localhost</span><span class="symbol">:~/test</span><span class="comment">#read -u 3 tao</span></span><br><span class="line">root<span class="variable">@localhost</span><span class="symbol">:~/test</span><span class="comment">#echo $tao</span></span><br><span class="line">i am good</span><br></pre></td></tr></table></figure>
+
+<p>这个选项很有用的,特别是自循环读入的时候.</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/localhost/" rel="tag"># localhost</a>
+              <a href="/tags/root/" rel="tag"># root</a>
+              <a href="/tags/read/" rel="tag"># read</a>
+              <a href="/tags/input/" rel="tag"># input</a>
+              <a href="/tags/test/" rel="tag"># test</a>
+              <a href="/tags/line/" rel="tag"># line</a>
+              <a href="/tags/%E5%AD%97%E7%AC%A6/" rel="tag"># 字符</a>
+              <a href="/tags/%E4%B8%BE%E4%BE%8B/" rel="tag"># 举例</a>
+              <a href="/tags/tao/" rel="tag"># tao</a>
+              <a href="/tags/%E8%B5%8B%E5%80%BC/" rel="tag"># 赋值</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2011/08/13/1462/" rel="prev" title="解决centos编译内核Unable to find the Ncurses libraries 错误">
+      <i class="fa fa-chevron-left"></i> 解决centos编译内核Unable to find the Ncurses libraries 错误
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2011/08/28/1565/" rel="next" title="让广告在网也加载完成后加载">
+      让广告在网也加载完成后加载 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="王殊勋"
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name">王殊勋</p>
+  <div class="site-description" itemprop="description">better late than never.<br>只要开始，虽晚不迟。</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">656</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">2058</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <!--添加网站运行时间 -->
+  <span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
+  <script>
+      var now = new Date(); 
+      function createtime() { 
+          var grt= new Date("12/01/2007 12:00:00");//此处修改你的建站时间或者网站上线时间 
+          now.setTime(now.getTime()+250); 
+          days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days); 
+          hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours); 
+          if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum); 
+          mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;} 
+          seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum); 
+          snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;} 
+          document.getElementById("timeDate").innerHTML = "本站已安全运行 "+dnum+" 天 "; 
+          document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒"; 
+      } 
+  setInterval("createtime()",250);
+  </script>
+  <span itemprop="copyrightYear">(2007 - 2021)</span>
+  <!-- 添加网站运行时间 -->
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">学无止境</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script size="300" alpha="0.6" zIndex="0" src="/lib/canvas-ribbon/canvas-ribbon.js"></script>
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

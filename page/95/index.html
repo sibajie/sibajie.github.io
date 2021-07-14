@@ -1,0 +1,829 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"shuxun","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"./public/search.xml"};
+  </script>
+
+  <meta name="description" content="专注互联网运维技术发展">
+<meta property="og:type" content="website">
+<meta property="og:title" content="学无止境">
+<meta property="og:url" content="http://shuxun,wang/page/95/index.html">
+<meta property="og:site_name" content="学无止境">
+<meta property="og:description" content="专注互联网运维技术发展">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:author" content="王殊勋">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://shuxun,wang/page/95/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : true,
+    isPost : false,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>学无止境</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">学无止境</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">注互联网运维技术发展</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-sitemap">
+
+    <a href="/sitemap.xml" rel="section"><i class="fa fa-sitemap fa-fw"></i>站点地图</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content index posts-expand">
+            
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://shuxun,wang/2013/09/24/1615/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="王殊勋">
+      <meta itemprop="description" content="专注互联网运维技术发展">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="学无止境">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2013/09/24/1615/" class="post-title-link" itemprop="url">修改用户家目录</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2013-09-24 14:01:00" itemprop="dateCreated datePublished" datetime="2013-09-24T14:01:00+08:00">2013-09-24</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-07-14 15:14:47" itemprop="dateModified" datetime="2021-07-14T15:14:47+08:00">2021-07-14</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" itemprop="url" rel="index"><span itemprop="name">操作系统</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>方法如下:</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">usermod -d <span class="regexp">/home/</span>www/jiucool jiucool</span><br></pre></td></tr></table></figure>
+<p>注: <code>/home/www/jiucool</code> 为修改的目标文件夹.<br>jiucool 为要修改的用户家目录的用户名.</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://shuxun,wang/2013/09/17/1103/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="王殊勋">
+      <meta itemprop="description" content="专注互联网运维技术发展">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="学无止境">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2013/09/17/1103/" class="post-title-link" itemprop="url">CentOS安装L2TP VPN笔记</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2013-09-17 13:24:00" itemprop="dateCreated datePublished" datetime="2013-09-17T13:24:00+08:00">2013-09-17</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-07-14 15:16:04" itemprop="dateModified" datetime="2021-07-14T15:16:04+08:00">2021-07-14</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%90%84%E7%B1%BB%E6%9C%8D%E5%8A%A1/" itemprop="url" rel="index"><span itemprop="name">各类服务</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>换了个新vps,之前一直用pptp和openvpn,这次准备尝试下l2tp,记录下安装过程.<br>ip里也就能通过NCSetting快速启动vpn了,openvpn没有在NCSetting里的设置.<br>首先需要卸载已安装的openswan,我因为yum install安装的openswan版本有bug,导致我折腾一天也没连接成功,所以建议直接下载指定版本的源码.</p>
+<p>安装ipsec:</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">yum</span> remove -y openswan</span><br><span class="line"><span class="attribute">wget</span> https://download.openswan.org/openswan//old/openswan-<span class="number">2</span>.<span class="number">6</span>/openswan-<span class="number">2</span>.<span class="number">6</span>.<span class="number">24</span>.tar.gz</span><br><span class="line"><span class="attribute">tar</span> zxvf openswan-<span class="number">2</span>.<span class="number">6</span>.<span class="number">24</span>.tar.gz</span><br><span class="line"><span class="attribute">cd</span> openswan-<span class="number">2</span>.<span class="number">6</span>.<span class="number">24</span></span><br><span class="line"><span class="attribute">make</span> programs install</span><br></pre></td></tr></table></figure>
+
+<p>安装必须的模块:</p>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum <span class="keyword">install</span> ppp iptables libpcap-devel</span><br></pre></td></tr></table></figure>
+
+<p>配置ipsec:</p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">rm -rf /etc/ipsec.conf</span><br><span class="line">touch /etc/ipsec.conf</span><br><span class="line">cat &gt;&gt;/etc/ipsec.conf&lt;&lt;EOF<span class="built_in"></span></span><br><span class="line"><span class="built_in">config </span>setup</span><br><span class="line"><span class="attribute">nat_traversal</span>=<span class="literal">yes</span></span><br><span class="line"><span class="attribute">virtual_private</span>=%v4:10.0.0.0/8,%v4:192.168.0.0/16,%v4:172.16.0.0/12</span><br><span class="line"><span class="attribute">oe</span>=off</span><br><span class="line"><span class="attribute">protostack</span>=netkey</span><br><span class="line">conn L2TP-PSK-NAT</span><br><span class="line"><span class="attribute">rightsubnet</span>=vhost:%priv</span><br><span class="line"><span class="attribute">also</span>=L2TP-PSK-noNAT</span><br><span class="line">conn L2TP-PSK-noNAT</span><br><span class="line"><span class="attribute">authby</span>=secret</span><br><span class="line"><span class="attribute">pfs</span>=<span class="literal">no</span></span><br><span class="line"><span class="attribute">auto</span>=add</span><br><span class="line"><span class="attribute">keyingtries</span>=3</span><br><span class="line"><span class="attribute">rekey</span>=<span class="literal">no</span></span><br><span class="line"><span class="attribute">ikelifetime</span>=8h</span><br><span class="line"><span class="attribute">keylife</span>=1h</span><br><span class="line"><span class="attribute">type</span>=transport</span><br><span class="line"><span class="attribute">left</span>=<span class="variable">$ip</span> #替换成vps的ip</span><br><span class="line"><span class="attribute">leftprotoport</span>=17/1701</span><br><span class="line"><span class="attribute">right</span>=%any</span><br><span class="line"><span class="attribute">rightprotoport</span>=17/%any</span><br><span class="line">EOF</span><br></pre></td></tr></table></figure>
+
+<p>配置密钥,替换vipip和key:</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">vi <span class="regexp">/etc/i</span>psec.secrets</span><br><span class="line"><span class="variable">$your_vps_ip</span> %any: PSK <span class="string">&quot;$your_key&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>配置转发:</p>
+<figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">sed -i <span class="string">&#x27;s/net.ipv4.ip_forward = 0/net.ipv4.ip_forward = 1/g&#x27;</span> <span class="regexp">/etc/</span>sysctl.conf</span><br><span class="line">sysctl -p</span><br><span class="line"><span class="keyword">for</span> <span class="keyword">each</span> in <span class="regexp">/proc/</span>sys<span class="regexp">/net/i</span>pv4<span class="regexp">/conf/</span>*</span><br><span class="line"><span class="keyword">do</span></span><br><span class="line">echo <span class="number">0</span> &gt; $<span class="keyword">each</span>/accept_redirects</span><br><span class="line">echo <span class="number">0</span> &gt; $<span class="keyword">each</span>/send_redirects</span><br><span class="line">done</span><br><span class="line">iptables -t nat -A POSTROUTING -j MASQUERADE</span><br></pre></td></tr></table></figure>
+
+<p>验证ipsec配置:</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">/etc/init.d/ipsec restart</span><br><span class="line">ipsec verify</span><br><span class="line">Checking your system to see <span class="keyword">if</span> IPsec got installed and started correctly:</span><br><span class="line">Version check and ipsec on-path <span class="selector-attr">[OK]</span></span><br><span class="line">Linux Openswan U2.<span class="number">6.24</span>/K2.<span class="number">6.32</span>-<span class="number">71.29</span>.<span class="number">1</span><span class="selector-class">.el6</span><span class="selector-class">.i686</span> (netkey)</span><br><span class="line">Checking <span class="keyword">for</span> IPsec support <span class="keyword">in</span> kernel <span class="selector-attr">[OK]</span></span><br><span class="line">NETKEY detected, testing <span class="keyword">for</span> disabled ICMP send_redirects <span class="selector-attr">[OK]</span></span><br><span class="line">NETKEY detected, testing <span class="keyword">for</span> disabled ICMP accept_redirects <span class="selector-attr">[OK]</span></span><br><span class="line">Checking <span class="keyword">for</span> RSA private key (/etc/ipsec.secrets) <span class="selector-attr">[OK]</span></span><br><span class="line">Checking that pluto is running <span class="selector-attr">[OK]</span></span><br><span class="line">Pluto listening <span class="keyword">for</span> IKE on udp <span class="number">500</span> <span class="selector-attr">[OK]</span></span><br><span class="line">Pluto listening <span class="keyword">for</span> NAT-T on udp <span class="number">4500</span> <span class="selector-attr">[OK]</span></span><br><span class="line">Two or more interfaces found, checking IP forwarding <span class="selector-attr">[OK]</span></span><br><span class="line">Checking NAT and MASQUERADEing <span class="selector-attr">[N/A]</span></span><br><span class="line">Checking <span class="keyword">for</span> <span class="string">&#x27;ip&#x27;</span> command <span class="selector-attr">[OK]</span></span><br><span class="line">Checking <span class="keyword">for</span> <span class="string">&#x27;iptables&#x27;</span> command <span class="selector-attr">[OK]</span></span><br><span class="line">Opportunistic Encryption Support <span class="selector-attr">[DISABLED]</span></span><br></pre></td></tr></table></figure>
+
+<p>安装x2ltpd:</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">wget http:<span class="regexp">//</span>www.xelerance.com<span class="regexp">/wp-content/u</span>ploads<span class="regexp">/software/</span>xl2tpd/xl2tpd-<span class="number">1.3</span>.<span class="number">0</span>.tar.gz</span><br><span class="line">tar xvf xl2tpd-<span class="number">1.3</span>.<span class="number">0</span>.tar.gz</span><br><span class="line">make install</span><br><span class="line">mkdir <span class="regexp">/var/</span>run/xl2tpd</span><br><span class="line">ln -s <span class="regexp">/usr/</span>local<span class="regexp">/sbin/</span>l2tp-control <span class="regexp">/var/</span>run<span class="regexp">/xl2tpd/</span>l2tp-control</span><br><span class="line">mkdir <span class="regexp">/etc/</span>xl2tpd</span><br></pre></td></tr></table></figure>
+
+<p>配置xl2tpd:</p>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">vi</span> /etc/xl2tpd/xl2tpd.conf</span><br><span class="line"></span><br><span class="line">[global]</span><br><span class="line">listen-addr = $your_vps_ip <span class="comment">#替换成你的vpsip</span></span><br><span class="line">ipsec saref = <span class="literal">yes</span></span><br><span class="line">[lns default]</span><br><span class="line">ip range = <span class="number">192.168.30.10</span>-<span class="number">192.168.30.20</span></span><br><span class="line">local ip = <span class="number">192.168.30.1</span></span><br><span class="line">require chap = <span class="literal">yes</span></span><br><span class="line">refuse pap = <span class="literal">yes</span></span><br><span class="line">require authentication = <span class="literal">yes</span></span><br><span class="line">ppp <span class="literal">debug</span> = <span class="literal">yes</span></span><br><span class="line">pppoptfile = /etc/ppp/options.xl2tpd</span><br><span class="line">length bit = <span class="literal">yes</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">vi /etc/ppp/options.xl2tpd</span><br><span class="line"></span><br><span class="line">require-mschap-v2</span><br><span class="line">ipcp-accept-local</span><br><span class="line">ipcp-accept-remote</span><br><span class="line">ms-dns <span class="number">8.8.8.8</span></span><br><span class="line">ms-dns <span class="number">8.8.4.4</span></span><br><span class="line">asyncmap <span class="number">0</span></span><br><span class="line">noccp</span><br><span class="line">auth</span><br><span class="line">crtscts</span><br><span class="line">hide-password</span><br><span class="line"><span class="literal">debug</span></span><br><span class="line">modem</span><br><span class="line">lock</span><br><span class="line">proxyarp</span><br><span class="line">name l2tpd</span><br><span class="line"><span class="comment">#lcp-echo-interval 30</span></span><br><span class="line"><span class="comment">#lcp-echo-failure 4</span></span><br></pre></td></tr></table></figure>
+
+<p>配置用户和密码:</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">vi <span class="regexp">/etc/</span>ppp/chap-secrets</span><br><span class="line"></span><br><span class="line"><span class="comment"># Secrets for authentication using CHAP</span></span><br><span class="line"><span class="comment"># client server secret IP addresses</span></span><br><span class="line">name * password *</span><br></pre></td></tr></table></figure>
+
+<p>配置转发规则:</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">iptables</span> -t nat -A POSTROUTING -s <span class="number">192.168.30.0</span>/<span class="number">24</span> -o eth<span class="number">0</span> -j MASQUERADE</span><br><span class="line"><span class="attribute">iptables</span> -t nat -A POSTROUTING -s <span class="number">192.168.30.0</span>/<span class="number">24</span> -j SNAT --to-source $your_vps_ip</span><br></pre></td></tr></table></figure>
+
+<p>启动xl2tp:</p>
+<figure class="highlight 1c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">xl2tpd -D <span class="meta">&amp;</span></span><br></pre></td></tr></table></figure>
+
+<p>现在应该已经正常运行了,可以在你的手机或者电脑上新建一个l2tp连接测试.<br>自启动配置:<br>为了保证每次vps重启后都正常启动l2tp服务,我们还需做下面操作:</p>
+<figure class="highlight jboss-cli"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">iptables-save &gt; <span class="string">/etc/iptables</span></span><br><span class="line"><span class="keyword">echo</span> <span class="string">&quot;iptables-restore /etc/iptables&quot;</span> &gt;&gt; <span class="string">/etc/rc.local</span></span><br><span class="line"><span class="keyword">echo</span> <span class="string">&quot;/usr/local/sbin/xl2tpd -D &amp;&quot;</span> &gt;&gt; <span class="string">/etc/rc.local</span></span><br><span class="line">chkconfig <span class="params">--add</span> ipsec</span><br><span class="line">chkconfig <span class="params">--level</span> 2345 ipsec on</span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://shuxun,wang/2013/09/12/1211/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="王殊勋">
+      <meta itemprop="description" content="专注互联网运维技术发展">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="学无止境">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2013/09/12/1211/" class="post-title-link" itemprop="url">linux安全扫描工具rkhunter使用教程</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2013-09-12 10:04:00" itemprop="dateCreated datePublished" datetime="2013-09-12T10:04:00+08:00">2013-09-12</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-07-14 15:16:09" itemprop="dateModified" datetime="2021-07-14T15:16:09+08:00">2021-07-14</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%90%84%E7%B1%BB%E6%9C%8D%E5%8A%A1/" itemprop="url" rel="index"><span itemprop="name">各类服务</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>首先到 <a target="_blank" rel="noopener" href="http://www.rootkit.nl/projects/rootkit_hunter.html">http://www.rootkit.nl/projects/rootkit_hunter.html</a><br>下载最新版本的rkhunter.</p>
+<p>安装:</p>
+<figure class="highlight jboss-cli"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">tar -zxvf rkhunter-1.3.8.tar.gz</span><br><span class="line"><span class="keyword">cd</span> rkhunter-1.3.8</span><br><span class="line"><span class="string">./installer.sh</span> <span class="params">--install</span></span><br><span class="line"><span class="string">./installer.sh</span> <span class="params">--show</span></span><br></pre></td></tr></table></figure>
+
+<p>rkhunter就安装好了,然后我们要更新一下:</p>
+<figure class="highlight jboss-cli"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">rkhunter <span class="params">--update</span></span><br><span class="line">rkhunter <span class="params">--propupd</span></span><br><span class="line"><span class="string">/usr/local/bin/rkhunter</span> <span class="params">--cronjob</span> -l <span class="params">--nomow</span> <span class="params">--rwo</span></span><br></pre></td></tr></table></figure>
+
+<p>使用方法:</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line">Usage:</span><br><span class="line">rkhunter</span><br><span class="line"><span class="comment">--checkall (or -c)</span></span><br><span class="line"><span class="keyword">Check</span> the <span class="keyword">system</span>, performs <span class="keyword">all</span> tests.</span><br><span class="line"><span class="comment">--createlogfile*</span></span><br><span class="line"><span class="keyword">Create</span> a logfile (<span class="keyword">default</span> <span class="operator">/</span>var<span class="operator">/</span>log<span class="operator">/</span>rkhunter.log)</span><br><span class="line"><span class="comment">--cronjob</span></span><br><span class="line">Run <span class="keyword">as</span> cronjob (removes colored layout)</span><br><span class="line"><span class="comment">--help (or -h)</span></span><br><span class="line"><span class="keyword">Show</span> help about usage</span><br><span class="line"><span class="comment">--nocolors*</span></span><br><span class="line">Don<span class="string">&#x27;t use colors for output (some terminals don&#x27;</span>t <span class="keyword">like</span> colors <span class="keyword">or</span> extended layout characters)</span><br><span class="line"><span class="comment">--report-mode*</span></span><br><span class="line">Don<span class="string">&#x27;t</span></span><br><span class="line"><span class="string">show uninteresting information for reports, like header/footer.</span></span><br><span class="line"><span class="string">Interesting when scanning from crontab or with usage of other</span></span><br><span class="line"><span class="string">applications.</span></span><br><span class="line"><span class="string">--skip-keypress*</span></span><br><span class="line"><span class="string">Don&#x27;</span>t wait after <span class="keyword">every</span> test (makes it non<span class="operator">-</span>interactive)</span><br><span class="line"><span class="comment">--quick*</span></span><br><span class="line">Perform quick scan (instead <span class="keyword">of</span> <span class="keyword">full</span> scan). Skips <span class="keyword">some</span> tests <span class="keyword">and</span> performs <span class="keyword">some</span> enhanced tests (less suitable <span class="keyword">for</span> normal scans).</span><br><span class="line"><span class="comment">--version</span></span><br><span class="line"><span class="keyword">Show</span> version <span class="keyword">and</span> quit</span><br><span class="line"><span class="comment">--versioncheck</span></span><br><span class="line"><span class="keyword">Check</span> <span class="keyword">for</span> latest version</span><br><span class="line"><span class="keyword">Dynamic</span> paths</span><br><span class="line"><span class="comment">--bindir *</span></span><br><span class="line">Uses another directory <span class="keyword">when</span> <span class="keyword">search</span> <span class="keyword">for</span> binaries (use instead <span class="keyword">of</span> <span class="keyword">using</span> <span class="keyword">default</span> binaries)</span><br><span class="line"><span class="comment">--configfile *</span></span><br><span class="line">Uses a different configuration file (instead <span class="keyword">of</span> <span class="keyword">default</span> <span class="keyword">one</span>)</span><br><span class="line"><span class="comment">--dbdir *</span></span><br><span class="line">Uses another directory <span class="keyword">for</span> the databases (instead <span class="keyword">of</span> the <span class="keyword">default</span> <span class="keyword">one</span>, often <span class="operator">/</span>usr<span class="operator">/</span><span class="keyword">local</span><span class="operator">/</span>rkhunter<span class="operator">/</span>db)</span><br><span class="line"><span class="comment">--rootdir *</span></span><br><span class="line">Uses</span><br><span class="line">another rootdirectory (normally <span class="string">&#x27;/&#x27;</span>). So <span class="keyword">all</span> binaries <span class="keyword">and</span> tests will be</span><br><span class="line">performed <span class="keyword">on</span> this directory instead <span class="keyword">of</span> the <span class="keyword">default</span> .</span><br><span class="line"><span class="comment">--tmpdir *</span></span><br><span class="line">Uses another directory <span class="keyword">for</span> temporary storage <span class="keyword">of</span> files</span><br><span class="line">Explicit scan options:</span><br><span class="line"><span class="comment">--disable-md5-check*</span></span><br><span class="line">Disable MD5 checks</span><br><span class="line"><span class="comment">--disable-passwd-check*</span></span><br><span class="line">Disable passwd<span class="operator">/</span><span class="keyword">group</span> checks</span><br><span class="line"><span class="comment">--scan-knownbad-files*</span></span><br><span class="line">Perform besides <span class="string">&#x27;known good&#x27;</span> <span class="keyword">check</span> a <span class="string">&#x27;known bad&#x27;</span> <span class="keyword">check</span></span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://shuxun,wang/2013/09/10/1249/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="王殊勋">
+      <meta itemprop="description" content="专注互联网运维技术发展">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="学无止境">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2013/09/10/1249/" class="post-title-link" itemprop="url">linux下挂载windows的fat32分区的方法</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2013-09-10 01:06:00" itemprop="dateCreated datePublished" datetime="2013-09-10T01:06:00+08:00">2013-09-10</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-07-14 15:15:01" itemprop="dateModified" datetime="2021-07-14T15:15:01+08:00">2021-07-14</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" itemprop="url" rel="index"><span itemprop="name">操作系统</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>有些时候我们需要挂载windows的硬盘做一些操作,<br>所以就需要挂载fat32的分区.<br>挂载fat32分区的命令:</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo mount -t vfat -o iocharset=utf8,umask=<span class="number">0</span> <span class="regexp">/dev/</span>sda1 <span class="regexp">/mnt/</span>c</span><br></pre></td></tr></table></figure>
+
+<p>这样我们在 <code>/mnt/c</code>下就能看到fat32磁盘的内容了.</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://shuxun,wang/2013/08/26/1007/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="王殊勋">
+      <meta itemprop="description" content="专注互联网运维技术发展">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="学无止境">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2013/08/26/1007/" class="post-title-link" itemprop="url">解决安装memcache出现configure error libevent is required. If it's already installed, specify its path using --with-libevent=/dir/</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2013-08-26 17:43:00" itemprop="dateCreated datePublished" datetime="2013-08-26T17:43:00+08:00">2013-08-26</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-07-14 15:16:24" itemprop="dateModified" datetime="2021-07-14T15:16:24+08:00">2021-07-14</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E9%94%99%E8%AF%AF%E8%A7%A3%E5%86%B3/" itemprop="url" rel="index"><span itemprop="name">错误解决</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>这里要安装memcached．但在编译的时候提示需要指定libevent库,可是在安装lnmp的候默认是已经安装过的．解决办法如下:<br>memcached需要libevent支持,所以首先安装libevent.<br>查看系统是否已经安装libevent.</p>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ rpm -<span class="keyword">qa</span>|<span class="keyword">grep</span> libevent</span><br></pre></td></tr></table></figure>
+
+<p>如果有,不要高兴,先升级.</p>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ yum -y <span class="keyword">install</span> libevent</span><br></pre></td></tr></table></figure>
+
+<p>测试libevent是不是已经安装成功.</p>
+<figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ls -al <span class="regexp">/usr/</span>lib | <span class="keyword">grep</span> libevent</span><br></pre></td></tr></table></figure>
+
+<p>可以看到多个已经安装的类包安装memcached.<br>可以先查看编译参数.</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> wget http://memcached.googlecode.com/files/memcached-1.4.8.tar.gz</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> tar zxvf memcached-1.4.8.tar.gz</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> <span class="built_in">cd</span> memcached-1.4.8</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> ./configure --<span class="built_in">help</span></span></span><br><span class="line"><span class="meta">$</span><span class="bash"> ./configure --prefix=/usr/<span class="built_in">local</span>/memcached</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> make</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> make install</span></span><br></pre></td></tr></table></figure>
+
+<p>在这个时候,不一定会编译通过,依旧会出现:</p>
+<figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">checking <span class="keyword">for</span> libevent <span class="built_in">directory</span>... configure: error: libevent is required. You can <span class="built_in">get</span> <span class="keyword">it</span> <span class="built_in">from</span> <span class="keyword">http</span>://www.monkey.org/~provos/libevent/</span><br><span class="line">If <span class="keyword">it</span><span class="string">&#x27;s already installed, specify its path using --with-libevent=/dir/</span></span><br></pre></td></tr></table></figure>
+
+<p>因为libevent 这个包是系统默认安装的,没有安装相应的开发所用的头文件.<br>所以,还要使用如下命令来安装:</p>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum <span class="keyword">install</span> libevent-devel</span><br></pre></td></tr></table></figure>
+
+<p>再编辑,即可通过.<br>启用Memcached,</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="regexp">/usr/</span>local<span class="regexp">/memcached/</span>bin/memcached -d -m <span class="number">128</span> -l <span class="number">192.168</span>.<span class="number">1.1</span> -p <span class="number">11211</span> -u root</span><br></pre></td></tr></table></figure>
+
+<p>memcached 启动报error while loading shared libraries: libevent-1.4.s解决办法:<br>原因是找不到libevent-1.4.so.2类库,解决办法如下:<br>使用LD_DEBUG=help ./memcached -v来确定 加载的类库路径,方法如下:</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">ln</span> -s /usr/local/lib/libevent-<span class="number">1</span>.<span class="number">4</span>.so.<span class="number">2</span> /lib/libevent-<span class="number">1</span>.<span class="number">4</span>.so.<span class="number">2</span></span><br></pre></td></tr></table></figure>
+
+<p>貌似用ldconfig也能解决问题.</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+
+  
+  <nav class="pagination">
+    <a class="extend prev" rel="prev" href="/page/94/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/94/">94</a><span class="page-number current">95</span><a class="page-number" href="/page/96/">96</a><span class="space">&hellip;</span><a class="page-number" href="/page/132/">132</a><a class="extend next" rel="next" href="/page/96/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+  </nav>
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="王殊勋"
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name">王殊勋</p>
+  <div class="site-description" itemprop="description">better late than never.<br>只要开始，虽晚不迟。</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">656</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">2058</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <!--添加网站运行时间 -->
+  <span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
+  <script>
+      var now = new Date(); 
+      function createtime() { 
+          var grt= new Date("12/01/2007 12:00:00");//此处修改你的建站时间或者网站上线时间 
+          now.setTime(now.getTime()+250); 
+          days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days); 
+          hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours); 
+          if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum); 
+          mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;} 
+          seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum); 
+          snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;} 
+          document.getElementById("timeDate").innerHTML = "本站已安全运行 "+dnum+" 天 "; 
+          document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒"; 
+      } 
+  setInterval("createtime()",250);
+  </script>
+  <span itemprop="copyrightYear">(2007 - 2021)</span>
+  <!-- 添加网站运行时间 -->
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">学无止境</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script size="300" alpha="0.6" zIndex="0" src="/lib/canvas-ribbon/canvas-ribbon.js"></script>
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

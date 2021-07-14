@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"shuxun","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"./public/search.xml"};
+  </script>
+
+  <meta name="description" content="1、vi的基本概念 基本上vi可以分为三种状态,分别是命令模式(command mode)、插入模式(Insert mode)和底行模式(last line mode),各模式的功能区分如下:  命令行模式command mode)控制屏幕光标的移动,字符、字或行的删除,移动复制某区段及进入Insert mode下,或者到 last line mode. 插入模式(Insert mode)只有在I">
+<meta property="og:type" content="article">
+<meta property="og:title" content="vim使用大全">
+<meta property="og:url" content="http://shuxun,wang/2015/08/01/1376/index.html">
+<meta property="og:site_name" content="学无止境">
+<meta property="og:description" content="1、vi的基本概念 基本上vi可以分为三种状态,分别是命令模式(command mode)、插入模式(Insert mode)和底行模式(last line mode),各模式的功能区分如下:  命令行模式command mode)控制屏幕光标的移动,字符、字或行的删除,移动复制某区段及进入Insert mode下,或者到 last line mode. 插入模式(Insert mode)只有在I">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2015-08-01T02:09:00.000Z">
+<meta property="article:modified_time" content="2021-07-14T07:15:56.856Z">
+<meta property="article:author" content="王殊勋">
+<meta property="article:tag" content="输入">
+<meta property="article:tag" content="文件">
+<meta property="article:tag" content="删除">
+<meta property="article:tag" content="vi">
+<meta property="article:tag" content="光标所在">
+<meta property="article:tag" content="命令行模式">
+<meta property="article:tag" content="插入模式">
+<meta property="article:tag" content="mode">
+<meta property="article:tag" content="移动">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://shuxun,wang/2015/08/01/1376/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>vim使用大全 | 学无止境</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">学无止境</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">注互联网运维技术发展</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-sitemap">
+
+    <a href="/sitemap.xml" rel="section"><i class="fa fa-sitemap fa-fw"></i>站点地图</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://shuxun,wang/2015/08/01/1376/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="王殊勋">
+      <meta itemprop="description" content="专注互联网运维技术发展">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="学无止境">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          vim使用大全
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2015-08-01 10:09:00" itemprop="dateCreated datePublished" datetime="2015-08-01T10:09:00+08:00">2015-08-01</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-07-14 15:15:56" itemprop="dateModified" datetime="2021-07-14T15:15:56+08:00">2021-07-14</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" itemprop="url" rel="index"><span itemprop="name">操作系统</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>1、vi的基本概念</p>
+<p>基本上vi可以分为三种状态,分别是命令模式(command mode)、插入模式(Insert mode)和底行模式(last line mode),各模式的功能区分如下:</p>
+<ol>
+<li>命令行模式command mode)<br>控制屏幕光标的移动,字符、字或行的删除,移动复制某区段及进入Insert mode下,或者到 last line mode.</li>
+<li>插入模式(Insert mode)<br>只有在Insert mode下,才可以做文字输入,按「ESC」键可回到命令行模式.</li>
+<li>底行模式(last line mode)<br>将文件保存或退出vi,也可以设置编辑环境,如寻找字符串、列出行号……等.<br>不过一般我们在使用时把vi简化成两个模式,就是将底行模式(last line mode)也算入命令行模式command mode).</li>
+</ol>
+<p>2、vi的基本操作</p>
+<p>a) 进入vi</p>
+<p>在系统提示符号输入vi及文件名称后,就进入vi全屏幕编辑画面:</p>
+<figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$ </span>vi myfile</span><br></pre></td></tr></table></figure>
+
+<p>不过有一点要特别注意,就是您进入vi之后,是处于「命令行模式(command mode)」,您要切换到「插入模式(Insert mode)」才能够输入文字.初次使用vi的人都会想先用上下左右键移动光标,结果电脑一直哔哔叫,把自己气个半死,所以进入vi后,先不要乱动,转换到「插入模式(Insert mode)」再说吧!</p>
+<p>b) 切换至插入模式(Insert mode)编辑文件</p>
+<figure class="highlight mercury"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">在「命令行模式(command <span class="keyword">mode</span>)」下按一下字母「i」就可以进入「插入模式(Insert <span class="keyword">mode</span>)」,这时候你就可以开始输入文字了.</span><br></pre></td></tr></table></figure>
+
+<p>c) Insert 的切换</p>
+<figure class="highlight mercury"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">您目前处于「插入模式(Insert <span class="keyword">mode</span>)」,您就只能一直输入文字,如果您发现输错了字!想用光标键往回移动,将该字删除,就要先按一下「ESC」键转到「命令行模式(command <span class="keyword">mode</span>)」再删除文字.</span><br></pre></td></tr></table></figure>
+
+<p>d) 退出vi及保存文件</p>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">在「命令行模式(<span class="keyword">command</span> <span class="keyword">mode</span>)」下,按一下「:」冒号键进入「Last <span class="built_in">line</span> <span class="keyword">mode</span>」,例如:</span><br><span class="line"></span><br><span class="line">: <span class="keyword">w</span> filename (输入 「<span class="keyword">w</span> filename」将文章以指定的文件名filename保存)</span><br><span class="line">: <span class="keyword">wq</span> (输入「<span class="keyword">wq</span>」,存盘并退出<span class="keyword">vi</span>)</span><br><span class="line">: q! (输入q!, 不存盘强制退出<span class="keyword">vi</span>)</span><br></pre></td></tr></table></figure>
+
+<p>3、命令行模式(command mode)功能键</p>
+<p>1). 插入模式</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">按「<span class="selector-tag">i</span>」切换进入插入模式「insert mode」,按&quot;<span class="selector-tag">i</span>&quot;进入插入模式后是从光标当前位置开始输入文件;</span><br><span class="line">按「<span class="selector-tag">a</span>」进入插入模式后,是从目前光标所在位置的下一个位置开始输入文字;</span><br><span class="line">按「o」进入插入模式后,是插入新的一行,从行首开始输入文字.</span><br></pre></td></tr></table></figure>
+
+<p>2). 从插入模式切换为命令行模式</p>
+<figure class="highlight erlang"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">按「ESC」键.</span><br></pre></td></tr></table></figure>
+
+<p>3). 移动光标</p>
+<p>vi可以直接用键盘上的光标来上下左右移动,但正规的vi是用小写英文字母「h」、「j」、「k」、「l」,分别控制光标左、下、上、右移一格.</p>
+<figure class="highlight erlang"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">按「ctrl」+「b」:屏幕往<span class="string">&quot;后&quot;</span>移动一页.</span><br><span class="line">按「ctrl」+「f」:屏幕往<span class="string">&quot;前&quot;</span>移动一页.</span><br><span class="line">按「ctrl」+「u」:屏幕往<span class="string">&quot;后&quot;</span>移动半页.</span><br><span class="line">按「ctrl」+「d」:屏幕往<span class="string">&quot;前&quot;</span>移动半页.</span><br><span class="line">按数字「<span class="number">0</span>」:移到文章的开头.</span><br><span class="line">按「G」:移动到文章的最后.</span><br><span class="line">按「$」:移动到光标所在行的<span class="string">&quot;行尾&quot;</span>.</span><br><span class="line">按「^」:移动到光标所在行的<span class="string">&quot;行首&quot;</span></span><br><span class="line">按「w」:光标跳到下个字的开头</span><br><span class="line">按「e」:光标跳到下个字的字尾</span><br><span class="line">按「b」:光标回到上个字的开头</span><br><span class="line">按「#l」:光标移到该行的第#个位置,如:<span class="number">5</span>l,<span class="number">56</span>l.</span><br></pre></td></tr></table></figure>
+
+<p>4). 删除文字</p>
+<figure class="highlight erlang"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">「x」:每按一次,删除光标所在位置的<span class="string">&quot;后面&quot;</span>一个字符.</span><br><span class="line">「#x」:例如,「<span class="number">6</span>x」表示删除光标所在位置的<span class="string">&quot;后面&quot;</span><span class="number">6</span>个字符.</span><br><span class="line">「X」:大写的X,每按一次,删除光标所在位置的<span class="string">&quot;前面&quot;</span>一个字符.</span><br><span class="line">「#X」:例如,「<span class="number">20</span>X」表示删除光标所在位置的<span class="string">&quot;前面&quot;</span><span class="number">20</span>个字符.</span><br><span class="line">「dd」:删除光标所在行.</span><br><span class="line">「#dd」:从光标所在行开始删除#行</span><br></pre></td></tr></table></figure>
+
+<p>5). 复制</p>
+<figure class="highlight erlang"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">「yw」:将光标所在之处到字尾的字符复制到缓冲区中.</span><br><span class="line">「#yw」:复制#个字到缓冲区</span><br><span class="line">「yy」:复制光标所在行到缓冲区.</span><br><span class="line">「#yy」:例如,「<span class="number">6</span>yy」表示拷贝从光标所在的该行<span class="string">&quot;往下数&quot;</span><span class="number">6</span>行文字.</span><br><span class="line">「p」:将缓冲区内的字符贴到光标所在位置.注意:所有与<span class="string">&quot;y&quot;</span>有关的复制命令都必须与<span class="string">&quot;p&quot;</span>配合才能完成复制与粘贴功能.</span><br></pre></td></tr></table></figure>
+
+<p>6). 替换</p>
+<figure class="highlight erlang"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">「r」:替换光标所在处的字符.</span><br><span class="line">「R」:替换光标所到之处的字符,直到按下「ESC」键为止.</span><br></pre></td></tr></table></figure>
+
+<p>7). 回复上一次操作</p>
+<figure class="highlight erlang"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">「u」:如果您误执行一个命令,可以马上按下「u」,回到上一个操作.按多次<span class="string">&quot;u&quot;</span>可以执行多次回复.</span><br></pre></td></tr></table></figure>
+
+<p>8). 更改</p>
+<figure class="highlight glsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">「<span class="keyword">cw</span>」:更改光标所在处的字到字尾处</span><br><span class="line">「c<span class="meta">#w」:例如,「c3w」表示更改3个字</span></span><br></pre></td></tr></table></figure>
+
+<p>9). 跳至指定的行</p>
+<figure class="highlight erlang"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">「ctrl」+「g」列出光标所在行的行号.</span><br><span class="line">「#G」:例如,「<span class="number">15</span>G」,表示移动光标至文章的第<span class="number">15</span>行行首.</span><br></pre></td></tr></table></figure>
+
+<p>4、Last line mode下命令简介<br>在使用「last line mode」之前,请记住先按「ESC」键确定您已经处于「command mode」下后,再按「:」冒号即可进入「last line mode」.</p>
+<p>A) 列出行号</p>
+<p><code>「set nu」:输入「set nu」后,会在文件中的每一行前面列出行号</code>.</p>
+<p>B) 跳到文件中的某一行</p>
+<figure class="highlight clean"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">「#」:「#」号表示一个数字,在冒号后输入一个数字,再按回车键就会跳到该行了,如输入数字<span class="number">15</span>,再回车,就会跳到文章的第<span class="number">15</span>行.</span><br></pre></td></tr></table></figure>
+
+<p>C) 查找字符</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">「<span class="regexp">/关键字」:先按「/</span>」键,再输入您想寻找的字符,如果第一次找的关键字不是您想要的,可以一直按「n」会往后寻找到您要的关键字为止.</span><br><span class="line">「?关键字」:先按「?」键,再输入您想寻找的字符,如果第一次找的关键字不是您想要的,可以一直按「n」会往前寻找到您要的关键字为止.</span><br></pre></td></tr></table></figure>
+
+<p>D) 保存文件</p>
+<figure class="highlight erlang"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">「w」:在冒号输入字母「w」就可以将文件保存起来.</span><br></pre></td></tr></table></figure>
+
+<p>E) 离开vi</p>
+<figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">「<span class="selector-tag">q</span>」:按「<span class="selector-tag">q</span>」就是退出,如果无法离开<span class="selector-tag">vi</span>,可以在「<span class="selector-tag">q</span>」后跟一个「!」强制离开<span class="selector-tag">vi</span>.</span><br><span class="line">「<span class="selector-tag">qw</span>」:一般建议离开时,搭配「<span class="selector-tag">w</span>」一起使用,这样在退出的时候还可以保存文件.</span><br></pre></td></tr></table></figure>
+
+<p>5、vi命令列表<br>1、下表列出命令模式下的一些键的功能:</p>
+<figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br></pre></td><td class="code"><pre><span class="line">h</span><br><span class="line">左移光标一个字符</span><br><span class="line">l</span><br><span class="line">右移光标一个字符</span><br><span class="line">k</span><br><span class="line">光标上移一行</span><br><span class="line"><span class="keyword">j</span></span><br><span class="line"><span class="keyword"></span>光标下移一行</span><br><span class="line">^</span><br><span class="line">光标移动至行首</span><br><span class="line"><span class="number">0</span></span><br><span class="line">数字<span class="string">&quot;0&quot;</span>,光标移至文章的开头</span><br><span class="line">G</span><br><span class="line">光标移至文章的最后</span><br><span class="line">$</span><br><span class="line">光标移动至行尾</span><br><span class="line">Ctrl+f</span><br><span class="line">向前翻屏</span><br><span class="line">Ctrl+<span class="keyword">b</span></span><br><span class="line"><span class="keyword"></span>向后翻屏</span><br><span class="line">Ctrl+d</span><br><span class="line">向前翻半屏</span><br><span class="line">Ctrl+u</span><br><span class="line">向后翻半屏</span><br><span class="line">i</span><br><span class="line">在光标位置前插入字符</span><br><span class="line">a</span><br><span class="line">在光标所在位置的后一个字符开始增加</span><br><span class="line">o</span><br><span class="line">插入新的一行,从行首开始输入</span><br><span class="line">ESC</span><br><span class="line">从输入状态退至命令状态</span><br><span class="line">x</span><br><span class="line">删除光标后面的字符</span><br><span class="line"><span class="comment">#x</span></span><br><span class="line">删除光标后的＃个字符</span><br><span class="line">X</span><br><span class="line">(大写X),删除光标前面的字符</span><br><span class="line"><span class="comment">#X</span></span><br><span class="line">删除光标前面的<span class="comment">#个字符</span></span><br><span class="line">dd</span><br><span class="line">删除光标所在的行</span><br><span class="line"><span class="comment">#dd</span></span><br><span class="line">删除从光标所在行数的<span class="comment">#行</span></span><br><span class="line">yw</span><br><span class="line">复制光标所在位置的一个字</span><br><span class="line"><span class="comment">#yw</span></span><br><span class="line">复制光标所在位置的<span class="comment">#个字</span></span><br><span class="line">yy</span><br><span class="line">复制光标所在位置的一行</span><br><span class="line"><span class="comment">#yy</span></span><br><span class="line">复制从光标所在行数的<span class="comment">#行</span></span><br><span class="line">p</span><br><span class="line">粘贴</span><br><span class="line">u</span><br><span class="line">取消操作</span><br><span class="line">cw</span><br><span class="line">更改光标所在位置的一个字</span><br><span class="line"><span class="comment">#cw</span></span><br><span class="line">更改光标所在位置的<span class="comment">#个字</span></span><br></pre></td></tr></table></figure>
+
+<p>2、下表列出行命令模式下的一些指令<br>w filename<br>储存正在编辑的文件为filename<br>wq filename<br>储存正在编辑的文件为filename,并退出vi<br>q!<br>放弃所有修改,退出vi<br>set nu<br>显示行号<br>/或?<br>查找,在/后输入要查找的内容<br>n<br>与/或?一起使用,如果查找的内容不是想要找的关键字,按n或向后(与/联用)或向前(与?联用)继续查找,直到找到为止.</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E8%BE%93%E5%85%A5/" rel="tag"># 输入</a>
+              <a href="/tags/%E6%96%87%E4%BB%B6/" rel="tag"># 文件</a>
+              <a href="/tags/%E5%88%A0%E9%99%A4/" rel="tag"># 删除</a>
+              <a href="/tags/vi/" rel="tag"># vi</a>
+              <a href="/tags/%E5%85%89%E6%A0%87%E6%89%80%E5%9C%A8/" rel="tag"># 光标所在</a>
+              <a href="/tags/%E5%91%BD%E4%BB%A4%E8%A1%8C%E6%A8%A1%E5%BC%8F/" rel="tag"># 命令行模式</a>
+              <a href="/tags/%E6%8F%92%E5%85%A5%E6%A8%A1%E5%BC%8F/" rel="tag"># 插入模式</a>
+              <a href="/tags/mode/" rel="tag"># mode</a>
+              <a href="/tags/%E7%A7%BB%E5%8A%A8/" rel="tag"># 移动</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2015/07/18/1520/" rel="prev" title="解决waney 553 Could not create file (vsftpd)">
+      <i class="fa fa-chevron-left"></i> 解决waney 553 Could not create file (vsftpd)
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2015/08/16/1255/" rel="next" title="Linux修改IP地址及激活网卡">
+      Linux修改IP地址及激活网卡 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="王殊勋"
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name">王殊勋</p>
+  <div class="site-description" itemprop="description">better late than never.<br>只要开始，虽晚不迟。</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">656</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">2058</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <!--添加网站运行时间 -->
+  <span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
+  <script>
+      var now = new Date(); 
+      function createtime() { 
+          var grt= new Date("12/01/2007 12:00:00");//此处修改你的建站时间或者网站上线时间 
+          now.setTime(now.getTime()+250); 
+          days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days); 
+          hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours); 
+          if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum); 
+          mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;} 
+          seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum); 
+          snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;} 
+          document.getElementById("timeDate").innerHTML = "本站已安全运行 "+dnum+" 天 "; 
+          document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒"; 
+      } 
+  setInterval("createtime()",250);
+  </script>
+  <span itemprop="copyrightYear">(2007 - 2021)</span>
+  <!-- 添加网站运行时间 -->
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">学无止境</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script size="300" alpha="0.6" zIndex="0" src="/lib/canvas-ribbon/canvas-ribbon.js"></script>
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

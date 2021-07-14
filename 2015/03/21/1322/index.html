@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"shuxun","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"./public/search.xml"};
+  </script>
+
+  <meta name="description" content="一、权限分类: 系统权限:系统规定用户使用数据库的权限.(系统权限是对用户而言).实体权限:某种权限用户对其它用户的表或视图的存取权限.(是针对表或视图而言的). 二、系统权限管理: 1系统权限分类: 12345DBA: 拥有全部特权,是系统最高权限,只有DBA才可以创建数据库结构.RESOURCE:拥有Resource权限的用户只可以创建实体,不可以创建数据库结构.CONNECT:拥有Conne">
+<meta property="og:type" content="article">
+<meta property="og:title" content="oracle权限设置">
+<meta property="og:url" content="http://shuxun,wang/2015/03/21/1322/index.html">
+<meta property="og:site_name" content="学无止境">
+<meta property="og:description" content="一、权限分类: 系统权限:系统规定用户使用数据库的权限.(系统权限是对用户而言).实体权限:某种权限用户对其它用户的表或视图的存取权限.(是针对表或视图而言的). 二、系统权限管理: 1系统权限分类: 12345DBA: 拥有全部特权,是系统最高权限,只有DBA才可以创建数据库结构.RESOURCE:拥有Resource权限的用户只可以创建实体,不可以创建数据库结构.CONNECT:拥有Conne">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2015-03-21T04:54:00.000Z">
+<meta property="article:modified_time" content="2021-07-14T07:16:18.593Z">
+<meta property="article:author" content="王殊勋">
+<meta property="article:tag" content="权限">
+<meta property="article:tag" content="系统">
+<meta property="article:tag" content="用户">
+<meta property="article:tag" content="grant">
+<meta property="article:tag" content="select">
+<meta property="article:tag" content="SQL">
+<meta property="article:tag" content="实体">
+<meta property="article:tag" content="可以创建">
+<meta property="article:tag" content="传递">
+<meta property="article:tag" content="connect">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://shuxun,wang/2015/03/21/1322/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>oracle权限设置 | 学无止境</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">学无止境</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">注互联网运维技术发展</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-sitemap">
+
+    <a href="/sitemap.xml" rel="section"><i class="fa fa-sitemap fa-fw"></i>站点地图</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://shuxun,wang/2015/03/21/1322/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="王殊勋">
+      <meta itemprop="description" content="专注互联网运维技术发展">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="学无止境">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          oracle权限设置
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2015-03-21 12:54:00" itemprop="dateCreated datePublished" datetime="2015-03-21T12:54:00+08:00">2015-03-21</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-07-14 15:16:18" itemprop="dateModified" datetime="2021-07-14T15:16:18+08:00">2021-07-14</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%90%84%E7%B1%BB%E6%9C%8D%E5%8A%A1/" itemprop="url" rel="index"><span itemprop="name">各类服务</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>一、权限分类:</p>
+<p>系统权限:系统规定用户使用数据库的权限.(系统权限是对用户而言).<br>实体权限:某种权限用户对其它用户的表或视图的存取权限.(是针对表或视图而言的).</p>
+<p>二、系统权限管理:</p>
+<p>1系统权限分类:</p>
+<figure class="highlight erlang"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">DBA: 拥有全部特权,是系统最高权限,只有DBA才可以创建数据库结构.</span><br><span class="line">RESOURCE:拥有Resource权限的用户只可以创建实体,不可以创建数据库结构.</span><br><span class="line">CONNECT:拥有Connect权限的用户只可以登录Oracle,不可以创建实体,不可以创建数据库结构.</span><br><span class="line">对于普通用户:授予connect, resource权限.</span><br><span class="line">对于DBA管理用户:授予connect,resource, dba权限.</span><br></pre></td></tr></table></figure>
+
+<p>2、系统权限授权命令:</p>
+<p>[系统权限只能由DBA用户授出:sys, system(最开始只能是这两个用户)]</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">授权命令:<span class="keyword">SQL</span><span class="operator">&gt;</span> <span class="keyword">grant</span> <span class="keyword">connect</span>, resource, dba <span class="keyword">to</span> 用户名<span class="number">1</span> [,用户名<span class="number">2</span>]...;</span><br></pre></td></tr></table></figure>
+
+<p>[普通用户通过授权可以具有与system相同的用户权限,但永远不能达到与sys用户相同的权限,system用户的权限也可以被回收.]</p>
+<figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">例:</span><br><span class="line"><span class="keyword">SQL</span>&gt; <span class="keyword">connect</span> <span class="keyword">system</span>/manager</span><br><span class="line"><span class="keyword">SQL</span>&gt; <span class="keyword">Create</span> <span class="keyword">user</span> user50 identified <span class="keyword">by</span> user50;</span><br><span class="line"><span class="keyword">SQL</span>&gt; <span class="keyword">grant</span> <span class="keyword">connect</span>, resource <span class="keyword">to</span> user50;</span><br><span class="line"></span><br><span class="line">查询用户拥有哪里权限:</span><br><span class="line"><span class="keyword">SQL</span>&gt; <span class="keyword">select</span> * <span class="keyword">from</span> dba_role_privs;</span><br><span class="line"><span class="keyword">SQL</span>&gt; <span class="keyword">select</span> * <span class="keyword">from</span> dba_sys_privs;</span><br><span class="line"><span class="keyword">SQL</span>&gt; <span class="keyword">select</span> * <span class="keyword">from</span> role_sys_privs;</span><br></pre></td></tr></table></figure>
+
+<p>删除用户:</p>
+<figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SQL</span>&gt; <span class="keyword">drop</span> <span class="keyword">user</span> 用户名 <span class="keyword">cascade</span>; //加上<span class="keyword">cascade</span>则将用户连同其创建的东西全部删除</span><br></pre></td></tr></table></figure>
+
+<p>3、系统权限传递:</p>
+<p>增加WITH ADMIN OPTION选项,则得到的权限可以传递.</p>
+<figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SQL</span>&gt; <span class="keyword">grant</span> <span class="keyword">connect</span>, resorce <span class="keyword">to</span> user50 <span class="keyword">with</span> <span class="keyword">admin</span> <span class="keyword">option</span>; //可以传递所获权限.</span><br></pre></td></tr></table></figure>
+
+<p>4、系统权限回收:系统权限只能由DBA用户回收</p>
+<p>命令:</p>
+<figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SQL</span>&gt; <span class="keyword">Revoke</span> <span class="keyword">connect</span>, resource <span class="keyword">from</span> user50;</span><br></pre></td></tr></table></figure>
+
+<p>说明:</p>
+<p>1)如果使用WITH ADMIN OPTION为某个用户授予系统权限,那么对于被这个用户授予相同权限的所有用户来说,取消该用户的系统权限并不会级联取消这些用户的相同权限.</p>
+<p>2)系统权限无级联,即A授予B权限,B授予C权限,如果A收回B的权限,C的权限不受影响;系统权限可以跨用户回收,即A可以直接收回C用户的权限.</p>
+<p>三、实体权限管理</p>
+<p>1、实体权限分类:select, update, insert, alter, index, delete, all //all包括所有权限</p>
+<figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">execute</span> //执行存储过程权限</span><br><span class="line"></span><br><span class="line">user01:</span><br><span class="line"><span class="keyword">SQL</span>&gt; <span class="keyword">grant</span> <span class="keyword">select</span>, <span class="keyword">update</span>, <span class="keyword">insert</span> <span class="keyword">on</span> product <span class="keyword">to</span> user02;</span><br><span class="line"><span class="keyword">SQL</span>&gt; <span class="keyword">grant</span> <span class="keyword">all</span> <span class="keyword">on</span> product <span class="keyword">to</span> user02;</span><br><span class="line"></span><br><span class="line">user02:</span><br><span class="line"><span class="keyword">SQL</span>&gt; <span class="keyword">select</span> * <span class="keyword">from</span> user01.product;</span><br><span class="line"></span><br><span class="line">// 此时user02查user_tables,不包括user01.product这个表,但如果查all_tables则可以查到,因为他可以访问.</span><br></pre></td></tr></table></figure>
+
+<p>2、 将表的操作权限授予全体用户:</p>
+<figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SQL</span>&gt; <span class="keyword">grant</span> <span class="keyword">all</span> <span class="keyword">on</span> product <span class="keyword">to</span> <span class="built_in">public</span>; // <span class="built_in">public</span>表示是所有的用户,这里的<span class="keyword">all</span>权限不包括<span class="keyword">drop</span>.</span><br><span class="line"></span><br><span class="line">[实体权限数据字典]:</span><br><span class="line"><span class="keyword">SQL</span>&gt; <span class="keyword">select</span> <span class="keyword">owner</span>, <span class="built_in">table_name</span> <span class="keyword">from</span> all_tables; // 用户可以查询的表</span><br><span class="line"><span class="keyword">SQL</span>&gt; <span class="keyword">select</span> <span class="built_in">table_name</span> <span class="keyword">from</span> user_tables; // 用户创建的表</span><br><span class="line"><span class="keyword">SQL</span>&gt; <span class="keyword">select</span> grantor, table_schema, <span class="built_in">table_name</span>, privilege <span class="keyword">from</span> all_tab_privs; // 获权可以存取的表(被授权的)</span><br><span class="line"><span class="keyword">SQL</span>&gt; <span class="keyword">select</span> grantee, <span class="keyword">owner</span>, <span class="built_in">table_name</span>, privilege <span class="keyword">from</span> user_tab_privs; // 授出权限的表(授出的权限)</span><br></pre></td></tr></table></figure>
+
+<p>3、 DBA用户可以操作全体用户的任意基表(无需授权,包括删除):</p>
+<figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">DBA用户:</span><br><span class="line"><span class="keyword">SQL</span>&gt; <span class="keyword">Create</span> <span class="keyword">table</span> stud02.product(</span><br><span class="line">id number(<span class="number">10</span>),</span><br><span class="line"><span class="type">name</span> varchar2(<span class="number">20</span>));</span><br><span class="line"><span class="keyword">SQL</span>&gt; <span class="keyword">drop</span> <span class="keyword">table</span> stud02.emp;</span><br><span class="line"></span><br><span class="line"><span class="keyword">SQL</span>&gt; <span class="keyword">create</span> <span class="keyword">table</span> stud02.employee</span><br><span class="line"><span class="keyword">as</span></span><br><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> scott.emp;</span><br></pre></td></tr></table></figure>
+
+<p>4、实体权限传递(with grant option):</p>
+<figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">user01:</span><br><span class="line"></span><br><span class="line"><span class="keyword">SQL</span>&gt; <span class="keyword">grant</span> <span class="keyword">select</span>, <span class="keyword">update</span> <span class="keyword">on</span> product <span class="keyword">to</span> user02 <span class="keyword">with</span> <span class="keyword">grant</span> <span class="keyword">option</span>; // user02得到权限,并可以传递.</span><br></pre></td></tr></table></figure>
+
+<p>5、实体权限回收:</p>
+<figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">user01:</span><br><span class="line"><span class="keyword">SQL</span>&gt;<span class="keyword">Revoke</span> <span class="keyword">select</span>, <span class="keyword">update</span> <span class="keyword">on</span> product <span class="keyword">from</span> user02; //传递的权限将全部丢失.</span><br></pre></td></tr></table></figure>
+
+<p>说明</p>
+<p>如果取消某个用户的对象权限,那么对于这个用户使用WITH GRANT OPTION授予权限的用户来说,同样还会取消这些用户的相同权限,也就是说取消授权时级联的.</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E6%9D%83%E9%99%90/" rel="tag"># 权限</a>
+              <a href="/tags/%E7%B3%BB%E7%BB%9F/" rel="tag"># 系统</a>
+              <a href="/tags/%E7%94%A8%E6%88%B7/" rel="tag"># 用户</a>
+              <a href="/tags/grant/" rel="tag"># grant</a>
+              <a href="/tags/select/" rel="tag"># select</a>
+              <a href="/tags/SQL/" rel="tag"># SQL</a>
+              <a href="/tags/%E5%AE%9E%E4%BD%93/" rel="tag"># 实体</a>
+              <a href="/tags/%E5%8F%AF%E4%BB%A5%E5%88%9B%E5%BB%BA/" rel="tag"># 可以创建</a>
+              <a href="/tags/%E4%BC%A0%E9%80%92/" rel="tag"># 传递</a>
+              <a href="/tags/connect/" rel="tag"># connect</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2015/03/17/1291/" rel="prev" title="MySQL优化">
+      <i class="fa fa-chevron-left"></i> MySQL优化
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2015/03/26/1240/" rel="next" title="Linux下安装咪咕音乐播放器,解决无声">
+      Linux下安装咪咕音乐播放器,解决无声 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="王殊勋"
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name">王殊勋</p>
+  <div class="site-description" itemprop="description">better late than never.<br>只要开始，虽晚不迟。</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">656</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">2058</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <!--添加网站运行时间 -->
+  <span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
+  <script>
+      var now = new Date(); 
+      function createtime() { 
+          var grt= new Date("12/01/2007 12:00:00");//此处修改你的建站时间或者网站上线时间 
+          now.setTime(now.getTime()+250); 
+          days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days); 
+          hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours); 
+          if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum); 
+          mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;} 
+          seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum); 
+          snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;} 
+          document.getElementById("timeDate").innerHTML = "本站已安全运行 "+dnum+" 天 "; 
+          document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒"; 
+      } 
+  setInterval("createtime()",250);
+  </script>
+  <span itemprop="copyrightYear">(2007 - 2021)</span>
+  <!-- 添加网站运行时间 -->
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">学无止境</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script size="300" alpha="0.6" zIndex="0" src="/lib/canvas-ribbon/canvas-ribbon.js"></script>
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

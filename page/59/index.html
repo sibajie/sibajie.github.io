@@ -1,0 +1,930 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"shuxun","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"./public/search.xml"};
+  </script>
+
+  <meta name="description" content="专注互联网运维技术发展">
+<meta property="og:type" content="website">
+<meta property="og:title" content="学无止境">
+<meta property="og:url" content="http://shuxun,wang/page/59/index.html">
+<meta property="og:site_name" content="学无止境">
+<meta property="og:description" content="专注互联网运维技术发展">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:author" content="王殊勋">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://shuxun,wang/page/59/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : true,
+    isPost : false,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>学无止境</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">学无止境</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">注互联网运维技术发展</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-sitemap">
+
+    <a href="/sitemap.xml" rel="section"><i class="fa fa-sitemap fa-fw"></i>站点地图</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content index posts-expand">
+            
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://shuxun,wang/2016/03/09/1410/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="王殊勋">
+      <meta itemprop="description" content="专注互联网运维技术发展">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="学无止境">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2016/03/09/1410/" class="post-title-link" itemprop="url">安装IE8 开机奇慢无比的解决办法</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2016-03-09 08:56:00" itemprop="dateCreated datePublished" datetime="2016-03-09T08:56:00+08:00">2016-03-09</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-07-14 15:15:29" itemprop="dateModified" datetime="2021-07-14T15:15:29+08:00">2021-07-14</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E9%94%99%E8%AF%AF%E8%A7%A3%E5%86%B3/" itemprop="url" rel="index"><span itemprop="name">错误解决</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>去添加删除程序 删除 browser data service 这个程序 就好了.<br>这个程序是第一次开机设置ie8的程序,正常开机一次我们就不要这个程序了.</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://shuxun,wang/2016/02/19/1072/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="王殊勋">
+      <meta itemprop="description" content="专注互联网运维技术发展">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="学无止境">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2016/02/19/1072/" class="post-title-link" itemprop="url">centos 搭建 pptpd服务器</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2016-02-19 13:10:00" itemprop="dateCreated datePublished" datetime="2016-02-19T13:10:00+08:00">2016-02-19</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-07-14 15:16:04" itemprop="dateModified" datetime="2021-07-14T15:16:04+08:00">2021-07-14</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%90%84%E7%B1%BB%E6%9C%8D%E5%8A%A1/" itemprop="url" rel="index"><span itemprop="name">各类服务</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>VPN的英文全称是”Virtual Private Network”,翻译过来就是”虚拟专用网络”.顾名思义,虚拟专用网络我们可以把它理解成是虚拟出来的企业内部专线.它可以通过特殊的加密的通讯协议在连接在Internet上的位于不同地方的两个或多个企业内部网之间建立一条专有的通讯线路,就好比是架设了一条专线一样,但是它并不需要真正的去铺设光缆之类的物理线路.这就好比去电信局申请专线,但是不用给铺设线路的费用,也不用购买路由器等硬件设备.VPN技术原是路由器具有的重要技术之一,目前在交换机,防火墙设备或Windows 2000等软件里也都支持VPN功能,一句话,VPN的核心就是在利用公共网络建立虚拟私有网.虚拟专用网(VPN)被定义为通过一个公用网络(通常是因特网)建立一个临时的、安全的连接,是一条穿过混乱的公用网络的安全、稳定的隧道.虚拟专用网是对企业内部网的扩展.虚拟专用网可以帮助远程用户、公司分支机构、商业伙伴及供应商同公司的内部网建立可信的安全连接,并保证数据的安全传输.虚拟专用网可用于不断增长的移动用户的全球因特网接入,以实现安全连接;可用于实现企业网站之间安全通信的虚拟专用线路,用于经济有效地连接到商业伙伴和用户的安全外联网虚拟专用网.</p>
+<p>PPTP 全称为 Point to Point Tunneling Protocol — 点到点隧道协议,是VPN协议中的一种.</p>
+<p>安装相关软件</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">yum</span> install -y ppp iptables</span><br><span class="line"><span class="attribute">wget</span> http://poptop.sourceforge.net/yum/stable/packages/pptpd-<span class="number">1</span>.<span class="number">3</span>.<span class="number">4</span>-<span class="number">1</span>.rhel<span class="number">5</span>.<span class="number">1</span>.i<span class="number">386</span>.rpm</span><br><span class="line"><span class="attribute">rpm</span> -ivh pptpd-<span class="number">1</span>.<span class="number">3</span>.<span class="number">4</span>-<span class="number">1</span>.rhel<span class="number">5</span>.<span class="number">1</span>.i<span class="number">386</span>.rpm</span><br></pre></td></tr></table></figure>
+
+<p>配置文件/etc/ppp/options.pptpd</p>
+<figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mv <span class="regexp">/etc/</span>ppp<span class="regexp">/options.pptpd /</span>etc<span class="regexp">/ppp/</span><span class="keyword">options</span>.pptpd.bak</span><br><span class="line">vi <span class="regexp">/etc/</span>ppp/<span class="keyword">options</span>.pptpd</span><br></pre></td></tr></table></figure>
+
+<p>输入以下内容:</p>
+<figure class="highlight vala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#相当于身份验证时的域,一定要和/etc/ppp/chap-secrets中的内容对应</span></span><br><span class="line">name pptpd</span><br><span class="line"><span class="meta">#传输加密.ppp-2.4.2以上的版本只支持MPPE加密,内核模块为 ppp_mppe.o</span></span><br><span class="line"><span class="meta">#拒绝pap,chap身份验证</span></span><br><span class="line">refuse-pap</span><br><span class="line">refuse-chap</span><br><span class="line"><span class="meta">#拒绝mschap身份验证</span></span><br><span class="line">&lt;span id=<span class="string">&quot;more-510&quot;</span>&gt;&lt;/span&gt;</span><br><span class="line">refuse-mschap</span><br><span class="line"><span class="meta">#采用mschap-v2(Microsoft Challenge Handshake Authentication Protocol, Version 2)身份验证方式</span></span><br><span class="line">require-mschap-v2</span><br><span class="line"><span class="meta">#在采用mschap-v2身份验证方式时要使用MPPE进行加密</span></span><br><span class="line">require-mppe<span class="number">-128</span></span><br><span class="line"><span class="meta">#启动ARP代理</span></span><br><span class="line">proxyarp</span><br><span class="line">lock</span><br><span class="line">nobsdcomp</span><br><span class="line">novj</span><br><span class="line">novjccomp</span><br><span class="line">nologfd</span><br><span class="line"><span class="meta">#分配给客户的DNS,这里用的是opendns</span></span><br><span class="line">ms-dns <span class="number">208.67</span><span class="number">.222</span><span class="number">.222</span></span><br><span class="line">ms-dns <span class="number">208.67</span><span class="number">.220</span><span class="number">.220</span></span><br></pre></td></tr></table></figure>
+
+<p>配置文件/etc/ppp/chap-secrets</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mv <span class="regexp">/etc/</span>ppp<span class="regexp">/chap-secrets /</span>etc<span class="regexp">/ppp/</span>chap-secrets.bak</span><br><span class="line">vi <span class="regexp">/etc/</span>ppp/chap-secrets</span><br></pre></td></tr></table></figure>
+
+<p>输入以下内容</p>
+<figure class="highlight vala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta"># Secrets for authentication using CHAP</span></span><br><span class="line"><span class="meta"># client        server  secret                  IP addresses</span></span><br><span class="line">vi                pptpd  viyin.net                   *</span><br></pre></td></tr></table></figure>
+
+<p>用户名vi,密码viyin.net ,*表示任意ip<br>pptpd要和/etc/ppp/options.pptpd中的name 部分的pptpd匹配</p>
+<p>配置文件/etc/pptpd.conf</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mv <span class="regexp">/etc/</span>pptpd.conf <span class="regexp">/etc/</span>pptpd.conf.bak</span><br><span class="line">vi <span class="regexp">/etc/</span>pptpd.conf</span><br></pre></td></tr></table></figure>
+
+<p>输入以下内容:</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">option</span> /etc/ppp/options.pptpd</span><br><span class="line"><span class="attribute">logwtmp</span></span><br><span class="line"><span class="attribute">localip</span> <span class="number">10.100.1.1</span></span><br><span class="line"><span class="attribute">remoteip</span> <span class="number">10.100.1.20</span>-<span class="number">50</span></span><br></pre></td></tr></table></figure>
+
+<p>为拨入VPN的用户动态分配IP</p>
+<p>打开防火墙端口<br>1723端口和47端口打开,打开GRE协议</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">/sbin/iptables -<span class="selector-tag">A</span> <span class="selector-tag">INPUT</span> -<span class="selector-tag">p</span> tcp --dport <span class="number">1723</span> -j ACCEPT</span><br><span class="line">/sbin/iptables -<span class="selector-tag">A</span> <span class="selector-tag">INPUT</span> -<span class="selector-tag">p</span> tcp --dport <span class="number">47</span> -j ACCEPT</span><br><span class="line">/sbin/iptables -<span class="selector-tag">A</span> <span class="selector-tag">INPUT</span> -<span class="selector-tag">p</span> gre -j ACCEPT</span><br><span class="line">/sbin/iptables  -<span class="selector-tag">A</span> POSTROUTING -t nat -s <span class="number">10.100</span>.<span class="number">1.0</span>/<span class="number">24</span> -o seth0 -j MASQUERADE</span><br></pre></td></tr></table></figure>
+
+<p>配置文件/etc/sysctl.conf</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vi <span class="regexp">/etc/</span>sysctl.conf</span><br></pre></td></tr></table></figure>
+
+<p>修改以下内容:</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">net</span>.ipv<span class="number">4</span>.ip_forward = <span class="number">1</span></span><br></pre></td></tr></table></figure>
+
+<p>开启NAT转发功能<br>保存、退出后执行:</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="regexp">/sbin/</span>sysctl -p</span><br></pre></td></tr></table></figure>
+
+<p>启动PPTP VPN 服务器端:</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="regexp">/sbin/</span>service pptpd start</span><br></pre></td></tr></table></figure>
+
+<p>检查PPP是否支持MPPE,用以下命令检查PPP是否支持MPPE:
+　　</p>
+<figure class="highlight 1c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">strings &#x27;/usr/sbin/pppd&#x27; <span class="string">|grep -i mppe | wc –lines</span></span><br></pre></td></tr></table></figure>
+
+<p>果以上命令输出为”0”则表示不支持;输出为”30”或更大的数字就表示支持.<br>注意:<br>如果一直提示619或者800错误,查看日志.</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://shuxun,wang/2016/02/05/1261/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="王殊勋">
+      <meta itemprop="description" content="专注互联网运维技术发展">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="学无止境">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2016/02/05/1261/" class="post-title-link" itemprop="url">lvs keepalived实现高可用负载均衡</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2016-02-05 01:05:00" itemprop="dateCreated datePublished" datetime="2016-02-05T01:05:00+08:00">2016-02-05</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-07-14 15:15:59" itemprop="dateModified" datetime="2021-07-14T15:15:59+08:00">2021-07-14</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%90%84%E7%B1%BB%E6%9C%8D%E5%8A%A1/" itemprop="url" rel="index"><span itemprop="name">各类服务</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>今天要做的是通过LVS和keepalived实现的高可用的负载均衡,<br>通过LVS实现负载均衡能达到F5硬件负载均衡效果的60%,其他的负载均衡则无法达到10%.<br>而keepalived前面也讲过,是实现高可用的程序,可以在一台服务器崩溃后,另一台可以及时接管并继续提供服务.<br>保证服务器不会宕机.<br>好下面就开始配置:</p>
+<p>系统环境:CentOS 5.5(定制安装)<br>组件:</p>
+<figure class="highlight excel"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Base</span></span><br><span class="line">Development Libraries</span><br><span class="line">Development Tools</span><br><span class="line">Editors</span><br><span class="line"><span class="built_in">Text</span>-based Internet</span><br></pre></td></tr></table></figure>
+
+<p>服务器及网络参数:</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">lvs</span>-master:<span class="number">192.168.9.201</span></span><br><span class="line"><span class="attribute">lvs</span>-backup:<span class="number">192.168.9.202</span></span><br><span class="line"><span class="attribute">vip</span>:<span class="number">192.168.9.200</span></span><br><span class="line"><span class="attribute">web1</span>:<span class="number">192.168.9.203</span></span><br><span class="line"><span class="attribute">web2</span>:<span class="number">192.168.9.204</span></span><br><span class="line"><span class="attribute">netmask</span>:<span class="number">255.255.255.0</span></span><br><span class="line"><span class="attribute">gateway</span>:<span class="number">192.168.9.1</span></span><br></pre></td></tr></table></figure>
+
+<p>========================= 安装ipvsadm、keepalived ==================</p>
+<figure class="highlight crmsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">[root@<span class="keyword">master</span> <span class="title">~]# cd</span> /usr/local/src</span><br><span class="line">[root@<span class="keyword">master</span> <span class="title">~]# wget</span> http://www.linuxvirtualserver.org/software/kernel-<span class="number">2.6</span>/ipvsadm-<span class="number">1.24</span>.tar.gz</span><br><span class="line">[root@<span class="keyword">master</span> <span class="title">~]# wget</span> http://www.keepalived.org/software/keepalived-<span class="number">1.1</span>.<span class="number">17</span>.tar.gz</span><br><span class="line">[root@<span class="keyword">master</span> <span class="title">~]# ln</span> -sv /usr/src/kernels/<span class="number">2.6</span>.<span class="number">18</span>-<span class="number">194</span>.el5-i686/ /usr/src/linux</span><br><span class="line">[root@<span class="keyword">master</span> <span class="title">~]# tar</span> -zxvf ipvsadm-<span class="number">1.24</span>.tar.gz</span><br><span class="line">[root@<span class="keyword">master</span> <span class="title">~]# cd</span> ipvsadm-<span class="number">1.24</span></span><br><span class="line">[root@<span class="keyword">master</span> <span class="title">~]# make</span>;make install</span><br><span class="line">[root@<span class="keyword">master</span> <span class="title">~]# cd</span> ..</span><br><span class="line">[root@<span class="keyword">master</span> <span class="title">~]# tar</span> -zxvf keepalived-<span class="number">1.1</span>.<span class="number">17</span>.tar.gz</span><br><span class="line">[root@<span class="keyword">master</span> <span class="title">~]# cd</span> keepalived-<span class="number">1.1</span>.<span class="number">17</span></span><br><span class="line">[root@<span class="keyword">master</span> <span class="title">~]# ./configure</span></span><br></pre></td></tr></table></figure>
+
+<p>出现编译错误:</p>
+<figure class="highlight erlang-repl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">!!! OpenSSL is not properly installed on your system. !!!</span><br><span class="line">!!! Can not include OpenSSL headers files.</span><br></pre></td></tr></table></figure>
+
+<p>解决办法:</p>
+<figure class="highlight crmsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@<span class="keyword">master</span> <span class="title">~]# yum</span> -y install openssl-devel</span><br><span class="line">[root@<span class="keyword">master</span> <span class="title">~]# ./configure</span></span><br><span class="line">[root@<span class="keyword">master</span> <span class="title">~]# make</span>;make install</span><br></pre></td></tr></table></figure>
+
+<p>编译的时候出现这个提示,说明keepalived和内核结合了,如果不是这样的,需要加上这个参数</p>
+<figure class="highlight ada"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">./configure <span class="comment">--with-kernel-dir=/kernel/path</span></span><br><span class="line">Keepalived configuration</span><br><span class="line"><span class="comment">------------------------</span></span><br><span class="line">Keepalived version : 1.1.17</span><br><span class="line">Compiler : <span class="type">gcc</span></span><br><span class="line">Compiler flags : -<span class="type">g</span> -O2</span><br><span class="line">Extra Lib : -<span class="type">lpopt</span> -lssl -lcrypto</span><br><span class="line"><span class="keyword">Use</span> IPVS Framework : <span class="type">Yes</span></span><br><span class="line">IPVS sync daemon support : <span class="type">Yes</span></span><br><span class="line"><span class="keyword">Use</span> VRRP Framework : <span class="type">Yes</span></span><br><span class="line"><span class="keyword">Use</span> LinkWatch : <span class="type">No</span></span><br><span class="line"><span class="keyword">Use</span> Debug flags : <span class="type">No</span></span><br></pre></td></tr></table></figure>
+
+<p>======================= 配置keepalived ===========================</p>
+<figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[root@master ~]# cp <span class="regexp">/usr/</span>local<span class="regexp">/etc/</span>rc.d<span class="regexp">/init.d/</span>keepalived <span class="regexp">/etc/</span>rc.d<span class="regexp">/init.d/</span></span><br><span class="line">[root@master ~]# cp <span class="regexp">/usr/</span>local<span class="regexp">/etc/</span>sysconfig<span class="regexp">/keepalived /</span>etc<span class="regexp">/sysconfig/</span></span><br><span class="line">[root@master ~]# mkdir <span class="regexp">/etc/</span>keepalived</span><br><span class="line">[root@master ~]# cp <span class="regexp">/usr/</span>local<span class="regexp">/sbin/</span>keepalived <span class="regexp">/usr/</span>sbin/</span><br><span class="line">[root@master ~]# vi <span class="regexp">/etc/</span>keepalived/keepalived.conf</span><br></pre></td></tr></table></figure>
+
+<p>keepalived配置文件内容:</p>
+<figure class="highlight leaf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br></pre></td><td class="code"><pre><span class="line">global_defs &#123;</span><br><span class="line">    notification_email &#123;</span><br><span class="line">        king_819@163.com</span><br><span class="line">    &#125;</span><br><span class="line">    notification_email_from king_819@163.com</span><br><span class="line">    smtp_server smtp.163.com</span><br><span class="line">    # smtp_connect_timeout 30</span><br><span class="line">    router_id LVS_DEVEL</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"># VIP1</span><br><span class="line">vrrp_instance VI_1 &#123;</span><br><span class="line">    state MASTER #备份服务器上将MASTER改为BACKUP</span><br><span class="line">    interface eth0</span><br><span class="line">    lvs_sync_daemon_inteface eth0</span><br><span class="line">    virtual_router_id 51</span><br><span class="line">    priority 100 # 备份服务上将100改为90</span><br><span class="line">    advert_int 5</span><br><span class="line">    authentication &#123;</span><br><span class="line">        auth_type PASS</span><br><span class="line">        auth_pass 1111</span><br><span class="line">    &#125;</span><br><span class="line">    virtual_ipaddress &#123;</span><br><span class="line">        192.168.9.200</span><br><span class="line">        <span class="function"><span class="keyword">#</span><span class="params">(如果有多个<span class="variable">VIP</span>,继续换行填写.)</span></span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">virtual_server 192.168.9.200 80 &#123;</span><br><span class="line">    delay_loop 6 <span class="function"><span class="keyword">#</span><span class="params">(每隔10秒查询<span class="variable">realserver</span>状态)</span></span></span><br><span class="line">    lb_algo wlc <span class="function"><span class="keyword">#</span><span class="params">(<span class="variable">lvs</span> 算法)</span></span></span><br><span class="line">    lb_kind DR <span class="function"><span class="keyword">#</span><span class="params">(<span class="variable">Direct</span> <span class="variable">Route</span>)</span></span></span><br><span class="line">    persistence_timeout 60 <span class="function"><span class="keyword">#</span><span class="params">(同一<span class="variable">IP</span>的连接60秒内被分配到同一台<span class="variable">realserver</span>)</span></span></span><br><span class="line">    protocol TCP <span class="function"><span class="keyword">#</span><span class="params">(用<span class="variable">TCP</span>协议检查<span class="variable">realserver</span>状态)</span></span></span><br><span class="line"></span><br><span class="line">    real_server 192.168.9.203 80 &#123;</span><br><span class="line">        weight 100 <span class="function"><span class="keyword">#</span><span class="params">(权重)</span></span></span><br><span class="line">        TCP_CHECK &#123;</span><br><span class="line">            connect_timeout 10 <span class="function"><span class="keyword">#</span><span class="params">(10秒无响应超时)</span></span></span><br><span class="line">            nb_get_retry 3</span><br><span class="line">            delay_before_retry 3</span><br><span class="line">            connect_port 80</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    real_server 192.168.9.204 80 &#123;</span><br><span class="line">        weight 100</span><br><span class="line">        TCP_CHECK &#123;</span><br><span class="line">            connect_timeout 10</span><br><span class="line">            nb_get_retry 3</span><br><span class="line">            delay_before_retry 3</span><br><span class="line">            connect_port 80</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">[root@master ~]# service keepalived start|stop</span><br><span class="line">[root@master ~]# chkconfig –level 2345 keepalived on</span><br></pre></td></tr></table></figure>
+
+<p>====================== 配置realserver =========================</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line">[root@web_1 ~]<span class="comment"># vi /root/lvs_real.sh</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#!/bin/bash</span></span><br><span class="line"><span class="comment"># description: Config realserver</span></span><br><span class="line"><span class="comment">#Written by : http://kerry.blog.51cto.com</span></span><br><span class="line"></span><br><span class="line">SNS_VIP=<span class="number">192.168</span>.<span class="number">9.200</span></span><br><span class="line"></span><br><span class="line"><span class="regexp">/etc/</span>rc.d<span class="regexp">/init.d/</span>functions</span><br><span class="line"></span><br><span class="line">case <span class="string">&quot;$1&quot;</span> <span class="keyword">in</span></span><br><span class="line">start)</span><br><span class="line"><span class="regexp">/sbin/i</span>fconfig lo:<span class="number">0</span> <span class="variable">$SNS_VIP</span> netmask <span class="number">255.255</span>.<span class="number">255.255</span> broadcast <span class="variable">$SNS_VIP</span></span><br><span class="line"><span class="regexp">/sbin/</span>route add -host <span class="variable">$SNS_VIP</span> dev lo:<span class="number">0</span></span><br><span class="line">echo <span class="string">&quot;1&quot;</span> &gt;<span class="regexp">/proc/</span>sys<span class="regexp">/net/i</span>pv4<span class="regexp">/conf/</span>lo/arp_ignore</span><br><span class="line">echo <span class="string">&quot;2&quot;</span> &gt;<span class="regexp">/proc/</span>sys<span class="regexp">/net/i</span>pv4<span class="regexp">/conf/</span>lo/arp_announce</span><br><span class="line">echo <span class="string">&quot;1&quot;</span> &gt;<span class="regexp">/proc/</span>sys<span class="regexp">/net/i</span>pv4<span class="regexp">/conf/</span>all/arp_ignore</span><br><span class="line">echo <span class="string">&quot;2&quot;</span> &gt;<span class="regexp">/proc/</span>sys<span class="regexp">/net/i</span>pv4<span class="regexp">/conf/</span>all/arp_announce</span><br><span class="line">sysctl -p &gt;<span class="regexp">/dev/</span>null <span class="number">2</span>&gt;&amp;<span class="number">1</span></span><br><span class="line">echo <span class="string">&quot;RealServer Start OK&quot;</span></span><br><span class="line"></span><br><span class="line">;;</span><br><span class="line">stop)</span><br><span class="line"><span class="regexp">/sbin/i</span>fconfig lo:<span class="number">0</span> down</span><br><span class="line"><span class="regexp">/sbin/</span>route del <span class="variable">$SNS_VIP</span> &gt;<span class="regexp">/dev/</span>null <span class="number">2</span>&gt;&amp;<span class="number">1</span></span><br><span class="line">echo <span class="string">&quot;0&quot;</span> &gt;<span class="regexp">/proc/</span>sys<span class="regexp">/net/i</span>pv4<span class="regexp">/conf/</span>lo/arp_ignore</span><br><span class="line">echo <span class="string">&quot;0&quot;</span> &gt;<span class="regexp">/proc/</span>sys<span class="regexp">/net/i</span>pv4<span class="regexp">/conf/</span>lo/arp_announce</span><br><span class="line">echo <span class="string">&quot;0&quot;</span> &gt;<span class="regexp">/proc/</span>sys<span class="regexp">/net/i</span>pv4<span class="regexp">/conf/</span>all/arp_ignore</span><br><span class="line">echo <span class="string">&quot;0&quot;</span> &gt;<span class="regexp">/proc/</span>sys<span class="regexp">/net/i</span>pv4<span class="regexp">/conf/</span>all/arp_announce</span><br><span class="line">echo <span class="string">&quot;RealServer Stoped&quot;</span></span><br><span class="line">;;</span><br><span class="line">*)</span><br><span class="line">echo <span class="string">&quot;Usage: $0 &#123;start|stop&#125;&quot;</span></span><br><span class="line"><span class="keyword">exit</span> <span class="number">1</span></span><br><span class="line">esac</span><br><span class="line"></span><br><span class="line"><span class="keyword">exit</span> <span class="number">0</span></span><br><span class="line"></span><br><span class="line">[root@web_1 ~]<span class="comment"># chmod +x /roo/lvs_real.sh</span></span><br><span class="line">[root@web_1 ~]<span class="comment"># /root/lvs_real.sh start</span></span><br><span class="line">[root@web_1 ~]<span class="comment"># ifconfig</span></span><br><span class="line">lo:<span class="number">0</span> Link encap:Local Loopback</span><br><span class="line">inet addr:<span class="number">192.168</span>.<span class="number">0.10</span> Mask:<span class="number">255.255</span>.<span class="number">255.255</span></span><br><span class="line">UP LOOPBACK RUNNING MTU:<span class="number">16436</span> Metric:<span class="number">1</span></span><br><span class="line">[root@web_1 ~]<span class="comment"># echo &quot;/root/lvs_real.sh start&quot; &gt;&gt; /etc/rc.local</span></span><br></pre></td></tr></table></figure>
+
+<p>===================== 测试LVS+keepalived ========================<br>#LVS_master、LVS_backup上开启keepalived,LVS_master先绑定VIP<br>在LVS_master执行</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">ip</span> a</span><br><span class="line"><span class="attribute">1</span>: lo: mtu <span class="number">16436</span> qdisc noqueue</span><br><span class="line"><span class="attribute">link</span>/loopback <span class="number">00</span>:<span class="number">00</span>:<span class="number">00</span>:<span class="number">00</span>:<span class="number">00</span>:<span class="number">00</span> brd <span class="number">00</span>:<span class="number">00</span>:<span class="number">00</span>:<span class="number">00</span>:<span class="number">00</span>:<span class="number">00</span></span><br><span class="line"><span class="attribute">inet</span> <span class="number">127.0.0.1</span>/<span class="number">8</span> scope host lo</span><br><span class="line"><span class="attribute">inet6</span> ::<span class="number">1</span>/<span class="number">128</span> scope host</span><br><span class="line"><span class="attribute">valid_lft</span> forever preferred_lft forever</span><br><span class="line"><span class="attribute">2</span>: eth<span class="number">0</span>: mtu <span class="number">1500</span> qdisc pfifo_fast qlen <span class="number">1000</span></span><br><span class="line"><span class="attribute">link</span>/ether <span class="number">08</span>:<span class="number">00</span>:<span class="number">27</span>:<span class="number">8</span>e:<span class="number">14</span>:<span class="number">62</span> brd ff:ff:ff:ff:ff:ff</span><br><span class="line"><span class="attribute">inet</span> <span class="number">192.168.0.254</span>/<span class="number">24</span> brd <span class="number">192.168.0.255</span> scope global eth<span class="number">0</span></span><br><span class="line"><span class="attribute">inet</span> <span class="number">192.168.0.10</span>/<span class="number">32</span> scope global eth<span class="number">0</span></span><br><span class="line"><span class="attribute">inet6</span> fe<span class="number">80</span>::a<span class="number">00</span>:<span class="number">27</span>ff:fe<span class="number">8</span>e:<span class="number">1462</span>/<span class="number">64</span> scope link</span><br><span class="line"><span class="attribute">valid_lft</span> forever preferred_lft forever</span><br><span class="line"><span class="attribute">3</span>: sit<span class="number">0</span>: mtu <span class="number">1480</span> qdisc noop</span><br><span class="line"><span class="attribute">link</span>/sit <span class="number">0.0.0.0</span> brd <span class="number">0.0.0.0</span></span><br></pre></td></tr></table></figure>
+
+<p>我们可以看到已经成功绑定了虚拟IP了.<br>在LVS_backup下则没有哪条加粗的虚拟ip地址.<br>在LVS_master执行ipvsadm,可以看到后端web服务器的负载情况.</p>
+<figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">IP Virtual Server version <span class="number">1.2</span>.<span class="number">1</span> (size=<span class="number">4096</span>)</span><br><span class="line">Prot <span class="symbol">LocalAddress:</span>Port Scheduler Flags</span><br><span class="line">-&gt; <span class="symbol">RemoteAddress:</span>Port Forward Weight ActiveConn InActConn</span><br><span class="line">TCP <span class="number">192.168</span>.0.<span class="number">10</span><span class="symbol">:http</span> wlc persistent <span class="number">60</span></span><br><span class="line">-&gt; <span class="number">192.168</span>.0.<span class="number">14</span><span class="symbol">:http</span> Route <span class="number">100</span> 0 0</span><br><span class="line">-&gt; <span class="number">192.168</span>.0.<span class="number">11</span><span class="symbol">:http</span> Route <span class="number">100</span> 0 0</span><br></pre></td></tr></table></figure>
+
+<p>现在我们就可以来测试一下了,首先我们访问虚拟IP,如果可以访问切多次刷新都没有问题的话,可以关闭一台LVS_master服务器,LVS_backup会很快接管工作.<br>我们如果停掉一台web服务器,则LVS服务器会将问题服务器剔除列表,执行ipvsadm会看到只剩一台web服务器.<br>但是虚拟ip的访问不受任何影响.这样一个高可用的负载均衡集群就搭建完成了.</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://shuxun,wang/2016/02/04/1478/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="王殊勋">
+      <meta itemprop="description" content="专注互联网运维技术发展">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="学无止境">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2016/02/04/1478/" class="post-title-link" itemprop="url">解决errormodules.dep (No such file or directory)</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2016-02-04 01:16:00" itemprop="dateCreated datePublished" datetime="2016-02-04T01:16:00+08:00">2016-02-04</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-07-14 15:14:49" itemprop="dateModified" datetime="2021-07-14T15:14:49+08:00">2021-07-14</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E9%94%99%E8%AF%AF%E8%A7%A3%E5%86%B3/" itemprop="url" rel="index"><span itemprop="name">错误解决</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>错误是:</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">FATAL</span>: Could not load /lib/modules/<span class="number">2</span>.<span class="number">6</span>.<span class="number">18</span>-<span class="number">274</span>.<span class="number">7</span>.<span class="number">1</span>.el<span class="number">5</span>.<span class="number">028</span>stab<span class="number">095</span>.<span class="number">1</span>/modules.dep: No such file or directory</span><br></pre></td></tr></table></figure>
+
+<p>只要执行一条命令就可以了.<br>首先要切换到root用户,</p>
+<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">su root</span></span><br></pre></td></tr></table></figure>
+
+<p>然后运行</p>
+<figure class="highlight autohotkey"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mkdir /lib/modules/`uname -r` &amp;&amp; depmod -a</span><br></pre></td></tr></table></figure>
+
+<p>问题解决.</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://shuxun,wang/2016/01/31/1051/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="王殊勋">
+      <meta itemprop="description" content="专注互联网运维技术发展">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="学无止境">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2016/01/31/1051/" class="post-title-link" itemprop="url">CentOS 5.4使用Jailkit建立apache 的chroot环境</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2016-01-31 23:52:00" itemprop="dateCreated datePublished" datetime="2016-01-31T23:52:00+08:00">2016-01-31</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-07-14 15:15:38" itemprop="dateModified" datetime="2021-07-14T15:15:38+08:00">2021-07-14</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%90%84%E7%B1%BB%E6%9C%8D%E5%8A%A1/" itemprop="url" rel="index"><span itemprop="name">各类服务</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>1.下载rpmforge-release-0.5.2-2.el6.rf.i686.rpm</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">i686</span> http://packages.sw.be/rpmforge-release/rpmforge-release-<span class="number">0</span>.<span class="number">5</span>.<span class="number">2</span>-<span class="number">2</span>.el<span class="number">6</span>.rf.i<span class="number">686</span>.rpm</span><br><span class="line"><span class="attribute">x86_64</span> http://packages.sw.be/rpmforge-release/rpmforge-release-<span class="number">0</span>.<span class="number">5</span>.<span class="number">2</span>-<span class="number">2</span>.el<span class="number">6</span>.rf.x<span class="number">86</span>_<span class="number">64</span>.rpm</span><br></pre></td></tr></table></figure>
+
+<p>2.安装DAG’s GPG key</p>
+<figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rpm --<span class="keyword">import</span> http:<span class="comment">//apt.sw.be/RPM-GPG-KEY.dag.txt</span></span><br></pre></td></tr></table></figure>
+
+<p>3.安装rpmforge-release-0.5.2-2.el6.rf.i686.rpm</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">rpm</span> -i rpmforge-release-<span class="number">0</span>.<span class="number">5</span>.<span class="number">2</span>-<span class="number">2</span>.el<span class="number">6</span>.rf.*.rpm</span><br></pre></td></tr></table></figure>
+
+<p>4.安装Jailkit</p>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum <span class="keyword">install</span> Jailkit</span><br></pre></td></tr></table></figure>
+
+<p>5.配置Jailkit</p>
+<p>拷贝原始配置文件</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd <span class="regexp">/etc/</span>jailkit/</span><br><span class="line">cp jk_init.ini  jk_init.ini.bak</span><br></pre></td></tr></table></figure>
+
+<p>编辑jk_init.ini</p>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">vi</span> jk_init.ini</span><br></pre></td></tr></table></figure>
+
+<p>在底部增加ldconfig</p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">[ldconfig]</span></span><br><span class="line"><span class="attr">paths</span> = /sbin/ldconfig</span><br><span class="line"><span class="attr">regularfiles</span> = /etc/ld.so.conf</span><br></pre></td></tr></table></figure>
+
+<p>找到[uidbasics]</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[uidbasics]</span><br><span class="line"><span class="comment"># this section probably needs adjustment on 64bit systems</span></span><br><span class="line"><span class="comment"># or non-Linux systems</span></span><br><span class="line">comment = common files <span class="keyword">for</span> all jails that need user/group information</span><br><span class="line">paths = <span class="regexp">/lib/</span>libnsl.so.<span class="number">1</span>, <span class="regexp">/lib64/</span>libnsl.so.<span class="number">1</span>, <span class="regexp">/lib/</span>libnss*.so.<span class="number">2</span>, <span class="regexp">/lib64/</span>libnss*.so.<span class="number">2</span>, <span class="regexp">/etc/</span>nsswitch.conf, <span class="regexp">/etc/</span>ld.so.conf</span><br></pre></td></tr></table></figure>
+
+<p>去掉 <code>/etc/ld.so.conf</code>增加下面一行</p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">includesections</span> = ldconfig</span><br></pre></td></tr></table></figure>
+
+<p>找到[apache]</p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">[apache]</span></span><br><span class="line"><span class="attr">comment</span> = the apache webserver, very basic setup, probably too limited for you</span><br><span class="line"><span class="attr">paths</span> = /usr/sbin/apache</span><br><span class="line"><span class="attr">users</span> = root, www-data</span><br><span class="line"><span class="attr">groups</span> = root, www-data</span><br><span class="line"><span class="attr">includesections</span> = netbasics, uidbasics</span><br></pre></td></tr></table></figure>
+
+<p>改为</p>
+<figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">[apache]</span><br><span class="line">comment = the apache webserver, very basic setup, probably too limited <span class="keyword">for</span> you</span><br><span class="line">paths = <span class="regexp">/usr/</span>sbin<span class="regexp">/apachectl,/u</span>sr<span class="regexp">/sbin/</span>httpd,<span class="regexp">/etc/</span>php.ini,<span class="regexp">/etc/</span>localtime</span><br><span class="line">users = root, apache</span><br><span class="line">groups = root, apache</span><br><span class="line">regularfiles = <span class="regexp">/etc/mim</span>e.types</span><br><span class="line">directories = <span class="regexp">/etc/</span>httpd,<span class="regexp">/var/</span>www<span class="regexp">/html, /</span>var<span class="regexp">/lock/</span>subsys, <span class="regexp">/var/</span>log<span class="regexp">/httpd,/</span>etc<span class="regexp">/php.d,/u</span>sr<span class="regexp">/share/</span>zoneinfo,<span class="regexp">/var/</span>lib<span class="regexp">/php/</span>session</span><br><span class="line">includesections = netbasics, uidbasicsi,editors, basicshell</span><br><span class="line">devices =<span class="regexp">/dev/u</span>random, <span class="regexp">/dev/</span><span class="keyword">null</span></span><br></pre></td></tr></table></figure>
+
+<p>建立要chroot的apache目录</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mkdir <span class="regexp">/home/</span>apache</span><br><span class="line">chown root:root <span class="regexp">/home/</span>apache</span><br><span class="line">chmod <span class="number">0755</span> <span class="regexp">/home/</span>apache</span><br></pre></td></tr></table></figure>
+
+<p>在apache目录放置chroot环境需要的文件依赖</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">jk_init -j <span class="regexp">/home/</span>apache apache</span><br></pre></td></tr></table></figure>
+
+<p>启动apache</p>
+<figure class="highlight crmsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apachectl <span class="literal">start</span></span><br></pre></td></tr></table></figure>
+
+<p>中间会出现一些小问题,请根据实际把缺少的文件手动建立拷贝,如php.ini.<br>一个chroot环境建成.</p>
+<p>2.配置apache</p>
+<p>安装编译mod_chroot</p>
+<figure class="highlight vala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta"># wget http://core.segfault.pl/~hobbit/mod_chroot/dist/mod_chroot-0.5.tar.gz</span></span><br><span class="line"><span class="meta"># tar -zxvf mod_chroot-0.5.tar.gz</span></span><br><span class="line"><span class="meta"># cd mod_chroot-0.5</span></span><br><span class="line"><span class="meta"># apxs -cia mod_chroot.c</span></span><br></pre></td></tr></table></figure>
+
+<p>修改 <code>/etc/httpd/conf/httpd.conf</code></p>
+<figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">PidFile <span class="built_in">run</span>/httpd.pid</span><br></pre></td></tr></table></figure>
+
+<p>改为</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">PidFile <span class="regexp">/var/</span>run/httpd.pid</span><br></pre></td></tr></table></figure>
+
+<p>在后面增加</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ChrootDir <span class="regexp">/home/</span>apache</span><br></pre></td></tr></table></figure>
+
+<p>在ServerRoot “/etc/httpd”后面增加</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">LockFile <span class="regexp">/var/</span>run/httpd.lock</span><br><span class="line">CoreDumpDirectory <span class="regexp">/var/</span>run</span><br><span class="line">ScoreBoardFile <span class="regexp">/var/</span>run/httpd.scoreboard</span><br></pre></td></tr></table></figure>
+
+<p>加载chroot模块</p>
+<figure class="highlight basic"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="symbol">64 </span>位:LoadModule chroot_module /<span class="keyword">usr</span>/lib64/httpd/modules/mod_chroot.so</span><br><span class="line"><span class="symbol">32 </span>位:LoadModule chroot_module /<span class="keyword">usr</span>/lib/httpd/modules/mod_chroot.so</span><br></pre></td></tr></table></figure>
+
+<p>修改 <code>/etc/init.d/httpd</code></p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vi <span class="regexp">/etc/i</span>nit.d/httpd</span><br></pre></td></tr></table></figure>
+
+<p>在HTTPD_LANG=${HTTPD_LANG-“C”}后增加</p>
+<figure class="highlight arcade"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ROOT=<span class="regexp">/home/</span>apache</span><br></pre></td></tr></table></figure>
+
+<p>找到</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">stop()&#123;</span><br><span class="line">    <span class="built_in">echo</span> <span class="literal">-n</span> <span class="variable">$</span><span class="string">&quot;Stopping <span class="variable">$prog:</span> &quot;</span></span><br><span class="line">    killproc <span class="literal">-d</span> <span class="number">10</span><span class="variable">$httpd</span></span><br><span class="line">    RETVAL=<span class="variable">$</span>?</span><br><span class="line">    <span class="built_in">echo</span></span><br><span class="line">    [<span class="variable">$RETVAL</span> = <span class="number">0</span>] &amp;&amp; <span class="built_in">rm</span> <span class="operator">-f</span> <span class="variable">$</span>&#123;lockfile&#125;<span class="variable">$</span>&#123;pidfile&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>修改为</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">stop()&#123;</span><br><span class="line">    <span class="regexp">/bin/</span>ln -s <span class="variable">$ROOT</span><span class="regexp">/var/</span>run<span class="regexp">/httpd.pid /</span>var<span class="regexp">/run/</span>httpd.pid</span><br><span class="line">    echo -n $<span class="string">&quot;Stopping $prog: &quot;</span></span><br><span class="line">    killproc -d <span class="number">10</span><span class="variable">$httpd</span></span><br><span class="line">    RETVAL=$?</span><br><span class="line">    echo</span><br><span class="line">    [<span class="variable">$RETVAL</span> = <span class="number">0</span>] &amp;&amp; rm -f <span class="variable">$&#123;lockfile&#125;</span><span class="variable">$&#123;pidfile&#125;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>保存,重启.</p>
+<figure class="highlight erlang"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">service httpd restart.</span><br></pre></td></tr></table></figure>
+
+<p>可看到:</p>
+<figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-attr">[Thu Jan 27 20:56:39 2011]</span> <span class="selector-attr">[notice]</span> <span class="selector-tag">core</span> <span class="selector-tag">dump</span> <span class="selector-tag">file</span> <span class="selector-tag">size</span> <span class="selector-tag">limit</span> <span class="selector-tag">raised</span> <span class="selector-tag">to</span> <span class="selector-tag">4294967295</span> <span class="selector-tag">bytes</span></span><br><span class="line"><span class="selector-attr">[Thu Jan 27 20:56:39 2011]</span> <span class="selector-attr">[notice]</span> <span class="selector-tag">SELinux</span> <span class="selector-tag">policy</span> <span class="selector-tag">enabled</span>; <span class="selector-tag">httpd</span> <span class="selector-tag">running</span> <span class="selector-tag">as</span> <span class="selector-tag">context</span> <span class="selector-tag">root</span>:<span class="selector-tag">system_r</span>:<span class="selector-tag">httpd_t</span></span><br><span class="line"><span class="selector-attr">[Thu Jan 27 20:56:39 2011]</span> <span class="selector-attr">[notice]</span> <span class="selector-tag">suEXEC</span> <span class="selector-tag">mechanism</span> <span class="selector-tag">enabled</span> (<span class="attribute">wrapper</span>: /usr/sbin/suexec)</span><br><span class="line"><span class="selector-attr">[Thu Jan 27 20:56:39 2011]</span> <span class="selector-attr">[notice]</span> <span class="selector-tag">Digest</span>: <span class="selector-tag">generating</span> <span class="selector-tag">secret</span> <span class="selector-tag">for</span> <span class="selector-tag">digest</span> <span class="selector-tag">authentication</span> ...</span><br><span class="line"><span class="selector-attr">[Thu Jan 27 20:56:39 2011]</span> <span class="selector-attr">[notice]</span> <span class="selector-tag">Digest</span>: <span class="selector-tag">done</span></span><br><span class="line"><span class="selector-attr">[Thu Jan 27 20:56:39 2011]</span> <span class="selector-attr">[notice]</span> <span class="selector-tag">mod_python</span>: <span class="selector-tag">Creating</span> <span class="selector-tag">4</span> <span class="selector-tag">session</span> <span class="selector-tag">mutexes</span> <span class="selector-tag">based</span> <span class="selector-tag">on</span> <span class="selector-tag">256</span> <span class="selector-tag">max</span> <span class="selector-tag">processes</span> <span class="selector-tag">and</span> <span class="selector-tag">0</span> <span class="selector-tag">max</span> <span class="selector-tag">threads</span>.</span><br><span class="line"><span class="selector-attr">[Thu Jan 27 20:56:39 2011]</span> <span class="selector-attr">[notice]</span> <span class="selector-tag">mod_chroot</span>: <span class="selector-tag">changed</span> <span class="selector-tag">root</span> <span class="selector-tag">to</span> /<span class="selector-tag">home</span>/<span class="selector-tag">apache</span>.</span><br><span class="line"><span class="selector-attr">[Thu Jan 27 20:56:39 2011]</span> <span class="selector-attr">[notice]</span> <span class="selector-tag">Apache</span>/<span class="selector-tag">2</span><span class="selector-class">.2</span><span class="selector-class">.3</span> (CentOS) <span class="selector-tag">configured</span> <span class="selector-tag">--</span> <span class="selector-tag">resuming</span> <span class="selector-tag">normal</span> <span class="selector-tag">operations</span></span><br></pre></td></tr></table></figure>
+
+<p>到此OK了.<br>有关session启动,请检测目录权限.</p>
+<figure class="highlight perl"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">chown</span> -R apache:apache session/</span><br></pre></td></tr></table></figure>
+
+<p>注意:数据库连接时localhost要改成127.0.0.1</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+
+  
+  <nav class="pagination">
+    <a class="extend prev" rel="prev" href="/page/58/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/58/">58</a><span class="page-number current">59</span><a class="page-number" href="/page/60/">60</a><span class="space">&hellip;</span><a class="page-number" href="/page/132/">132</a><a class="extend next" rel="next" href="/page/60/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+  </nav>
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="王殊勋"
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name">王殊勋</p>
+  <div class="site-description" itemprop="description">better late than never.<br>只要开始，虽晚不迟。</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">656</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">2058</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <!--添加网站运行时间 -->
+  <span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
+  <script>
+      var now = new Date(); 
+      function createtime() { 
+          var grt= new Date("12/01/2007 12:00:00");//此处修改你的建站时间或者网站上线时间 
+          now.setTime(now.getTime()+250); 
+          days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days); 
+          hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours); 
+          if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum); 
+          mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;} 
+          seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum); 
+          snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;} 
+          document.getElementById("timeDate").innerHTML = "本站已安全运行 "+dnum+" 天 "; 
+          document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒"; 
+      } 
+  setInterval("createtime()",250);
+  </script>
+  <span itemprop="copyrightYear">(2007 - 2021)</span>
+  <!-- 添加网站运行时间 -->
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">学无止境</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script size="300" alpha="0.6" zIndex="0" src="/lib/canvas-ribbon/canvas-ribbon.js"></script>
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

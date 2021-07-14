@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"shuxun","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"./public/search.xml"};
+  </script>
+
+  <meta name="description" content="对于访问量稍大的站点,Apache的这些默认配置是无法满足需求的,我们仍需调整Apache的一些参数,使Apache能够在大访问量环境下发挥出更好的性能.以下我们对Apache配置文件httpd.conf中对性能影响较大的参数进行一些说明.(1) Timeout 该参数指定Apache在接收请求或发送所请求内容之前的最长等待时间(秒),若超过该时间Apache则放弃处理该请求,并释放连接.该参数默">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Apache高性能配置">
+<meta property="og:url" content="http://shuxun,wang/2016/04/23/1039/index.html">
+<meta property="og:site_name" content="学无止境">
+<meta property="og:description" content="对于访问量稍大的站点,Apache的这些默认配置是无法满足需求的,我们仍需调整Apache的一些参数,使Apache能够在大访问量环境下发挥出更好的性能.以下我们对Apache配置文件httpd.conf中对性能影响较大的参数进行一些说明.(1) Timeout 该参数指定Apache在接收请求或发送所请求内容之前的最长等待时间(秒),若超过该时间Apache则放弃处理该请求,并释放连接.该参数默">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2016-04-23T08:52:00.000Z">
+<meta property="article:modified_time" content="2021-07-14T07:16:00.718Z">
+<meta property="article:author" content="王殊勋">
+<meta property="article:tag" content="参数">
+<meta property="article:tag" content="服务器">
+<meta property="article:tag" content="apache">
+<meta property="article:tag" content="处理">
+<meta property="article:tag" content="空闲进程">
+<meta property="article:tag" content="MaxClients">
+<meta property="article:tag" content="该选项">
+<meta property="article:tag" content="PHP脚本">
+<meta property="article:tag" content="设置为">
+<meta property="article:tag" content="访问量">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://shuxun,wang/2016/04/23/1039/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>Apache高性能配置 | 学无止境</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">学无止境</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">注互联网运维技术发展</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-sitemap">
+
+    <a href="/sitemap.xml" rel="section"><i class="fa fa-sitemap fa-fw"></i>站点地图</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://shuxun,wang/2016/04/23/1039/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="王殊勋">
+      <meta itemprop="description" content="专注互联网运维技术发展">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="学无止境">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Apache高性能配置
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2016-04-23 16:52:00" itemprop="dateCreated datePublished" datetime="2016-04-23T16:52:00+08:00">2016-04-23</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-07-14 15:16:00" itemprop="dateModified" datetime="2021-07-14T15:16:00+08:00">2021-07-14</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%90%84%E7%B1%BB%E6%9C%8D%E5%8A%A1/" itemprop="url" rel="index"><span itemprop="name">各类服务</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>对于访问量稍大的站点,Apache的这些默认配置是无法满足需求的,我们仍需调整Apache的一些参数,使Apache能够在大访问量环境下发挥出更好的性能.以下我们对Apache配置文件httpd.conf中对性能影响较大的参数进行一些说明.<br>(1) Timeout 该参数指定Apache在接收请求或发送所请求内容之前的最长等待时间(秒),若超过该时间Apache则放弃处理该请求,并释放连接.该参数默认值为120,推荐设置为60,对于访问量较大的网站可以设置为30.<br>(2) KeepAlive 该参数控制Apache是否允许在一个连接中有多个请求,默认打开.但对于大多数论坛类型站点来说,通常设置为off以关闭该支持.<br>(3) MPM – prefork.c 在默认情况下Apache使用Prefork(进程)工作模式,可以说这部分的参数设置是对Apache性能影响的核心和关键.用户可以在配置文档中找到以下配置段:</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">&lt;IfModule prefork.c&gt;</span></span><br><span class="line">   <span class="attribute">StartServers</span>       <span class="number">5</span></span><br><span class="line">   <span class="attribute">MinSpareServers</span>    <span class="number">5</span></span><br><span class="line">   <span class="attribute">MaxSpareServers</span>     <span class="number">10</span></span><br><span class="line">   <span class="attribute">MaxClients</span>       <span class="number">15</span></span><br><span class="line">   <span class="attribute">MaxRequestsPerChild</span>   <span class="number">0</span></span><br><span class="line"><span class="section">&lt;/IfModule&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>这就是控制Apache进程工作的配置段,为了更好的理解上述配置中的各项参数,下面让我们先了解一下Apache是如何控制进程工作的.我们知道,在 Unix系统中,很多服务(Service)的守护进程(Daemon)在启动时会创建一个进程以准备应答可能的连接请求,服务即进入了端口监听状态,当一个来自客户端(Client)的请求被发送至服务所监听的端口时,该服务进程即会处理该请求,在处理过程中,该进程处于独占状态,也就是说如果此时有其他请求到达,这些请求只能”排队”等待当前请求处理完成且服务进程释放.这样就会导致越来越多的请求处于队列等待状态,实际表现就是该服务处理能力非常低下.Apache使用Prefork模式很好的解决了这一问题.下面我们来看看Apache实际上是如何高效率工作的.<br>当Apache启动时,Apache会启动StartSpareServers个空闲进程同时准备接收处理请求,当多个请求到来时,StarSpareServers进行会越来越少,当空闲进程减少到MinSpareServers个时,Apache为了能够继续有充裕的进程处理请求,它会再启动StartsServers个进程备用,这样就大大减少了请求队列等待的可能,使得服务效率提高,这也是为什么叫做Pre-fork的原因;让我们继续跟踪Apache的工作,我们假设Apache已经启动了200个进程来处理请求,理论上来说,此时Apache一共有205个进程,而过了一段时间,假设有100个请求都得到了Apache的响应和处理,那么此时这100个进程就被释放成为空闲进程,那么此时Apache有105个空闲进程.而对于服务而言,启动太多的空闲进程时没有任何意义的,反而会降低服务器的整体性能,那么Apache真的会有105个空闲进程么?当然不会!实际上 Apache随时在检查自己,当发现有超过MaxSpareServers个空闲进程时,则会自动停止关闭一些进程,以保证空闲进程不过过多.说到这里,用户应该对Apache的工作方式有了一定的了解,如果想获得更多更详细的说明请参阅Apache手册文档.<br>我们还有两个参数没有介绍:MaxClients和MaxRequestPerchild;MaxClients指定Apache在同一时间内最多允许有多少客户端能够与其连接,如果超过MaxClients个连接,客户端将会得到一个”服务器繁忙”的错误页面.我们看到默认情况下MaxClients设置为15,这对一些中型站点和大型站点显然是远远不够的!也许您需要同时允许512个客户端连接才能满足应用需求,好吧,那么就让我们把 MaxClients修改为512,保存httpd.conf并退出,重启Apache,很遗憾,在重启过程当中您看到了一些错误提示,Apache重启失败.错误提示中告诉您MaxClients最大只能设定为256,相信您一定很失望.不过不要沮丧,Apache作为世界一流的Web Server一定不会如此单薄的!在默认情况下,MaxClients的确只能设定为不超过256的整数,但是,如果您有需要完全可以随意定制,此时就需要使用ServerLimit参数来配合使用,简单的说ServerLimit就像是水桶,而MaxClients就像是水,您可以通过更换更大的水桶(将ServerLimit设定为一个较大值)来容纳更多的水(MaxClients),但要注意,MaxClients的设定数值是不能大于 ServerLimit的设定数值的!<br>下面让我们了解一下MaxRequestPerChild参数,该参数指定一个连接进程中可以有多少个线程同时工作.也许这样解释过于专业,那么您只要想想”网络蚂蚁”、”网际快车FlashGet”中的”多点同时下载”即可,该参数实际上就是限制最多可以用几个”点”,当这些”点”用完以后就会结束进程,并重新开启一个进程.默认设置为0,即为:不限制.但需要注意,如果将该值设置的过小会引起访问问题,如果没有特殊需要或者访问量压力并非很大可以保持默认值,如果访问量很大则推荐设置为2048,一般现在高负载服务器设置10000也可.<br>好了,解释了这么多,让我们看看经过修改后Perfork.c配置段的推荐配置:</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">&lt;IfModule prefork.c&gt;</span></span><br><span class="line">   <span class="attribute">StartServers</span>       <span class="number">5</span></span><br><span class="line">   <span class="attribute">MinSpareServers</span>    <span class="number">5</span></span><br><span class="line">   <span class="attribute">MaxSpareServers</span>     <span class="number">10</span></span><br><span class="line">   <span class="attribute">ServerLimit</span>    <span class="number">1024</span></span><br><span class="line">   <span class="attribute">MaxClients</span>        <span class="number">768</span></span><br><span class="line">   <span class="attribute">MaxRequestsPerChild</span>   <span class="number">0</span></span><br><span class="line"><span class="section">&lt;/IfModule&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>完成了上述对Apache的调整,Apache已经获得了较大的性能改善.记住,在修改任何参数后都需要重启Apache才能生效的.有关Apache的优化远远不止这些,有兴趣的用户可以阅读Apache手册文档或者寻找一些文献资料学习.</p>
+<p>PHP优化对于PHP的优化主要是对php.ini中的相关主要参数进行合理调整和设置,以下我们就来看看php.ini中的一些对性能影响较大的参数应该如何设置.</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vi <span class="regexp">/etc/</span>php.ini</span><br></pre></td></tr></table></figure>
+
+<p>(1) PHP函数禁用找到:</p>
+<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">disable_functions</span> =</span><br></pre></td></tr></table></figure>
+
+<p>该选项可以设置哪些PHP函数是禁止使用的,PHP中有一些函数的风险性还是相当大的,可以直接执行一些系统级脚本命令,如果允许这些函数执行,当PHP程序出现漏洞时,损失是非常严重的!以下我们给出推荐的禁用函数设置:</p>
+<figure class="highlight mel"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">disable_functions = phpinfo,passthru,<span class="keyword">exec</span>,<span class="keyword">system</span>,<span class="keyword">popen</span>,chroot,escapeshellcmd,escapeshellarg,shell_exec,proc_open,proc_get_status</span><br></pre></td></tr></table></figure>
+
+<p>需注意:如果您的服务器中含有一些系统状态检测的PHP程序,则不要禁用shell_exec,proc_open,proc_get_status等函数.</p>
+<p>(2) PHP脚本执行时间找到:</p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">max_execution_time</span> = <span class="number">30</span></span><br></pre></td></tr></table></figure>
+
+<p>该选项设定PHP程序的最大执行时间,如果一个PHP脚本被请求,且该PHP脚本在max_execution_time时间内没能执行完毕,则PHP不再继续执行,直接给客户端返回超时错误.没有特殊需要该选项可保持默认设置30秒,如果您的PHP脚本确实需要长执行时间则可以适当增大该时间设置.</p>
+<p>(3) PHP脚本处理内存占用找到:</p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">memory_limit</span> = <span class="number">8</span>M</span><br></pre></td></tr></table></figure>
+
+<p>该选项指定PHP脚本处理所能占用的最大内存,默认为8MB,如果您的服务器内存为1GB以上,则该选项可以设置为12MB以获得更快的PHP脚本处理效率.</p>
+<p>(4) PHP全局函数声明找到:</p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">register_globals</span> = <span class="literal">Off</span></span><br></pre></td></tr></table></figure>
+
+<p>网络上很多关于PHP设置的文章都推荐将该选项设置为On,其实这是一种及其危险的设置方法,很可能引起严重的安全性问题.如果没有特殊的需要,强烈推荐保留默认设置!</p>
+<p>(5) PHP上传文件大小限制找到:</p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">upload_max_filesize</span> = <span class="number">2</span>M</span><br></pre></td></tr></table></figure>
+
+<p>该选项设定PHP所能允许最大上传文件大小,默认为2MB.根据实际应用需求,可以适当增大该设置.</p>
+<p>(6) Session存储介质找到:</p>
+<figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">session</span>.save_path</span><br></pre></td></tr></table></figure>
+
+<p>如果你的PHP程序使用Session对话,则可以将Session存储位置设置为 <code>/dev/shm</code>,<code>/dev/shm</code>是Linux系统独有的TMPFS 文件系统,是以内存为主要存储方式的文件系统,比RAMDISK更优秀,因为可以使用DISKSWAP作为补充,而且是系统自带的功能模块,不需要另行配置.想想看,从磁盘IO操作到内存操作,速度会快多少?只是需要注意,存储在 <code>/dev/shm</code>的数据,在服务器重启后会全部丢失.不过这对于 Session来说是无足轻重的.</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E5%8F%82%E6%95%B0/" rel="tag"># 参数</a>
+              <a href="/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/" rel="tag"># 服务器</a>
+              <a href="/tags/apache/" rel="tag"># apache</a>
+              <a href="/tags/%E5%A4%84%E7%90%86/" rel="tag"># 处理</a>
+              <a href="/tags/%E7%A9%BA%E9%97%B2%E8%BF%9B%E7%A8%8B/" rel="tag"># 空闲进程</a>
+              <a href="/tags/MaxClients/" rel="tag"># MaxClients</a>
+              <a href="/tags/%E8%AF%A5%E9%80%89%E9%A1%B9/" rel="tag"># 该选项</a>
+              <a href="/tags/PHP%E8%84%9A%E6%9C%AC/" rel="tag"># PHP脚本</a>
+              <a href="/tags/%E8%AE%BE%E7%BD%AE%E4%B8%BA/" rel="tag"># 设置为</a>
+              <a href="/tags/%E8%AE%BF%E9%97%AE%E9%87%8F/" rel="tag"># 访问量</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2016/04/23/1268/" rel="prev" title="Mysql ERROR 1045 (28000) Access denied for user 'root'@'localhost'">
+      <i class="fa fa-chevron-left"></i> Mysql ERROR 1045 (28000) Access denied for user 'root'@'localhost'
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2016/05/07/1018/" rel="next" title="linux temfs与/dev/shm探讨及其应用">
+      linux temfs与/dev/shm探讨及其应用 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="王殊勋"
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name">王殊勋</p>
+  <div class="site-description" itemprop="description">better late than never.<br>只要开始，虽晚不迟。</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">656</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">2058</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <!--添加网站运行时间 -->
+  <span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
+  <script>
+      var now = new Date(); 
+      function createtime() { 
+          var grt= new Date("12/01/2007 12:00:00");//此处修改你的建站时间或者网站上线时间 
+          now.setTime(now.getTime()+250); 
+          days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days); 
+          hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours); 
+          if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum); 
+          mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;} 
+          seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum); 
+          snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;} 
+          document.getElementById("timeDate").innerHTML = "本站已安全运行 "+dnum+" 天 "; 
+          document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒"; 
+      } 
+  setInterval("createtime()",250);
+  </script>
+  <span itemprop="copyrightYear">(2007 - 2021)</span>
+  <!-- 添加网站运行时间 -->
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">学无止境</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script size="300" alpha="0.6" zIndex="0" src="/lib/canvas-ribbon/canvas-ribbon.js"></script>
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

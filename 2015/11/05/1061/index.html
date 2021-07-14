@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"shuxun","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"./public/search.xml"};
+  </script>
+
+  <meta name="description" content="前提条件 阅读本文前,您需要搭建好PPTP,LAMP,教程本站搜索. PPP:Point-to-Point Protocol,点对点协议,是工作在数据链路层的连接协议.常见的ADSL连接时使用的PPPoE便是指的以太网上的点对点协议(Point-to-Point Protocol over Ethernet).而我们创建连接VPN时也会通过PPP来进行,*nix操作系统上的pppd能够完成这一任务">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CentOS PPTP配置FreeRADIUS+DaloRADIUS实现高级用户控制+流量控制">
+<meta property="og:url" content="http://shuxun,wang/2015/11/05/1061/index.html">
+<meta property="og:site_name" content="学无止境">
+<meta property="og:description" content="前提条件 阅读本文前,您需要搭建好PPTP,LAMP,教程本站搜索. PPP:Point-to-Point Protocol,点对点协议,是工作在数据链路层的连接协议.常见的ADSL连接时使用的PPPoE便是指的以太网上的点对点协议(Point-to-Point Protocol over Ethernet).而我们创建连接VPN时也会通过PPP来进行,*nix操作系统上的pppd能够完成这一任务">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2015-11-05T06:40:00.000Z">
+<meta property="article:modified_time" content="2021-07-14T07:16:08.030Z">
+<meta property="article:author" content="王殊勋">
+<meta property="article:tag" content="etc">
+<meta property="article:tag" content="usr">
+<meta property="article:tag" content="配置">
+<meta property="article:tag" content="用户">
+<meta property="article:tag" content="数据库">
+<meta property="article:tag" content="values">
+<meta property="article:tag" content="groupname">
+<meta property="article:tag" content="radius">
+<meta property="article:tag" content="raddb">
+<meta property="article:tag" content="attribute">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://shuxun,wang/2015/11/05/1061/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>CentOS PPTP配置FreeRADIUS+DaloRADIUS实现高级用户控制+流量控制 | 学无止境</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">学无止境</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">注互联网运维技术发展</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-sitemap">
+
+    <a href="/sitemap.xml" rel="section"><i class="fa fa-sitemap fa-fw"></i>站点地图</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://shuxun,wang/2015/11/05/1061/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="王殊勋">
+      <meta itemprop="description" content="专注互联网运维技术发展">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="学无止境">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          CentOS PPTP配置FreeRADIUS+DaloRADIUS实现高级用户控制+流量控制
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2015-11-05 14:40:00" itemprop="dateCreated datePublished" datetime="2015-11-05T14:40:00+08:00">2015-11-05</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-07-14 15:16:08" itemprop="dateModified" datetime="2021-07-14T15:16:08+08:00">2021-07-14</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%90%84%E7%B1%BB%E6%9C%8D%E5%8A%A1/" itemprop="url" rel="index"><span itemprop="name">各类服务</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>前提条件</p>
+<p>阅读本文前,您需要搭建好PPTP,LAMP,教程本站搜索.</p>
+<p>PPP:Point-to-Point Protocol,点对点协议,是工作在数据链路层的连接协议.常见的ADSL连接时使用的PPPoE便是指的以太网上的点对点协议(Point-to-Point Protocol over Ethernet).而我们创建连接VPN时也会通过PPP来进行,*nix操作系统上的pppd能够完成这一任务,其进行用户验证的默认方法便是chap-secrets文件.配置完FreeRADIUS后,我们需要把用户验证这一环节交给RADIUS服务器来完成.</p>
+<p>RADIUS:Remote Authentication Dial In User Service,远程用户拨号验证服务,基于RFC2865和RFC2866.具体的工作原理挺复杂的,仔细阅读这两个RFC标准应该可以搞明白.简单的说,它是一个兼顾验证(authentication)、授权(authorization)及记账(accounting)三种服务的协议,即AAA协议.RADIUS运行在应用层,使用UDP进行传输,它被广泛用于ISP和企业用来控制Internet或内部网络、无线网络的访问.</p>
+<p>FreeRADIUS:是一个实现RADIUS协议的软件,基于GPLv2开源.它是目前部署最广泛的开源RADIUS软件.<br>daloRADIUS:是一个FreeRADIUS的Web挂历程序,使用PHP编写.</p>
+<p>安装配置</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">yum</span> install freeradius<span class="number">2</span> freeradius<span class="number">2</span>-mysql freeradius<span class="number">2</span>-utils</span><br></pre></td></tr></table></figure>
+
+<p>安装完以后,编辑 <code>/etc/raddb/users</code>,加上:</p>
+<figure class="highlight subunit"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">testing </span>Cleartext-Password := &quot;password&quot;</span><br></pre></td></tr></table></figure>
+
+<p>打开radius的测试模式,执行radiusd -X,然后打开一个新终端,执行:</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">radtest</span> testing password <span class="number">127.0.0.1</span> <span class="number">0</span> testing<span class="number">123</span></span><br></pre></td></tr></table></figure>
+
+<p>如果看到Access-Accept,说明没问题,如果没看到,返回去检查.<br>测试连接成功后,我们可以把users里临时加上去的第一行删除.</p>
+<p>下载ppp源码</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">wget ftp:<span class="regexp">//</span>ftp.samba.org<span class="regexp">/pub/</span>ppp/ppp-<span class="number">2.4</span>.<span class="number">5</span>.tar.gz</span><br><span class="line">tar zxvf ppp-<span class="number">2.4</span>.<span class="number">5</span>.tar.gz</span><br><span class="line">cp -R <span class="regexp">/root/</span>ppp-<span class="number">2.4</span>.<span class="number">5</span><span class="regexp">/pppd/</span>plugins<span class="regexp">/radius/</span>etc<span class="regexp">/ /u</span>sr<span class="regexp">/local/</span>etc/radiusclient</span><br></pre></td></tr></table></figure>
+
+<p>编辑 <code>/usr/local/etc/radiusclient/servers</code>,加上一组服务器和密钥,本例中为”LaoxieVPN”:</p>
+<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">localhost LaoxieVPN</span></span><br></pre></td></tr></table></figure>
+
+<p>编辑 <code>/usr/local/etc/radiusclient/dictionary</code>:</p>
+<p>最后一行改成:</p>
+<figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">INCLUDE</span> <span class="regexp">/usr/</span>local<span class="regexp">/etc/</span>radiusclient/dictionary.microsoft</span><br></pre></td></tr></table></figure>
+
+<p>然后添加一行:</p>
+<figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">INCLUDE</span> <span class="regexp">/usr/</span>local<span class="regexp">/etc/</span>radiusclient/dictionary.merit</span><br></pre></td></tr></table></figure>
+
+<p>编辑 <code>/etc/raddb/clients.conf</code>:</p>
+<p>把client localhost段下的secret改成刚才指定的密钥.</p>
+<p>编辑 <code>/etc/raddb/radiusd.conf</code>,找到:</p>
+<figure class="highlight gams"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta"><span class="meta-keyword">$INCLUDE</span> sql.conf</span></span><br></pre></td></tr></table></figure>
+
+<p>去掉前面的#;找到:</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$INCLUDE</span> sql<span class="regexp">/mysql/</span>counter.conf</span><br></pre></td></tr></table></figure>
+
+<p>去掉前面的#.</p>
+<p>进入mysql,添加数据库:</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">create database radius;</span><br><span class="line">flush privileges;</span><br><span class="line"><span class="keyword">exit</span>;</span><br></pre></td></tr></table></figure>
+
+<p>编辑 <code>/etc/raddb/sql.conf</code>,配置login(用户名),password(密码),radius_db(数据库名)等字段,并找到readclients一行,设为yes并去掉注释符号#.</p>
+<p>编辑 <code>/etc/raddb/sites-enabled/default</code>,根据下面的说明注释或取消注释相应的行:</p>
+<figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">authorize段,关掉files,打开<span class="keyword">sql</span>,也可以把unix关掉</span><br><span class="line">preacct段,关掉files</span><br><span class="line">accounting段,打开<span class="keyword">sql</span>,也可以把unix关掉</span><br><span class="line"><span class="keyword">session</span>段,打开<span class="keyword">sql</span></span><br><span class="line">post-auth段,打开<span class="keyword">sql</span></span><br><span class="line">pre-proxy段,关掉files</span><br></pre></td></tr></table></figure>
+
+<p>到这一步,我们的FreeRADIUS就算配置好了,用户信息都将保存在MySQL数据库中.至于数据库中的表,我们在后面统一导入.</p>
+<p>配置DaloRADIUS</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">wget</span> http://sourceforge.net/projects/daloradius/files/daloradius/daloradius-<span class="number">0</span>.<span class="number">9</span>-<span class="number">8</span>/daloradius-<span class="number">0</span>.<span class="number">9</span>-<span class="number">8</span>.tar.gz</span><br><span class="line"><span class="attribute">pear</span> install DB</span><br><span class="line"><span class="attribute">mkdir</span> /usr/share/daloRadius</span><br><span class="line"><span class="attribute">tar</span> zxvf daloradius-<span class="number">0</span>.<span class="number">9</span>-<span class="number">8</span>.tar.gz</span><br><span class="line"><span class="attribute">mv</span> daloradius-<span class="number">0</span>.<span class="number">9</span>-<span class="number">8</span>/* /usr/share/daloRadius/</span><br><span class="line"><span class="attribute">rm</span> -r daloradius-<span class="number">0</span>.<span class="number">9</span>-<span class="number">8</span></span><br></pre></td></tr></table></figure>
+
+<p>注意,这里需要安装pear,如果bash提示找不到命令,那么请自行google安装方法.</p>
+<p>下面导入数据库:</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql -uroot -p radius &lt; <span class="regexp">/usr/</span>share<span class="regexp">/daloRadius/</span>contrib<span class="regexp">/db/</span>fr2-mysql-daloradius-and-freeradius.sql</span><br></pre></td></tr></table></figure>
+
+<p>编辑 <code>/usr/share/daloRadius/library/daloradius.conf.php</code>,修改daloRADIUS的配置文件.首先是MySQL登录信息:</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$configValues</span>[<span class="string">&#x27;CONFIG_DB_HOST&#x27;</span>] = <span class="string">&#x27;localhost&#x27;</span>;</span><br><span class="line"><span class="variable">$configValues</span>[<span class="string">&#x27;CONFIG_DB_USER&#x27;</span>] = <span class="string">&#x27;radius&#x27;</span>; <span class="regexp">//</span>根据自己实际情况填写</span><br><span class="line"><span class="variable">$configValues</span>[<span class="string">&#x27;CONFIG_DB_PASS&#x27;</span>] = <span class="string">&#x27;&#x27;</span>; <span class="regexp">//</span> 设为自己的密码</span><br><span class="line"><span class="variable">$configValues</span>[<span class="string">&#x27;CONFIG_DB_NAME&#x27;</span>] = <span class="string">&#x27;radius&#x27;</span>;</span><br></pre></td></tr></table></figure>
+
+<p>下面有一个daloRADIUS的bug,默认配置中有一个表名和我们导入的不一样,把它改过来:</p>
+<figure class="highlight arcade"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="symbol">$co</span>nfigValues[<span class="string">&#x27;CONFIG_DB_TBL_RADUSERGROUP&#x27;</span>] = <span class="string">&#x27;radusergroup&#x27;</span>;</span><br></pre></td></tr></table></figure>
+
+<p>然后修改daloRADIUS的路径:</p>
+<figure class="highlight arcade"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="symbol">$co</span>nfigValues[<span class="string">&#x27;CONFIG_PATH_DALO_VARIABLE_DATA&#x27;</span>] = <span class="string">&#x27;/usr/share/daloRadius/var&#x27;</span>;</span><br></pre></td></tr></table></figure>
+
+<p>网页目录下建目录链接:</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd <span class="regexp">/usr/</span>local<span class="regexp">/apache/</span>htdocs/</span><br><span class="line">ln -s <span class="regexp">/usr/</span>share<span class="regexp">/daloRadius/</span> admin</span><br></pre></td></tr></table></figure>
+
+<p>daloRADIUS管理页面地址就是 <a target="_blank" rel="noopener" href="http://ip/admin">http://ip/admin</a> ,默认用户名administrator和密码radius登录.<br>重启mysql和apache服务:</p>
+<figure class="highlight maxima"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">service httpd <span class="built_in">restart</span></span><br><span class="line">service mysqld <span class="built_in">restart</span></span><br></pre></td></tr></table></figure>
+
+<p>daloRADIUS似乎写的不怎么样,最新稳定版已经是三年之前的了,不过作者直到现在还在更新SVN,下次有机会可以用最新的SVN版本试试看.在Management中添加一个新用户,注意密码类型选择Cleartext-Password.<br>在终端里再次启动radiusd -X,同时在另一个终端中用radtest username password localhost 0 LaoxieVPN测试一下,看看现在是不是还能正常接通,如果没问题就OK,让我们把这套系统接驳到PPP上.</p>
+<p>配置Pppd</p>
+<p>编辑 <code>/etc/ppp/options.pptpd</code>,里面已经有许多配置选项了,我们要保证有下面的几行,如果没有就添加上去,为了保障用户登录的安全我们限制只使用MS-CHAPv2:</p>
+<figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">ref</span>use-pap</span><br><span class="line"><span class="built_in">ref</span>use-chap</span><br><span class="line"><span class="built_in">ref</span>use-mschap</span><br><span class="line">require-mppe<span class="number">-128</span></span><br><span class="line">require-mschap-v2</span><br></pre></td></tr></table></figure>
+
+<p>在配置文件最后加上3行:</p>
+<figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">plugin radius.so</span><br><span class="line">plugin radattr.so</span><br><span class="line">radius-config-<span class="keyword">file</span> <span class="regexp">/usr/</span>local<span class="regexp">/etc/</span>radiusclient/radiusclient.conf</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">vi <span class="regexp">/etc/</span>raddb<span class="regexp">/sql/my</span>sql/counter.conf</span><br></pre></td></tr></table></figure>
+
+<p>在文件末尾添加下面代码:</p>
+<figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">sqlcounter monthlytrafficcounter &#123;</span><br><span class="line">    counter-<span class="type">name</span> = Monthly-Traffic</span><br><span class="line">    <span class="keyword">check</span>-<span class="type">name</span> = Max-Monthly-Traffic</span><br><span class="line">    reply-<span class="type">name</span> = Monthly-Traffic-<span class="keyword">Limit</span></span><br><span class="line">    sqlmod-inst = <span class="keyword">sql</span></span><br><span class="line">    key = <span class="keyword">User</span>-<span class="type">Name</span></span><br><span class="line">    <span class="keyword">reset</span> = monthly</span><br><span class="line">    query = &quot;SELECT SUM(acctinputoctets + acctoutputoctets) FROM radacct WHERE UserName=&#x27;%&#123;%k&#125;&#x27; AND UNIX_TIMESTAMP(AcctStartTime) &gt; &#x27;%b&#x27;&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>上面代码意思是按月进行统计,从数据库的radacct表中,根据用户名(%k)将所有入站和出站流量累加.</p>
+<p>时间也是可以自定义的(months、weeks、days、hours),也可以指定具体值,如三天重置一次 “reset = 3 d”.</p>
+<figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vi <span class="regexp">/etc/</span>raddb<span class="regexp">/sites-enabled/</span><span class="keyword">default</span></span><br></pre></td></tr></table></figure>
+
+<p>在authorize区块的末尾(205行)添加:</p>
+<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">monthlytrafficcounter</span></span><br></pre></td></tr></table></figure>
+
+<p>添加字典文件.</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim <span class="regexp">/usr/</span>local<span class="regexp">/etc/</span>raddb/dictionary</span><br></pre></td></tr></table></figure>
+
+<p>在文件末尾添加下面两行:</p>
+<figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ATTRIBUTE</span> Max-Monthly-Traffic <span class="number">3003</span> <span class="type">integer</span></span><br><span class="line"><span class="keyword">ATTRIBUTE</span> Monthly-Traffic-<span class="keyword">Limit</span> <span class="number">3004</span> <span class="type">integer</span></span><br></pre></td></tr></table></figure>
+
+<p>流量控制服务</p>
+<p>建立表格:</p>
+<figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> radgroupreply (groupname,<span class="keyword">attribute</span>,op,<span class="keyword">VALUE</span>) <span class="keyword">VALUES</span> (<span class="string">&#x27;user&#x27;</span>,<span class="string">&#x27;Auth-Type&#x27;</span>,<span class="string">&#x27;:=&#x27;</span>,<span class="string">&#x27;Local&#x27;</span>);</span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> radgroupreply (groupname,<span class="keyword">attribute</span>,op,<span class="keyword">VALUE</span>) <span class="keyword">VALUES</span> (<span class="string">&#x27;user&#x27;</span>,<span class="string">&#x27;Service-Type&#x27;</span>,<span class="string">&#x27;:=&#x27;</span>,<span class="string">&#x27;Framed-User&#x27;</span>);</span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> radgroupreply (groupname,<span class="keyword">attribute</span>,op,<span class="keyword">VALUE</span>) <span class="keyword">VALUES</span> (<span class="string">&#x27;user&#x27;</span>,<span class="string">&#x27;Framed-IP-Address&#x27;</span>,<span class="string">&#x27;:=&#x27;</span>,<span class="string">&#x27;255.255.255.255&#x27;</span>);</span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> radgroupreply (groupname,<span class="keyword">attribute</span>,op,<span class="keyword">VALUE</span>) <span class="keyword">VALUES</span> (<span class="string">&#x27;user&#x27;</span>,<span class="string">&#x27;Framed-IP-Netmask&#x27;</span>,<span class="string">&#x27;:=&#x27;</span>,<span class="string">&#x27;255.255.255.0&#x27;</span>);</span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> radgroupreply (groupname,<span class="keyword">attribute</span>,op,<span class="keyword">VALUE</span>) <span class="keyword">VALUES</span> (<span class="string">&#x27;user&#x27;</span>,<span class="string">&#x27;Acct-Interim-Interval&#x27;</span>,<span class="string">&#x27;:=&#x27;</span>,<span class="string">&#x27;600&#x27;</span>);</span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> radgroupreply (groupname,<span class="keyword">attribute</span>,op,<span class="keyword">VALUE</span>) <span class="keyword">VALUES</span> (<span class="string">&#x27;user&#x27;</span>,<span class="string">&#x27;Max-Monthly-Traffic&#x27;</span>,<span class="string">&#x27;:=&#x27;</span>,<span class="string">&#x27;5368709120&#x27;</span>);</span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> radgroupcheck (groupname,<span class="keyword">attribute</span>,op,<span class="keyword">VALUE</span>) <span class="keyword">VALUES</span> (<span class="string">&#x27;user&#x27;</span>,<span class="string">&#x27;Simultaneous-Use&#x27;</span>,<span class="string">&#x27;:=&#x27;</span>,<span class="string">&#x27;1&#x27;</span>);</span><br></pre></td></tr></table></figure>
+
+<p>以上前四行不用改动,acct-interim-interval是计算流量的间隔(600秒),意味着每隔10分钟记录当前流量.倒数第二行是每月最大流量,这里是5G(单位是字节).最后一行是允许同时连接数目.</p>
+<p>访问daloRADIUS,在Management中添加一个新用户,注意密码类型选择Cleartext-Password.用户组选择user.</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">radiusd</span> -X</span><br><span class="line"><span class="attribute">radtest</span> username password localhost <span class="number">0</span> LaoxieVPN</span><br></pre></td></tr></table></figure>
+
+<p>测试一下,看看现在是不是还能正常接通,如果没问题就OK.</p>
+<p>如果结果中有Access-Accept就代表成功了,否则退回去检查设置.</p>
+<p>测试成功的话添加在认证时检测流量的语句,打开/etc/raddb/sites-enabled/default,找到authorize一节插入:</p>
+<figure class="highlight perl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">update request &#123;</span><br><span class="line">    Group-Name := <span class="string">&quot;%&#123;sql:SELECT groupname FROM radusergroup WHERE username=&#x27;%&#123;User-Name&#125;&#x27; ORDER BY priority&#125;&quot;</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">if</span> (<span class="string">&quot;%&#123;sql: SELECT SUM(acctinputoctets+acctoutputoctets) FROM radacct WHERE username=&#x27;%&#123;User-Name&#125;&#x27; AND date_format(acctstarttime, &#x27;%Y-%m-%d&#x27;) &gt;= date_format(now(),&#x27;%Y-%m-01&#x27;) AND date_format(acctstoptime, &#x27;%Y-%m-%d&#x27;) &lt;= last_day(now());&#125;&quot;</span> &gt;= <span class="string">&quot;%&#123;sql: SELECT value FROM radgroupreply WHERE groupname=&#x27;%&#123;Group-Name&#125;&#x27; AND attribute=&#x27;Max-Monthly-Traffic&#x27;;&#125;&quot;</span>) &#123;</span><br><span class="line">reject</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>启动服务:</p>
+<figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">service radiusd <span class="built_in">start</span></span><br><span class="line">chkconfig radiusd <span class="keyword">on</span></span><br><span class="line">chkconfig pptpd <span class="keyword">on</span></span><br></pre></td></tr></table></figure>
+
+<p>自动断线检测脚本:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line">MYSQL_PASS=XXXXXXXXXX</span><br><span class="line">/usr/<span class="built_in">local</span>/mysql/bin/mysql -uroot -p<span class="variable">$MYSQL_PASS</span> -e <span class="string">&quot;UPDATE radius.radacct SET acctstoptime = acctstarttime + acctsessiontime WHERE ((UNIX_TIMESTAMP(acctstarttime) + acctsessiontime + 240 - UNIX_TIMESTAMP())&lt;0) AND acctstoptime IS NULL;&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>至此,已经完成所有操作了!</p>
+<p>常见错误</p>
+<p>执行radiusd -X的时候,提示:</p>
+<figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="regexp">/etc/</span>raddb/sql.conf[<span class="number">22</span>]: Instantiation failed <span class="keyword">for</span> module <span class="string">&quot;sql&quot;</span></span><br><span class="line"><span class="regexp">/etc/</span>raddb<span class="regexp">/sites-enabled/</span><span class="keyword">default</span>[<span class="number">177</span>]: Failed to load module <span class="string">&quot;sql&quot;</span>.</span><br><span class="line"><span class="regexp">/etc/</span>raddb<span class="regexp">/sites-enabled/</span><span class="keyword">default</span>[<span class="number">69</span>]: Errors parsing authorize section.</span><br></pre></td></tr></table></figure>
+
+<p>解决办法:<br>mysql&gt; ALTER TABLE <code>radius</code>.<code>nas</code> ADD COLUMN <code>server</code> VARCHAR(45) NOT NULL AFTER <code>secret</code> ;<br>service mysqld restart</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/etc/" rel="tag"># etc</a>
+              <a href="/tags/usr/" rel="tag"># usr</a>
+              <a href="/tags/%E9%85%8D%E7%BD%AE/" rel="tag"># 配置</a>
+              <a href="/tags/%E7%94%A8%E6%88%B7/" rel="tag"># 用户</a>
+              <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag"># 数据库</a>
+              <a href="/tags/values/" rel="tag"># values</a>
+              <a href="/tags/groupname/" rel="tag"># groupname</a>
+              <a href="/tags/radius/" rel="tag"># radius</a>
+              <a href="/tags/raddb/" rel="tag"># raddb</a>
+              <a href="/tags/attribute/" rel="tag"># attribute</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2015/11/03/1633/" rel="prev" title="在mysql命令行里执行sql脚本">
+      <i class="fa fa-chevron-left"></i> 在mysql命令行里执行sql脚本
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2015/11/09/1301/" rel="next" title="nginx-301重定向域名">
+      nginx-301重定向域名 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="王殊勋"
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name">王殊勋</p>
+  <div class="site-description" itemprop="description">better late than never.<br>只要开始，虽晚不迟。</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">656</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">2058</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <!--添加网站运行时间 -->
+  <span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
+  <script>
+      var now = new Date(); 
+      function createtime() { 
+          var grt= new Date("12/01/2007 12:00:00");//此处修改你的建站时间或者网站上线时间 
+          now.setTime(now.getTime()+250); 
+          days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days); 
+          hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours); 
+          if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum); 
+          mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;} 
+          seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum); 
+          snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;} 
+          document.getElementById("timeDate").innerHTML = "本站已安全运行 "+dnum+" 天 "; 
+          document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒"; 
+      } 
+  setInterval("createtime()",250);
+  </script>
+  <span itemprop="copyrightYear">(2007 - 2021)</span>
+  <!-- 添加网站运行时间 -->
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">学无止境</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script size="300" alpha="0.6" zIndex="0" src="/lib/canvas-ribbon/canvas-ribbon.js"></script>
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

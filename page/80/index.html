@@ -1,0 +1,857 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"shuxun","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"./public/search.xml"};
+  </script>
+
+  <meta name="description" content="专注互联网运维技术发展">
+<meta property="og:type" content="website">
+<meta property="og:title" content="学无止境">
+<meta property="og:url" content="http://shuxun,wang/page/80/index.html">
+<meta property="og:site_name" content="学无止境">
+<meta property="og:description" content="专注互联网运维技术发展">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:author" content="王殊勋">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://shuxun,wang/page/80/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : true,
+    isPost : false,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>学无止境</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">学无止境</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">注互联网运维技术发展</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-sitemap">
+
+    <a href="/sitemap.xml" rel="section"><i class="fa fa-sitemap fa-fw"></i>站点地图</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content index posts-expand">
+            
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://shuxun,wang/2014/09/10/1130/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="王殊勋">
+      <meta itemprop="description" content="专注互联网运维技术发展">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="学无止境">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2014/09/10/1130/" class="post-title-link" itemprop="url">centos开远程桌面访问windows</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2014-09-10 19:57:00" itemprop="dateCreated datePublished" datetime="2014-09-10T19:57:00+08:00">2014-09-10</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-07-14 15:16:08" itemprop="dateModified" datetime="2021-07-14T15:16:08+08:00">2021-07-14</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" itemprop="url" rel="index"><span itemprop="name">操作系统</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>安装rdesktop:</p>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum <span class="keyword">install</span> rdesktop</span><br></pre></td></tr></table></figure>
+
+<p>命令行中可用rdesktop -h得到命令帮助.</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">rdesktop</span> -g <span class="number">1024</span>x<span class="number">768</span> -d <span class="number">24</span>hostname</span><br></pre></td></tr></table></figure>
+
+<p>其中 “g 1024×768”设置分辨率为1024×768,”d 24”设置真彩24 位,hostname为 Windows 机器的主机名或者IP 地址.在输入了Windows XP的用户名和密码后,就可以登录并操作远程的Windows系统.</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://shuxun,wang/2014/09/07/1114/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="王殊勋">
+      <meta itemprop="description" content="专注互联网运维技术发展">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="学无止境">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2014/09/07/1114/" class="post-title-link" itemprop="url">centos安装tripwire保障服务器安全</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2014-09-07 13:27:00" itemprop="dateCreated datePublished" datetime="2014-09-07T13:27:00+08:00">2014-09-07</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-07-14 15:14:55" itemprop="dateModified" datetime="2021-07-14T15:14:55+08:00">2021-07-14</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%90%84%E7%B1%BB%E6%9C%8D%E5%8A%A1/" itemprop="url" rel="index"><span itemprop="name">各类服务</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>安装:</p>
+<p>到<a target="_blank" rel="noopener" href="http://sourceforge.net/projects/tripwire/%E4%B8%8B%E8%BD%BD%E6%9C%80%E6%96%B0%E7%89%88%E6%9C%AC%E7%9A%84tripwire">http://sourceforge.net/projects/tripwire/下载最新版本的tripwire</a>.<br>目前是tripwire-2.4.2.2-src.tar.bz2 ,<br>安装非常简单,</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">tar</span> -jxvf tripwire-<span class="number">2.4.2.2</span>-src.tar.bz<span class="number">2</span></span><br><span class="line"><span class="attribute">cd</span> tripwire-<span class="number">2.4.2.2</span>-src</span><br></pre></td></tr></table></figure>
+
+<p>解压后进入目录:</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">.<span class="regexp">/configure --prefix=/u</span>sr<span class="regexp">/local/</span>tripwire</span><br><span class="line">make &amp;&amp; make install</span><br><span class="line">Continue with installation  [y/n] y <span class="comment">#键入y继续安装</span></span><br></pre></td></tr></table></figure>
+
+<p>然后需要输入几个口令就安装完成了.<br>就安装好了.</p>
+<p>设置tripwire:</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">vi <span class="regexp">/etc/</span>tripwire/twcfg.txt <span class="comment">#修改文本格式的Tripwire配置文件</span></span><br><span class="line">LOOSEDIRECTORYCHECKING =false <span class="comment">#找到这一个行,将false的值变为true(不监测所属目录的数据完整性)</span></span><br><span class="line">LOOSEDIRECTORYCHECKING =true <span class="comment">#变为此状态</span></span><br><span class="line">REPORTLEVEL =<span class="number">3</span> <span class="comment">#找到这一行,将3变为4(改变监测结果报告的等级)</span></span><br><span class="line">REPORTLEVEL =<span class="number">4</span> <span class="comment">#变为此状态</span></span><br><span class="line">$<span class="regexp">/usr/</span>local<span class="regexp">/tripwire/</span>sbin/twadmin --create-cfgfile -S site.key twcfg.txt <span class="comment">#从文本配置文件建立加密格式配置文件.</span></span><br><span class="line">Please enter your site passphrase: <span class="comment">#输入&quot;site keyfile&quot;口令</span></span><br><span class="line">Wrote configuration file: <span class="regexp">/usr/</span>local<span class="regexp">/tripwire/</span>etc/tw.cfg</span><br></pre></td></tr></table></figure>
+
+<p>编辑twpol.txt来控制对哪些目录进行检查,把不需要扫描的路径注释或删除即可.<br>修改完成后保存twpool.txt文件.</p>
+<p>初始化数据库:</p>
+<figure class="highlight asciidoc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">$/usr/local/tripwire/sbin/tripwire --init</span><br><span class="line">Please enter your local passphrase: #输入&quot;local keyfile&quot;口令</span><br><span class="line">Parsing policy file: /usr/local/tripwire/etc/tw.pol</span><br><span class="line">Generating the database...</span><br><span class="line"><span class="bullet">*** </span>Processing Unix File System <span class="strong">***</span></span><br><span class="line"><span class="section">The object: &quot;/sys&quot; is on a different file system...ignoring.</span></span><br><span class="line"><span class="section">-------------------</span></span><br><span class="line">------过程---------</span><br><span class="line"><span class="section">------省略---------</span></span><br><span class="line"><span class="section">-------------------</span></span><br><span class="line">Wrote database file: /usr/local/tripwire/lib/tripwire/localhost.localdomain.twd</span><br><span class="line">The database was successfully generated.</span><br></pre></td></tr></table></figure>
+
+<p>更新数据库:<br>当你更新了twpol.txt后需用此命令更新数据库:</p>
+<figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">cd <span class="regexp">/usr/</span>local/tripwire</span><br><span class="line">$.<span class="regexp">/sbin/</span>tripwire --update-policy --secure-mode low <span class="regexp">/usr/</span>local<span class="regexp">/tripwire/</span>etc/twpol.txt</span><br><span class="line">Parsing policy <span class="keyword">file</span>: <span class="regexp">/usr/</span>local<span class="regexp">/tripwire/</span>etc/twpol.txt</span><br><span class="line">Please enter your local passphrase:#输入<span class="string">&quot;local keyfile&quot;</span>口令</span><br><span class="line">Please enter your site passphrase:#输入<span class="string">&quot;site keyfile&quot;</span>口令</span><br><span class="line">======== Policy Update: Processing section Unix <span class="keyword">File</span> System.</span><br><span class="line">======== <span class="keyword">Step</span> <span class="number">1</span>: Gathering information <span class="keyword">for</span> the <span class="keyword">new</span> policy.</span><br><span class="line">The object: <span class="string">&quot;/sys&quot;</span> is on a different <span class="keyword">file</span> system...ignoring.</span><br><span class="line">-------------------</span><br><span class="line">------过程---------</span><br><span class="line">------省略---------</span><br><span class="line">-------------------</span><br><span class="line">### Continuing...</span><br><span class="line">Wrote database <span class="keyword">file</span>: <span class="regexp">/usr/</span>local<span class="regexp">/tripwire/</span>lib<span class="regexp">/tripwire/</span>localhost.localdomain.twd</span><br><span class="line">The database was successfully generated.</span><br></pre></td></tr></table></figure>
+
+<p>检查文件异动:<br>安装完tripwire后你可以定期检查文件是否存在异动.<br>加上interactive在当前显示结果.</p>
+<figure class="highlight asciidoc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">./sbin/tripwire --check --interactive</span><br><span class="line">Parsing policy file: /usr/local/tripwire/etc/tw.pol</span><br><span class="line"><span class="section">*** Processing Unix File System ***</span></span><br><span class="line"><span class="section">-------------------</span></span><br><span class="line">------过程---------</span><br><span class="line"><span class="section">------省略---------</span></span><br><span class="line"><span class="section">-------------------</span></span><br></pre></td></tr></table></figure>
+
+<p>查看报告:<br>所有tripwire的报告以.twr后缀保存在lib/tripwire目录下,需要使用twprint命令来转化成文本格式.</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$<span class="regexp">/sbin/</span>twprint --print-report --twrfile <span class="regexp">/lib/</span>tripwire<span class="regexp">/report/</span>localhost.localdomain-<span class="number">20100225</span>-<span class="number">164220</span>.twr&gt;<span class="regexp">/tmp/</span>tripwire_readable.txt</span><br><span class="line"><span class="variable">$cat</span> <span class="regexp">/tmp/</span>tripwire_readable.txt</span><br></pre></td></tr></table></figure>
+
+<p>修改环境变量:<br>需要注意的是,一般情况下,这仅仅对于普通用户适用,避免修改根用户的环境定义文件,因为那样可能会造成潜在的危险.</p>
+<figure class="highlight autoit"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$vi .bash_profile <span class="meta">#修改环境变量定义文件</span></span><br></pre></td></tr></table></figure>
+
+<p>然后编辑你的PATH声明,其格式为:</p>
+<figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">PATH=<span class="variable">$PATH</span><span class="symbol">:/usr/local/tripwire/sbin/</span></span><br><span class="line">执行命令使其立刻生效.</span><br><span class="line"><span class="variable">$source</span> .bash_profile</span><br></pre></td></tr></table></figure>
+
+<p>Tripwire的使用和维护都比较简单.但要实现对系统的监控,关键还是需要依靠管理员定制完整的策略和检查周期,以便及时发现问题.另外,Tripwire只能告诉您那些文件被修改,以及修改的属性.但判断和维护是依赖管理员操作的,Tripwire是一个”事后诸葛亮”的工具.</p>
+<p>最后贴一个报告:</p>
+<figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">-------------------------------------------------------------------------------</span><br><span class="line"><span class="symbol">Section:</span> Unix File System</span><br><span class="line">-------------------------------------------------------------------------------</span><br><span class="line"></span><br><span class="line">Rule Name                       Severity Level    <span class="keyword">Added </span>   Removed  Modified</span><br><span class="line">---------                       --------------    -----    -------  --------</span><br><span class="line">Tripwire Data Files             <span class="number">0</span>                 <span class="number">0</span>        <span class="number">0</span>        <span class="number">0</span></span><br><span class="line">Monitor Filesystems             <span class="number">0</span>                 <span class="number">0</span>        <span class="number">0</span>        <span class="number">0</span></span><br><span class="line">User <span class="keyword">Binaries </span><span class="keyword">and </span>Libraries     <span class="number">0</span>                 <span class="number">0</span>        <span class="number">0</span>        <span class="number">0</span></span><br><span class="line">Tripwire <span class="keyword">Binaries </span>              <span class="number">0</span>                 <span class="number">0</span>        <span class="number">0</span>        <span class="number">0</span></span><br><span class="line">OS <span class="keyword">Binaries </span><span class="keyword">and </span>Libraries       <span class="number">0</span>                 <span class="number">0</span>        <span class="number">0</span>        <span class="number">0</span></span><br><span class="line">Temporary <span class="keyword">Directories </span>          <span class="number">0</span>                 <span class="number">0</span>        <span class="number">0</span>        <span class="number">0</span></span><br><span class="line">Global Configuration Files      <span class="number">0</span>                 <span class="number">0</span>        <span class="number">0</span>        <span class="number">0</span></span><br><span class="line">System <span class="keyword">Boot </span>Changes             <span class="number">0</span>                 <span class="number">0</span>        <span class="number">0</span>        <span class="number">0</span></span><br><span class="line">RPM Checksum Files              <span class="number">0</span>                 <span class="number">0</span>        <span class="number">0</span>        <span class="number">0</span></span><br><span class="line">OS Devices <span class="keyword">and </span>Misc <span class="keyword">Directories </span><span class="number">0</span>                 <span class="number">0</span>        <span class="number">0</span>        <span class="number">0</span></span><br><span class="line">OS <span class="keyword">Boot </span>Files <span class="keyword">and </span>Mount Points  <span class="number">0</span>                 <span class="number">0</span>        <span class="number">0</span>        <span class="number">0</span></span><br><span class="line">Root <span class="keyword">Directory </span><span class="keyword">and </span>Files        <span class="number">0</span>                 <span class="number">0</span>        <span class="number">0</span>        <span class="number">0</span></span><br><span class="line"></span><br><span class="line">Total objects <span class="keyword">scanned: </span> <span class="number">48224</span></span><br><span class="line">Total violations found:  <span class="number">0</span></span><br><span class="line"></span><br><span class="line">===============================================================================</span><br></pre></td></tr></table></figure>
+
+<p>额 我的系统没有做过修改!好了 今天教程到此结束.</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://shuxun,wang/2014/09/06/1073/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="王殊勋">
+      <meta itemprop="description" content="专注互联网运维技术发展">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="学无止境">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2014/09/06/1073/" class="post-title-link" itemprop="url">centos 僵尸进程解决办法</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2014-09-06 17:19:00" itemprop="dateCreated datePublished" datetime="2014-09-06T17:19:00+08:00">2014-09-06</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-07-14 15:16:11" itemprop="dateModified" datetime="2021-07-14T15:16:11+08:00">2021-07-14</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" itemprop="url" rel="index"><span itemprop="name">操作系统</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>最近工作过程中,发现好几台服务器出现僵死进程.<br>使用命令找出僵死进程:</p>
+<figure class="highlight perl"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ps -A -o <span class="keyword">stat</span>,ppid,pid,cmd | <span class="keyword">grep</span> -e <span class="string">&#x27;^[Zz]&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<p>命令注解:</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="literal">-A</span> 参数列出所有进程</span><br><span class="line"><span class="literal">-o</span> 自定义输出字段 我们设定显示字段为 stat(状态),?ppid(进程父id), pid(进程id),cmd(命令)这四个参数</span><br><span class="line"></span><br><span class="line"><span class="literal">-C</span> 用来指定所执行的命令名称,你这里也就是让<span class="built_in">ps</span>仅仅显示php命令所产生的进程的信息</span><br><span class="line"><span class="built_in">ps</span> <span class="literal">-C</span> java <span class="literal">-o</span> lstart,pid,cmd <span class="comment">#不过貌似打印的不全</span></span><br><span class="line"><span class="built_in">ps</span> <span class="literal">-A</span> <span class="literal">-o</span> lstart,pid,args |grep java <span class="comment">#这个可以的</span></span><br></pre></td></tr></table></figure>
+
+<p>因为状态为 z或者Z 的进程为僵尸进程,所以我们使用grep抓取stat状态为zZ进程.<br>这里一共出现了9个僵死进程,需要把它们都干掉,执行命令:</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">kill</span> -<span class="number">9</span> <span class="number">8310</span></span><br></pre></td></tr></table></figure>
+
+<p>这时再执行查找僵死的进程,发现所有僵死进程都没了.</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://shuxun,wang/2014/09/02/1083/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="王殊勋">
+      <meta itemprop="description" content="专注互联网运维技术发展">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="学无止境">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2014/09/02/1083/" class="post-title-link" itemprop="url">Centos5.5下lvs+keepalived集群</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2014-09-02 21:08:00" itemprop="dateCreated datePublished" datetime="2014-09-02T21:08:00+08:00">2014-09-02</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-07-14 15:16:21" itemprop="dateModified" datetime="2021-07-14T15:16:21+08:00">2021-07-14</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%90%84%E7%B1%BB%E6%9C%8D%E5%8A%A1/" itemprop="url" rel="index"><span itemprop="name">各类服务</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>第一步、环境准备:</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">lvs</span>-master:<span class="number">10.80.11.245</span></span><br><span class="line"><span class="attribute">lvs</span>-backup:<span class="number">10.80.11.246</span></span><br><span class="line"><span class="attribute">vip</span>:<span class="number">10.80.11.240</span></span><br><span class="line"><span class="attribute">web1</span>:<span class="number">10.80.11.243</span></span><br><span class="line"><span class="attribute">web2</span>:<span class="number">10.80.11.244</span></span><br><span class="line"><span class="attribute">netmask</span>:<span class="number">255.255.255.0</span></span><br><span class="line"><span class="attribute">gateway</span>:<span class="number">10.80.11.1</span></span><br></pre></td></tr></table></figure>
+
+<p>接下来关掉一些不必要的系统服务:</p>
+<figure class="highlight vbnet"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">chkconfig bluetooth <span class="keyword">off</span></span><br><span class="line">chkconfig firstboot <span class="keyword">off</span></span><br><span class="line">chkconfig cups <span class="keyword">off</span></span><br><span class="line">chkconfig ip6tables <span class="keyword">off</span></span><br><span class="line">chkconfig iptables <span class="keyword">off</span></span><br><span class="line">chkconfig isdn <span class="keyword">off</span></span><br><span class="line">chkconfig kudzu <span class="keyword">off</span></span><br><span class="line">chkconfig sendmail <span class="keyword">off</span></span><br><span class="line">chkconfig smartd <span class="keyword">off</span></span><br><span class="line">chkconfig autofs <span class="keyword">off</span></span><br><span class="line">service bluetooth <span class="keyword">stop</span></span><br><span class="line">service firstboot <span class="keyword">stop</span></span><br><span class="line">service cups <span class="keyword">stop</span></span><br><span class="line">service ip6tables <span class="keyword">stop</span></span><br><span class="line">service iptables <span class="keyword">stop</span></span><br><span class="line">service isdn <span class="keyword">stop</span></span><br><span class="line">service kudzu <span class="keyword">stop</span></span><br><span class="line">service sendmail <span class="keyword">stop</span></span><br><span class="line">service smartd <span class="keyword">stop</span></span><br><span class="line">service autofs <span class="keyword">stop</span></span><br></pre></td></tr></table></figure>
+
+<p>服务器时间校对:</p>
+<figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$ </span>crontab -e</span><br></pre></td></tr></table></figure>
+
+<p>加入一行:</p>
+<figure class="highlight basic"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="symbol">0 </span><span class="number">3</span> * * * /<span class="keyword">usr</span>/sbin/ntpdate <span class="number">210.72</span>.<span class="number">145.44</span> &gt; /dev/null <span class="number">2</span>&gt;&amp;<span class="number">1</span></span><br></pre></td></tr></table></figure>
+
+<p>第二步、安装软件:</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$cd</span> <span class="regexp">/usr/</span>local/src</span><br><span class="line"><span class="variable">$wget</span> http:<span class="regexp">//</span>www.linuxvirtualserver.org<span class="regexp">/software/</span>kernel-<span class="number">2.6</span>/ipvsadm-<span class="number">1.24</span>.tar.gz</span><br><span class="line"><span class="variable">$wget</span> http:<span class="regexp">//</span>www.keepalived.org<span class="regexp">/software/</span>keepalived-<span class="number">1.1</span>.<span class="number">15</span>.tar.gz</span><br><span class="line"><span class="variable">$ln</span> -s <span class="regexp">/usr/</span>src<span class="regexp">/kernels/</span><span class="number">2.6</span>.<span class="number">18</span>-<span class="number">194</span>.el5-i686<span class="regexp">/ /u</span>sr<span class="regexp">/src/</span>linux</span><br><span class="line"><span class="variable">$tar</span> -zxvf ipvsadm-<span class="number">1.24</span>.tar.gz</span><br><span class="line"><span class="variable">$cd</span> ipvsadm-<span class="number">1.24</span></span><br><span class="line"><span class="variable">$make</span> &amp;&amp; make install</span><br><span class="line"><span class="variable">$cd</span> ..</span><br><span class="line"><span class="variable">$tar</span> -zxvf keepalived-<span class="number">1.1</span>.<span class="number">15</span>.tar.gz</span><br><span class="line">$ cd keepalived-<span class="number">1.1</span>.<span class="number">15</span></span><br><span class="line">$./configure</span><br><span class="line">configure: error:</span><br><span class="line">  !!! OpenSSL is not properly installed on your system. !!!</span><br><span class="line">  !!! Can not include OpenSSL headers files.</span><br></pre></td></tr></table></figure>
+
+<p>解决办法:</p>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ yum -y <span class="keyword">install</span> openssl-devel</span><br><span class="line">$ ./configure &amp;&amp; make &amp;&amp; make <span class="keyword">install</span></span><br></pre></td></tr></table></figure>
+
+<p>编译的时候出现这个提示,说明keepalived和内核结合了,如果不是这样的,需要加上这个参数./configure –with-kernel-dir=/kernel/path.</p>
+<figure class="highlight ada"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">Keepalived configuration</span><br><span class="line"><span class="comment">------------------------</span></span><br><span class="line">Keepalived version       : 1.1.15</span><br><span class="line">Compiler                 : <span class="type">gcc</span></span><br><span class="line">Compiler flags           : -<span class="type">g</span> -O2</span><br><span class="line">Extra Lib                : -<span class="type">lpopt</span> -lssl -lcrypto</span><br><span class="line"><span class="keyword">Use</span> IPVS Framework       : <span class="type">Yes</span></span><br><span class="line">IPVS sync daemon support : <span class="type">Yes</span></span><br><span class="line"><span class="keyword">Use</span> VRRP Framework       : <span class="type">Yes</span></span><br><span class="line"><span class="keyword">Use</span> LinkWatch            : <span class="type">No</span></span><br><span class="line"><span class="keyword">Use</span> Debug flags          : <span class="type">No</span></span><br></pre></td></tr></table></figure>
+
+<p>下面设置keepalived以服务方式启动.</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$cp</span> <span class="regexp">/usr/</span>local<span class="regexp">/etc/</span>rc.d<span class="regexp">/init.d/</span>keepalived <span class="regexp">/etc/</span>rc.d<span class="regexp">/init.d/</span></span><br><span class="line"><span class="variable">$cp</span> <span class="regexp">/usr/</span>local<span class="regexp">/etc/</span>sysconfig<span class="regexp">/keepalived /</span>etc<span class="regexp">/sysconfig/</span></span><br><span class="line"><span class="variable">$mkdir</span> <span class="regexp">/etc/</span>keepalived</span><br><span class="line"><span class="variable">$cp</span> <span class="regexp">/usr/</span>local<span class="regexp">/etc/</span>keepalived<span class="regexp">/keepalived.conf /</span>etc<span class="regexp">/keepalived/</span></span><br><span class="line"><span class="variable">$cp</span> <span class="regexp">/usr/</span>local<span class="regexp">/sbin/</span>keepalived <span class="regexp">/usr/</span>sbin/</span><br><span class="line"><span class="variable">$service</span> keepalived start|stop</span><br></pre></td></tr></table></figure>
+
+<p>第三步、配置keepalived:</p>
+<figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line">$vim /etc/keepalived/keepalived.conf</span><br><span class="line">! Configuration File <span class="keyword">for</span> keepalived</span><br><span class="line">global_defs &#123;</span><br><span class="line">    notification_email &#123;</span><br><span class="line">          <span class="symbol">yhl5555@</span><span class="number">126.</span>com</span><br><span class="line">    &#125;</span><br><span class="line">    notification_email_from <span class="symbol">yhl5555@</span><span class="number">126.</span>com</span><br><span class="line">    smtp_server <span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span></span><br><span class="line">   $ smtp_connect_timeout <span class="number">30</span></span><br><span class="line">    router_id LVS_DEVEL</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">$ VIP1</span><br><span class="line">vrrp_instance VI_1 &#123;</span><br><span class="line">     state MASTER</span><br><span class="line">     <span class="keyword">interface</span> <span class="symbol">eth0</span></span><br><span class="line">     <span class="symbol">virtual_router_id</span> <span class="symbol">51</span></span><br><span class="line">     <span class="symbol">priority</span> <span class="symbol">100</span></span><br><span class="line">     <span class="symbol">advert_int</span> <span class="symbol">1</span></span><br><span class="line">     <span class="symbol">authentication</span> &#123;</span><br><span class="line">         auth_type PASS</span><br><span class="line">         auth_pass <span class="number">1111</span></span><br><span class="line">     &#125;</span><br><span class="line">     virtual_ipaddress &#123;</span><br><span class="line">         <span class="number">10.80</span><span class="number">.11</span><span class="number">.240</span>  </span><br><span class="line">     &#125;</span><br><span class="line">&#125;</span><br><span class="line">virtual_server <span class="number">10.80</span><span class="number">.11</span><span class="number">.240</span> <span class="number">80</span> &#123;</span><br><span class="line">     delay_loop <span class="number">6</span></span><br><span class="line">     lb_algo wrr</span><br><span class="line">     lb_kind DR</span><br><span class="line">     $persistence_timeout <span class="number">5</span></span><br><span class="line">     protocol TCP</span><br><span class="line">     real_server <span class="number">10.80</span><span class="number">.11</span><span class="number">.243</span> <span class="number">80</span> &#123;</span><br><span class="line">         weight <span class="number">3</span>           </span><br><span class="line">         TCP_CHECK &#123;</span><br><span class="line">         connect_timeout <span class="number">10</span>    </span><br><span class="line">         nb_get_retry <span class="number">3</span></span><br><span class="line">         delay_before_retry <span class="number">3</span></span><br><span class="line">         connect_port <span class="number">80</span></span><br><span class="line">         &#125;</span><br><span class="line">     &#125;</span><br><span class="line">     real_server <span class="number">10.80</span><span class="number">.11</span><span class="number">.244</span> <span class="number">80</span> &#123;</span><br><span class="line">         weight <span class="number">3</span></span><br><span class="line">         TCP_CHECK &#123;</span><br><span class="line">         connect_timeout <span class="number">10</span></span><br><span class="line">         nb_get_retry <span class="number">3</span></span><br><span class="line">         delay_before_retry <span class="number">3</span></span><br><span class="line">         connect_port <span class="number">80</span></span><br><span class="line">         &#125;</span><br><span class="line">      &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>lvs-master的优先级设置为100,状态为MASTER,在lvs-backup上优先级为99,状态为BACKUP,这是2台LVS的唯一区别.<br>persistence_timeout 5这是在5S内连接到同一台web服务器,注释掉就轮训.<br>至此,lvs-master配置已经完成,lvs-backup对照lvs-backup安装相应软件,注意keepalive.conf有细微区别.</p>
+<p>第四步、web服务器的配置:</p>
+<p>在2台web服务器上添加一下脚本:</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$vim</span> <span class="regexp">/etc/i</span>nit.d/realserver.sh</span><br><span class="line">$!<span class="regexp">/bin/</span>bash</span><br><span class="line">SNS_VIP=<span class="number">10.80</span>.<span class="number">11.240</span></span><br><span class="line">. <span class="regexp">/etc/</span>rc.d<span class="regexp">/init.d/</span>functions</span><br><span class="line">case <span class="string">&quot;$1&quot;</span> <span class="keyword">in</span></span><br><span class="line">start)</span><br><span class="line">       ifconfig lo:<span class="number">0</span> <span class="variable">$SNS_VIP</span> netmask <span class="number">255.255</span>.<span class="number">255.255</span> broadcast <span class="variable">$SNS_VIP</span></span><br><span class="line">       <span class="regexp">/sbin/</span>route add -host <span class="variable">$SNS_VIP</span> dev lo:<span class="number">0</span></span><br><span class="line">       echo <span class="string">&quot;1&quot;</span> &gt;<span class="regexp">/proc/</span>sys<span class="regexp">/net/i</span>pv4<span class="regexp">/conf/</span>lo/arp_ignore</span><br><span class="line">       echo <span class="string">&quot;2&quot;</span> &gt;<span class="regexp">/proc/</span>sys<span class="regexp">/net/i</span>pv4<span class="regexp">/conf/</span>lo/arp_announce</span><br><span class="line">       echo <span class="string">&quot;1&quot;</span> &gt;<span class="regexp">/proc/</span>sys<span class="regexp">/net/i</span>pv4<span class="regexp">/conf/</span>all/arp_ignore</span><br><span class="line">       echo <span class="string">&quot;2&quot;</span> &gt;<span class="regexp">/proc/</span>sys<span class="regexp">/net/i</span>pv4<span class="regexp">/conf/</span>all/arp_announce</span><br><span class="line">       sysctl -p &gt;<span class="regexp">/dev/</span>null <span class="number">2</span>&gt;&amp;<span class="number">1</span></span><br><span class="line">       echo <span class="string">&quot;RealServer Start OK&quot;</span></span><br><span class="line">       ;;</span><br><span class="line">stop)</span><br><span class="line">       ifconfig lo:<span class="number">0</span> down</span><br><span class="line">       route del <span class="variable">$SNS_VIP</span> &gt;<span class="regexp">/dev/</span>null <span class="number">2</span>&gt;&amp;<span class="number">1</span></span><br><span class="line">       echo <span class="string">&quot;0&quot;</span> &gt;<span class="regexp">/proc/</span>sys<span class="regexp">/net/i</span>pv4<span class="regexp">/conf/</span>lo/arp_ignore</span><br><span class="line">       echo <span class="string">&quot;0&quot;</span> &gt;<span class="regexp">/proc/</span>sys<span class="regexp">/net/i</span>pv4<span class="regexp">/conf/</span>lo/arp_announce</span><br><span class="line">       echo <span class="string">&quot;0&quot;</span> &gt;<span class="regexp">/proc/</span>sys<span class="regexp">/net/i</span>pv4<span class="regexp">/conf/</span>all/arp_ignore</span><br><span class="line">       echo <span class="string">&quot;0&quot;</span> &gt;<span class="regexp">/proc/</span>sys<span class="regexp">/net/i</span>pv4<span class="regexp">/conf/</span>all/arp_announce</span><br><span class="line">       echo <span class="string">&quot;RealServer Stoped&quot;</span></span><br><span class="line">       ;;</span><br><span class="line">*)</span><br><span class="line">       echo <span class="string">&quot;Usage: $0 &#123;start|stop&#125;&quot;</span></span><br><span class="line">       <span class="keyword">exit</span> <span class="number">1</span></span><br><span class="line">esac</span><br><span class="line"><span class="keyword">exit</span> <span class="number">0</span></span><br></pre></td></tr></table></figure>
+
+<p>红色部分为VIP地址.</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$chmod</span> <span class="number">755</span> <span class="regexp">/etc/i</span>nit.d/realserver.sh</span><br><span class="line"><span class="variable">$sh</span> <span class="regexp">/etc/i</span>nit.d/realserver.sh start</span><br></pre></td></tr></table></figure>
+
+<p>同时加入自启动.</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$vim</span> <span class="regexp">/etc/</span>rc.local</span><br><span class="line">$<span class="regexp">/etc/i</span>nit.d/realserver.sh start</span><br></pre></td></tr></table></figure>
+
+<p>两台web服务器都需要这样设置.</p>
+<p>第五步、测试:</p>
+<p>分别启动2台lvs的服务:</p>
+<figure class="highlight gams"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta"><span class="meta-keyword">$service</span> keepalived start</span></span><br></pre></td></tr></table></figure>
+
+<p>然后在客户机上输入<a target="_blank" rel="noopener" href="http://10.80.11.240进行访问/">http://10.80.11.240进行访问</a>.<br>停掉lvs-master,然后测试.<br>停掉web1,然后测试.<br>如果需要把lvs加入开机自启动,执行以下命令.</p>
+<figure class="highlight gams"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta"><span class="meta-keyword">$chkconfig</span> --add keepalived</span></span><br><span class="line"><span class="meta"><span class="meta-keyword">$chkconfig</span> keepalived on</span></span><br></pre></td></tr></table></figure>
+
+<p>至此,LVS+KEEPALIVED高可靠性配置已经完成.</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://shuxun,wang/2014/08/26/1157/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="王殊勋">
+      <meta itemprop="description" content="专注互联网运维技术发展">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="学无止境">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2014/08/26/1157/" class="post-title-link" itemprop="url">configure error no acceptable cc found in $PATH</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2014-08-26 05:40:00" itemprop="dateCreated datePublished" datetime="2014-08-26T05:40:00+08:00">2014-08-26</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-07-14 15:14:47" itemprop="dateModified" datetime="2021-07-14T15:14:47+08:00">2021-07-14</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E9%94%99%E8%AF%AF%E8%A7%A3%E5%86%B3/" itemprop="url" rel="index"><span itemprop="name">错误解决</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>出现错误:</p>
+<figure class="highlight gams"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">loading cache ./config.cache</span><br><span class="line"><span class="function"><span class="title">checking</span></span> host <span class="keyword">system</span> type... i686-pc-linux-gnu</span><br><span class="line"><span class="function"><span class="title">checking</span></span> target <span class="keyword">system</span> type... i686-pc-linux-gnu</span><br><span class="line"><span class="function"><span class="title">checking</span></span> build <span class="keyword">system</span> type... i686-pc-linux-gnu</span><br><span class="line"><span class="function"><span class="title">checking</span></span> <span class="keyword">for</span> a BSD compatible install... /usr/bin/install -c</span><br><span class="line"><span class="function"><span class="title">checking</span></span> whether ln works... <span class="keyword">yes</span></span><br><span class="line"><span class="function"><span class="title">checking</span></span> whether ln -s works... <span class="keyword">yes</span></span><br><span class="line"><span class="function"><span class="title">checking</span></span> <span class="keyword">for</span> gcc... <span class="keyword">no</span></span><br><span class="line"><span class="function"><span class="title">checking</span></span> <span class="keyword">for</span> cc... <span class="keyword">no</span></span><br><span class="line">configure: error: <span class="keyword">no</span> acceptable cc found in <span class="symbol">$</span>PATH</span><br></pre></td></tr></table></figure>
+
+<p>解决办法:</p>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum <span class="keyword">install</span> gcc</span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+
+  
+  <nav class="pagination">
+    <a class="extend prev" rel="prev" href="/page/79/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/79/">79</a><span class="page-number current">80</span><a class="page-number" href="/page/81/">81</a><span class="space">&hellip;</span><a class="page-number" href="/page/132/">132</a><a class="extend next" rel="next" href="/page/81/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+  </nav>
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="王殊勋"
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name">王殊勋</p>
+  <div class="site-description" itemprop="description">better late than never.<br>只要开始，虽晚不迟。</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">656</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">2058</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <!--添加网站运行时间 -->
+  <span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
+  <script>
+      var now = new Date(); 
+      function createtime() { 
+          var grt= new Date("12/01/2007 12:00:00");//此处修改你的建站时间或者网站上线时间 
+          now.setTime(now.getTime()+250); 
+          days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days); 
+          hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours); 
+          if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum); 
+          mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;} 
+          seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum); 
+          snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;} 
+          document.getElementById("timeDate").innerHTML = "本站已安全运行 "+dnum+" 天 "; 
+          document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒"; 
+      } 
+  setInterval("createtime()",250);
+  </script>
+  <span itemprop="copyrightYear">(2007 - 2021)</span>
+  <!-- 添加网站运行时间 -->
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">学无止境</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script size="300" alpha="0.6" zIndex="0" src="/lib/canvas-ribbon/canvas-ribbon.js"></script>
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

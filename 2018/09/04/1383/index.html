@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"shuxun","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"./public/search.xml"};
+  </script>
+
+  <meta name="description" content="之前在心爱的笔记本电脑上装了一个RedHat Linux 9.0.然而,由于RedHat Linux 9.0版本太低,许多硬件(网卡、声卡等)都识别不了,驱动程序也安装不好,导致用不了多媒体的功能也上不了网.于是便于昨晚将RedHat Linux 9.0换了,装了一个Fedora 13.过程如下: (一)确保电脑可以启动grub.上网查了一下Windows XP引导grub的方法. ①下载必要文件">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Windows XP下Fedora 15硬盘安装(使用LiveCD)之旅">
+<meta property="og:url" content="http://shuxun,wang/2018/09/04/1383/index.html">
+<meta property="og:site_name" content="学无止境">
+<meta property="og:description" content="之前在心爱的笔记本电脑上装了一个RedHat Linux 9.0.然而,由于RedHat Linux 9.0版本太低,许多硬件(网卡、声卡等)都识别不了,驱动程序也安装不好,导致用不了多媒体的功能也上不了网.于是便于昨晚将RedHat Linux 9.0换了,装了一个Fedora 13.过程如下: (一)确保电脑可以启动grub.上网查了一下Windows XP引导grub的方法. ①下载必要文件">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2018-09-04T13:28:00.000Z">
+<meta property="article:modified_time" content="2021-07-14T07:16:10.392Z">
+<meta property="article:author" content="王殊勋">
+<meta property="article:tag" content="安装">
+<meta property="article:tag" content="目录">
+<meta property="article:tag" content="下载">
+<meta property="article:tag" content="文件">
+<meta property="article:tag" content="盘根">
+<meta property="article:tag" content="grub">
+<meta property="article:tag" content="Fedora">
+<meta property="article:tag" content="引导">
+<meta property="article:tag" content="XP">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://shuxun,wang/2018/09/04/1383/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>Windows XP下Fedora 15硬盘安装(使用LiveCD)之旅 | 学无止境</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">学无止境</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">注互联网运维技术发展</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-sitemap">
+
+    <a href="/sitemap.xml" rel="section"><i class="fa fa-sitemap fa-fw"></i>站点地图</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://shuxun,wang/2018/09/04/1383/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="王殊勋">
+      <meta itemprop="description" content="专注互联网运维技术发展">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="学无止境">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Windows XP下Fedora 15硬盘安装(使用LiveCD)之旅
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2018-09-04 21:28:00" itemprop="dateCreated datePublished" datetime="2018-09-04T21:28:00+08:00">2018-09-04</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-07-14 15:16:10" itemprop="dateModified" datetime="2021-07-14T15:16:10+08:00">2021-07-14</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" itemprop="url" rel="index"><span itemprop="name">操作系统</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>之前在心爱的笔记本电脑上装了一个RedHat Linux 9.0.然而,由于RedHat Linux 9.0版本太低,许多硬件(网卡、声卡等)都识别不了,驱动程序也安装不好,导致用不了多媒体的功能也上不了网.于是便于昨晚将RedHat Linux 9.0换了,装了一个Fedora 13.过程如下:</p>
+<p>(一)确保电脑可以启动grub.上网查了一下Windows XP引导grub的方法.</p>
+<p>①下载必要文件</p>
+<p>网上一般要求下载grub for dos,但实际上只要有grldr一个文件就可以了,可以从这里直接下载(2009年2月15日更新),解压、并把这个文件放在C盘根目录下.</p>
+<p>②编辑boot.ini</p>
+<p>在Windows中,”我的电脑”上点右键-&gt;属性-&gt;高级-&gt;启动和故障恢复右边的”设置”-&gt;上半部分的”编辑”出现用记事本打开的 boot.ini 文件.<br>在文件的末尾,加上一行:</p>
+<figure class="highlight avrasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="symbol">c:</span>grldr=<span class="string">&quot;GRUB&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>保存文件,退出,重新启动. 如果不出意外的话,重启后就可以进入grub.<br>其实之后发现,因为我之前在Windows XP上安装了一个Linux RedHat 9.0,就已经可以引导进入grub了,所以此步对于我来说,是可以省的.</p>
+<p>(二)从网上下载Fedora六百多MB的LiveCD的镜像文件</p>
+<p>下载网址为:<a target="_blank" rel="noopener" href="http://fedoraproject.org/zh_CN/get-fedora">http://fedoraproject.org/zh_CN/get-fedora</a></p>
+<p>(三)从下载的iso文件件中提取相关文件</p>
+<p>在Window XP上安装一个虚拟光驱(Daemon),装载下载的iso文件.然后把iso中的LiveOS目录复制到某个fat或ext分区的根目录,我复制到的是C盘根目录下.再把isolinux/vmlinuz0和isolinux/initrd0.img复制到前面得到的LiveOS中.   最后把iso文件也复制到C盘根目录下.</p>
+<p>(四)进入grub进行相关操作</p>
+<p>重启电脑,在启动选项中使用上下键选择进行grub.按c键进行命令行状态.输入如下命令:</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">root (hd0,<span class="number">0</span>)</span><br><span class="line">kernel <span class="regexp">/LiveOS/</span>vmlinuz0 root=live:<span class="regexp">/dev/</span>sda1 ro liveimg rhgb rootfstype=auto</span><br><span class="line">initrd <span class="regexp">/LiveOS/i</span>nitrd0.img</span><br><span class="line"></span><br><span class="line">boot</span><br></pre></td></tr></table></figure>
+
+<p>在这一步,我费了很大的劲才成功.之前一直出现”Boot has failed,sleeping forever.”的错误,我费了两个多小时才弄明白.注意上面的第一个蓝色部分(hd0,0),表示的是Windows XP下的C盘,用于说明文件夹LiveOS和文件 <code>isolinux/vmlinuz0</code>、<code>isolinux/initrd0.img</code>的存放位置,如果是D盘,则表示为(hd0,4).第二个蓝色部分live:/dev/sda1 ,用于指明iso文件的存放位置,我的在C盘根目录下,所以表示为/dev/sda1.关于(hd0,5)及/dev/sda5的具体含义可以参考grub磁盘分区表示方法.</p>
+<p>(五)之后就会提醒你进入一个在iso文件里已经安装好的Fedora 13.在这个Fedora 13里,选择桌面上的install to harddisk(安装到硬盘)的快捷方式,就可以进行Fedora 13的安装了.</p>
+<p>(六)将Fedora 13安装到硬盘后,有可能出现在grub中只能引导Fedora而不能引导已经存在的Windows XP的情况,我的就是这样.可以修改Fedora中/etc/grub.conf文件,在它的末尾加入下面内容:</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">title</span> Windows XP</span><br><span class="line">    <span class="attribute">root</span> (hd<span class="number">0</span>,<span class="number">0</span>)</span><br><span class="line">    <span class="attribute">chainloader</span> +<span class="number">1</span></span><br></pre></td></tr></table></figure>
+
+<p>即可.其中的root (hd0,0)表示Windowx XP的启动文件在C盘下.</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E5%AE%89%E8%A3%85/" rel="tag"># 安装</a>
+              <a href="/tags/%E7%9B%AE%E5%BD%95/" rel="tag"># 目录</a>
+              <a href="/tags/%E4%B8%8B%E8%BD%BD/" rel="tag"># 下载</a>
+              <a href="/tags/%E6%96%87%E4%BB%B6/" rel="tag"># 文件</a>
+              <a href="/tags/%E7%9B%98%E6%A0%B9/" rel="tag"># 盘根</a>
+              <a href="/tags/grub/" rel="tag"># grub</a>
+              <a href="/tags/Fedora/" rel="tag"># Fedora</a>
+              <a href="/tags/%E5%BC%95%E5%AF%BC/" rel="tag"># 引导</a>
+              <a href="/tags/XP/" rel="tag"># XP</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2018/08/31/1360/" rel="prev" title="sqlserver 镜像同步">
+      <i class="fa fa-chevron-left"></i> sqlserver 镜像同步
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2018/09/10/1215/" rel="next" title="linux导出光盘为iso">
+      linux导出光盘为iso <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="王殊勋"
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name">王殊勋</p>
+  <div class="site-description" itemprop="description">better late than never.<br>只要开始，虽晚不迟。</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">656</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">2058</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <!--添加网站运行时间 -->
+  <span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
+  <script>
+      var now = new Date(); 
+      function createtime() { 
+          var grt= new Date("12/01/2007 12:00:00");//此处修改你的建站时间或者网站上线时间 
+          now.setTime(now.getTime()+250); 
+          days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days); 
+          hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours); 
+          if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum); 
+          mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;} 
+          seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum); 
+          snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;} 
+          document.getElementById("timeDate").innerHTML = "本站已安全运行 "+dnum+" 天 "; 
+          document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒"; 
+      } 
+  setInterval("createtime()",250);
+  </script>
+  <span itemprop="copyrightYear">(2007 - 2021)</span>
+  <!-- 添加网站运行时间 -->
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">学无止境</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script size="300" alpha="0.6" zIndex="0" src="/lib/canvas-ribbon/canvas-ribbon.js"></script>
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

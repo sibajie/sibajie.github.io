@@ -1,0 +1,926 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"shuxun","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"./public/search.xml"};
+  </script>
+
+  <meta name="description" content="专注互联网运维技术发展">
+<meta property="og:type" content="website">
+<meta property="og:title" content="学无止境">
+<meta property="og:url" content="http://shuxun,wang/page/23/index.html">
+<meta property="og:site_name" content="学无止境">
+<meta property="og:description" content="专注互联网运维技术发展">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:author" content="王殊勋">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://shuxun,wang/page/23/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : true,
+    isPost : false,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>学无止境</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">学无止境</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">注互联网运维技术发展</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-sitemap">
+
+    <a href="/sitemap.xml" rel="section"><i class="fa fa-sitemap fa-fw"></i>站点地图</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content index posts-expand">
+            
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://shuxun,wang/2018/09/28/1307/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="王殊勋">
+      <meta itemprop="description" content="专注互联网运维技术发展">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="学无止境">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2018/09/28/1307/" class="post-title-link" itemprop="url">nginx配置优化</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2018-09-28 16:51:00" itemprop="dateCreated datePublished" datetime="2018-09-28T16:51:00+08:00">2018-09-28</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-07-14 15:14:45" itemprop="dateModified" datetime="2021-07-14T15:14:45+08:00">2021-07-14</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%90%84%E7%B1%BB%E6%9C%8D%E5%8A%A1/" itemprop="url" rel="index"><span itemprop="name">各类服务</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>1、Nginx 运行工作进程个数</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">worker_processes</span> <span class="number">4</span><span class="string">;</span>                           <span class="comment">#工作进程,建议和cpu核心数一致</span></span><br><span class="line"><span class="string">worker_cpu_affinity</span> <span class="number">0001 </span><span class="number">0010 </span><span class="number">0100 </span><span class="number">1000</span>       <span class="comment">#cpu亲和力设置</span></span><br></pre></td></tr></table></figure>
+
+<p>2、Nginx 事件处理模型</p>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">events</span> &#123;                                      <span class="comment">#events:提供配置文件上下文,其中指定了影响连接处理的指令.</span></span><br><span class="line">    <span class="attribute">use</span> <span class="literal">epoll</span>;                                <span class="comment">#使用epoll事件处理模型</span></span><br><span class="line">    <span class="attribute">worker_connections</span> <span class="number">65535</span>;                 <span class="comment">#单个worker_processes支持的最大连接</span></span><br><span class="line">    <span class="attribute">multi_accept</span> <span class="literal">on</span>;                          <span class="comment">#worker_processes一次接受所有连接</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>3、开启高效传输模式</p>
+<figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">http &#123;                                        <span class="comment">#提供指定的HTTP服务器指令的配置文件上下文</span></span><br><span class="line">    include mime.types;                       <span class="comment">#支持所有mime类型</span></span><br><span class="line">    default_type <span class="built_in">application</span>/octet-stream;    <span class="comment">#默认流的类型</span></span><br><span class="line">    ……</span><br><span class="line">    sendfile <span class="keyword">on</span>;                              <span class="comment">#开启高效传输模式</span></span><br><span class="line">    tcp_nopush <span class="keyword">on</span>;                            <span class="comment">#告诉 nginx 在一个数据包里发送所有头文件,可防止网络阻塞</span></span><br><span class="line">    ……</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>4、连接超时时间</p>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">keepalive_timeout</span> <span class="number">60</span>;                         <span class="comment">#长连接超时时间60s</span></span><br><span class="line"><span class="attribute">tcp_nodelay</span> <span class="literal">on</span>;                               <span class="comment">#防止网络阻塞</span></span><br><span class="line"><span class="attribute">client_header_buffer_size</span> <span class="number">4k</span>;                 <span class="comment">#客户端请求头部的缓冲区大小</span></span><br><span class="line"><span class="attribute">open_file_cache</span> max=<span class="number">102400</span> inactive=<span class="number">20s</span>;      <span class="comment">#打开文件的缓存大小,最大100M,活跃时间20s</span></span><br><span class="line"><span class="attribute">open_file_cache_valid</span> <span class="number">30s</span>;                    <span class="comment">#缓存有效时间30s</span></span><br><span class="line"><span class="attribute">open_file_cache_min_uses</span> <span class="number">1</span>;                   <span class="comment">#最少打开一个文件进行缓存</span></span><br><span class="line"><span class="attribute">client_header_timeout</span> <span class="number">15</span>;                     <span class="comment">#请求头超时时间</span></span><br><span class="line"><span class="attribute">client_body_timeout</span> <span class="number">15</span>;                       <span class="comment">#请求体超时时间</span></span><br><span class="line"><span class="attribute">reset_timedout_connection</span> <span class="literal">on</span>;                 <span class="comment">#关闭不响应的客户端连接</span></span><br><span class="line"><span class="attribute">send_timeout</span> <span class="number">15</span>;                              <span class="comment">#发送超时时间</span></span><br><span class="line"><span class="attribute">server_tokens</span> <span class="literal">off</span>;                            <span class="comment">#不显示nginx的版本</span></span><br><span class="line"><span class="attribute">client_max_body_size</span> <span class="number">10m</span>;                     <span class="comment">#上传文件的大小限制</span></span><br></pre></td></tr></table></figure>
+
+<p>5、fastcgi连接优化</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">fastcgi_connect_timeout</span> <span class="number">600</span>;                  #指定连接后端fastcgi超时时间</span><br><span class="line"><span class="attribute">fastcgi_send_timeout</span> <span class="number">600</span>;                     #向fastcg发送请求超时时间</span><br><span class="line"><span class="attribute">fastcgi_read_timeout</span> <span class="number">600</span>;                     #接收fastcgi应答的超时时间</span><br><span class="line"><span class="attribute">fastcgi_buffer_size</span> <span class="number">64</span>k;                      #缓冲区大小</span><br><span class="line"><span class="attribute">fastcgi_buffers</span> <span class="number">4</span> <span class="number">64</span>k;                        #给fastcgi分配<span class="number">4</span>个缓冲区,每个<span class="number">64</span>K</span><br><span class="line"><span class="attribute">fastcgi_busy_buffers_size</span> <span class="number">128</span>k;               #fastcgi忙碌时的缓冲区大小</span><br><span class="line"><span class="attribute">fastcgi_temp_file_write_size</span> <span class="number">128</span>k;            #临时写文件的目录大小</span><br><span class="line"><span class="attribute">fastcgi_temp_path</span> /tmp/nginx_tmp;             #临时写文件的路径</span><br><span class="line"><span class="attribute">fastcgi_intercept_errors</span> <span class="literal">on</span>;                  #允许发送错误到客户端,(php页面不存在默认返回空白页)</span><br><span class="line"><span class="attribute">fastcgi_cache_path</span> /usr/local/nginx<span class="number">1</span>.<span class="number">10</span>/fastcgi_cache levels=<span class="number">1</span>:<span class="number">2</span> keys_zone=cache_fastcgi:<span class="number">128</span>m inactive=<span class="number">1</span>d max_size=<span class="number">10</span>g;                                     #设置缓存路径、目录层级为<span class="number">16</span>*<span class="number">256</span>个子目录、缓存区名称为cache_fastcgi,大小<span class="number">128</span>M,有效期一天,最大缓存<span class="number">10</span>G.</span><br></pre></td></tr></table></figure>
+
+<p>6、gzip压缩</p>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">gzip</span> <span class="literal">on</span>;                                     <span class="comment">#开启gzip</span></span><br><span class="line"><span class="attribute">gzip_min_length</span> <span class="number">2k</span>;                          <span class="comment">#最小压缩大小2k,也就是只要超过2k就进行压缩</span></span><br><span class="line"><span class="attribute">gzip_buffers</span> <span class="number">4</span> <span class="number">32k</span>;                          <span class="comment">#压缩缓冲区大小32k,4个</span></span><br><span class="line"><span class="attribute">gzip_http_version</span> <span class="number">1</span>.<span class="number">1</span>;                       <span class="comment">#gzip版本</span></span><br><span class="line"><span class="attribute">gzip_comp_level</span> <span class="number">6</span>;                           <span class="comment">#压缩级别6</span></span><br><span class="line"><span class="attribute">gzip_types</span> text/plain text/css text/javascript application/json application/javascript application/x-javascript application/xml;                           <span class="comment">#以上的那些格式的数据进行压缩</span></span><br><span class="line"><span class="attribute">gzip_vary</span> <span class="literal">on</span>;                                <span class="comment">#加&quot;Vary:Accept-Encoding&quot;响应头字段,为了让前端的代理识别是压缩数据 </span></span><br><span class="line"><span class="attribute">gzip_proxied</span> any;                            <span class="comment">#为所有代理请求启用压缩</span></span><br></pre></td></tr></table></figure>
+
+<p>7、expires头缓存</p>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">location</span> <span class="regexp">~* \.(ico|jpeg|png|bmp|swf|flv)$</span> &#123;  <span class="comment">#匹配以.ico.jpg.jpeg.gif.png.bmp.swf.flv结尾的文件</span></span><br><span class="line">    <span class="attribute">expires</span> <span class="number">30d</span>;                             <span class="comment">#缓存30天</span></span><br><span class="line">    <span class="comment">#log_not_found off;</span></span><br><span class="line">    <span class="attribute">access_log</span> <span class="literal">off</span>;                          <span class="comment">#不记录成功日志</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="attribute">location</span> <span class="regexp">~* \.(js|css)$</span> &#123;                    <span class="comment">#匹配.js.css结尾的</span></span><br><span class="line">    <span class="attribute">expires</span> <span class="number">7d</span>;                              <span class="comment">#缓存7天</span></span><br><span class="line">    <span class="attribute">log_not_found</span> <span class="literal">off</span>;</span><br><span class="line">    <span class="attribute">access_log</span> <span class="literal">off</span>;                          <span class="comment">#不记录日志</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>8、防盗链</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">location ~* ^.+\.(jpg|gif|png|swf|flv)$ &#123;    <span class="comment">#匹配以任意多个字符开头中间带&quot;.&quot;并且以jpg gif png swf flv </span></span><br><span class="line">    wma wmv asf mp3 mmf zip rar结尾的</span><br><span class="line">    valid_referers none blocked zhangsan.com;<span class="comment">#定义变量valid_referers,当referer为空、或者为www.zhangsan.com、zhangsan.com为有效</span></span><br><span class="line">    <span class="keyword">if</span> (<span class="variable">$invalid_referer</span>) &#123;                  <span class="comment">#如果referer无效时,也就是不是上面定义的</span></span><br><span class="line">        return <span class="number">302</span> http:<span class="regexp">//</span>zhangsan.com<span class="regexp">/img/</span>nolink.jpg;</span><br><span class="line">                                             <span class="comment">#返回302,指定一个图片位置(你可以给一个警告的图片)</span></span><br><span class="line">        return <span class="number">404</span>;                          <span class="comment">#返回404</span></span><br><span class="line">        <span class="keyword">break</span>;                               <span class="comment">#if语句的结束</span></span><br><span class="line">    &#125;</span><br><span class="line">access_log off;                              <span class="comment">#不记录日志</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>9、内核参数</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">vim</span> /etc/sysctl.conf</span><br><span class="line"></span><br><span class="line"><span class="attribute">fs</span>.file-max = <span class="number">999999</span>                        #打开文件的句柄数</span><br><span class="line"><span class="attribute">net</span>.ipv<span class="number">4</span>.ip_forward = <span class="number">0</span>                     #打开ipv<span class="number">4</span>路由转发</span><br><span class="line"><span class="attribute">net</span>.ipv<span class="number">4</span>.conf.default.rp_filter = <span class="number">1</span>         #启用源路由核查功能</span><br><span class="line"><span class="attribute">net</span>.ipv<span class="number">4</span>.conf.default.accept_source_route = <span class="number">0</span></span><br><span class="line">                                            <span class="comment">#禁用所有IP源路由</span></span><br><span class="line"><span class="attribute">kernel</span>.sysrq = <span class="number">0</span>                            #使用sysrq组合键是了解系统目前运行情况,为安全起见设为<span class="number">0</span>关闭</span><br><span class="line"><span class="attribute">kernel</span>.core_uses_pid = <span class="number">1</span>                    #控制core文件的文件名是否添加pid作为扩展</span><br><span class="line"><span class="attribute">net</span>.ipv<span class="number">4</span>.tcp_syncookies = <span class="number">1</span>                 #启SYN Cookies,当出现SYN等待队列溢出时,启用cookies来处理</span><br><span class="line"><span class="attribute">kernel</span>.msgmnb = <span class="number">65536</span>                       #每个消息队列的大小(单位:字节)限制</span><br><span class="line"><span class="attribute">kernel</span>.msgmax = <span class="number">65536</span>                       #整个系统最大消息队列数量限制</span><br><span class="line"><span class="attribute">kernel</span>.shmmax = <span class="number">68719476736</span>                 #单个共享内存段的大小</span><br><span class="line"><span class="attribute">kernel</span>.shmall = <span class="number">4294967296</span>                  #所有内存大小</span><br><span class="line"><span class="attribute">net</span>.ipv<span class="number">4</span>.tcp_max_tw_buckets = <span class="number">6000</span>          #timewait的数量,默认是<span class="number">180000</span></span><br><span class="line"><span class="attribute">net</span>.ipv<span class="number">4</span>.tcp_sack = <span class="number">1</span>                       #开启有选择的应答</span><br><span class="line"><span class="attribute">net</span>.ipv<span class="number">4</span>.tcp_window_scaling = <span class="number">1</span>             #支持更大的TCP窗口. 如果TCP窗口最大超过<span class="number">65535</span>(<span class="number">64</span>K), 必须设置该数值为<span class="number">1</span></span><br><span class="line"><span class="attribute">net</span>.ipv<span class="number">4</span>.tcp_rmem = <span class="number">10240</span> <span class="number">87380</span> <span class="number">12582912</span>    #TCP读buffer</span><br><span class="line"><span class="attribute">net</span>.ipv<span class="number">4</span>.tcp_wmem = <span class="number">10240</span> <span class="number">87380</span> <span class="number">12582912</span>    #TCP写buffer</span><br><span class="line"><span class="attribute">net</span>.core.wmem_default = <span class="number">8388608</span>             #为TCP socket预留用于发送缓冲的内存默认值(单位:字节)</span><br><span class="line"><span class="attribute">net</span>.core.rmem_default = <span class="number">8388608</span>             #为TCP socket预留用于接收缓冲的内存默认值(单位:字节)</span><br><span class="line"><span class="attribute">net</span>.core.rmem_max = <span class="number">16777216</span>                #为TCP socket预留用于接收缓冲的内存最大值(单位:字节)</span><br><span class="line"><span class="attribute">net</span>.core.wmem_max = <span class="number">16777216</span>                #为TCP socket预留用于发送缓冲的内存最大值(单位:字节)</span><br><span class="line"><span class="attribute">net</span>.core.netdev_max_backlog = <span class="number">262144</span>        #每个网络接口接收数据包的速率比内核处理这些包的速率快时,允许送到队列的数据包的最大数目</span><br><span class="line"><span class="attribute">net</span>.core.somaxconn = <span class="number">40960</span>                  #web应用中listen函数的backlog默认会给我们内核参数的net.core.somaxconn限制到<span class="number">128</span>,而nginx定义的NGX_LISTEN_BACKLOG默认为<span class="number">511</span>,所以有必要调整这个值</span><br><span class="line"><span class="attribute">net</span>.ipv<span class="number">4</span>.tcp_max_orphans = <span class="number">3276800</span>          #系统中最多有多少个TCP套接字不被关联到任何一个用户文件句柄上.这个限制仅仅是为了防止简单的DoS×××,不能过分依靠它或者人为地减小这个值,更应该增加这个值(如果增加了内存之后)</span><br><span class="line"><span class="attribute">net</span>.ipv<span class="number">4</span>.tcp_max_syn_backlog = <span class="number">262144</span>       #记录的那些尚未收到客户端确认信息的连接请求的最大值.对于有<span class="number">128</span>M内存的系统而言,缺省值是<span class="number">1024</span>,小内存的系统则是<span class="number">128</span></span><br><span class="line"><span class="attribute">net</span>.ipv<span class="number">4</span>.tcp_timestamps = <span class="number">0</span>                 #时间戳可以避免序列号的卷绕.一个<span class="number">1</span>Gbps的链路肯定会遇到以前用过的序列号.时间戳能够让内核接受这种<span class="string">&quot;异常&quot;</span>的数据包.这里需要将其关掉</span><br><span class="line"><span class="attribute">net</span>.ipv<span class="number">4</span>.tcp_synack_retries = <span class="number">1</span>             #为了打开对端的连接,内核需要发送一个SYN并附带一个回应前面一个SYN的ACK.也就是所谓三次握手中的第二次握手.这个设置决定了内核放弃连接之前发送SYN+ACK包的数量</span><br><span class="line"><span class="attribute">net</span>.ipv<span class="number">4</span>.tcp_syn_retries = <span class="number">1</span>                #在内核放弃建立连接之前发送SYN包的数量</span><br><span class="line"><span class="attribute">net</span>.ipv<span class="number">4</span>.tcp_tw_recycle = <span class="number">1</span>                 #开启TCP连接中time_wait sockets的快速回收</span><br><span class="line"><span class="attribute">net</span>.ipv<span class="number">4</span>.tcp_tw_reuse = <span class="number">1</span>                   #开启TCP连接复用功能,允许将time_wait sockets重新用于新的TCP连接(主要针对time_wait连接)</span><br><span class="line"><span class="attribute">net</span>.ipv<span class="number">4</span>.tcp_mem = <span class="number">94500000</span> <span class="number">915000000</span> <span class="number">927000000</span></span><br><span class="line">                                           <span class="comment">#1st低于此值,TCP没有内存压力,2nd进入内存压力阶段,3rdTCP拒绝分配socket(单位:内存页)</span></span><br><span class="line"><span class="attribute">net</span>.ipv<span class="number">4</span>.tcp_fin_timeout = <span class="number">1</span>               #如果套接字由本端要求关闭,这个参数决定了它保持在FIN-WAIT-<span class="number">2</span>状态的时间.对端可以出错并永远不关闭连接,甚至意外当机.缺省值是<span class="number">60</span> 秒.<span class="number">2</span>.<span class="number">2</span> 内核的通常值是<span class="number">180</span>秒,你可以按这个设置,但要记住的是,即使你的机器是一个轻载的WEB服务器,也有因为大量的死套接字而内存溢出的风险,FIN- WAIT-<span class="number">2</span>的危险性比FIN-WAIT-<span class="number">1</span>要小,因为它最多只能吃掉<span class="number">1</span>.<span class="number">5</span>K内存,但是它们的生存期长些.</span><br><span class="line"><span class="attribute">net</span>.ipv<span class="number">4</span>.tcp_keepalive_time = <span class="number">30</span>           #表示当keepalive起用的时候,TCP发送keepalive消息的频度(单位:秒)</span><br><span class="line"><span class="attribute">net</span>.ipv<span class="number">4</span>.ip_local_port_range = <span class="number">1024</span> <span class="number">65000</span>  #对外连接端口范围</span><br></pre></td></tr></table></figure>
+
+<p>10、关于系统连接数的优化<br>在 <code>/etc/security/limits.conf</code> 最后增加:</p>
+<figure class="highlight tap"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/security/limits</span><br><span class="line"></span><br><span class="line">* soft nofile<span class="number"> 65535 </span>                       <span class="comment">#软限制打开最大文件数65535</span></span><br><span class="line">* hard nofile<span class="number"> 65535 </span>                       <span class="comment">#硬限制打开最大文件数65535</span></span><br><span class="line">* soft noproc<span class="number"> 65535 </span>                       <span class="comment">#软限制打开最大进程数65535</span></span><br><span class="line">* hard noproc<span class="number"> 65535 </span>                       <span class="comment">#硬限制打开最大进程数65535</span></span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://shuxun,wang/2018/09/22/1450/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="王殊勋">
+      <meta itemprop="description" content="专注互联网运维技术发展">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="学无止境">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2018/09/22/1450/" class="post-title-link" itemprop="url">监控软件Monit安装与配置</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2018-09-22 16:29:00" itemprop="dateCreated datePublished" datetime="2018-09-22T16:29:00+08:00">2018-09-22</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-07-14 15:15:02" itemprop="dateModified" datetime="2021-07-14T15:15:02+08:00">2021-07-14</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%90%84%E7%B1%BB%E6%9C%8D%E5%8A%A1/" itemprop="url" rel="index"><span itemprop="name">各类服务</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>一、Monit简介</p>
+<p>Monit是一款功能非常丰富的进程、文件、目录和设备的监测软件,用于Unix平台.它可以自动修复那些已经停止运作的程序,特使适合处理那些由于多种原因导致的软件错误.</p>
+<p>二、安装与配置</p>
+<p>1、软件包依赖</p>
+<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">apache</span></span><br></pre></td></tr></table></figure>
+
+<p>2、下载</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http:<span class="regexp">//mm</span>onit.com<span class="regexp">/monit/</span></span><br></pre></td></tr></table></figure>
+
+<p>3、安装</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$</span> tar monit<span class="literal">-5</span>.<span class="number">2.3</span>.tar.gz</span><br><span class="line"><span class="variable">$</span> <span class="built_in">cd</span> monit<span class="literal">-5</span>.<span class="number">2.3</span></span><br><span class="line"><span class="variable">$</span> ./configure   /前面有个点儿</span><br><span class="line"><span class="variable">$</span> make</span><br><span class="line"><span class="variable">$</span> make install</span><br></pre></td></tr></table></figure>
+
+<p>4、配置文件</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ cp <span class="regexp">/monit-5.2.3/m</span>onitrc /etc</span><br></pre></td></tr></table></figure>
+
+<p>5、注册init守护进程</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ vi <span class="regexp">/etc/i</span>nittab</span><br></pre></td></tr></table></figure>
+
+<p>添加下面一行:</p>
+<figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="symbol">mo:</span><span class="number">2345</span><span class="symbol">:respawn</span><span class="symbol">:/usr/local/bin/monit</span> -Ic /etc/monirc</span><br></pre></td></tr></table></figure>
+
+<p>6、配置实例</p>
+<figure class="highlight clean"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br></pre></td><td class="code"><pre><span class="line">###############################################################</span><br><span class="line">#Global section                                 #全局配置</span><br><span class="line">###############################################################</span><br><span class="line">set daemon <span class="number">120</span> <span class="keyword">with</span> start delay <span class="number">240</span>             #设置monit为后台进程,没<span class="number">2</span>分钟为一个检查周期,首次启动后<span class="number">4</span>分钟开始第一次检查</span><br><span class="line">###############################################################</span><br><span class="line">set logfile syslog facility log_daemon          #设置系统日志,这是默认设定,可以手动配置指定日志文件</span><br><span class="line">###############################################################</span><br><span class="line">set idfile /var/.monit.id                       #设置monit对象实例,其实这里的对象就是指本机</span><br><span class="line">###############################################################</span><br><span class="line">set statefile /var/.monit.state                 #设置状态报告文件</span><br><span class="line">###############################################################</span><br><span class="line">set mailserver mail.tiigame.com                 #设置邮件服务器,通过它来发送邮件警告</span><br><span class="line">###############################################################</span><br><span class="line">set eventqueue</span><br><span class="line">basedir /var/monit                              #设置事件报告,每个事件对应的文件最大大小为<span class="number">100</span>KB</span><br><span class="line">slots <span class="number">100</span></span><br><span class="line">###############################################################</span><br><span class="line">##Monit by default uses the following alert mail format:</span><br><span class="line">##-<span class="number">-8</span>&lt;--</span><br><span class="line">##From: monit@$host</span><br><span class="line">##Subject: monit alert --  $EVENT $SERVICE</span><br><span class="line">##$EVENT Service $SERVICE</span><br><span class="line">##Date:        $DATE</span><br><span class="line">##Action:      $ACTION                          #邮件格式,此处忽略</span><br><span class="line">##Host:        $HOST</span><br><span class="line">##Description: $DESCRIPTION</span><br><span class="line">##Your faithful employee,</span><br><span class="line">##Monit</span><br><span class="line">##-<span class="number">-8</span>&lt;--</span><br><span class="line">###############################################################</span><br><span class="line">set alert <span class="number">244032545</span>@qq.com                      #设置警告要发往的邮箱</span><br><span class="line">set alert <span class="number">244032545</span>@qq.com only on &#123; timeout &#125;  #当警告发送失败时要发往的另一个邮箱</span><br><span class="line">###############################################################</span><br><span class="line">set httpd port <span class="number">2812</span> and use address localhost   #设定http访问端口,只允许本机访问</span><br><span class="line">allow localhost</span><br><span class="line">allow admin:monit                               #本地访问凭证,用户admin,密码monit</span><br><span class="line">allow @monit</span><br><span class="line">allow @users readonly</span><br><span class="line">###############################################################</span><br><span class="line">##Services                                      #服务的定义</span><br><span class="line">###############################################################</span><br><span class="line">check <span class="keyword">system</span> myhost.mydomain.tld</span><br><span class="line"><span class="keyword">if</span> loadavg (<span class="number">1</span>min) &gt; <span class="number">4</span> then alert</span><br><span class="line"><span class="keyword">if</span> loadavg (<span class="number">5</span>min) &gt; <span class="number">2</span> then alert</span><br><span class="line"><span class="keyword">if</span> memory usage &gt; <span class="number">75</span>% then alert                #检查负载</span><br><span class="line"><span class="keyword">if</span> swap usage &gt; <span class="number">25</span>% then alert</span><br><span class="line"><span class="keyword">if</span> cpu usage (user) &gt; <span class="number">70</span>% then alert</span><br><span class="line"><span class="keyword">if</span> cpu usage (<span class="keyword">system</span>) &gt; <span class="number">30</span>% then alert</span><br><span class="line"><span class="keyword">if</span> cpu usage (wait) &gt; <span class="number">20</span>% then alert</span><br><span class="line">###############################################################</span><br><span class="line">check file apache_bin <span class="keyword">with</span> path /usr/local/apache/bin/httpd</span><br><span class="line"><span class="keyword">if</span> failed checksum and expect the sum <span class="number">8</span>f7f419955cefa0b33a2ba316cba3659 then unmonitor</span><br><span class="line"><span class="keyword">if</span> failed permission <span class="number">755</span> then unmonitor</span><br><span class="line"><span class="keyword">if</span> failed uid root then unmonitor               #apache权限检查</span><br><span class="line"><span class="keyword">if</span> failed gid root then unmonitor</span><br><span class="line">alert <span class="number">244032545</span>@qq.com on &#123;checksum, permission, uid, gid&#125; <span class="keyword">with</span> the mail-format &#123; subject: Alarm! &#125;</span><br><span class="line">group server</span><br><span class="line">###############################################################</span><br><span class="line">check process apache <span class="keyword">with</span> pidfile /usr/local/apache/logs/httpd.pid</span><br><span class="line">start program = <span class="string">&quot;/etc/init.d/httpd start&quot;</span> <span class="keyword">with</span> timeout <span class="number">60</span> seconds</span><br><span class="line">stop program  = <span class="string">&quot;/etc/init.d/httpd stop&quot;</span></span><br><span class="line"><span class="keyword">if</span> cpu &gt; <span class="number">60</span>% for <span class="number">2</span> cycles then alert</span><br><span class="line"><span class="keyword">if</span> cpu &gt; <span class="number">80</span>% for <span class="number">5</span> cycles then restart</span><br><span class="line"><span class="keyword">if</span> totalmem &gt; <span class="number">200.0</span> MB for <span class="number">5</span> cycles then restart#检查apache服务器负载</span><br><span class="line"><span class="keyword">if</span> children &gt; <span class="number">250</span> then restart</span><br><span class="line"><span class="keyword">if</span> loadavg(<span class="number">5</span>min) greater than <span class="number">10</span> for <span class="number">8</span> cycles then stop</span><br><span class="line"><span class="keyword">if</span> failed host www.tildeslash.com port <span class="number">80</span> protocol http and request <span class="string">&quot;/somefile.html&quot;</span> then restart</span><br><span class="line"><span class="keyword">if</span> failed port <span class="number">443</span> type tcpssl protocol http <span class="keyword">with</span> timeout <span class="number">15</span> seconds then restart</span><br><span class="line"><span class="keyword">if</span> <span class="number">3</span> restarts within <span class="number">5</span> cycles then timeout depends on apache_bin</span><br><span class="line">group server</span><br><span class="line">###############################################################</span><br><span class="line">check filesystem datafs <span class="keyword">with</span> path /dev/sdb1</span><br><span class="line">start program  = <span class="string">&quot;/bin/mount /data&quot;</span></span><br><span class="line">stop program  = <span class="string">&quot;/bin/umount /data&quot;</span></span><br><span class="line"><span class="keyword">if</span> failed permission <span class="number">660</span> then unmonitor</span><br><span class="line"><span class="keyword">if</span> failed uid root then unmonitor               #检查磁盘使用情况</span><br><span class="line"><span class="keyword">if</span> failed gid disk then unmonitor</span><br><span class="line"><span class="keyword">if</span> space usage &gt; <span class="number">80</span>% for <span class="number">5</span> times within <span class="number">15</span> cycles then alert</span><br><span class="line"><span class="keyword">if</span> space usage &gt; <span class="number">99</span>% then stop</span><br><span class="line"><span class="keyword">if</span> inode usage &gt; <span class="number">30000</span> then alert</span><br><span class="line"><span class="keyword">if</span> inode usage &gt; <span class="number">99</span>% then stop</span><br><span class="line">group server</span><br><span class="line">###############################################################</span><br><span class="line">check file database <span class="keyword">with</span> path /data/mydatabase.db</span><br><span class="line"><span class="keyword">if</span> failed permission <span class="number">700</span> then alert</span><br><span class="line"><span class="keyword">if</span> failed uid <span class="number">0</span> then alert</span><br><span class="line"><span class="keyword">if</span> failed gid <span class="number">0</span> then alert                      #数据库</span><br><span class="line"><span class="keyword">if</span> timestamp &gt; <span class="number">15</span> minutes then alert</span><br><span class="line">#<span class="keyword">if</span> size &gt; <span class="number">100</span> MB then exec <span class="string">&quot;/my/cleanup/script&quot;</span> <span class="keyword">as</span> uid dba and gid dba</span><br><span class="line">###############################################################</span><br><span class="line">check directory bin <span class="keyword">with</span> path /bin</span><br><span class="line"><span class="keyword">if</span> failed permission <span class="number">755</span> then unmonitor         #检查某个目录,这里是/bin</span><br><span class="line"><span class="keyword">if</span> failed uid <span class="number">0</span> then unmonitor</span><br><span class="line"><span class="keyword">if</span> failed gid <span class="number">0</span> then unmonitor</span><br><span class="line">###############################################################</span><br><span class="line">##以下设置对一台远程主机的监控</span><br><span class="line">###############################################################</span><br><span class="line">#Check a remote host availability by issuing a ping test and check the</span><br><span class="line"># content <span class="keyword">of</span> a response <span class="keyword">from</span> a web server. Up to three pings are sent and</span><br><span class="line">#connection to a port and an application level network check is performed.</span><br><span class="line"># check host myserver <span class="keyword">with</span> address <span class="number">192.168</span><span class="number">.1</span><span class="number">.1</span></span><br><span class="line"># <span class="keyword">if</span> failed icmp type echo count <span class="number">3</span> <span class="keyword">with</span> timeout <span class="number">3</span> seconds then alert</span><br><span class="line"># <span class="keyword">if</span> failed port <span class="number">3306</span> protocol mysql <span class="keyword">with</span> timeout <span class="number">15</span> seconds then alert</span><br><span class="line"># <span class="keyword">if</span> failed url http:<span class="comment">//user:password@www.foo.bar:8080/?querystring</span></span><br><span class="line"># and content == <span class="string">&#x27;action=&quot;j_security_check&quot;&#x27;</span> then alert</span><br><span class="line">###############################################################</span><br><span class="line">##配置包含文件,这样管理起来可能更方便些,不至于主配置文件代码太多</span><br><span class="line">###############################################################</span><br><span class="line">#Includes</span><br><span class="line">#It is possible to include additional configuration parts <span class="keyword">from</span> other</span><br><span class="line">#files or directories.</span><br><span class="line">#include /etc/monit.d<span class="comment">/*</span></span><br><span class="line"><span class="comment">###############################################################</span></span><br></pre></td></tr></table></figure>
+
+<p>7、检查配置</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="regexp">/usr/</span>local<span class="regexp">/bin/m</span>onit -t</span><br></pre></td></tr></table></figure>
+
+<p>8、开始监控</p>
+<p>用一下方式启动Monit:</p>
+<figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$ </span>telinit q</span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://shuxun,wang/2018/09/21/1606/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="王殊勋">
+      <meta itemprop="description" content="专注互联网运维技术发展">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="学无止境">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2018/09/21/1606/" class="post-title-link" itemprop="url">新装nginx的启动 关闭和重启的方法</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2018-09-21 20:14:00" itemprop="dateCreated datePublished" datetime="2018-09-21T20:14:00+08:00">2018-09-21</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-07-14 15:15:56" itemprop="dateModified" datetime="2021-07-14T15:15:56+08:00">2021-07-14</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%90%84%E7%B1%BB%E6%9C%8D%E5%8A%A1/" itemprop="url" rel="index"><span itemprop="name">各类服务</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>nginx启动命令:</p>
+<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">nginx</span></span><br></pre></td></tr></table></figure>
+
+<p>nginx重启动命令:</p>
+<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">nginx -s reload</span></span><br></pre></td></tr></table></figure>
+
+<p>nginx关闭的命令:</p>
+<figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nginx -s stop</span><br></pre></td></tr></table></figure>
+
+<p>如果提示 -bash:</p>
+<figure class="highlight avrasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="symbol">nginx:</span> command not found</span><br></pre></td></tr></table></figure>
+
+<p>就执行:</p>
+<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">whereis nginx</span></span><br></pre></td></tr></table></figure>
+
+<p>然后进入sbin目录 把里面的nginx文件放到/bin目录里面就可以执行上面的命令了.</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://shuxun,wang/2018/09/21/1649/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="王殊勋">
+      <meta itemprop="description" content="专注互联网运维技术发展">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="学无止境">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2018/09/21/1649/" class="post-title-link" itemprop="url">128M内存VPS性能优化</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2018-09-21 06:17:00" itemprop="dateCreated datePublished" datetime="2018-09-21T06:17:00+08:00">2018-09-21</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-07-14 15:16:06" itemprop="dateModified" datetime="2021-07-14T15:16:06+08:00">2021-07-14</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" itemprop="url" rel="index"><span itemprop="name">操作系统</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>VPS(全称Virtual Private Server)是利用最新虚拟化技术在一台物理服务器上创建多个相互隔离的虚拟私有主机.它们以最大化的效率共享硬件、软件许可证以及管理资源.对其用户和应用程序来讲,每一个VPS平台的运行和管理都与一台独立主机完全相同,因为每一个VPS均可独立进行重启并拥有自己的root访问权限、用户、IP地址、内存、过程、文件、应用程序、系统函数库以及配置文件.<br>VPS服务器最重要的指标就是内存大小,多个VPS服务器可以共享一颗CPU,但不能共享同一块内存.内存越大,价格越贵.<br>下面,以我的博客所在的VPS为例,介绍在128M内存下对 Nginx 0.7.x + PHP 5.2.6(FastCGI)+ MySQL 5.1 的优化.<br>优化后的效果:<br>提供HTTP服务的1个Nginx进程占用11M物理内存,5个php-cgi进程每个占用8M左右物理内存,1个MySQL服务器占用7M物理内存, 加上两个占用内存不大的Nginx和php-cgi父进程,Nginx + PHP + MySQL 系列总共只占用47.7%的物理内存,即62M物理内存(128M * 47.7% ≈ 62M).<br>另外,VPS服务器系统自身和其它程序也会使用一些内存,但128M内存的VPS已经够用.总体而言,经过优化后,128M内存的VPS跑 Nginx + PHP + MySQL 效果不错.当然,如果有Money购买更大内存的VPS,就更好了.<br>优化项如下:</p>
+<p>零、充分利用多核</p>
+<p>Nginx 在 Linux 上有一个 worker_cpu_affinity 参数,可以为每个工作进程绑定到不同的 CPU ,所以如果你的 VPS 具有多核的话,那么可以充分利用各 CPU .比如如果有 4 个 CPU,那么可以进行如下配置:</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">worker_processes</span> <span class="number">4</span>;</span><br><span class="line"><span class="attribute">worker_cpu_affinity</span> <span class="number">0001</span> <span class="number">0010</span> <span class="number">0100</span> <span class="number">1000</span>;</span><br></pre></td></tr></table></figure>
+
+<p>一、增加256M的swap交换文件</p>
+<p>1、创建并激活swap交换文件</p>
+<figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">cd <span class="regexp">/var/</span></span><br><span class="line">dd <span class="keyword">if</span>=<span class="regexp">/dev/</span>zero of=swapfile bs=<span class="number">1024</span> <span class="keyword">count</span>=<span class="number">262144</span></span><br><span class="line"><span class="regexp">/sbin/m</span>kswap swapfile</span><br><span class="line"><span class="regexp">/sbin/</span>swapon swapfile</span><br></pre></td></tr></table></figure>
+
+<p>2、加到fstab文件中让系统引导时自动启动</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">vi <span class="regexp">/etc/</span>fstab </span><br><span class="line"><span class="comment">#在末尾增加以下内容:</span></span><br><span class="line"></span><br><span class="line"><span class="regexp">/var/</span>swapfile swap swap defaults <span class="number">0</span> <span class="number">0</span></span><br></pre></td></tr></table></figure>
+
+<p>二、Nginx 0.7.19 的主配置文件(nginx.conf)优化</p>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">user</span>  www www;</span><br><span class="line"><span class="comment">#Nginx每个进程耗费10M~12M内存,这里只开启一个Nginx进程,节省内存.</span></span><br><span class="line"><span class="attribute">worker_processes</span> <span class="number">1</span>;</span><br><span class="line"><span class="attribute">error_log</span>  /data1/logs/nginx_error.log  <span class="literal">crit</span>;</span><br><span class="line"><span class="attribute">pid</span>        /usr/local/webserver/nginx/nginx.pid;</span><br><span class="line"><span class="comment">#Specifies the value for maximum file descriptors that can be opened by this process.</span></span><br><span class="line"><span class="attribute">worker_rlimit_nofile</span> <span class="number">51200</span>;</span><br><span class="line"><span class="section">events</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="attribute">use</span> <span class="literal">epoll</span>;</span><br><span class="line">    <span class="attribute">worker_connections</span> <span class="number">51200</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="section">http</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="attribute">include</span>       mime.types;</span><br><span class="line">    <span class="attribute">default_type</span>  application/octet-stream;</span><br><span class="line">    <span class="comment">#charset  gb2312;</span></span><br><span class="line">    <span class="attribute">server_names_hash_bucket_size</span> <span class="number">128</span>;</span><br><span class="line">    <span class="attribute">client_header_buffer_size</span> <span class="number">32k</span>;</span><br><span class="line">    <span class="attribute">large_client_header_buffers</span> <span class="number">4</span> <span class="number">32k</span>;</span><br><span class="line">    <span class="attribute">sendfile</span> <span class="literal">on</span>;</span><br><span class="line">    <span class="attribute">tcp_nopush</span>     <span class="literal">on</span>;</span><br><span class="line">    <span class="attribute">keepalive_timeout</span> <span class="number">60</span>;</span><br><span class="line">    <span class="attribute">tcp_nodelay</span> <span class="literal">on</span>;</span><br><span class="line">    <span class="attribute">fastcgi_connect_timeout</span> <span class="number">300</span>;</span><br><span class="line">    <span class="attribute">fastcgi_send_timeout</span> <span class="number">300</span>;</span><br><span class="line">    <span class="attribute">fastcgi_read_timeout</span> <span class="number">300</span>;</span><br><span class="line">    <span class="attribute">fastcgi_buffer_size</span> <span class="number">64k</span>;</span><br><span class="line">    <span class="attribute">fastcgi_buffers</span> <span class="number">4</span> <span class="number">64k</span>;</span><br><span class="line">    <span class="attribute">fastcgi_busy_buffers_size</span> <span class="number">128k</span>;</span><br><span class="line">    <span class="attribute">fastcgi_temp_file_write_size</span> <span class="number">128k</span>;</span><br><span class="line">    <span class="comment">#对网页文件、CSS、JS、XML等启动gzip压缩,减少数据传输量,提高访问速度.</span></span><br><span class="line">    <span class="attribute">gzip</span> <span class="literal">on</span>;</span><br><span class="line">    <span class="attribute">gzip_min_length</span>  <span class="number">1k</span>;</span><br><span class="line">    <span class="attribute">gzip_buffers</span>     <span class="number">4</span> <span class="number">16k</span>;</span><br><span class="line">    <span class="attribute">gzip_http_version</span> <span class="number">1</span>.<span class="number">0</span>;</span><br><span class="line">    <span class="attribute">gzip_comp_level</span> <span class="number">2</span>;</span><br><span class="line">    <span class="attribute">gzip_types</span>       text/plain application/x-javascript text/css application/xml;</span><br><span class="line">    <span class="attribute">gzip_vary</span> <span class="literal">on</span>;</span><br><span class="line">    <span class="comment">#limit_zone  crawler  $binary_remote_addr  10m;</span></span><br><span class="line">    <span class="section">server</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="attribute">listen</span>       <span class="number">80</span>;</span><br><span class="line">        <span class="attribute">server_name</span>  www.s135.com s135.com <span class="regexp">*.s</span>135.com;</span><br><span class="line">        <span class="attribute">index</span> index.html index.htm index.php;</span><br><span class="line">        <span class="attribute">root</span>  /data0/htdocs/blog;</span><br><span class="line">        <span class="comment">#limit_conn   crawler  20;</span></span><br><span class="line">        <span class="comment">#针对Bo-Blog系统的Rewrite静态化</span></span><br><span class="line">        <span class="attribute">rewrite</span><span class="regexp"> ^/post/([0-9]+).htm$</span> /read.php?<span class="variable">$1</span> <span class="literal">last</span>;</span><br><span class="line">        <span class="attribute">rewrite</span><span class="regexp"> ^/post/([0-9]+)_([0-9]+).htm$</span> /read.php?<span class="variable">$1</span>&amp;page=<span class="variable">$2</span> <span class="literal">last</span>;</span><br><span class="line">        <span class="attribute">rewrite</span><span class="regexp"> ^/post/([0-9]+)_([0-9]+)_([0-9]+).htm$</span> /read.php?<span class="variable">$1</span>&amp;page=<span class="variable">$2</span>?=<span class="variable">$3</span> <span class="literal">last</span>;</span><br><span class="line">        <span class="attribute">rewrite</span><span class="regexp"> ^/index_([0-9]+)_([0-9]+).htm$</span> /index.php?mode=<span class="variable">$1</span>&amp;page=<span class="variable">$2</span> <span class="literal">last</span>;</span><br><span class="line">        <span class="attribute">rewrite</span><span class="regexp"> ^/star_([0-9]+)_([0-9]+).htm$</span> /star.php?mode=<span class="variable">$1</span>&amp;page=<span class="variable">$2</span> <span class="literal">last</span>;</span><br><span class="line">        <span class="attribute">rewrite</span><span class="regexp"> ^/category_([0-9]+).htm$</span> /index.php?go=category_<span class="variable">$1</span> <span class="literal">last</span>;</span><br><span class="line">        <span class="attribute">rewrite</span><span class="regexp"> ^/category_([0-9]+)_([0-9]+)_([0-9]+).htm$</span> /index.php?go=category_<span class="variable">$1</span>&amp;mode=<span class="variable">$2</span>&amp;page=<span class="variable">$3</span> <span class="literal">last</span>;</span><br><span class="line">        <span class="attribute">rewrite</span><span class="regexp"> ^/archive_([0-9]+)_([0-9]+).htm$</span> /index.php?go=archive&amp;cm=<span class="variable">$1</span>&amp;cy=<span class="variable">$2</span> <span class="literal">last</span>;</span><br><span class="line">        <span class="attribute">rewrite</span><span class="regexp"> ^/archive_([0-9]+)_([0-9]+)_([0-9]+)_([0-9]+).htm$</span> /index.php?go=archive&amp;cm=<span class="variable">$1</span>&amp;cy=<span class="variable">$2</span>&amp;mode=<span class="variable">$3</span>&amp;page=<span class="variable">$4</span> <span class="literal">last</span>;</span><br><span class="line">        <span class="attribute">rewrite</span><span class="regexp"> ^/showday_([0-9]+)_([0-9]+)_([0-9]+).htm$</span> /index.php?go=showday_<span class="variable">$1</span>-<span class="variable">$2</span>-<span class="variable">$3</span> <span class="literal">last</span>;</span><br><span class="line">        <span class="attribute">rewrite</span><span class="regexp"> ^/showday_([0-9]+)_([0-9]+)_([0-9]+)_([0-9]+)_([0-9]+).htm$</span> /index.php?go=showday_<span class="variable">$1</span>-<span class="variable">$2</span>-<span class="variable">$3</span>&amp;mode=<span class="variable">$4</span>&amp;page=<span class="variable">$5</span> <span class="literal">last</span>;</span><br><span class="line">        <span class="attribute">location</span> <span class="regexp">~ .*.(php|php5)?$</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="comment">#将Nginx与FastCGI的通信方式由TCP改为Unix Socket.TCP在高并发访问下比Unix Socket稳定,但Unix Socket速度要比TCP快.</span></span><br><span class="line">            <span class="attribute">fastcgi_pass</span>  unix:/tmp/php-cgi.sock;</span><br><span class="line">            <span class="comment">#fastcgi_pass  127.0.0.1:9000;</span></span><br><span class="line">            <span class="attribute">fastcgi_index</span> index.php;</span><br><span class="line">            <span class="attribute">include</span> fcgi.conf;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="attribute">location</span> <span class="regexp">~ /read.php</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="comment">#将Nginx与FastCGI的通信方式由TCP改为Unix Socket.TCP在高并发访问下比Unix Socket稳定,但Unix Socket速度要比TCP快.</span></span><br><span class="line">            <span class="attribute">fastcgi_pass</span>  unix:/tmp/php-cgi.sock;</span><br><span class="line">            <span class="comment">#fastcgi_pass  127.0.0.1:9000;</span></span><br><span class="line">            <span class="attribute">fastcgi_index</span> index.php;</span><br><span class="line">            <span class="attribute">include</span> fcgi.conf;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">#博客的图片较多,更改较少,将它们在浏览器本地缓存15天,可以提高下次打开我博客的页面加载速度.</span></span><br><span class="line">        <span class="attribute">location</span> <span class="regexp">~ .*.(gif|jpg|jpeg|png|bmp|swf)$</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="attribute">expires</span>      <span class="number">15d</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">#博客会加载很多JavaScript、CSS,将它们在浏览器本地缓存1天,访问者在看完一篇文章或一页后,再看另一篇文件或另一页的内容,无需从服务器再次下载相同的JavaScript、CSS,提高了页面显示速度.</span></span><br><span class="line">        <span class="attribute">location</span> <span class="regexp">~ .*.(js|css)?$</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="attribute">expires</span>      <span class="number">1d</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="attribute">log_format</span>  access  <span class="string">&#x27;$remote_addr - $remote_user [$time_local] &quot;$request&quot; &#x27;</span></span><br><span class="line">        <span class="string">&#x27;$status $body_bytes_sent &quot;$http_referer&quot; &#x27;</span></span><br><span class="line">        <span class="string">&#x27;&quot;$http_user_agent&quot; $http_x_forwarded_for&#x27;</span>;</span><br><span class="line">        <span class="attribute">access_log</span>  /data1/logs/access.log  access;</span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>三、PHP 5.2.6(FastCGI)的配置优化</p>
+<p>1、php.ini 配置文件中关于eAcelerator的优化.只使用1M共享内存,删除所有在最后3600秒内无法存取的脚本缓存,用磁盘辅助进行缓存.</p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">[eaccelerator]</span></span><br><span class="line"><span class="attr">zend_extension</span>=<span class="string">&quot;/usr/local/webserver/php/lib/php/extensions/no-debug-non-zts-20060613/eaccelerator.so&quot;</span></span><br><span class="line"><span class="attr">eaccelerator.shm_size</span>=<span class="string">&quot;1&quot;</span></span><br><span class="line"><span class="attr">eaccelerator.cache_dir</span>=<span class="string">&quot;/usr/local/webserver/eaccelerator_cache&quot;</span></span><br><span class="line"><span class="attr">eaccelerator.enable</span>=<span class="string">&quot;1&quot;</span></span><br><span class="line"><span class="attr">eaccelerator.optimizer</span>=<span class="string">&quot;1&quot;</span></span><br><span class="line"><span class="attr">eaccelerator.check_mtime</span>=<span class="string">&quot;1&quot;</span></span><br><span class="line"><span class="attr">eaccelerator.debug</span>=<span class="string">&quot;0&quot;</span></span><br><span class="line"><span class="attr">eaccelerator.filter</span>=<span class="string">&quot;&quot;</span></span><br><span class="line"><span class="attr">eaccelerator.shm_max</span>=<span class="string">&quot;0&quot;</span></span><br><span class="line"><span class="attr">eaccelerator.shm_ttl</span>=<span class="string">&quot;3600&quot;</span></span><br><span class="line"><span class="attr">eaccelerator.shm_prune_period</span>=<span class="string">&quot;3600&quot;</span></span><br><span class="line"><span class="attr">eaccelerator.shm_only</span>=<span class="string">&quot;0&quot;</span></span><br><span class="line"><span class="attr">eaccelerator.compress</span>=<span class="string">&quot;1&quot;</span></span><br><span class="line"><span class="attr">eaccelerator.compress_level</span>=<span class="string">&quot;9&quot;</span></span><br><span class="line"><span class="attr">eaccelerator.keys</span> = <span class="string">&quot;disk_only&quot;</span></span><br><span class="line"><span class="attr">eaccelerator.sessions</span> = <span class="string">&quot;disk_only&quot;</span></span><br><span class="line"><span class="attr">eaccelerator.content</span> = <span class="string">&quot;disk_only&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>2、php-fpm.conf 的配置优化</p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#修改两项,一是修改以下一行,将启动的php-cgi进程数由原来的128个改为5个:</span></span><br><span class="line">&gt;value <span class="attribute">name</span>=<span class="string">&quot;max_children&quot;</span>&gt;5&gt;/value&gt;</span><br><span class="line"><span class="comment">#二是修改以下一行,将TCP模式改为Unix Socket模式:</span></span><br><span class="line">&gt;value <span class="attribute">name</span>=<span class="string">&quot;listen_address&quot;</span>&gt;/tmp/php-cgi.sock&gt;/value&gt;</span><br></pre></td></tr></table></figure>
+
+<p>四、MySQL 5.1.26 配置优化</p>
+<p>1、使用以下参数编译安装的 MySQL 5.1 默认支持4种存储引擎:CSV、MRG_MYISAM、MEMORY、MyISAM,不支持InnoDB存储引擎.由于内存有限,而InnoDB耗费的内存较大,这里推荐使用MyISAM存储引擎.</p>
+<figure class="highlight jboss-cli"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">./configure</span> <span class="params">--prefix=/usr/local/webserver/mysql/</span> <span class="params">--enable-assembler</span> <span class="params">--with-extra-charsets=complex</span> <span class="params">--enable-thread-safe-client</span> <span class="params">--with-big-tables</span> <span class="params">--with-readline</span> <span class="params">--with-ssl</span> <span class="params">--with-embedded-server</span> <span class="params">--enable-local-infile</span></span><br><span class="line">make &amp;&amp; make install</span><br></pre></td></tr></table></figure>
+
+<p>2、MySQL 5.1 配置文件(my.cnf)优化</p>
+<figure class="highlight nix"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line">vi /etc/my.cnf</span><br><span class="line"><span class="comment">#在后面增加如下内容:</span></span><br><span class="line"></span><br><span class="line">skip-innodb</span><br><span class="line">[mysql]</span><br><span class="line">no-auto-rehash</span><br><span class="line">[mysqld]</span><br><span class="line"><span class="attr">user</span> = mysql</span><br><span class="line"><span class="attr">port</span> = <span class="number">3306</span></span><br><span class="line"><span class="attr">open_files_limit</span> = <span class="number">600</span></span><br><span class="line"><span class="attr">back_log</span> = <span class="number">20</span></span><br><span class="line"><span class="attr">max_connections</span> = <span class="number">100</span></span><br><span class="line"><span class="attr">max_connect_errors</span> = <span class="number">200</span></span><br><span class="line"><span class="attr">table_cache</span> = <span class="number">60</span></span><br><span class="line"><span class="attr">external-locking</span> = FALSE</span><br><span class="line"><span class="attr">max_allowed_packet</span> = <span class="number">16</span>M</span><br><span class="line"><span class="attr">sort_buffer_size</span> = <span class="number">128</span>K</span><br><span class="line"><span class="attr">join_buffer_size</span> = <span class="number">128</span>K</span><br><span class="line"><span class="attr">thread_cache_size</span> = <span class="number">10</span></span><br><span class="line"><span class="attr">thread_concurrency</span> = <span class="number">8</span></span><br><span class="line"><span class="attr">query_cache_size</span> = <span class="number">0</span>M</span><br><span class="line"><span class="attr">query_cache_limit</span> = <span class="number">2</span>M</span><br><span class="line"><span class="attr">query_cache_min_res_unit</span> = <span class="number">2</span>k</span><br><span class="line"><span class="attr">default_table_type</span> = MyISAM</span><br><span class="line"><span class="attr">thread_stack</span> = <span class="number">192</span>K</span><br><span class="line"><span class="attr">transaction_isolation</span> = READ-UNCOMMITTED</span><br><span class="line"><span class="attr">tmp_table_size</span> = <span class="number">512</span>K</span><br><span class="line"><span class="attr">max_heap_table_size</span> = <span class="number">32</span>M</span><br><span class="line"><span class="attr">long_query_time</span> = <span class="number">1</span></span><br><span class="line">log_long_format</span><br><span class="line"><span class="attr">server-id</span> = <span class="number">1</span></span><br><span class="line"><span class="attr">binlog_cache_size</span> = <span class="number">2</span>M</span><br><span class="line"><span class="attr">max_binlog_cache_size</span> = <span class="number">4</span>M</span><br><span class="line"><span class="attr">max_binlog_size</span> = <span class="number">512</span>M</span><br><span class="line"><span class="attr">expire_logs_days</span> = <span class="number">7</span></span><br><span class="line"><span class="attr">key_buffer_size</span> = <span class="number">4</span>M</span><br><span class="line"><span class="attr">read_buffer_size</span> = <span class="number">1</span>M</span><br><span class="line"><span class="attr">read_rnd_buffer_size</span> = <span class="number">2</span>M</span><br><span class="line"><span class="attr">bulk_insert_buffer_size</span> = <span class="number">2</span>M</span><br><span class="line"><span class="attr">myisam_sort_buffer_size</span> = <span class="number">4</span>M</span><br><span class="line"><span class="attr">myisam_max_sort_file_size</span> = <span class="number">10</span>G</span><br><span class="line"><span class="attr">myisam_max_extra_sort_file_size</span> = <span class="number">10</span>G</span><br><span class="line"><span class="attr">myisam_repair_threads</span> = <span class="number">1</span></span><br><span class="line">myisam_recover</span><br><span class="line">[mysqldump]</span><br><span class="line">quick</span><br><span class="line"><span class="attr">max_allowed_packet</span> = <span class="number">16</span>M</span><br></pre></td></tr></table></figure>
+
+<p>3.重启MySQL</p>
+<figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">service mysqld <span class="keyword">restart</span></span><br><span class="line">#让mysql更安全:</span><br><span class="line"></span><br><span class="line">mysql -u root -p [此时会要求你输入刚刚设置的密码,输入后回车即可]</span><br><span class="line">mysql&gt; <span class="keyword">DROP</span> <span class="keyword">DATABASE</span> test; [删除test数据库]</span><br><span class="line">mysql&gt; <span class="keyword">DELETE</span> <span class="keyword">FROM</span> mysql.<span class="keyword">user</span> <span class="keyword">WHERE</span> <span class="keyword">user</span> = <span class="string">&#x27;&#x27;</span>; [删除匿名帐户]</span><br><span class="line">mysql&gt;<span class="keyword">DELETE</span> <span class="keyword">FROM</span> mysql.<span class="keyword">user</span> <span class="keyword">WHERE</span> <span class="keyword">password</span> = <span class="string">&#x27;&#x27;</span>;[删除无密码帐户]</span><br><span class="line">mysql&gt; FLUSH <span class="keyword">PRIVILEGES</span>; [重载权限]</span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://shuxun,wang/2018/09/19/1081/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="王殊勋">
+      <meta itemprop="description" content="专注互联网运维技术发展">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="学无止境">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2018/09/19/1081/" class="post-title-link" itemprop="url">CentOS 最新版使用Jailkit建立apache 的chroot环境</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2018-09-19 06:35:00" itemprop="dateCreated datePublished" datetime="2018-09-19T06:35:00+08:00">2018-09-19</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-07-14 15:15:56" itemprop="dateModified" datetime="2021-07-14T15:15:56+08:00">2021-07-14</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%90%84%E7%B1%BB%E6%9C%8D%E5%8A%A1/" itemprop="url" rel="index"><span itemprop="name">各类服务</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>环境:</p>
+<p>主服务器:centos 5.2 mysql 5.1.35 源码 IP:192.168.1.22<br>从服务器:centos 5.2 mysql 5.1.35 源码 IP:192.168.1.33</p>
+<p>配置:</p>
+<p>一、主服务器</p>
+<p>1.1、创建一个复制用户,具有replication slave权限</p>
+<figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt;<span class="keyword">grant</span> <span class="keyword">replication</span> slave <span class="keyword">on</span> *.* <span class="keyword">to</span> <span class="string">&#x27;repl&#x27;</span>@<span class="string">&#x27;192.168.1.22&#x27;</span> identified <span class="keyword">by</span> <span class="string">&#x27;repl&#x27;</span>;</span><br></pre></td></tr></table></figure>
+
+<p>1.2、编辑my.cnf文件</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vi <span class="regexp">/etc/my</span>.cnf</span><br></pre></td></tr></table></figure>
+
+<p>添加:</p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">server-id</span>=<span class="number">1</span></span><br></pre></td></tr></table></figure>
+
+<p>并开启log-bin二进制日志文件:</p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">log-bin</span>=mysql-bin</span><br></pre></td></tr></table></figure>
+
+<p>注:需要把默认的server-id=1去掉.</p>
+<p>1.3、启动mysql数据库</p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysqld_safe <span class="attribute">--user</span>=mysql &amp;</span><br></pre></td></tr></table></figure>
+
+<p>1.4、设置读锁</p>
+<figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt;flush <span class="keyword">tables</span> <span class="keyword">with</span> <span class="keyword">read</span> <span class="keyword">lock</span>;</span><br></pre></td></tr></table></figure>
+
+<p>1.5、得到binlog日志文件名和偏移量</p>
+<figure class="highlight asciidoc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt;show master status;</span><br><span class="line"></span><br><span class="line"><span class="code">+------------------+</span>----------<span class="code">+--------------+</span>------------------+</span><br><span class="line"><span class="section">| File | Position | Binlog_Do_DB | Binlog_Ignore_DB |</span></span><br><span class="line"><span class="section">+------------------+----------+--------------+------------------+</span></span><br><span class="line"><span class="section">| mysql-bin.0000010 | 106| | |</span></span><br><span class="line"><span class="section">+------------------+----------+--------------+------------------+</span></span><br></pre></td></tr></table></figure>
+
+<p>1.6、备份要同步的数据库</p>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysqldump <span class="keyword">test</span> &gt; <span class="keyword">test</span>.sql</span><br></pre></td></tr></table></figure>
+
+<p>1.7、解锁</p>
+<figure class="highlight abnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt;unlock tables<span class="comment">;</span></span><br></pre></td></tr></table></figure>
+
+<p>二、从服务器</p>
+<p>2.1、编辑my.cnf文件</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vi <span class="regexp">/etc/my</span>.cnf</span><br></pre></td></tr></table></figure>
+
+<p>添加:</p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">server-id</span>=<span class="number">2</span></span><br></pre></td></tr></table></figure>
+
+<p>注:需要把默认的server-id=1去掉.</p>
+<p>2.2、启动从数据库</p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysqld_safe <span class="attribute">--user</span>=mysql &amp;</span><br></pre></td></tr></table></figure>
+
+<p>2.3、对从数据库进行相应设置</p>
+<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">change master to master_host</span>=<span class="string">&#x27;173.252.192.205&#x27;</span>,master_user=<span class="string">&#x27;root&#x27;</span>,master_password=<span class="string">&#x27;Fuck_24_25&#x27;</span>,master_log_file=<span class="string">&#x27;mysql-bin.000029&#x27;</span>,master_log_pos=257;</span><br></pre></td></tr></table></figure>
+
+<p>2.4、启动从服务器slave线程</p>
+<figure class="highlight crmsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt;<span class="literal">start</span> <span class="literal">slave</span>;</span><br></pre></td></tr></table></figure>
+
+<p>执行show processlist命令显示以下进程:</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt;show processlistG</span><br><span class="line"></span><br><span class="line"><span class="strong">****</span><span class="strong">****</span><span class="strong">****</span><span class="strong">****</span><span class="strong">****</span><span class="strong">****</span><span class="strong">**<span class="emphasis">* 2. row <span class="strong">****</span><span class="strong">****</span><span class="strong">****</span><span class="strong">****</span><span class="strong">****</span><span class="strong">****</span><span class="strong">**<span class="emphasis">*</span></span></span></span></span><br><span class="line"><span class="emphasis"><span class="strong"><span class="emphasis"><span class="strong">Id: 2</span></span></span></span></span><br><span class="line"><span class="emphasis"><span class="strong"><span class="emphasis"><span class="strong">User: system user</span></span></span></span></span><br><span class="line"><span class="emphasis"><span class="strong"><span class="emphasis"><span class="strong">Host:</span></span></span></span></span><br><span class="line"><span class="emphasis"><span class="strong"><span class="emphasis"><span class="strong">db: NULL</span></span></span></span></span><br><span class="line"><span class="emphasis"><span class="strong"><span class="emphasis"><span class="strong">Command: Connect</span></span></span></span></span><br><span class="line"><span class="emphasis"><span class="strong"><span class="emphasis"><span class="strong">Time: 2579</span></span></span></span></span><br><span class="line"><span class="emphasis"><span class="strong"><span class="emphasis"><span class="strong">State: Has read all relay log; waiting for the slave I/O thread to update it</span></span></span></span></span><br><span class="line"><span class="emphasis"><span class="strong"><span class="emphasis"><span class="strong">Info: NULL</span></span></span></span></span><br></pre></td></tr></table></figure>
+
+<p>表示slave已经连接上master,开始接受并执行日志.</p>
+<p>2.5、查看slave线程状态</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">mysql&gt;show</span> <span class="string">slave</span> <span class="string">status;</span></span><br><span class="line"></span><br><span class="line"><span class="string">***************************</span> <span class="number">1</span><span class="string">.</span> <span class="string">row</span> <span class="string">***************************</span></span><br><span class="line"><span class="attr">Slave_IO_State:</span> <span class="string">Waiting</span> <span class="string">for</span> <span class="string">master</span> <span class="string">to</span> <span class="string">send</span> <span class="string">event</span></span><br><span class="line"><span class="attr">Master_Host:</span> <span class="number">192.168</span><span class="number">.1</span><span class="number">.22</span></span><br><span class="line"><span class="attr">Master_User:</span> <span class="string">repl</span></span><br><span class="line"><span class="attr">Master_Port:</span> <span class="number">3306</span></span><br><span class="line"><span class="attr">Connect_Retry:</span> <span class="number">60</span></span><br><span class="line"><span class="attr">Master_Log_File:</span> <span class="string">mysql-bin.0000010</span></span><br><span class="line"><span class="attr">Read_Master_Log_Pos:</span> <span class="number">106</span></span><br><span class="line"><span class="attr">Relay_Log_File:</span> <span class="string">centos-relay-bin.000002</span></span><br><span class="line"><span class="attr">Relay_Log_Pos:</span> <span class="number">529</span></span><br><span class="line"><span class="attr">Relay_Master_Log_File:</span> <span class="string">mysql-bin.0000010</span></span><br><span class="line"><span class="attr">Slave_IO_Running:</span> <span class="literal">Yes</span></span><br><span class="line"><span class="attr">Slave_SQL_Running:</span> <span class="literal">Yes</span></span><br><span class="line"><span class="attr">Replicate_Do_DB:</span></span><br><span class="line"><span class="attr">Replicate_Ignore_DB:</span></span><br><span class="line"><span class="attr">Replicate_Do_Table:</span></span><br><span class="line"><span class="attr">Replicate_Ignore_Table:</span></span><br><span class="line"><span class="attr">Replicate_Wild_Do_Table:</span></span><br><span class="line"><span class="attr">Replicate_Wild_Ignore_Table:</span></span><br><span class="line"><span class="attr">Last_Errno:</span> <span class="number">0</span></span><br><span class="line"><span class="attr">Last_Error:</span></span><br><span class="line"><span class="attr">Skip_Counter:</span> <span class="number">0</span></span><br><span class="line"><span class="attr">Exec_Master_Log_Pos:</span> <span class="number">106</span></span><br><span class="line"><span class="attr">Relay_Log_Space:</span> <span class="number">830</span></span><br><span class="line"><span class="attr">Until_Condition:</span> <span class="string">None</span></span><br><span class="line"><span class="attr">Until_Log_File:</span></span><br><span class="line"><span class="attr">Until_Log_Pos:</span> <span class="number">0</span></span><br><span class="line"><span class="attr">Master_SSL_Allowed:</span> <span class="literal">No</span></span><br><span class="line"><span class="attr">Master_SSL_CA_File:</span></span><br><span class="line"><span class="attr">Master_SSL_CA_Path:</span></span><br><span class="line"><span class="attr">Master_SSL_Cert:</span></span><br><span class="line"><span class="attr">Master_SSL_Cipher:</span></span><br><span class="line"><span class="attr">Master_SSL_Key:</span></span><br><span class="line"><span class="attr">Seconds_Behind_Master:</span> <span class="number">0</span></span><br><span class="line"><span class="attr">Master_SSL_Verify_Server_Cert:</span> <span class="literal">No</span></span><br><span class="line"><span class="attr">Last_IO_Errno:</span> <span class="number">0</span></span><br><span class="line"><span class="attr">Last_IO_Error:</span></span><br><span class="line"><span class="attr">Last_SQL_Errno:</span> <span class="number">0</span></span><br><span class="line"><span class="attr">Last_SQL_Error:</span></span><br><span class="line"><span class="number">1</span> <span class="string">row</span> <span class="string">in</span> <span class="string">set</span> <span class="string">(0.00</span> <span class="string">sec)</span></span><br></pre></td></tr></table></figure>
+
+<p>验证是否配置正确.<br>在从服务器上执行:</p>
+<figure class="highlight crmsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">show <span class="literal">slave</span> statusG;</span><br><span class="line"></span><br><span class="line">Waiting for <span class="keyword">master</span> <span class="title">to</span> send event</span><br><span class="line">Slave_IO_Running: Yes</span><br><span class="line">Slave_SQL_Running: Yes</span><br></pre></td></tr></table></figure>
+
+<p>如以上二行同时为Yes 说明配置成功.</p>
+<p>测试:</p>
+<p>1、在主服务器test数据库中创建user表</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mysql<span class="operator">&gt;</span>use test;</span><br><span class="line">mysql<span class="operator">&gt;</span><span class="keyword">create</span> <span class="keyword">table</span> <span class="keyword">user</span>(id <span class="type">int</span>);</span><br></pre></td></tr></table></figure>
+
+<p>2、在从服务器中查看user表</p>
+<figure class="highlight asciidoc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt;use test;</span><br><span class="line">mysql&gt; show tables like <span class="emphasis">&#x27;user&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="code">+----------------------+</span></span><br><span class="line"><span class="section">| Tables_in_test(user) |</span></span><br><span class="line"><span class="section">+----------------------+</span></span><br><span class="line"><span class="section">| user |</span></span><br><span class="line"><span class="section">+----------------------+</span></span><br><span class="line">1 row in set (0.00 sec)</span><br></pre></td></tr></table></figure>
+
+<p>说明主从数据同步成功.</p>
+<p>如果需要多个从数据库的话,可以一直重复从数据库 的操作,但是my.cnf里面的server-id必须不能相同,使用不同的数字就可以了.</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+
+  
+  <nav class="pagination">
+    <a class="extend prev" rel="prev" href="/page/22/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/22/">22</a><span class="page-number current">23</span><a class="page-number" href="/page/24/">24</a><span class="space">&hellip;</span><a class="page-number" href="/page/132/">132</a><a class="extend next" rel="next" href="/page/24/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+  </nav>
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="王殊勋"
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name">王殊勋</p>
+  <div class="site-description" itemprop="description">better late than never.<br>只要开始，虽晚不迟。</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">656</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">2058</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <!--添加网站运行时间 -->
+  <span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
+  <script>
+      var now = new Date(); 
+      function createtime() { 
+          var grt= new Date("12/01/2007 12:00:00");//此处修改你的建站时间或者网站上线时间 
+          now.setTime(now.getTime()+250); 
+          days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days); 
+          hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours); 
+          if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum); 
+          mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;} 
+          seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum); 
+          snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;} 
+          document.getElementById("timeDate").innerHTML = "本站已安全运行 "+dnum+" 天 "; 
+          document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒"; 
+      } 
+  setInterval("createtime()",250);
+  </script>
+  <span itemprop="copyrightYear">(2007 - 2021)</span>
+  <!-- 添加网站运行时间 -->
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">学无止境</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script size="300" alpha="0.6" zIndex="0" src="/lib/canvas-ribbon/canvas-ribbon.js"></script>
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

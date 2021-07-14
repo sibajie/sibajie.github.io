@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"shuxun","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"./public/search.xml"};
+  </script>
+
+  <meta name="description" content="hadoop是一个分布式系统基础架构,由Apache基金会开发.用户可以在不了解分布式底层细节的情况下,开发分布式程序.充分利用集群的威力高速运算和存储.Hadoop实现了一个分布式文件系统(Hadoop Distributed File System),简称HDFS.HDFS有着高容错性的特点,并且设计用来部署在低廉的(low-cost)硬件上.而且它提供高传输率(high throughput">
+<meta property="og:type" content="article">
+<meta property="og:title" content="通过Hadoop实现集群分布式计算">
+<meta property="og:url" content="http://shuxun,wang/2017/08/17/1590/index.html">
+<meta property="og:site_name" content="学无止境">
+<meta property="og:description" content="hadoop是一个分布式系统基础架构,由Apache基金会开发.用户可以在不了解分布式底层细节的情况下,开发分布式程序.充分利用集群的威力高速运算和存储.Hadoop实现了一个分布式文件系统(Hadoop Distributed File System),简称HDFS.HDFS有着高容错性的特点,并且设计用来部署在低廉的(low-cost)硬件上.而且它提供高传输率(high throughput">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2017-08-16T18:31:00.000Z">
+<meta property="article:modified_time" content="2021-07-14T07:14:48.383Z">
+<meta property="article:author" content="王殊勋">
+<meta property="article:tag" content="home">
+<meta property="article:tag" content="文件">
+<meta property="article:tag" content="root">
+<meta property="article:tag" content="conf">
+<meta property="article:tag" content="内容">
+<meta property="article:tag" content="Master">
+<meta property="article:tag" content="tmp">
+<meta property="article:tag" content="hadoop">
+<meta property="article:tag" content="slave1">
+<meta property="article:tag" content="修改&#96;">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://shuxun,wang/2017/08/17/1590/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>通过Hadoop实现集群分布式计算 | 学无止境</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">学无止境</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">注互联网运维技术发展</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-sitemap">
+
+    <a href="/sitemap.xml" rel="section"><i class="fa fa-sitemap fa-fw"></i>站点地图</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://shuxun,wang/2017/08/17/1590/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="王殊勋">
+      <meta itemprop="description" content="专注互联网运维技术发展">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="学无止境">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          通过Hadoop实现集群分布式计算
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2017-08-17 02:31:00" itemprop="dateCreated datePublished" datetime="2017-08-17T02:31:00+08:00">2017-08-17</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-07-14 15:14:48" itemprop="dateModified" datetime="2021-07-14T15:14:48+08:00">2021-07-14</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%90%84%E7%B1%BB%E6%9C%8D%E5%8A%A1/" itemprop="url" rel="index"><span itemprop="name">各类服务</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>hadoop是一个分布式系统基础架构,由Apache基金会开发.用户可以在不了解分布式底层细节的情况下,开发分布式程序.充分利用集群的威力高速运算和存储.<br>Hadoop实现了一个分布式文件系统(Hadoop Distributed File System),简称HDFS.<br>HDFS有着高容错性的特点,并且设计用来部署在低廉的(low-cost)硬件上.<br>而且它提供高传输率(high throughput)来访问应用程序的数据,<br>适合那些有着超大数据集(large data set)的应用程序.<br>HDFS放宽了(relax)POSIX的要求(requirements)这样可以流的形式访问(streaming access)文件系统中的数据.<br>好现在我们就在centos操作系统里面来实际操作一下:<br>以下集群配置内容,以两台机器为例.其中一台是 master ,另一台是 slave1 .</p>
+<p>master 上运行:</p>
+<figure class="highlight crmsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">name <span class="keyword">node</span><span class="title">, data</span> <span class="keyword">node</span><span class="title">, task</span> tracker, job tracker , secondary name <span class="keyword">node</span><span class="title"></span></span><br></pre></td></tr></table></figure>
+
+<p>slave1 上运行:</p>
+<figure class="highlight crmsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">data <span class="keyword">node</span><span class="title">, task</span> tracker</span><br></pre></td></tr></table></figure>
+
+<p>前面加 表示对两台机器采取相同的操作.</p>
+<p>1.安装 JDK</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">yum</span> install java-<span class="number">1</span>.<span class="number">6</span>.<span class="number">0</span>-openjdk-devel</span><br></pre></td></tr></table></figure>
+
+<p>2.设置环境变量</p>
+<p>编辑 <code>/etc/profile</code> 文件,设置 JAVA_HOME 环境变量以及类路径:</p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="builtin-name">export</span> <span class="attribute">JAVA_HOME</span>=<span class="string">&quot;/usr/lib/jvm/java-1.6.0-openjdk-1.6.0.0.x86_64&quot;</span></span><br><span class="line"><span class="builtin-name">export</span> <span class="attribute">PATH</span>=<span class="variable">$PATH</span>:$JAVA_HOME/bin</span><br><span class="line"><span class="builtin-name">export</span> <span class="attribute">CLASSPATH</span>=.:$JAVA_HOME/lib/tools.jar:$JAVA_HOME/lib/dt.jar</span><br></pre></td></tr></table></figure>
+
+<p>3.添加 hosts 的映射</p>
+<p>编辑 <code>/etc/hosts</code> 文件,注意 host name 不要有下划线,见下步骤 9.</p>
+<figure class="highlight accesslog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">192.168.225.16</span> master</span><br><span class="line"><span class="number">192.168.225.66</span> slave1</span><br></pre></td></tr></table></figure>
+
+<p>4.配置 SSH</p>
+<figure class="highlight jboss-cli"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">cd</span> <span class="string">/root</span> &amp; mkdir <span class="string">.ssh</span></span><br><span class="line">chmod 700 <span class="string">.ssh</span> &amp; <span class="keyword">cd</span> <span class="string">.ssh</span></span><br></pre></td></tr></table></figure>
+
+<p>创建密码为空的 RSA 密钥对:</p>
+<figure class="highlight excel"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -<span class="built_in">t</span> rsa -P <span class="string">&quot;&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>在提示的对称密钥名称中输入 id_rsa ,将公钥添加至 authorized_keys 中:</p>
+<figure class="highlight perl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cat id_rsa.pub &gt;&gt; authorized_keys</span><br><span class="line"><span class="keyword">chmod</span> <span class="number">644</span> authorized_keys <span class="comment"># 重要</span></span><br></pre></td></tr></table></figure>
+
+<p>编辑 sshd 配置文件 <code>/etc/ssh/sshd_config</code> ,把:</p>
+<figure class="highlight vala"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#AuthorizedKeysFile .ssh/authorized_keys</span></span><br></pre></td></tr></table></figure>
+
+<p>前面的注释取消掉.<br>重启 sshd 服务:</p>
+<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">service sshd restart</span></span><br></pre></td></tr></table></figure>
+
+<p>测试 SSH 连接.连接时会提示是否连接,按回车后会将此公钥加入至 knows_hosts 中:</p>
+<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">ssh localhost</span></span><br></pre></td></tr></table></figure>
+
+<p>5.配置 master 和 slave1 的 ssh 互通</p>
+<p>在 slave1 中重复步骤 4 ,然后把 slave1 中的 .ssh/authorized_keys 复制至 master 的 .ssh/authorized_keys 中.注意复制过去之后,要看最后的类似 root@localhost 的字符串,修改成 root@slave1 .同样将 master 的 key 也复制至 slave1 ,并将最后的串修改成 root@master .</p>
+<p>或者使用如下命令:</p>
+<figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-<span class="keyword">copy</span>-id -i ~<span class="regexp">/.ssh/i</span>d_rsa.pub root@slave1</span><br></pre></td></tr></table></figure>
+
+<p>测试 SSH 连接:<br>在 master 上运行:</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">ssh</span> slave<span class="number">1</span></span><br></pre></td></tr></table></figure>
+
+<p>在 slave1 上运行:</p>
+<figure class="highlight crmsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh <span class="literal">master</span></span><br></pre></td></tr></table></figure>
+
+<p>6.安装 Hadoop</p>
+<p>下载 hadoop 安装包:</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget http:<span class="regexp">//mi</span>rror.bjtu.edu.cn<span class="regexp">/apache/</span>hadoop<span class="regexp">/common/</span>hadoop-<span class="number">0.20</span>.<span class="number">203.0</span>/hadoop-<span class="number">0.20</span>.<span class="number">203.0</span>rc1.tar.gz</span><br></pre></td></tr></table></figure>
+
+<p>复制安装包至 slave1 :</p>
+<figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scp hadoop-0.<span class="number">20.203</span>.0rc1.tar.gz root<span class="variable">@slave1</span><span class="symbol">:/root/</span></span><br></pre></td></tr></table></figure>
+
+<p>解压:</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">tar xzvf hadoop-<span class="number">0.20</span>.<span class="number">203.0</span>rc1.tar.gz</span><br><span class="line">mkdir <span class="regexp">/usr/</span>local/hadoop</span><br><span class="line">mv hadoop-<span class="number">0.20</span>.<span class="number">203.0</span><span class="regexp">/ /u</span>sr<span class="regexp">/local/</span>hadoop</span><br></pre></td></tr></table></figure>
+
+<p>修改 .bashrc 文件(位于用户目录下,即 <code>~/.bashrc</code> ,对于 root ,即为 <code>/root/.bashrc</code> )<br>添加环境变量:</p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="builtin-name">export</span> <span class="attribute">HADOOP_HOME</span>=/usr/local/hadoop</span><br><span class="line"><span class="builtin-name">export</span> <span class="attribute">PATH</span>=<span class="variable">$PATH</span>:$HADOOP_HOME/bin</span><br></pre></td></tr></table></figure>
+
+<p>7.配置 Hadoop 环境变量</p>
+<p>以下所有 hadoop 目录下的文件,均以相对路径 hadoop 开始.<br>修改 <code>hadoop/conf/hadoop-env.sh</code>文件,将里面的 JAVA_HOME 改成步骤 2 中设置的值.</p>
+<p>8.创建 Hadoop 本地临时文件夹</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mkdir <span class="regexp">/root/</span>hadoop_tmp </span><br></pre></td></tr></table></figure>
+
+<p>(注意这一步,千万不要放在 /tmp 目录下面!!因为 /tmp 默认分配的空间是很小的,往 hdfs 里放几个大文件就会导致空间满了,就会报错)<br>修改权限:</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chown -R hadoop:hadoop <span class="regexp">/root/</span>hadoop_tmp</span><br></pre></td></tr></table></figure>
+
+<p>更松地,也可以这样:</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chmod –R <span class="number">777</span> <span class="regexp">/root/</span>hadoop_tmp</span><br></pre></td></tr></table></figure>
+
+<p>9.配置 Hadoop</p>
+<p>修改 master 的 <code>hadoop/conf/core-site.xml</code> ,在 节中添加如下内容:<br>注意: fs.default.name 的值不能带下划线.</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">hadoop<span class="selector-class">.tmp</span><span class="selector-class">.dir</span></span><br><span class="line">/root/hadoop_tmp/hadoop_$&#123;user.name&#125;</span><br><span class="line">fs<span class="selector-class">.default</span><span class="selector-class">.name</span></span><br><span class="line">hdfs:<span class="comment">//localhost:54310</span></span><br><span class="line">io<span class="selector-class">.sort</span><span class="selector-class">.mb</span></span><br><span class="line"><span class="number">1024</span></span><br></pre></td></tr></table></figure>
+
+<p>其中 io.sort.mb 值,指定了排序使用的内存,大的内存可以加快 job 的处理速度.<br>修改 <code>hadoop/conf/mapred-site.xml</code> ,在 节中添加如下内容:</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">mapred<span class="selector-class">.job</span><span class="selector-class">.tracker</span></span><br><span class="line">localhost:<span class="number">54311</span></span><br><span class="line">mapred<span class="selector-class">.map</span><span class="selector-class">.child</span><span class="selector-class">.java</span><span class="selector-class">.opts</span></span><br><span class="line">-Xmx4096m</span><br><span class="line">mapred<span class="selector-class">.reduce</span><span class="selector-class">.child</span><span class="selector-class">.java</span><span class="selector-class">.opts</span></span><br><span class="line">-Xmx4096m</span><br></pre></td></tr></table></figure>
+
+<p>其中 mapred.map.child.java.opts, mapred.reduce.child.java.opts 分别指定 map/reduce 任务使用的最大堆内存.较小的内存可能导致程序抛出 OutOfMemoryException .<br>修改 <code>conf/hdfs -site.xml</code> ,在 节中添加如下内容:</p>
+<figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dfs.<span class="keyword">replication</span></span><br></pre></td></tr></table></figure>
+
+<p>同样,修改 slave1 的 <code>/usr/local/hadoop/conf/core-site.xml</code> ,在 节中添加如下内容:</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">hadoop<span class="selector-class">.tmp</span><span class="selector-class">.dir</span></span><br><span class="line">/root/hadoop_tmp/hadoop_$&#123;user.name&#125;</span><br><span class="line">fs<span class="selector-class">.default</span><span class="selector-class">.name</span></span><br><span class="line">hdfs:<span class="comment">//localhost:54310</span></span><br><span class="line">io<span class="selector-class">.sort</span><span class="selector-class">.mb</span></span><br><span class="line"><span class="number">1024</span></span><br></pre></td></tr></table></figure>
+
+<p>修改 <code>conf/mapred-site.xml</code> ,在 节中添加如下内容:</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">mapred<span class="selector-class">.job</span><span class="selector-class">.tracker</span></span><br><span class="line">localhost:<span class="number">54311</span></span><br><span class="line">mapred<span class="selector-class">.map</span><span class="selector-class">.child</span><span class="selector-class">.java</span><span class="selector-class">.opts</span></span><br><span class="line">-Xmx4096m</span><br><span class="line">mapred<span class="selector-class">.reduce</span><span class="selector-class">.child</span><span class="selector-class">.java</span><span class="selector-class">.opts</span></span><br><span class="line">-Xmx4096m</span><br></pre></td></tr></table></figure>
+
+<p>修改 <code>conf/hdfs-site.xml</code> ,在 节中添加如下内容:</p>
+<figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dfs.<span class="keyword">replication</span></span><br></pre></td></tr></table></figure>
+
+<p>至此, master 和 slave1 都已经完成了 single_node 的搭建,可以分别在两台机器上测试单节点.<br>启动节点:</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hadoop<span class="regexp">/bin/</span>start-all.sh</span><br></pre></td></tr></table></figure>
+
+<p>运行 jps 命令,应能看到类似如下的输出:</p>
+<figure class="highlight basic"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="symbol">937 </span>DataNode</span><br><span class="line"><span class="symbol">9232 </span>Jps</span><br><span class="line"><span class="symbol">8811 </span>NameNode</span><br><span class="line"><span class="symbol">12033 </span>JobTracker</span><br><span class="line"><span class="symbol">12041 </span>TaskTracker</span><br></pre></td></tr></table></figure>
+
+<p>这个教程有个问题,直接使用start-all.ssh启动的话,执行jps只有:</p>
+<figure class="highlight basic"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="symbol">5000 </span>Jps</span><br><span class="line"><span class="symbol">4683 </span>SecondaryNameNode</span><br><span class="line"><span class="symbol">4533 </span>DataNode</span><br></pre></td></tr></table></figure>
+
+<p>必须再执行start-mapred.sh 运行才是正常的:</p>
+<figure class="highlight basic"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="symbol">6009 </span>TaskTracker</span><br><span class="line"><span class="symbol">5763 </span>SecondaryNameNode</span><br><span class="line"><span class="symbol">6047 </span>Jps</span><br><span class="line"><span class="symbol">5613 </span>DataNode</span><br><span class="line"><span class="symbol">5864 </span>JobTracker</span><br></pre></td></tr></table></figure>
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/home/" rel="tag"># home</a>
+              <a href="/tags/%E6%96%87%E4%BB%B6/" rel="tag"># 文件</a>
+              <a href="/tags/root/" rel="tag"># root</a>
+              <a href="/tags/conf/" rel="tag"># conf</a>
+              <a href="/tags/%E5%86%85%E5%AE%B9/" rel="tag"># 内容</a>
+              <a href="/tags/Master/" rel="tag"># Master</a>
+              <a href="/tags/tmp/" rel="tag"># tmp</a>
+              <a href="/tags/hadoop/" rel="tag"># hadoop</a>
+              <a href="/tags/slave1/" rel="tag"># slave1</a>
+              <a href="/tags/%E4%BF%AE%E6%94%B9/" rel="tag"># 修改`</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2017/08/07/1558/" rel="prev" title="去掉linux系统开机动画">
+      <i class="fa fa-chevron-left"></i> 去掉linux系统开机动画
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2017/08/17/1144/" rel="next" title="centos下yum升级php到5.3 升级mysql到5.5">
+      centos下yum升级php到5.3 升级mysql到5.5 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="王殊勋"
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name">王殊勋</p>
+  <div class="site-description" itemprop="description">better late than never.<br>只要开始，虽晚不迟。</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">656</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">2058</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <!--添加网站运行时间 -->
+  <span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
+  <script>
+      var now = new Date(); 
+      function createtime() { 
+          var grt= new Date("12/01/2007 12:00:00");//此处修改你的建站时间或者网站上线时间 
+          now.setTime(now.getTime()+250); 
+          days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days); 
+          hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours); 
+          if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum); 
+          mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;} 
+          seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum); 
+          snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;} 
+          document.getElementById("timeDate").innerHTML = "本站已安全运行 "+dnum+" 天 "; 
+          document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒"; 
+      } 
+  setInterval("createtime()",250);
+  </script>
+  <span itemprop="copyrightYear">(2007 - 2021)</span>
+  <!-- 添加网站运行时间 -->
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">学无止境</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script size="300" alpha="0.6" zIndex="0" src="/lib/canvas-ribbon/canvas-ribbon.js"></script>
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

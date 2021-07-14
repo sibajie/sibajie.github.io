@@ -1,0 +1,1232 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"shuxun","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"./public/search.xml"};
+  </script>
+
+  <meta name="description" content="关闭服务启动命令: 1chkconfig –level 2345 服务名称 off  系统服务说明:    服務名稱 建議 說明   acpid 停用 Advanced Configuration and Power Interface 電源進階設定,常用在 Laptop 上   apmd 停用 Adventage Power Management daemon 偵測系統的電池電量,常用在 Lap">
+<meta property="og:type" content="article">
+<meta property="og:title" content="关闭CENTOS不必要的默认服务">
+<meta property="og:url" content="http://shuxun,wang/2017/07/31/1439/index.html">
+<meta property="og:site_name" content="学无止境">
+<meta property="og:description" content="关闭服务启动命令: 1chkconfig –level 2345 服务名称 off  系统服务说明:    服務名稱 建議 說明   acpid 停用 Advanced Configuration and Power Interface 電源進階設定,常用在 Laptop 上   apmd 停用 Adventage Power Management daemon 偵測系統的電池電量,常用在 Lap">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2017-07-31T13:50:00.000Z">
+<meta property="article:modified_time" content="2021-07-14T07:14:50.787Z">
+<meta property="article:author" content="王殊勋">
+<meta property="article:tag" content="关闭">
+<meta property="article:tag" content="服务器">
+<meta property="article:tag" content="td">
+<meta property="article:tag" content="tr">
+<meta property="article:tag" content="系統">
+<meta property="article:tag" content="支援">
+<meta property="article:tag" content="strong">
+<meta property="article:tag" content="相关">
+<meta property="article:tag" content="需求">
+<meta property="article:tag" content="視個">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://shuxun,wang/2017/07/31/1439/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>关闭CENTOS不必要的默认服务 | 学无止境</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">学无止境</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">注互联网运维技术发展</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-sitemap">
+
+    <a href="/sitemap.xml" rel="section"><i class="fa fa-sitemap fa-fw"></i>站点地图</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://shuxun,wang/2017/07/31/1439/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="王殊勋">
+      <meta itemprop="description" content="专注互联网运维技术发展">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="学无止境">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          关闭CENTOS不必要的默认服务
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2017-07-31 21:50:00" itemprop="dateCreated datePublished" datetime="2017-07-31T21:50:00+08:00">2017-07-31</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-07-14 15:14:50" itemprop="dateModified" datetime="2021-07-14T15:14:50+08:00">2021-07-14</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" itemprop="url" rel="index"><span itemprop="name">操作系统</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>关闭服务启动命令:</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">chkconfig</span> –level <span class="number">2345</span> 服务名称 <span class="literal">off</span></span><br></pre></td></tr></table></figure>
+
+<p>系统服务说明:</p>
+<table width="814" border="0" cellspacing="1" cellpadding="0">
+<tbody>
+<tr>
+<td><strong>服務名稱</strong></td>
+<td><strong>建議</strong></td>
+<td><strong>說明</strong></td>
+</tr>
+<tr>
+<td>acpid</td>
+<td>停用</td>
+<td>Advanced Configuration and Power Interface 電源進階設定,常用在 Laptop 上</td>
+</tr>
+<tr>
+<td>apmd</td>
+<td>停用</td>
+<td>Adventage Power Management daemon 偵測系統的電池電量,常用在 Laptop 上</td>
+</tr>
+<tr>
+<td>atd</td>
+<td>停用</td>
+<td>/etc/at.allow,/etc/at.deny 我大概都使用 crond 來達成</td>
+</tr>
+<tr>
+<td>autofs</td>
+<td>停用</td>
+<td>自動掛載檔案系統與週邊裝置 (如光碟、USB),常用在 Laptop 上</td>
+</tr>
+<tr>
+<td>avahi-daemon</td>
+<td>停用</td>
+<td>當區網沒有 DNS 服務時會試著尋找提供 zeroconf 協定的主機</td>
+</tr>
+<tr>
+<td>bluetooth</td>
+<td>停用</td>
+<td>Bluetooth 藍芽,常用在 Laptop 上</td>
+</tr>
+<tr>
+<td>cpuspeed</td>
+<td>停用</td>
+<td>控制 CPU 速度主要用來省電,常用在 Laptop 上</td>
+</tr>
+<tr>
+<td>cups</td>
+<td>停用</td>
+<td>Common UNIX Printing System 使系統支援印表機</td>
+</tr>
+<tr>
+<td>firstboot</td>
+<td>停用</td>
+<td>安裝完成後第一次啟動時的服務,設定 auth、firewall、keyboard…</td>
+</tr>
+<tr>
+<td>gpm</td>
+<td>停用</td>
+<td>記錄週邊裝置的檔案資料,例如文字模式下可使用滑鼠</td>
+</tr>
+<tr>
+<td>haldaemon</td>
+<td>停用</td>
+<td>使系統支援 plug and play 裝置</td>
+</tr>
+<tr>
+<td>hidd</td>
+<td>停用</td>
+<td>使系統支援藍芽裝置,例如滑鼠,鍵盤</td>
+</tr>
+<tr>
+<td>hplip</td>
+<td>停用</td>
+<td>使系統支援 HP 相關型號印表機</td>
+</tr>
+<tr>
+<td>ip6tables</td>
+<td>停用</td>
+<td>使系統支援 IPTables Filrewall IPv6</td>
+</tr>
+<tr>
+<td>isdn</td>
+<td>停用</td>
+<td>使系統支援 Integrated Services Digital Network (ISDN) 環境</td>
+</tr>
+<tr>
+<td>lm_sensors</td>
+<td>停用</td>
+<td>使系統支援偵測主機版或硬體,常用在 Laptop 上</td>
+</tr>
+<tr>
+<td>messagebus</td>
+<td>停用</td>
+<td>使系統支援 plug and play 裝置</td>
+</tr>
+<tr>
+<td>nfslock</td>
+<td>停用</td>
+<td>使系統支援 NFS Server 資料一致性功能</td>
+</tr>
+<tr>
+<td>pcscd</td>
+<td>停用</td>
+<td>使系統支援 Smart Card</td>
+</tr>
+<tr>
+<td>portmap</td>
+<td>停用</td>
+<td>使系統支援 NFS Service</td>
+</tr>
+<tr>
+<td>rpcgssd</td>
+<td>停用</td>
+<td>使系統支援 NFSv4 Service</td>
+</tr>
+<tr>
+<td>rpcidmapd</td>
+<td>停用</td>
+<td>使系統支援 NFSv4 Service</td>
+</tr>
+<tr>
+<td>yum-updatesd</td>
+<td>停用</td>
+<td>使系統支援 YUM 自動更新服務 (上線機器還是先確認好再更新)</td>
+</tr>
+<tr>
+<td colspan="4"></td>
+</tr>
+<tr>
+<td>anacron</td>
+<td>視個人需求</td>
+<td>執行在 crontab 設定的時間沒有執行到的工作</td>
+</tr>
+<tr>
+<td>auditd</td>
+<td>視個人需求</td>
+<td>稽核系統 /var/log/audit/audit.log,若 auditd 未執行中則稽核訊息會寫入 /var/log/messages</td>
+</tr>
+<tr>
+<td>iptables</td>
+<td>視個人需求</td>
+<td>使系統支援 IPTables Filrewall</td>
+</tr>
+<tr>
+<td>irqbalance</td>
+<td>視個人需求</td>
+<td>使系統支援多個 CPU 環境當系統中斷請求時進行負載平衡的程序,所以單 CPU 的機器就不需要</td>
+</tr>
+<tr>
+<td>lvm2-monitor</td>
+<td>視個人需求</td>
+<td>使系統支援 Logical Volume Manager 邏輯磁區</td>
+</tr>
+<tr>
+<td>mcstrans</td>
+<td>視個人需求</td>
+<td>主要用於配合 SELinux 服務</td>
+</tr>
+<tr>
+<td>mdmonitor</td>
+<td>視個人需求</td>
+<td>使系統支援 RAID 相關程序</td>
+</tr>
+<tr>
+<td>microcode_ctl</td>
+<td>視個人需求</td>
+<td>使系統支援 Intel IA32 CPU 特色,所以 AMD CPU 不需要</td>
+</tr>
+<tr>
+<td>netfs</td>
+<td>視個人需求</td>
+<td>Network File System Mounter 網路掛載系統</td>
+</tr>
+<tr>
+<td>restorecond</td>
+<td>視個人需求</td>
+<td>使系統支援 SELinux 監控檔案狀態</td>
+</tr>
+<tr>
+<td>smartd</td>
+<td>視個人需求</td>
+<td>使系統支援檢查硬碟狀態 (Hardware RAID 要改設定檔)</td>
+</tr>
+<tr>
+<td>sendmail</td>
+<td>視個人需求</td>
+<td>使系統支援 Sendmail</td>
+</tr>
+<tr>
+<td>xfs</td>
+<td>視個人需求</td>
+<td>使系統支援 X Window 字型</td>
+</tr>
+<tr>
+<td colspan="4"></td>
+</tr>
+<tr>
+<td>crond</td>
+<td>啟動</td>
+<td>/etc/cron.* 排程服務</td>
+</tr>
+<tr>
+<td>kudzu</td>
+<td>啟動</td>
+<td>使系統每次開機會都自動執行硬體偵測</td>
+</tr>
+<tr>
+<td>network</td>
+<td>啟動</td>
+<td>使系統支援網卡</td>
+</tr>
+<tr>
+<td>readahead_early</td>
+<td>啟動</td>
+<td>使系統再啟動時預先將相關檔案讀到記憶體內來加快啟動速度</td>
+</tr>
+<tr>
+<td>sshd</td>
+<td>啟動</td>
+<td>使系統支援 SSH Service</td>
+</tr>
+<tr>
+<td>syslog</td>
+<td>啟動</td>
+<td>使系統支援 System Log Service</td>
+</tr>
+</tbody>
+</table>
+
+<p>CentOS5.5 默认基本服务详解:</p>
+<table width="100%" border="0" cellspacing="1" cellpadding="0">
+<tbody>
+<tr>
+<td><strong>服务名称</strong></td>
+<td><strong>功能</strong></td>
+<td><strong>默认</strong></td>
+<td><strong>建议</strong></td>
+<td><strong>备注</strong></td>
+</tr>
+<tr>
+<td>NetworkManager</td>
+<td>用于自动连接网络</td>
+<td>关闭</td>
+<td>关闭</td>
+<td>对服务器没用</td>
+</tr>
+<tr>
+<td>acpid</td>
+<td>电源的开关等检测管理</td>
+<td>开启</td>
+<td>关闭</td>
+<td>对服务器没用</td>
+</tr>
+<tr>
+<td>anacron</td>
+<td>一种计划任务管理</td>
+<td>开启</td>
+<td>开启</td>
+<td></td>
+</tr>
+<tr>
+<td>apmd</td>
+<td>高级电源管理</td>
+<td>开启</td>
+<td>开启</td>
+<td></td>
+</tr>
+<tr>
+<td>atd</td>
+<td>在指定时间执行命令</td>
+<td>开启</td>
+<td>关闭</td>
+<td>如果用crond,则可关闭它</td>
+</tr>
+<tr>
+<td>auditd</td>
+<td></td>
+<td>开启</td>
+<td>自定</td>
+<td>如果用selinux,需要开启它</td>
+</tr>
+<tr>
+<td>autofs</td>
+<td>文件系统自动加载、卸载</td>
+<td>开启</td>
+<td>自定</td>
+<td>只在需要时开启它,可以停止</td>
+</tr>
+<tr>
+<td>avahi-daemon</td>
+<td>本地网络服务查找</td>
+<td>开启</td>
+<td>关闭</td>
+<td>对服务器没用</td>
+</tr>
+<tr>
+<td>avahi-dnsconfd</td>
+<td>avahi DNS</td>
+<td>关闭</td>
+<td>关闭</td>
+<td>对服务器没用</td>
+</tr>
+<tr>
+<td>bluetooth</td>
+<td>蓝牙无线通信</td>
+<td>开启</td>
+<td>关闭</td>
+<td>对服务器没用</td>
+</tr>
+<tr>
+<td>conman</td>
+<td>控制台管理</td>
+<td>关闭</td>
+<td>关闭</td>
+<td>没用</td>
+</tr>
+<tr>
+<td>spuspeed</td>
+<td>调节cpu速度</td>
+<td>开启</td>
+<td>自定</td>
+<td></td>
+</tr>
+<tr>
+<td>crond</td>
+<td>计划任务管理</td>
+<td>开启</td>
+<td>开启</td>
+<td>很有用,开启</td>
+</tr>
+<tr>
+<td>cups</td>
+<td>通用unix打印服务</td>
+<td>开启</td>
+<td>关闭</td>
+<td>对服务器没用</td>
+</tr>
+<tr>
+<td>dnsmasq</td>
+<td>dns cache</td>
+<td>关闭</td>
+<td>关闭</td>
+<td>没用</td>
+</tr>
+<tr>
+<td>dund</td>
+<td>蓝牙相关</td>
+<td>关闭</td>
+<td>关闭</td>
+<td></td>
+</tr>
+<tr>
+<td>firstboot</td>
+<td>系统安装后初始设定</td>
+<td>开启</td>
+<td>关闭</td>
+<td></td>
+</tr>
+<tr>
+<td>gpm</td>
+<td>控制台下的鼠标支持</td>
+<td>开启</td>
+<td>开启</td>
+<td></td>
+</tr>
+<tr>
+<td>haldaemon</td>
+<td>硬件信息收集服务</td>
+<td>开启</td>
+<td>开启</td>
+<td></td>
+</tr>
+<tr>
+<td>hidd</td>
+<td>蓝牙相关</td>
+<td>开启</td>
+<td>关闭</td>
+<td></td>
+</tr>
+<tr>
+<td>ibmasm</td>
+<td>ibm硬件管理</td>
+<td>关闭</td>
+<td>关闭</td>
+<td></td>
+</tr>
+<tr>
+<td>ip6tables</td>
+<td>ipv6防火墙</td>
+<td>开启</td>
+<td>关闭</td>
+<td></td>
+</tr>
+<tr>
+<td>iptables</td>
+<td>ipv4防火墙</td>
+<td>开启</td>
+<td>关闭</td>
+<td></td>
+</tr>
+<tr>
+<td>irda</td>
+<td>红外线通信</td>
+<td>关闭</td>
+<td>关闭</td>
+<td></td>
+</tr>
+<tr>
+<td>irqbalance</td>
+<td>cpu负载均衡</td>
+<td>开启</td>
+<td>自定</td>
+<td>多核cup需要</td>
+</tr>
+<tr>
+<td>kudzu</td>
+<td>硬件变动检测</td>
+<td>开启</td>
+<td>关闭</td>
+<td>服务器无用</td>
+</tr>
+<tr>
+<td>lvm2-monitor</td>
+<td>lvm监视</td>
+<td>开启</td>
+<td>关闭</td>
+<td>非集群无用</td>
+</tr>
+<tr>
+<td>mcstrans</td>
+<td>在开启selinux时用于检查context</td>
+<td>开启</td>
+<td>关闭</td>
+<td></td>
+</tr>
+<tr>
+<td>mdmonitor</td>
+<td>软raid监视</td>
+<td>开启</td>
+<td>关闭</td>
+<td></td>
+</tr>
+<tr>
+<td>mdmpd</td>
+<td>软raid管理</td>
+<td>关闭</td>
+<td>关闭</td>
+<td></td>
+</tr>
+<tr>
+<td>messagebus</td>
+<td>负责在各个系统进程之间传递消息</td>
+<td>开启</td>
+<td>开启</td>
+<td>如停用,haldaemon启动会失败</td>
+</tr>
+<tr>
+<td>microcode_ctl</td>
+<td>?cpu微码管理升级</td>
+<td>开启</td>
+<td>关闭</td>
+<td></td>
+</tr>
+<tr>
+<td>multipathd</td>
+<td></td>
+<td>关闭</td>
+<td>关闭</td>
+<td></td>
+</tr>
+<tr>
+<td>netconsole</td>
+<td></td>
+<td>关闭</td>
+<td>关闭</td>
+<td></td>
+</tr>
+<tr>
+<td>netfs</td>
+<td>nfs相关</td>
+<td>开启</td>
+<td>关闭</td>
+<td></td>
+</tr>
+<tr>
+<td>netplugd</td>
+<td>网线热插拔监视</td>
+<td>关闭</td>
+<td>关闭</td>
+<td></td>
+</tr>
+<tr>
+<td>network</td>
+<td></td>
+<td>开启</td>
+<td>开启</td>
+<td></td>
+</tr>
+<tr>
+<td>nfs</td>
+<td>网络文件系统</td>
+<td>关闭</td>
+<td>关闭</td>
+<td></td>
+</tr>
+<tr>
+<td>nfslock</td>
+<td>nfs相关</td>
+<td>开启</td>
+<td>关闭</td>
+<td></td>
+</tr>
+<tr>
+<td>nscd</td>
+<td>name cache,应该与DNS相关</td>
+<td>关闭</td>
+<td>关闭</td>
+<td></td>
+</tr>
+<tr>
+<td>oddjobd</td>
+<td>与D-BUS相关</td>
+<td>关闭</td>
+<td>关闭</td>
+<td></td>
+</tr>
+<tr>
+<td>pand</td>
+<td>蓝牙相关</td>
+<td>关闭</td>
+<td>关闭</td>
+<td></td>
+</tr>
+<tr>
+<td>pcscd</td>
+<td>pc/sc smart card daemon</td>
+<td>开启</td>
+<td>关闭</td>
+<td></td>
+</tr>
+<tr>
+<td>portmap</td>
+<td>使用NFS、NIS时的port map</td>
+<td>开启</td>
+<td>关闭</td>
+<td></td>
+</tr>
+<tr>
+<td>psacct</td>
+<td>负荷检测</td>
+<td>关闭</td>
+<td>关闭</td>
+<td></td>
+</tr>
+<tr>
+<td>rawdevices</td>
+<td>raw 设备支持</td>
+<td>开启</td>
+<td>开启</td>
+<td></td>
+</tr>
+<tr>
+<td>rdisc</td>
+<td>自动检测路由器</td>
+<td>关闭</td>
+<td>关闭</td>
+<td></td>
+</tr>
+<tr>
+<td>readahead_early</td>
+<td></td>
+<td>开启</td>
+<td>开启</td>
+<td></td>
+</tr>
+<tr>
+<td>readahead_later</td>
+<td></td>
+<td>关闭</td>
+<td>关闭</td>
+<td></td>
+</tr>
+<tr>
+<td>restorecond</td>
+<td>selinux相关</td>
+<td>关闭</td>
+<td>关闭</td>
+<td></td>
+</tr>
+<tr>
+<td>rpcgssd</td>
+<td>NFS相关</td>
+<td>开启</td>
+<td>关闭</td>
+<td></td>
+</tr>
+<tr>
+<td>rpcidmapd</td>
+<td>RPC name to UID/GID mapper</td>
+<td>开启</td>
+<td>关闭</td>
+<td>NFS相关</td>
+</tr>
+<tr>
+<td>rpcsvcgssd</td>
+<td>NFS相关</td>
+<td>关闭</td>
+<td>关闭</td>
+<td></td>
+</tr>
+<tr>
+<td>saslauthd</td>
+<td>sasl认证服务相关</td>
+<td>关闭</td>
+<td>关闭</td>
+<td></td>
+</tr>
+<tr>
+<td>sendmail</td>
+<td></td>
+<td>开启</td>
+<td>关闭</td>
+<td></td>
+</tr>
+<tr>
+<td>smartd</td>
+<td>硬盘自动检测守护进程</td>
+<td>开启</td>
+<td>开启</td>
+<td></td>
+</tr>
+<tr>
+<td>sshd</td>
+<td></td>
+<td>开启</td>
+<td>开启</td>
+<td></td>
+</tr>
+<tr>
+<td>syslog</td>
+<td>系统日志进程</td>
+<td>开启</td>
+<td>开启</td>
+<td></td>
+</tr>
+<tr>
+<td>tcsd</td>
+<td></td>
+<td>关闭</td>
+<td>关闭</td>
+<td></td>
+</tr>
+<tr>
+<td>wpa_supplicant</td>
+<td>无线认证相关</td>
+<td>关闭</td>
+<td>关闭</td>
+<td></td>
+</tr>
+<tr>
+<td>xfs</td>
+<td>x windows相关</td>
+<td>开启</td>
+<td>关闭</td>
+<td></td>
+</tr>
+<tr>
+<td>ypbind</td>
+<td>network information service客户端</td>
+<td>关闭</td>
+<td>关闭</td>
+<td></td>
+</tr>
+<tr>
+<td>yum-updatesd</td>
+<td>yum自动升级</td>
+<td>开启</td>
+<td>关闭</td>
+<td>对服务器开启比较危险哦</td>
+</tr>
+</tbody>
+</table>
+
+
+<hr>
+<p>title: 关闭linux不需要的进程<br>date: 2018-02-13 07:04:00<br>categories: 操作系统<br>urlname: 819<br>tags:</p>
+<ul>
+<li>程序</li>
+<li>运行</li>
+<li>举例</li>
+<li>进程</li>
+<li>终止</li>
+<li>用法</li>
+<li>杀死</li>
+<li>killall</li>
+<li>作用</li>
+</ul>
+<hr>
+<p>1.kill</p>
+<p>作用:根据进程号杀死进程.<br>用法:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">kill</span> [信号代码] 进程ID</span><br></pre></td></tr></table></figure>
+
+<p>举例:</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$</span> <span class="built_in">ps</span> auxf |grep httpd</span><br><span class="line"><span class="variable">$</span> <span class="built_in">kill</span> <span class="number">5623</span></span><br></pre></td></tr></table></figure>
+
+<p>注意:kill -9 来强制终止退出</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$</span> <span class="built_in">ps</span> aux |grep gaim</span><br><span class="line"><span class="variable">$</span> <span class="built_in">kill</span> <span class="literal">-9</span> <span class="number">5031</span></span><br></pre></td></tr></table></figure>
+
+<p>特殊用法:</p>
+<figure class="highlight ldif"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="literal">-STOP [pid]</span></span><br><span class="line"><span class="comment">#发送SIGSTOP (17,19,23)停止一个进程,而并不Linux操作系统杀死进程.</span></span><br><span class="line"><span class="literal">-CONT [pid]</span></span><br><span class="line"><span class="comment">#发送SIGCONT (19,18,25)重新开始一个停止的进程.</span></span><br><span class="line"><span class="literal">-KILL [pid]</span></span><br><span class="line"><span class="comment">#发送SIGKILL (9)强迫进程立即停止,并且不实施清理操作.</span></span><br><span class="line"><span class="literal">-9 -1</span></span><br><span class="line"><span class="comment">#终止你拥有的全部进程.</span></span><br></pre></td></tr></table></figure>
+
+<p>2.killall</p>
+<p>作用:通过程序的名字,直接杀死所有进程.<br>用法:</p>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">killall</span> 正在运行的程序名</span><br></pre></td></tr></table></figure>
+
+<p>举例:</p>
+<figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$ </span>killall gaim</span><br></pre></td></tr></table></figure>
+
+<p>注意:该命令可以使用 -9 参数来强制杀死进程.</p>
+<p>3.pkill</p>
+<p>作用:通过程序的名字,直接杀死所有进程.<br>用法:</p>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">pkill</span> 正在运行的程序名</span><br></pre></td></tr></table></figure>
+
+<p>举例:</p>
+<figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$ </span>pkill gaim</span><br></pre></td></tr></table></figure>
+
+<p>4.xkill</p>
+<p>作用:杀死桌面图形界面的程序.</p>
+<p>应用情形实例:firefox出现崩溃不能退出时,点鼠标就能杀死firefox .<br>当xkill运行时出来和个人脑骨的图标,哪个图形程序崩溃一点就OK了.<br>如果您想终止xkill ,就按右键取消;<br>调用方法:</p>
+<figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$ </span>xkill</span><br></pre></td></tr></table></figure>
+
+<p>5.KILLALL</p>
+<p>作用:通过程序的名字,直接杀死所有进程.<br>用法:</p>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">killall</span> 正在运行的程序名</span><br></pre></td></tr></table></figure>
+
+<p>举例:</p>
+<figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$ </span>killall gaim</span><br></pre></td></tr></table></figure>
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E5%85%B3%E9%97%AD/" rel="tag"># 关闭</a>
+              <a href="/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/" rel="tag"># 服务器</a>
+              <a href="/tags/td/" rel="tag"># td</a>
+              <a href="/tags/tr/" rel="tag"># tr</a>
+              <a href="/tags/%E7%B3%BB%E7%B5%B1/" rel="tag"># 系統</a>
+              <a href="/tags/%E6%94%AF%E6%8F%B4/" rel="tag"># 支援</a>
+              <a href="/tags/strong/" rel="tag"># strong</a>
+              <a href="/tags/%E7%9B%B8%E5%85%B3/" rel="tag"># 相关</a>
+              <a href="/tags/%E9%9C%80%E6%B1%82/" rel="tag"># 需求</a>
+              <a href="/tags/%E8%A6%96%E5%80%8B/" rel="tag"># 視個</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2017/07/09/1534/" rel="prev" title="禁止Apache列出目录文件">
+      <i class="fa fa-chevron-left"></i> 禁止Apache列出目录文件
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2017/07/31/1438/" rel="next" title="关闭CENTOS不必要的默认服务">
+      关闭CENTOS不必要的默认服务 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="王殊勋"
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name">王殊勋</p>
+  <div class="site-description" itemprop="description">better late than never.<br>只要开始，虽晚不迟。</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">656</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">2058</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <!--添加网站运行时间 -->
+  <span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
+  <script>
+      var now = new Date(); 
+      function createtime() { 
+          var grt= new Date("12/01/2007 12:00:00");//此处修改你的建站时间或者网站上线时间 
+          now.setTime(now.getTime()+250); 
+          days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days); 
+          hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours); 
+          if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum); 
+          mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;} 
+          seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum); 
+          snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;} 
+          document.getElementById("timeDate").innerHTML = "本站已安全运行 "+dnum+" 天 "; 
+          document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒"; 
+      } 
+  setInterval("createtime()",250);
+  </script>
+  <span itemprop="copyrightYear">(2007 - 2021)</span>
+  <!-- 添加网站运行时间 -->
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">学无止境</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script size="300" alpha="0.6" zIndex="0" src="/lib/canvas-ribbon/canvas-ribbon.js"></script>
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

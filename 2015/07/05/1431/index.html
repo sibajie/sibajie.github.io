@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"shuxun","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"./public/search.xml"};
+  </script>
+
+  <meta name="description" content="下面我就结合自己的经验和教训总结一下服务器安全设置的一些技巧和方法. 一、操作系统的安装 我这里说的操作系统以Windows 2000为例,高版本的Windows也有类似功能.格式化硬盘时候,必须格式化为NTFS的,绝对不要使用FAT32类型.C盘为操作系统盘,D盘放常用软件,E盘网站,格式化完成后立刻设置磁盘权限,C盘默认,D盘的安全设置为Administrator和System完全控制,其他用">
+<meta property="og:type" content="article">
+<meta property="og:title" content="服务器的安全配置技巧总结">
+<meta property="og:url" content="http://shuxun,wang/2015/07/05/1431/index.html">
+<meta property="og:site_name" content="学无止境">
+<meta property="og:description" content="下面我就结合自己的经验和教训总结一下服务器安全设置的一些技巧和方法. 一、操作系统的安装 我这里说的操作系统以Windows 2000为例,高版本的Windows也有类似功能.格式化硬盘时候,必须格式化为NTFS的,绝对不要使用FAT32类型.C盘为操作系统盘,D盘放常用软件,E盘网站,格式化完成后立刻设置磁盘权限,C盘默认,D盘的安全设置为Administrator和System完全控制,其他用">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2015-07-04T22:36:00.000Z">
+<meta property="article:modified_time" content="2021-07-14T07:15:39.336Z">
+<meta property="article:author" content="王殊勋">
+<meta property="article:tag" content="命令">
+<meta property="article:tag" content="目录">
+<meta property="article:tag" content="设置">
+<meta property="article:tag" content="服务">
+<meta property="article:tag" content="运行">
+<meta property="article:tag" content="系统">
+<meta property="article:tag" content="网站">
+<meta property="article:tag" content="IIS">
+<meta property="article:tag" content="组件">
+<meta property="article:tag" content="object">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://shuxun,wang/2015/07/05/1431/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>服务器的安全配置技巧总结 | 学无止境</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">学无止境</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">注互联网运维技术发展</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-sitemap">
+
+    <a href="/sitemap.xml" rel="section"><i class="fa fa-sitemap fa-fw"></i>站点地图</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://shuxun,wang/2015/07/05/1431/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="王殊勋">
+      <meta itemprop="description" content="专注互联网运维技术发展">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="学无止境">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          服务器的安全配置技巧总结
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2015-07-05 06:36:00" itemprop="dateCreated datePublished" datetime="2015-07-05T06:36:00+08:00">2015-07-05</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-07-14 15:15:39" itemprop="dateModified" datetime="2021-07-14T15:15:39+08:00">2021-07-14</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" itemprop="url" rel="index"><span itemprop="name">操作系统</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>下面我就结合自己的经验和教训总结一下服务器安全设置的一些技巧和方法.</p>
+<p>一、操作系统的安装</p>
+<p>我这里说的操作系统以Windows 2000为例,高版本的Windows也有类似功能.<br>格式化硬盘时候,必须格式化为NTFS的,绝对不要使用FAT32类型.<br>C盘为操作系统盘,D盘放常用软件,E盘网站,格式化完成后立刻设置磁盘权限,C盘默认,D盘的安全设置为Administrator和System完全控制,其他用户删除,E盘放网站,如果只有一个网站,就设置Administrator和System完全控制,Everyone读取,如果网站上某段代码必须完成写操作,这时再单独对那个文件所在的文件夹权限进行更改.　　<br>还有:</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">net<span class="selector-class">.exe</span> #NET命令</span><br><span class="line">cmd<span class="selector-class">.exe</span> <span class="selector-id">#CMD</span> 懂电脑的都知道咯~</span><br><span class="line">tftp<span class="selector-class">.exe</span></span><br><span class="line">netstat<span class="selector-class">.exe</span></span><br><span class="line">regedit<span class="selector-class">.exe</span> #注册表啦大家都知道</span><br><span class="line">at<span class="selector-class">.exe</span></span><br><span class="line">attrib<span class="selector-class">.exe</span></span><br><span class="line">cacls<span class="selector-class">.exe</span> #ACL用户组权限设置,此命令可以在NTFS下设置任何文件夹的任何权限!偶入侵的时候没少用这个....(:</span><br><span class="line">format<span class="selector-class">.exe</span> #不说了,大家都知道是做嘛的</span><br></pre></td></tr></table></figure>
+
+<p>大家都知道ASP木马吧,有个CMD运行这个的,这些如果都可以在CMD下运行,估计别的没啥,format下估计就哭了(:这些文件都设置只允许administrator访问.)<br>系统安装过程中一定本着最小服务原则,无用的服务一概不选择,达到系统的最小安装,在安装IIS的过程中,只安装最基本必要的功能,那些不必要的危险服务千万不要安装,例如:FrontPage 2000服务器扩展,Internet服务管理器(HTML),FTP服务,文档,索引服务等等.</p>
+<p>二、网络安全配置</p>
+<p>网络安全最基本的是端口设置,在”本地连接属性”,点”Internet协议(TCP/IP)”,点”高级”,再点”选项”-“TCP/IP筛选”.仅打开网站服务所需要使用的端口,配置界面如下图.<br>进行如下设置后,从你的服务器将不能使用域名解析,因此上网,但是外部的访问是正常的.这个设置主要为了防止一般规模的DDOS攻击.</p>
+<p>三、安全模板设置</p>
+<p>运行MMC,添加独立管理单元”安全配置与分析”,导入模板basicsv.inf或者securedc.inf,然后点”立刻配置计算机”,系统就会自动配置”帐户策略”、”本地策略”、”系统服务”等信息,一步到位,不过这些配置可能会导致某些软件无法运行或者运行出错.<br>四、WEB服务器的设置<br>以IIS为例,绝对不要使用IIS默认安装的WEB目录,而需要在E盘新建立一个目录.然后在IIS管理器中右击主机-&gt;属性-&gt;WWW服务 编辑-&gt;主目录配置-&gt;应用程序映射,只保留asp和asa,其余全部删除.</p>
+<p>IIS安全设置</p>
+<p>1.不使用默认的Web站点,如果使用也要将IIS目录与系统磁盘分开.<br>2.删除IIS默认创建的Inetpub目录(在安装系统的盘上).<br>3.删除系统盘下的虚拟目录,如:_vti_bin、IISSamples、Scripts、IIShelp、IISAdmin、IIShelp、MSADC.<br>4.删除不必要的IIS扩展名映射.<br>右键单击”默认Web站点→属性→主目录→配置”,打开应用程序窗口,去掉不必要的应用程序映射.主要为.shtml、.shtm、 .stm.<br>5.更改IIS日志的路径<br>右键单击”默认Web站点→属性-网站-在启用日志记录下点击属性<br>6.如果使用的是2000可以使用iislockdown来保护IIS,在2003运行的IE6.0的版本不需要.</p>
+<p>五、ASP的安全</p>
+<p>在IIS系统上,大部分木马都是ASP写的,因此,ASP组件的安全是非常重要的.<br>ASP木马实际上大部分通过调用Shell.Application、WScript.Shell、WScript.Network、FSO、Adodb.Stream组件来实现其功能,除了FSO之外,其他的大多可以直接禁用.<br>WScript.Shell组件使用这个命令删除:</p>
+<figure class="highlight reasonml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">regsvr32 <span class="module-access"><span class="module"><span class="identifier">WSHom</span>.</span></span>ocx /u</span><br></pre></td></tr></table></figure>
+
+<p>WScript.Network组件使用这个命令删除:</p>
+<figure class="highlight jboss-cli"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">regsvr32 wshom.ocx <span class="string">/u</span></span><br></pre></td></tr></table></figure>
+
+<p>Shell.Application可以使用禁止Guest用户使用shell32.dll来防止调用此组件.使用命令:</p>
+<figure class="highlight taggerscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cacls C:<span class="symbol">\W</span>INNT<span class="symbol">\s</span>ystem32<span class="symbol">\s</span>hell32.dll /e /d guests</span><br></pre></td></tr></table></figure>
+
+<p>禁止guests用户执行cmd.exe的命令是:</p>
+<figure class="highlight taggerscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cacls C:<span class="symbol">\W</span>INNT<span class="symbol">\s</span>ystem32<span class="symbol">\C</span>md.exe /e /d guests</span><br></pre></td></tr></table></figure>
+
+<p>FSO组件的禁用比较麻烦,如果网站本身不需要用这个组件,那么就通过:</p>
+<figure class="highlight jboss-cli"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">RegSrv32 scrrun.dll <span class="string">/u</span></span><br></pre></td></tr></table></figure>
+
+<p>命令来禁用吧.<br>或者<br>第一种:用:</p>
+<figure class="highlight taggerscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">RegSrv32 /u C:<span class="symbol">\W</span>INDOWS<span class="symbol">\S</span>YSTEM<span class="symbol">\s</span>crrun.dll</span><br></pre></td></tr></table></figure>
+
+<p>来注销该组件.此方法过于狠毒,属于同归于尽的方法,大家都没得用,是下招.<br>第二种:修改Progid的值,在ASP里调用组件的方式通常是:</p>
+<figure class="highlight vbscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Set</span> 对象名=<span class="built_in">Server</span>. <span class="built_in">CreateObject</span>(<span class="string">&quot;Progid&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<p>这时候我们就可以通过修改注册表中的Progid值从达到禁用该组件的方法.在 开始-运行中敲入regedit,然后找到 <code>HKEY_CLASSES_ROO T\Scripting.FileSystemObject</code>,这时候我们就可以更改该Progid的值了,如改成 <code>Scripting.FileSystemObject8</code>.这样在ASP页里就这样调用了:</p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;%@ <span class="attribute">Language</span>=Vbscript%&gt;</span><br><span class="line">&lt;%</span><br><span class="line"><span class="builtin-name">Set</span> <span class="attribute">Fs</span>=Server.CreateObject(&quot;Scripting.FileSystemObject8&quot;)</span><br><span class="line">%&gt;</span><br></pre></td></tr></table></figure>
+
+<p>(如果你前面没有调用过该组件的话,则无须重启,就可以看到效果了,否则请重启后看效果.)<br>这时候我们看看还是用原来的调用方法的结果:</p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;%@ <span class="attribute">Language</span>=Vbscript%&gt;</span><br><span class="line">&lt;%</span><br><span class="line"><span class="builtin-name">Set</span> <span class="attribute">Fs</span>=Server.CreateObject(&quot;Scripting.FileSystemObject&quot;)</span><br><span class="line">%&gt;</span><br></pre></td></tr></table></figure>
+
+<p>这时候的运行结果为:</p>
+<figure class="highlight 1c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">服务器对象 错误 &#x27;ASP <span class="number">0177</span> : <span class="number">800401</span>f3&#x27;</span><br><span class="line">Server.CreateObject 失败</span><br><span class="line">/aspimage/testfile2.asp, 行<span class="number">3</span></span><br><span class="line"><span class="number">800401</span>f3</span><br></pre></td></tr></table></figure>
+
+<p>(OK,达到我们的要求)<br>该方法由于本人迟了两步,结果就让别人抢着回答了,这样极大的刺激了我,结果就产生了第三种方法.<br>第三种:细心的高手们会想,既然能通过修改Progid值来禁用该组件,那Clsid是否也可以来修改呢?(OK,你想得和我一样)我们知道,除了CreateObject方法以外,也可以使用一般的<code>&lt;object&gt;</code>标注建立一个组件,我们可以在ASP里面使用HTM L的<code>&lt;object&gt;</code>标注,以便在网页中加入一个组件.方法是:</p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;object <span class="attribute">runat</span>=server <span class="attribute">id</span>=fs1 <span class="attribute">scope</span>=page <span class="attribute">progid</span>=<span class="string">&quot;Scripting.FileSystemObject&quot;</span>&gt;&lt;/object&gt;</span><br></pre></td></tr></table></figure>
+
+<p>Runat表示是在服务端执行,Scope表示组件的生命周期,可以选用Session,Appl ication或page(表示当前页面,也可缺省)<br>这种写法对我们没用,还有一种写法是:</p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;object <span class="attribute">runat</span>=server <span class="attribute">id</span>=fs1 <span class="attribute">scope</span>=page <span class="attribute">classid</span>=<span class="string">&quot;clsid:clsid的值&quot;</span>&gt;&lt;/object&gt;</span><br></pre></td></tr></table></figure>
+
+<p>我们也可以通过修改该Clsid的值而禁用该组件,如将注册表中 <code>HKEY_CLASSES_RO OT\Scripting.FileSystemObject\CLSID</code>的值0D43FE01-F093-11CF-8940-00A0C90 54228改成0D43FE01-F093-11CF-8940-00A0C9054229(改了最后面一位),这时候的写法为:</p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;object <span class="attribute">runat</span>=server <span class="attribute">id</span>=fs1 <span class="attribute">scope</span>=page <span class="attribute">classid</span>=<span class="string">&quot;clsid:0D43FE01-F093-11CF-8940-00A0C9054229&quot;</span>&gt;&lt;/object&gt;</span><br></pre></td></tr></table></figure>
+
+<p>看运行结果,没问题,OK.这时候我们再用</p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;object <span class="attribute">runat</span>=server <span class="attribute">id</span>=fs1 <span class="attribute">scope</span>=page <span class="attribute">classid</span>=<span class="string">&quot;clsid:0D43FE01-F093-11CF-8940-00A0C9054228&quot;</span>&gt;&lt;/object&gt;</span><br></pre></td></tr></table></figure>
+
+<p>这时候就出错了.(<br>另外,使用微软提供的URLScan Tool这个过滤非法URL访问的工具,也可以起到一定防范作用.当然,每天备份也是一个好习惯.</p>
+<p>八、其它</p>
+<p>1.系统升级、打操作系统补丁,尤其是IIS 6.0补丁、SQL SP3a补丁,甚至IE 6.0补丁也要打.同时及时跟踪最新漏洞补丁;<br>2.停掉Guest 帐号、并给guest 加一个异常复杂的密码,把Administrator改名或伪装!<br>3.隐藏重要文件/目录<br>可以修改注册表实现完全隐藏:H <code>KEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\ Current-Version\Explorer\Advanced\Folder\Hi-dden\SHOWALL</code>,鼠标右击 “CheckedValue”,选择修改,把数值由1改为0.<br>4.启动系统自带的Internet连接防火墙,在设置服务选项中勾选Web服务器.<br>5.防止SYN洪水攻击.</p>
+<figure class="highlight taggerscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">HKEY_LOCAL_MACHINE<span class="symbol">\S</span>YSTEM<span class="symbol">\C</span>urrentControlSet<span class="symbol">\S</span>ervices<span class="symbol">\T</span>cpip<span class="symbol">\P</span>arameters</span><br><span class="line">#新建DWORD值,名为SynAttackProtect,值为2</span><br></pre></td></tr></table></figure>
+
+<p>6.禁止响应ICMP路由通告报文</p>
+<figure class="highlight taggerscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">HKEY_LOCAL_MACHINE <span class="symbol">\ </span>SYSTEM <span class="symbol">\ </span>CurrentControlSet<span class="symbol">\ </span>Services<span class="symbol">\T</span>cpip<span class="symbol">\P</span>arameters<span class="symbol">\I</span>nterfaces<span class="symbol">\i</span>nterface</span><br><span class="line">#新建DWORD值,名为PerformRouterDiscovery 值为0.</span><br></pre></td></tr></table></figure>
+
+<p>7.防止ICMP重定向报文的攻击</p>
+<figure class="highlight taggerscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">HKEY_LOCAL_MACHINE<span class="symbol">\S</span>YSTEM<span class="symbol">\C</span>urrentControlSet<span class="symbol">\S</span>ervices<span class="symbol">\T</span>cpip<span class="symbol">\P</span>arameters</span><br><span class="line">#将EnableICMPRedirects 值设为0</span><br></pre></td></tr></table></figure>
+
+<p>8.不支持IGMP协议</p>
+<figure class="highlight taggerscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">HKEY_LOCAL_MACHINE<span class="symbol">\S</span>YSTEM<span class="symbol">\C</span>urrentControlSet<span class="symbol">\S</span>ervices<span class="symbol">\T</span>cpip<span class="symbol">\P</span>arameters</span><br><span class="line">#新建DWORD值,名为IGMPLevel 值为0.</span><br></pre></td></tr></table></figure>
+
+<p>9.禁用DCOM:<br>运行中输入Dcomcnfg.exe.回车,单击”控制台根节点”下的”组件服务”.打开”计算机”子文件夹.</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E5%91%BD%E4%BB%A4/" rel="tag"># 命令</a>
+              <a href="/tags/%E7%9B%AE%E5%BD%95/" rel="tag"># 目录</a>
+              <a href="/tags/%E8%AE%BE%E7%BD%AE/" rel="tag"># 设置</a>
+              <a href="/tags/%E6%9C%8D%E5%8A%A1/" rel="tag"># 服务</a>
+              <a href="/tags/%E8%BF%90%E8%A1%8C/" rel="tag"># 运行</a>
+              <a href="/tags/%E7%B3%BB%E7%BB%9F/" rel="tag"># 系统</a>
+              <a href="/tags/%E7%BD%91%E7%AB%99/" rel="tag"># 网站</a>
+              <a href="/tags/IIS/" rel="tag"># IIS</a>
+              <a href="/tags/%E7%BB%84%E4%BB%B6/" rel="tag"># 组件</a>
+              <a href="/tags/object/" rel="tag"># object</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2015/07/04/1041/" rel="prev" title="APACHE开启GZIP压缩的方法">
+      <i class="fa fa-chevron-left"></i> APACHE开启GZIP压缩的方法
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2015/07/18/1520/" rel="next" title="解决waney 553 Could not create file (vsftpd)">
+      解决waney 553 Could not create file (vsftpd) <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="王殊勋"
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name">王殊勋</p>
+  <div class="site-description" itemprop="description">better late than never.<br>只要开始，虽晚不迟。</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">656</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">2058</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <!--添加网站运行时间 -->
+  <span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
+  <script>
+      var now = new Date(); 
+      function createtime() { 
+          var grt= new Date("12/01/2007 12:00:00");//此处修改你的建站时间或者网站上线时间 
+          now.setTime(now.getTime()+250); 
+          days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days); 
+          hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours); 
+          if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum); 
+          mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;} 
+          seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum); 
+          snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;} 
+          document.getElementById("timeDate").innerHTML = "本站已安全运行 "+dnum+" 天 "; 
+          document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒"; 
+      } 
+  setInterval("createtime()",250);
+  </script>
+  <span itemprop="copyrightYear">(2007 - 2021)</span>
+  <!-- 添加网站运行时间 -->
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">学无止境</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script size="300" alpha="0.6" zIndex="0" src="/lib/canvas-ribbon/canvas-ribbon.js"></script>
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

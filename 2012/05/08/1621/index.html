@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"shuxun","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"./public/search.xml"};
+  </script>
+
+  <meta name="description" content="如何用BIND, GeoIP, Nginx, Varnish来创建你自己的高效的CDN网络?CDN,意思是Content Distrubtion Network,意思是内容分发网络,简单的说,就是全地域范围内的负载均衡,全地域的概念可以是全国,也可以是全世界.由统一的DNS服务器进行地址转发,选择离用户最近的地区服务器进行负载均衡.本质上是从一个机房内的负载均衡扩展到了全世界范围内的负载均衡.同时">
+<meta property="og:type" content="article">
+<meta property="og:title" content="用DNS+GeoIP+Nginx+Varnish做世界级的CDN">
+<meta property="og:url" content="http://shuxun,wang/2012/05/08/1621/index.html">
+<meta property="og:site_name" content="学无止境">
+<meta property="og:description" content="如何用BIND, GeoIP, Nginx, Varnish来创建你自己的高效的CDN网络?CDN,意思是Content Distrubtion Network,意思是内容分发网络,简单的说,就是全地域范围内的负载均衡,全地域的概念可以是全国,也可以是全世界.由统一的DNS服务器进行地址转发,选择离用户最近的地区服务器进行负载均衡.本质上是从一个机房内的负载均衡扩展到了全世界范围内的负载均衡.同时">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2012-05-08T10:56:00.000Z">
+<meta property="article:modified_time" content="2021-07-14T07:16:07.796Z">
+<meta property="article:author" content="王殊勋">
+<meta property="article:tag" content="make">
+<meta property="article:tag" content="文件">
+<meta property="article:tag" content="内容">
+<meta property="article:tag" content="nginx">
+<meta property="article:tag" content="转发">
+<meta property="article:tag" content="varnish">
+<meta property="article:tag" content="负载均衡">
+<meta property="article:tag" content="节点服务器">
+<meta property="article:tag" content="geoip">
+<meta property="article:tag" content="静态">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://shuxun,wang/2012/05/08/1621/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>用DNS+GeoIP+Nginx+Varnish做世界级的CDN | 学无止境</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">学无止境</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">注互联网运维技术发展</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-sitemap">
+
+    <a href="/sitemap.xml" rel="section"><i class="fa fa-sitemap fa-fw"></i>站点地图</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://shuxun,wang/2012/05/08/1621/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="王殊勋">
+      <meta itemprop="description" content="专注互联网运维技术发展">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="学无止境">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          用DNS+GeoIP+Nginx+Varnish做世界级的CDN
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2012-05-08 18:56:00" itemprop="dateCreated datePublished" datetime="2012-05-08T18:56:00+08:00">2012-05-08</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-07-14 15:16:07" itemprop="dateModified" datetime="2021-07-14T15:16:07+08:00">2021-07-14</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%90%84%E7%B1%BB%E6%9C%8D%E5%8A%A1/" itemprop="url" rel="index"><span itemprop="name">各类服务</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>如何用BIND, GeoIP, Nginx, Varnish来创建你自己的高效的CDN网络?<br>CDN,意思是Content Distrubtion Network,意思是内容分发网络,简单的说,就是全地域范围内的负载均衡,全地域的概念可以是全国,也可以是全世界.由统一的DNS服务器进行地址转发,选择离用户最近的地区服务器进行负载均衡.本质上是从一个机房内的负载均衡扩展到了全世界范围内的负载均衡.同时可以将本地化的内容,由当地的服务器实现.做浏览器的地区自动选择.<br>比如在中国,被人为划分成两大区域,北方是网通,南方是电信.这两个网络之间互访是比较慢的.作为大型网站,一种解决办法是将全部服务器架设在双线或三线ISP处,由ISP来提供路由上的选择.这样做,线路的成本会比较高.另一种办法就是将服务器架设在两边,南方一台,北方一台,然后由服务器自己选择,如果IP在电信,就转发请求到南方的服务器,如果是网通就转发到北方的服务器.<br>再扩大范围,可以将美国来的请求交由美国服务器处理,这样也缩短了用户在路由上的等待时间.这就是内容分发网络.<br>而作为这个网络上的所有节点,都可以当成虚拟服务器来看待.至于在各地的服务器如何做负载均衡,可以由各节点之间完成.<br>准备工作如下:你需要下载如下软件以实现上述功能:</p>
+<figure class="highlight autohotkey"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Nginx,</span>BIND,GeoIP,Varnish</span><br></pre></td></tr></table></figure>
+
+<p>接下来是编译和安装bind9和geoip:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> tar -xzvf bind-9.2.4.tar.gz</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> tar -xzvf GeoIP-1.4.6.tar.gz</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> <span class="built_in">cd</span> GeoIP-1.4.6</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> ./configure –prefix=/usr/<span class="built_in">local</span>/geoip</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> make</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> make install</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> <span class="built_in">cd</span> ..</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> patch -p0 &lt; bind-9.2.4-geodns-patch/patch.diff //给bind9打补丁,让bind9直接支持geoip库</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> <span class="built_in">cd</span> bind-9.2.4</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> CFLAGS=<span class="string">&quot;-I/usr/local/geoip/include&quot;</span> LDFLAGS=<span class="string">&quot;-L/usr/local/geoip/lib -lGeoIP&quot;</span> ./configure –prefix=/usr/<span class="built_in">local</span>/<span class="built_in">bind</span></span></span><br><span class="line"><span class="meta">$</span><span class="bash"> make</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> make install</span></span><br></pre></td></tr></table></figure>
+
+<p>装好bind后我们来制作named.conf:</p>
+<figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">view</span> &quot;us&quot; &#123;</span><br><span class="line">    // 匹配北美的客户端 US &amp; Canada</span><br><span class="line">    match-clients &#123; country_US; country_CA; &#125;;</span><br><span class="line">    // Provide <span class="keyword">recursive</span> service <span class="keyword">to</span> <span class="type">internal</span> clients <span class="keyword">only</span>.</span><br><span class="line">    recursion <span class="keyword">no</span>;</span><br><span class="line">    <span class="type">zone</span> &quot;cdn.xianglei.com&quot; &#123;</span><br><span class="line">        <span class="keyword">type</span> master;</span><br><span class="line">        file &quot;pri/xianglei-us.db&quot;;</span><br><span class="line">    &#125;;</span><br><span class="line">    <span class="type">zone</span> &quot;.&quot; <span class="keyword">IN</span> &#123;</span><br><span class="line">        <span class="keyword">type</span> hint;</span><br><span class="line">        file &quot;named.ca&quot;;</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">view</span> &quot;latin&quot; &#123;</span><br><span class="line">    // 匹配到南美国家</span><br><span class="line">    match-clients &#123; country_AR; country_CL; country_BR; &#125;;</span><br><span class="line">    recursion <span class="keyword">no</span>;</span><br><span class="line">    <span class="type">zone</span> &quot;cdn.xianglei.com&quot; &#123;</span><br><span class="line">        <span class="keyword">type</span> master;</span><br><span class="line">        file &quot;pri/xianglei-latin.db&quot;;</span><br><span class="line">    &#125;;</span><br><span class="line">    <span class="type">zone</span> &quot;.&quot; <span class="keyword">IN</span> &#123;</span><br><span class="line">        <span class="keyword">type</span> hint;</span><br><span class="line">        file &quot;named.ca&quot;;</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>照此办理,你也可以匹配到欧洲,非洲等等,然后来开始制作nginx和varnish.<br>注意,以上内容是你要在主节点服务器上做的,主节点服务器只负责对DNS请求进行转发.<br>约定一下,我们将Bind服务器叫做动态节点服务器,Nginx+Varnish叫做边界服务器.<br>以下内容是副节点服务器需要做的,也就是实际在某个地区放置的服务器.</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ .<span class="regexp">/configure –prefix=/u</span>sr<span class="regexp">/local/</span>nginx –with-http_realip_module</span><br><span class="line">$ make</span><br><span class="line">$ make install</span><br></pre></td></tr></table></figure>
+
+<p>并配置Nginx:</p>
+<figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">http &#123;</span><br><span class="line">    include mime.types;</span><br><span class="line">    default_type application/octet-stream;</span><br><span class="line">    sendfile on;</span><br><span class="line">    keepalive_timeout <span class="number">65</span>;</span><br><span class="line">    upstream dynamic_node &#123;</span><br><span class="line">    server <span class="number">1.1</span><span class="number">.1</span><span class="number">.1</span>:<span class="number">80</span>; $ <span class="number">1.1</span><span class="number">.1</span><span class="number">.1</span> 是主DNS节点的IP地址</span><br><span class="line">&#125;</span><br><span class="line">server &#123;</span><br><span class="line">    listen <span class="number">8080</span>;</span><br><span class="line">    server_name cdn.xianglei.net;</span><br><span class="line">    location ~* .(gif|<span class="type">jpg</span>|<span class="type">jpeg</span>|<span class="type">png</span>|<span class="type">wmv</span>|<span class="type">avi</span>|<span class="type">mpg</span>|<span class="type">mpeg</span>|<span class="type">mp4</span>|<span class="type">htm</span>|<span class="type">html</span>|<span class="type">js</span>|<span class="type">css</span>|<span class="type">mp3</span>|<span class="type">swf</span>|<span class="type">ico</span>|<span class="type">flv</span>)$ &#123;</span><br><span class="line">    proxy_set_header X-Real-IP $remote_addr;</span><br><span class="line">    proxy_pass http://dynamic_node;</span><br><span class="line">    proxy_store /var/www/cache$uri;</span><br><span class="line">    proxy_store_access user:rw group:rw all:r;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>以上我们用nginx只对静态文件进行缓存,将静态文件缓存在/var/www/cache文件夹下,如果你没有的话,需要创建这个文件夹.并且nginx监听的是8080端口,这是因为,我们需要用varnish来监听80端口进行动态文件的转发.这里实际上是用nginx做了一个静态文件的反向代理和缓存的服务器,而真正让用户能够看到网页和动态文件的反向代理是varnish,而静态和动态文件的分开存放,能将效率提升不少.<br>最后我们来配置varnish服务.</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> tar -xzvf varnish-2.1.2.tar.gz</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> ./configure –prefix=/usr/<span class="built_in">local</span>/varnish</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> make</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> make install</span></span><br></pre></td></tr></table></figure>
+
+<p>然后是varnish的选项:</p>
+<figure class="highlight dsconfig"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">backend</span> <span class="string">default</span> &#123;</span><br><span class="line">    .<span class="string">host</span> = <span class="string">&quot;127.0.0.1″;</span></span><br><span class="line"><span class="string">    .port = &quot;</span><span class="string">8080</span>″;</span><br><span class="line">&#125;</span><br><span class="line"><span class="string">sub</span> <span class="string">vcl_recv</span> &#123;</span><br><span class="line">    <span class="string">if</span> (<span class="string">req</span>.<span class="string">url</span> ~ <span class="string">&quot;.(js|css|jpg|jpeg|png|gif|gz|tgz|bz2|tbz|mp3|ogg|swf)$&quot;</span>) &#123;</span><br><span class="line">        <span class="string">return</span> (<span class="string">lookup</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="string">sub</span> <span class="string">vcl_fetch</span> &#123;</span><br><span class="line">    <span class="string">if</span> (<span class="string">req</span>.<span class="string">url</span> ~ <span class="string">&quot;.(js|css|jpg|jpeg|png|gif|gz|tgz|bz2|tbz|mp3|ogg|swf)$&quot;</span>) &#123;</span><br><span class="line">        <span class="string">unset</span> <span class="string">obj</span>.<span class="string">http</span>.<span class="built_in">set-cookie;</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>其他的配置内容可参看varnish的配置文章.</p>
+<p>总结:</p>
+<p>这样做的好处在于:<br>1.从根源上解决了DNS在轮询上的不确定性,能够做到在DNS上的快速响应.也避免了过去用Nginx+GeoIP时的负载高的问题.毕竟DNS的计算要比Nginx小多了.<br>2.降低大网站的服务器负载压力和运营成本,毕竟F5BigIP和双线路的价格和服务费都太高了.<br>3.易扩展性强,如某地区负载压力大,只需在该地区增加边界服务器组的web server即可完成,无需考虑跳转问题.<br>其他优点我再想想.</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/make/" rel="tag"># make</a>
+              <a href="/tags/%E6%96%87%E4%BB%B6/" rel="tag"># 文件</a>
+              <a href="/tags/%E5%86%85%E5%AE%B9/" rel="tag"># 内容</a>
+              <a href="/tags/nginx/" rel="tag"># nginx</a>
+              <a href="/tags/%E8%BD%AC%E5%8F%91/" rel="tag"># 转发</a>
+              <a href="/tags/varnish/" rel="tag"># varnish</a>
+              <a href="/tags/%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1/" rel="tag"># 负载均衡</a>
+              <a href="/tags/%E8%8A%82%E7%82%B9%E6%9C%8D%E5%8A%A1%E5%99%A8/" rel="tag"># 节点服务器</a>
+              <a href="/tags/geoip/" rel="tag"># geoip</a>
+              <a href="/tags/%E9%9D%99%E6%80%81/" rel="tag"># 静态</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2012/05/02/1209/" rel="prev" title="LINUX安全snort安装教程">
+      <i class="fa fa-chevron-left"></i> LINUX安全snort安装教程
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2012/05/12/1232/" rel="next" title="linux网络流量实时监控工具">
+      linux网络流量实时监控工具 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="王殊勋"
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name">王殊勋</p>
+  <div class="site-description" itemprop="description">better late than never.<br>只要开始，虽晚不迟。</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">656</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">2058</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <!--添加网站运行时间 -->
+  <span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
+  <script>
+      var now = new Date(); 
+      function createtime() { 
+          var grt= new Date("12/01/2007 12:00:00");//此处修改你的建站时间或者网站上线时间 
+          now.setTime(now.getTime()+250); 
+          days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days); 
+          hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours); 
+          if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum); 
+          mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;} 
+          seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum); 
+          snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;} 
+          document.getElementById("timeDate").innerHTML = "本站已安全运行 "+dnum+" 天 "; 
+          document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒"; 
+      } 
+  setInterval("createtime()",250);
+  </script>
+  <span itemprop="copyrightYear">(2007 - 2021)</span>
+  <!-- 添加网站运行时间 -->
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">学无止境</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script size="300" alpha="0.6" zIndex="0" src="/lib/canvas-ribbon/canvas-ribbon.js"></script>
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

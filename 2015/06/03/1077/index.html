@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"shuxun","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"./public/search.xml"};
+  </script>
+
+  <meta name="description" content="今天来搞一个分布式的存储系统MFS,这个不论是原理还是搭建使用都不太好理解,所以大家可以先去搜索一些相关资料了解一下MFS的工作原理再来尝试搭建. 1、元数据服务器.在整个体系中负责管理管理文件系统.2、元数据日志服务器.负责备份master 服务器的变化日志文件,文件类型为changelog_ml.*.mfs ,以便于在元数据服务器出问题的时候接替其进行工作.3、数据存储服务器chunkserv">
+<meta property="og:type" content="article">
+<meta property="og:title" content="centos 通过MFS实现分布式存储">
+<meta property="og:url" content="http://shuxun,wang/2015/06/03/1077/index.html">
+<meta property="og:site_name" content="学无止境">
+<meta property="og:description" content="今天来搞一个分布式的存储系统MFS,这个不论是原理还是搭建使用都不太好理解,所以大家可以先去搜索一些相关资料了解一下MFS的工作原理再来尝试搭建. 1、元数据服务器.在整个体系中负责管理管理文件系统.2、元数据日志服务器.负责备份master 服务器的变化日志文件,文件类型为changelog_ml.*.mfs ,以便于在元数据服务器出问题的时候接替其进行工作.3、数据存储服务器chunkserv">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2015-06-02T18:19:00.000Z">
+<meta property="article:modified_time" content="2021-07-14T07:15:28.533Z">
+<meta property="article:author" content="王殊勋">
+<meta property="article:tag" content="localhost">
+<meta property="article:tag" content="安装">
+<meta property="article:tag" content="usr">
+<meta property="article:tag" content="root">
+<meta property="article:tag" content="挂载">
+<meta property="article:tag" content="日志">
+<meta property="article:tag" content="配置文件">
+<meta property="article:tag" content="客户端">
+<meta property="article:tag" content="mfs">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://shuxun,wang/2015/06/03/1077/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>centos 通过MFS实现分布式存储 | 学无止境</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">学无止境</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">注互联网运维技术发展</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-sitemap">
+
+    <a href="/sitemap.xml" rel="section"><i class="fa fa-sitemap fa-fw"></i>站点地图</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://shuxun,wang/2015/06/03/1077/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="王殊勋">
+      <meta itemprop="description" content="专注互联网运维技术发展">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="学无止境">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          centos 通过MFS实现分布式存储
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2015-06-03 02:19:00" itemprop="dateCreated datePublished" datetime="2015-06-03T02:19:00+08:00">2015-06-03</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-07-14 15:15:28" itemprop="dateModified" datetime="2021-07-14T15:15:28+08:00">2021-07-14</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%90%84%E7%B1%BB%E6%9C%8D%E5%8A%A1/" itemprop="url" rel="index"><span itemprop="name">各类服务</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>今天来搞一个分布式的存储系统MFS,这个不论是原理还是搭建使用都不太好理解,所以大家可以先去搜索一些相关资料了解一下MFS的工作原理再来尝试搭建.</p>
+<p>1、元数据服务器.在整个体系中负责管理管理文件系统.<br>2、元数据日志服务器.负责备份master 服务器的变化日志文件,文件类型为changelog_ml.*.mfs ,以便于在元数据服务器出问题的时候接替其进行工作.<br>3、数据存储服务器chunkserver.真正存储用户数据的服务器.存储文件时,首先把文件分成块,然后这些块在数据服务器chunkserver之间复 制(复制份数可以手工指定,建议设置副本数为3).数据服务器可以是多个,并且数量越多,可使用的”磁盘空间”越大,可靠性也越高.<br>4、客户端.使用MFS文件系统来存储和访问的主机称为MFS的客户端,成功挂接MFS文件系统以后,就可以像以前使用NFS一样共享这个虚拟性的存储了.</p>
+<p>一、环境描述:</p>
+<p>· 主控服务器Master server: 119.147.146.246<br>· 主控备份服务器Metalogger server: 119.147.146.248<br>· 存储块服务器Chunk servers: 119.147.146.249<br>· 客户端主机 (clients): 119.147.146.242、10.20.220.26</p>
+<p>二、主控服务器Master的安装</p>
+<p>1.安装</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$ useradd mfs -s <span class="regexp">/sbin/</span>nologin</span><br><span class="line">$ wget http:<span class="regexp">//</span>www.moosefs.org<span class="regexp">/tl_files/m</span>fscode/mfs-<span class="number">1.6</span>.<span class="number">20</span>-<span class="number">2</span>.tar.gz<span class="variable">$tar</span> zxvf mfs-<span class="number">1.6</span>.<span class="number">11</span>.tar.gz</span><br><span class="line">$ tar -zxvf mfs-<span class="number">1.6</span>.<span class="number">11</span>.tar.gz</span><br><span class="line">$ cd mfs-<span class="number">1.6</span>.<span class="number">11</span></span><br><span class="line">$ .<span class="regexp">/configure --prefix=/u</span>sr<span class="regexp">/local/m</span>fs --with-default-user=mfs --with- default-group=mfs --disable-mfschunkserver --disable-mfsmount</span><br><span class="line">$ make</span><br><span class="line">$ make install</span><br></pre></td></tr></table></figure>
+
+<p>2.copy配置文件</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$</span> <span class="built_in">cd</span> /usr/local/mfs/etc/</span><br><span class="line"><span class="variable">$</span> <span class="built_in">cp</span> mfsmaster.cfg.dist mfsmaster.cfg</span><br><span class="line"><span class="variable">$</span> <span class="built_in">cp</span> mfsexports.cfg.dist mfsexports.cfg</span><br></pre></td></tr></table></figure>
+
+<p>3.mfsmaster.cfg文件详解</p>
+<figure class="highlight vala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]$ cat /usr/local/mfs/etc/mfsmaster.cfg</span><br><span class="line"><span class="meta"># WORKING_USER = mfs #运行master server的用户</span></span><br><span class="line"><span class="meta"># WORKING_GROUP = mfs #运行master server的的组</span></span><br><span class="line"><span class="meta"># SYSLOG_IDENT = mfsmaster #是master server在syslog中的标志</span></span><br><span class="line"><span class="meta"># LOCK_MEMORY = 0#是否执行mlockall()以避免mfsmaster进程溢出(默认为0)</span></span><br><span class="line"><span class="meta"># NICE_LEVEL = -19 #运行的优先级</span></span><br><span class="line"><span class="meta"># EXPORTS_FILENAME = /usr/local/mfs/etc/mfsexports.cfg #被挂载目录及权限控制文件的存放位置</span></span><br><span class="line"><span class="meta"># DATA_PATH = /usr/local/mfs/var/mfs #数据存放路径</span></span><br><span class="line"><span class="meta"># BACK_LOGS = 50 #元数据的改变日志文件数量(默认50)</span></span><br><span class="line"><span class="meta"># REPLICATIONS_DELAY_INIT = 300 #延迟复制的时间(默认300s)</span></span><br><span class="line"><span class="meta"># REPLICATIONS_DELAY_DISCONNECT = 3600 #CHUNK SERVER断开复制的延迟</span></span><br><span class="line"><span class="meta"># MATOML_LISTEN_HOST = * #元数据日志服务器监听的IP地址(默认*,代表任何)</span></span><br><span class="line"><span class="meta"># MATOML_LISTEN_PORT = 9419 #元数据日志服务器监听的端口(默认9419)</span></span><br><span class="line"><span class="meta"># MATOCS_LISTEN_HOST = * #用于CHUNK SERVER 连接的IP(默认*,任何IP)</span></span><br><span class="line"><span class="meta"># MATOCS_LISTEN_PORT = 9420 #用于CHUNK SERVER连接的端口(默认9420)</span></span><br><span class="line"><span class="meta"># MATOCU_LISTEN_HOST = * #用于客户端挂载连接的IP(默认*.代表任何IP)</span></span><br><span class="line"><span class="meta"># MATOCU_LISTEN_PORT = 9421#用户客户端挂载连接的端口(默认9421)</span></span><br><span class="line"><span class="meta"># CHUNKS_LOOP_TIME = 300 #chunks的回环频率(默认300s)</span></span><br><span class="line"><span class="meta"># CHUNKS_DEL_LIMIT = 100 #表示在一个loop设备中可以删除chunks的最大数(默认100)</span></span><br><span class="line"><span class="meta"># CHUNKS_WRITE_REP_LIMIT = 1 #在一个循环里复制一个CHUNK SERVER的最大chunks数目(默认1)</span></span><br><span class="line"><span class="meta"># CHUNKS_READ_REP_LIMIT = 5 #在一个循环里从一个CHUNK SERVER 中复制最大chunks数目(默认5)</span></span><br><span class="line"><span class="meta"># REJECT_OLD_CLIENTS = 0 弹出低于1.6.0的客户端挂接(0或1,默认0)</span></span><br><span class="line"><span class="meta"># deprecated, to be removed in MooseFS 1.7</span></span><br><span class="line"><span class="meta"># LOCK_FILE = /var/run/mfs/mfsmaster.lock</span></span><br></pre></td></tr></table></figure>
+
+<p>注意:<br>如果我们打算更改这些配置文件中的某些项目的值,则需要打开特定配置文件相关文本行前的注释,然后修改跟随其后的值.因为被注释掉的行,即是MooseFS内置的缺省值,在这里我们暂时不打算对其进行修改.</p>
+<p>4.mfsexports.cfg文件详解</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]$ cat <span class="regexp">/usr/</span>local<span class="regexp">/mfs/</span>etc/mfsexports.cfg</span><br><span class="line"><span class="comment">#* / ro</span></span><br><span class="line"><span class="comment">#192.168.1.0/24 / rw</span></span><br><span class="line"><span class="comment">#192.168.1.0/24 / rw,alldirs,maproot=0,password=passcode</span></span><br><span class="line"><span class="comment">#10.0.0.0-10.0.0.5 /test rw,maproot=nobody,password=test</span></span><br><span class="line"><span class="comment">#* . rw</span></span><br><span class="line"><span class="comment">#* / rw,alldirs,maproot=0</span></span><br><span class="line"><span class="comment">#192.168.1.0/24 / rw,alldirs,maproot=0,password=passcode</span></span><br><span class="line"><span class="number">119.147</span>.<span class="number">146.248</span><span class="regexp">/24 /</span> rw,alldirs,maproot=<span class="number">0</span></span><br><span class="line"><span class="number">119.147</span>.<span class="number">146.242</span><span class="regexp">/24 /</span>data rw,alldirs,maproot=<span class="number">0</span>,password=<span class="number">123</span></span><br></pre></td></tr></table></figure>
+
+<p>mfsexports.cfg文件每一条由三部分组成,第一部分表示客户端的IP地址,第二部分表示被挂接的目录,第三部分表示客户端拥有的权限,下面对三给部分进行解释:</p>
+<figure class="highlight llvm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">a.客户端IP地址</span><br><span class="line">* 所有IP地址</span><br><span class="line"><span class="keyword">x</span>.<span class="keyword">x</span>.<span class="keyword">x</span>.<span class="keyword">x</span> 单个IP地址</span><br><span class="line"><span class="keyword">x</span>.<span class="keyword">x</span>.<span class="keyword">x</span>.<span class="keyword">x</span>/m.m.m.m IP网络地址/子网掩码</span><br><span class="line">f.f.f.f-t.t.t.t IP段</span><br><span class="line">b.被挂载的目录</span><br><span class="line">/ 表示MooseFS的根</span><br><span class="line">. 表示MFSMETA文件系统</span><br><span class="line"><span class="keyword">c</span>.客户端拥有的权限</span><br><span class="line">ro 只读</span><br><span class="line">rw 读写</span><br><span class="line">alldirs 允许挂载任何指定的子目录</span><br><span class="line">maproot 映射为root用户还是指定的用户</span><br><span class="line">password 指定客户端密码</span><br></pre></td></tr></table></figure>
+
+<p>5.首次安装master时,会自动生成一个名为metadata.mfs.empty的元数据文件metadata,该文件是空的.MooseFS master运必须有文件metadata.mfs</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$cp</span> <span class="regexp">/usr/</span>local<span class="regexp">/mfs/</span>var<span class="regexp">/mfs/m</span>etadata.mfs.empty <span class="regexp">/usr/</span>local<span class="regexp">/mfs/</span>var<span class="regexp">/mfs/m</span>etadata.mfs</span><br></pre></td></tr></table></figure>
+
+<p>6.启动master</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$<span class="regexp">/usr/</span>local<span class="regexp">/mfs/</span>sbin/mfsmaster start</span><br></pre></td></tr></table></figure>
+
+<p>7.开机启动</p>
+<figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root<span class="variable">@localhost</span> ~]<span class="variable">$ </span>echo <span class="string">&quot;/usr/local/mfs/sbin/mfscgiserv&quot;</span> &gt;&gt;<span class="regexp">/etc/rc</span>.local</span><br><span class="line">[root<span class="variable">@localhost</span> ~]<span class="variable">$ </span>echo <span class="string">&quot;/usr/local/mfs/sbin/mfsmaster&quot;</span> &gt;&gt; <span class="regexp">/etc/rc</span>.local</span><br></pre></td></tr></table></figure>
+
+<p>查看mfs是否运行</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$ps</span> -ef | grep mfs</span><br><span class="line">mfs <span class="number">23920</span> <span class="number">1</span> <span class="number">0</span> <span class="number">01</span>:<span class="number">34</span> ? <span class="number">00</span>:<span class="number">00</span>:<span class="number">01</span> <span class="regexp">/usr/</span>local<span class="regexp">/mfs/</span>sbin/mfsmaster start</span><br></pre></td></tr></table></figure>
+
+<p>三、安装主控备份服务器Metalogger server</p>
+<p>1.安装</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$ useradd mfs -s <span class="regexp">/sbin/</span>nologin</span><br><span class="line">$ wget http:<span class="regexp">//</span>www.moosefs.org<span class="regexp">/tl_files/m</span>fscode/mfs-<span class="number">1.6</span>.<span class="number">20</span>-<span class="number">2</span>.tar.gz<span class="variable">$tar</span> zxvf mfs-<span class="number">1.6</span>.<span class="number">11</span>.tar.gz</span><br><span class="line">$ tar -zxvf mfs-<span class="number">1.6</span>.<span class="number">11</span>.tar.gz</span><br><span class="line">$ cd mfs-<span class="number">1.6</span>.<span class="number">11</span></span><br><span class="line">$ .<span class="regexp">/configure --prefix=/u</span>sr<span class="regexp">/local/m</span>fs --with-default-user=mfs --with- default-group=mfs --disable-mfschunkserver --disable-mfsmount</span><br><span class="line"><span class="variable">$make</span></span><br><span class="line"><span class="variable">$make</span> install</span><br></pre></td></tr></table></figure>
+
+<p>2.copy配置文件</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ cd <span class="regexp">/usr/</span>local<span class="regexp">/mfs/</span>etc</span><br><span class="line">$ cp mfsmetalogger.cfg.dist mfsmetalogger.cfg</span><br></pre></td></tr></table></figure>
+
+<p>3.mfsmetalogger.cfg文件详解</p>
+<figure class="highlight vala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost etc]$ cat mfsmetalogger.cfg</span><br><span class="line"><span class="meta"># WORKING_USER = mfs</span></span><br><span class="line"><span class="meta"># WORKING_GROUP = mfs</span></span><br><span class="line"><span class="meta"># SYSLOG_IDENT = mfsmetalogger</span></span><br><span class="line"><span class="meta"># LOCK_MEMORY = 0</span></span><br><span class="line"><span class="meta"># NICE_LEVEL = -19</span></span><br><span class="line"><span class="meta"># DATA_PATH = /usr/local/mfs/var/mfs</span></span><br><span class="line"><span class="meta"># BACK_LOGS = 50</span></span><br><span class="line"><span class="meta"># META_DOWNLOAD_FREQ = 24</span></span><br><span class="line"><span class="meta"># MASTER_RECONNECTION_DELAY = 5</span></span><br><span class="line">MASTER_HOST = <span class="number">119.147</span><span class="number">.146</span><span class="number">.246</span></span><br><span class="line"><span class="meta"># MASTER_PORT = 9419</span></span><br><span class="line"><span class="meta"># MASTER_TIMEOUT = 60</span></span><br><span class="line"><span class="meta"># deprecated, to be removed in MooseFS 1.7</span></span><br><span class="line"><span class="meta"># LOCK_FILE = /var/run/mfs/mfsmetalogger.lock</span></span><br></pre></td></tr></table></figure>
+
+<p>META_DOWNLOAD_FREQ,元数据备份文件下载请求频率,默认24H,即每隔一天从元数据服务器上下载一个metadata.mfs.back文件.当元数据服务器关闭或者出故障时,metadata.mfs.back文件将消失,此时要恢复整个MFS,需要从元数据日志服务器中取的该文件.注意,这个文件和日志文件共同使用才可以恢复整个被损毁的分布式文件系统.</p>
+<p>MASTER_HOST,这个文件中需要修改的是MASTER_HOST变量,这个变量的值是MASTER SERVER 的IP地址</p>
+<p>4.启动元数据日志服务器</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]$ <span class="regexp">/usr/</span>local<span class="regexp">/mfs/</span>sbin/mfsmetalogger start</span><br><span class="line">working directory: <span class="regexp">/usr/</span>local<span class="regexp">/mfs/</span>var/mfs</span><br><span class="line">lockfile created and locked</span><br><span class="line">initializing mfsmetalogger modules ...</span><br><span class="line">mfsmetalogger daemon initialized properly</span><br></pre></td></tr></table></figure>
+
+<p>5.开机启动</p>
+<figure class="highlight arcade"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">echo <span class="string">&quot;/usr/local/mfs/sbin/mfsmetalogger&quot;</span> &gt;&gt; <span class="regexp">/etc/</span>rc.local</span><br></pre></td></tr></table></figure>
+
+<p>查看MFS进程</p>
+<figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]$ ps -ef | <span class="keyword">grep</span> mfs</span><br><span class="line">mfs <span class="number">16373</span> <span class="number">1</span> <span class="number">0</span> <span class="number">19</span>:<span class="number">55</span> ? <span class="number">00</span>:<span class="number">00</span>:<span class="number">00</span> <span class="regexp">/usr/</span>local<span class="regexp">/mfs/</span>sbin/mfsmetalogger start</span><br></pre></td></tr></table></figure>
+
+<p>查看MFS通讯端口是否打开</p>
+<figure class="highlight crmsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]$ lsof -i:<span class="number">9419</span></span><br><span class="line">COMMAND PID <span class="keyword">USER</span> <span class="title">FD</span> <span class="keyword">TYPE</span> DEVICE SIZE <span class="keyword">NODE</span> <span class="title">NAME</span></span><br><span class="line">mfsmetalo <span class="number">16373</span> mfs <span class="number">7</span>u IPv4 <span class="number">119836</span> TCP <span class="number">119.147</span>.<span class="number">146.248</span>:<span class="number">42981</span>-&gt;<span class="number">119.147</span>.<span class="number">146.246</span>:<span class="number">9419</span> (ESTABLISHED)</span><br></pre></td></tr></table></figure>
+
+<p>四、安装存储块服务器Chunk servers</p>
+<p>1.安装</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$ useradd mfs -s <span class="regexp">/sbin/</span>nologin</span><br><span class="line">$ wget http:<span class="regexp">//</span>www.moosefs.org<span class="regexp">/tl_files/m</span>fscode/mfs-<span class="number">1.6</span>.<span class="number">20</span>-<span class="number">2</span>.tar.gz<span class="variable">$tar</span> zxvf mfs-<span class="number">1.6</span>.<span class="number">11</span>.tar.gz</span><br><span class="line">$ tar -zxvf mfs-<span class="number">1.6</span>.<span class="number">11</span>.tar.gz</span><br><span class="line">$ cd mfs-<span class="number">1.6</span>.<span class="number">11</span></span><br><span class="line">$ .<span class="regexp">/configure --prefix=/u</span>sr<span class="regexp">/local/m</span>fs --with-default-user=mfs --with-default-group=mfs --disable-mfsmaster</span><br><span class="line">$ make</span><br><span class="line">$ make install</span><br></pre></td></tr></table></figure>
+
+<p>2.copy配置文件</p>
+<figure class="highlight vala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">$ cd /usr/local/mfs/etc/</span><br><span class="line">$ cp mfschunkserver.cfg.dist mfschunkserver.cfg #主配置文件</span><br><span class="line">$ cp mfshdd.cfg.dist mfshdd.cfg #指定服务器分配给MFS使用的空间</span><br><span class="line"></span><br><span class="line">[root@localhost etc]$ cat mfschunkserver.cfg</span><br><span class="line"><span class="meta"># WORKING_USER = mfs</span></span><br><span class="line"><span class="meta"># WORKING_GROUP = mfs</span></span><br><span class="line"><span class="meta"># SYSLOG_IDENT = mfschunkserver</span></span><br><span class="line"><span class="meta"># LOCK_MEMORY = 0</span></span><br><span class="line"><span class="meta"># NICE_LEVEL = -19</span></span><br><span class="line"><span class="meta"># DATA_PATH = /usr/local/mfs/var/mfs</span></span><br><span class="line"><span class="meta"># MASTER_RECONNECTION_DELAY = 5</span></span><br><span class="line">MASTER_HOST = <span class="number">119.147</span><span class="number">.146</span><span class="number">.246</span> #元数据服务器的名称或地址(主机名或者IP)</span><br><span class="line">MASTER_PORT = <span class="number">9420</span></span><br><span class="line"><span class="meta"># MASTER_TIMEOUT = 60</span></span><br><span class="line"><span class="meta"># CSSERV_LISTEN_HOST = *</span></span><br><span class="line"><span class="meta"># CSSERV_LISTEN_PORT = 9422 #这个监听端口用于与其他数据储存服务器间的连接,通常是数据复制.</span></span><br><span class="line"><span class="meta"># CSSERV_TIMEOUT = 5</span></span><br><span class="line"><span class="meta"># HDD_CONF_FILENAME = /usr/local/mfs/etc/mfshdd.cfg #分配给MFS使用的磁盘空间配置文件的位置</span></span><br><span class="line"><span class="meta"># HDD_TEST_FREQ = 10</span></span><br><span class="line"><span class="meta"># deprecated, to be removed in MooseFS 1.7</span></span><br><span class="line"><span class="meta"># LOCK_FILE = /var/run/mfs/mfschunkserver.lock</span></span><br><span class="line"><span class="meta"># BACK_LOGS = 50</span></span><br><span class="line">[root@localhost etc]$ cat mfshdd.cfg</span><br><span class="line"><span class="meta">#/mnt/hd1</span></span><br><span class="line"><span class="meta">#/mnt/hd2</span></span><br><span class="line">/data #MFS的分区,客户端挂载的目录</span><br></pre></td></tr></table></figure>
+
+<p>改变/data的属主</p>
+<figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root<span class="variable">@localhost</span> ~]<span class="variable">$ </span>chown -R <span class="symbol">mfs:</span>mfs /data</span><br></pre></td></tr></table></figure>
+
+<p>3.启动数据储存服务器</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost etc]$ <span class="regexp">/usr/</span>local<span class="regexp">/mfs/</span>sbin/mfschunkserver start</span><br></pre></td></tr></table></figure>
+
+<p>4.开机启动</p>
+<figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root<span class="variable">@localhost</span> ~]<span class="variable">$ </span>echo <span class="string">&quot;/usr/local/mfs/sbin/mfschunkserver&quot;</span> &gt;&gt; <span class="regexp">/etc/rc</span>.local</span><br></pre></td></tr></table></figure>
+
+<p>五、MFS客户端的安装配置</p>
+<p>为了挂接基于MooseFS分布式文件,客户端主机必须安装FUSE软件包( fuse版本号至少2.6,推荐使用版本号大于2.7.2的fuse).如果系统没有安装fuse,你必须手动对其进行安装.一种常见的安装方式是从源码进行编译安装-我们可以从<a target="_blank" rel="noopener" href="http://sourceforge.net/projects/fuse/%E5%8F%96%E5%BE%97%E5%AE%89%E8%A3%85%E6%BA%90%E7%A0%81">http://sourceforge.net/projects/fuse/取得安装源码</a>:</p>
+<p>1.安装fuse-2.8.1.tar.gz</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$</span> tar <span class="literal">-zxvf</span> f<span class="built_in">use-2</span>.<span class="number">8.1</span>.tar.gz</span><br><span class="line"><span class="variable">$</span> <span class="built_in">cd</span> f<span class="built_in">use-2</span>.<span class="number">8.1</span></span><br><span class="line"><span class="variable">$</span> ./configure</span><br><span class="line"><span class="variable">$</span> make</span><br><span class="line"><span class="variable">$</span> make install</span><br></pre></td></tr></table></figure>
+
+<p>2.安装mfs-1.6.11.tar.gz</p>
+<figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$ useradd mfs -s <span class="regexp">/sbin/</span>nologin</span><br><span class="line">$ tar -zxvf mfs-<span class="number">1.6</span>.<span class="number">11</span>.tar.gz</span><br><span class="line">$ cd mfs-<span class="number">1.6</span>.<span class="number">11</span></span><br><span class="line">$ export PKG_CONFIG_PATH=<span class="regexp">/usr/</span>local<span class="regexp">/lib/</span>pkgconfig:$PKG_CONFIG_PATH</span><br><span class="line">$ .<span class="regexp">/configure --prefix=/u</span>sr<span class="regexp">/local/m</span>fs --with-<span class="keyword">default</span>-user=mfs --with-<span class="keyword">default</span>-<span class="keyword">group</span>=mfs --enable-mfsmount --disable-mfsmaster --disable-mfschunkserver</span><br><span class="line">$ make</span><br><span class="line">$ make install</span><br></pre></td></tr></table></figure>
+
+<p>3.加载fuse模块到内核</p>
+<figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root<span class="variable">@localhost</span> ~]<span class="variable">$ </span>modprobe fuse</span><br></pre></td></tr></table></figure>
+
+<p>4.创建挂载点</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]$ mkdir <span class="regexp">/mnt/m</span>fs</span><br></pre></td></tr></table></figure>
+
+<p>5.挂载MFS</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="regexp">/usr/</span>local<span class="regexp">/mfs/</span>bin<span class="regexp">/mfsmount /m</span>nt/mfs -H <span class="number">119.147</span>.<span class="number">146.246</span> -p</span><br></pre></td></tr></table></figure>
+
+<p>输入密码就可以了,所有的MFS都挂载的是同一个元数据服务器的IP,而不是其他数据储存服务器的IP<br>6.开机自动挂载</p>
+<figure class="highlight arcade"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">echo <span class="string">&quot;/usr/local/mfs/bin/mfsmount /mnt/mfs -H 119.147.146.246 -p&quot;</span> &gt;&gt; <span class="regexp">/etc/</span>rc.local</span><br></pre></td></tr></table></figure>
+
+<p>7.查看挂载情况</p>
+<figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]$ df -h</span><br><span class="line">Filesystem <span class="keyword">Size</span> Used Avail Use% Mounted on</span><br><span class="line"><span class="regexp">/dev/m</span>apper/VolGroupRoot-LogVolRoot</span><br><span class="line"><span class="number">16</span>G <span class="number">2.6</span>G <span class="number">13</span>G <span class="number">18</span>% /</span><br><span class="line"><span class="regexp">/dev/</span>cciss<span class="regexp">/c0d0p1 99M 27M 68M 29% /</span>boot</span><br><span class="line">tmpfs <span class="number">5.9</span>G <span class="number">0</span> <span class="number">5.9</span>G <span class="number">0</span>% <span class="regexp">/dev/</span>shm</span><br><span class="line"><span class="regexp">/dev/m</span>apper/VolGroupData-LogVolData</span><br><span class="line"><span class="number">246</span>G <span class="number">13</span>G <span class="number">221</span>G <span class="number">6</span>% /data</span><br><span class="line"><span class="regexp">/dev/m</span>apper/VolGroupData-LogVolLog</span><br><span class="line"><span class="number">9.7</span>G <span class="number">2.3</span>G <span class="number">7.0</span>G <span class="number">25</span>% <span class="regexp">/data/</span>logs</span><br><span class="line"><span class="number">119.147</span>.<span class="number">146.246</span>:<span class="number">9421</span> <span class="number">11</span>G <span class="number">112</span>M <span class="number">11</span>G <span class="number">2</span>% <span class="regexp">/mnt/m</span>fs</span><br></pre></td></tr></table></figure>
+
+<p>利用mount查看</p>
+<figure class="highlight accesslog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">[root@localhost ~]</span>$ mount</span><br><span class="line"><span class="number">119.147.146.246:9421</span> on /mnt/mfs type fuse.mfs (rw,nosuid,nodev,allow_other,default_permissions)</span><br></pre></td></tr></table></figure>
+
+<p>最后说明一下:chunkserver和client都是可以无限添加的.其他部分的服务器也可以通过keepalived或者heartbeat实现高可用.</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/localhost/" rel="tag"># localhost</a>
+              <a href="/tags/%E5%AE%89%E8%A3%85/" rel="tag"># 安装</a>
+              <a href="/tags/usr/" rel="tag"># usr</a>
+              <a href="/tags/root/" rel="tag"># root</a>
+              <a href="/tags/%E6%8C%82%E8%BD%BD/" rel="tag"># 挂载</a>
+              <a href="/tags/%E6%97%A5%E5%BF%97/" rel="tag"># 日志</a>
+              <a href="/tags/%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6/" rel="tag"># 配置文件</a>
+              <a href="/tags/%E5%AE%A2%E6%88%B7%E7%AB%AF/" rel="tag"># 客户端</a>
+              <a href="/tags/mfs/" rel="tag"># mfs</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2015/06/01/1647/" rel="prev" title="选择商城网站还是淘宝?">
+      <i class="fa fa-chevron-left"></i> 选择商城网站还是淘宝?
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2015/06/03/1245/" rel="next" title="linux下的zip加密压缩">
+      linux下的zip加密压缩 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="王殊勋"
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name">王殊勋</p>
+  <div class="site-description" itemprop="description">better late than never.<br>只要开始，虽晚不迟。</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">656</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">2058</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <!--添加网站运行时间 -->
+  <span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
+  <script>
+      var now = new Date(); 
+      function createtime() { 
+          var grt= new Date("12/01/2007 12:00:00");//此处修改你的建站时间或者网站上线时间 
+          now.setTime(now.getTime()+250); 
+          days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days); 
+          hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours); 
+          if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum); 
+          mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;} 
+          seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum); 
+          snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;} 
+          document.getElementById("timeDate").innerHTML = "本站已安全运行 "+dnum+" 天 "; 
+          document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒"; 
+      } 
+  setInterval("createtime()",250);
+  </script>
+  <span itemprop="copyrightYear">(2007 - 2021)</span>
+  <!-- 添加网站运行时间 -->
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">学无止境</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script size="300" alpha="0.6" zIndex="0" src="/lib/canvas-ribbon/canvas-ribbon.js"></script>
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

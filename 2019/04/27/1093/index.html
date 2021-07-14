@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"shuxun","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"./public/search.xml"};
+  </script>
+
+  <meta name="description" content="centos 6安装xen并不像centos 5那样轻松,因为在centos 6中,官方源已经去除了xen的rpm包,只能使用第三方源或自行编译,这里推荐使用第三方源,编译安装要解决的问题比较多.还有一个包libvirt,这个是管理xen的api,官方的这个包已经不支持xen,并且是0.9版的需要更高版本的iptables支持,所以libvirt需要编译安装.下面是在CentOS 6 64位系统进">
+<meta property="og:type" content="article">
+<meta property="og:title" content="centos6安装和配置Xen">
+<meta property="og:url" content="http://shuxun,wang/2019/04/27/1093/index.html">
+<meta property="og:site_name" content="学无止境">
+<meta property="og:description" content="centos 6安装xen并不像centos 5那样轻松,因为在centos 6中,官方源已经去除了xen的rpm包,只能使用第三方源或自行编译,这里推荐使用第三方源,编译安装要解决的问题比较多.还有一个包libvirt,这个是管理xen的api,官方的这个包已经不支持xen,并且是0.9版的需要更高版本的iptables支持,所以libvirt需要编译安装.下面是在CentOS 6 64位系统进">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2019-04-27T06:24:00.000Z">
+<meta property="article:modified_time" content="2021-07-14T07:16:15.004Z">
+<meta property="article:author" content="王殊勋">
+<meta property="article:tag" content="安装">
+<meta property="article:tag" content="启动">
+<meta property="article:tag" content="使用">
+<meta property="article:tag" content="文件">
+<meta property="article:tag" content="iptables">
+<meta property="article:tag" content="连接">
+<meta property="article:tag" content="工具">
+<meta property="article:tag" content="Guest">
+<meta property="article:tag" content="xen">
+<meta property="article:tag" content="libvirt">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://shuxun,wang/2019/04/27/1093/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>centos6安装和配置Xen | 学无止境</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">学无止境</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">注互联网运维技术发展</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-sitemap">
+
+    <a href="/sitemap.xml" rel="section"><i class="fa fa-sitemap fa-fw"></i>站点地图</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://shuxun,wang/2019/04/27/1093/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="王殊勋">
+      <meta itemprop="description" content="专注互联网运维技术发展">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="学无止境">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          centos6安装和配置Xen
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-04-27 14:24:00" itemprop="dateCreated datePublished" datetime="2019-04-27T14:24:00+08:00">2019-04-27</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-07-14 15:16:15" itemprop="dateModified" datetime="2021-07-14T15:16:15+08:00">2021-07-14</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%90%84%E7%B1%BB%E6%9C%8D%E5%8A%A1/" itemprop="url" rel="index"><span itemprop="name">各类服务</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>centos 6安装xen并不像centos 5那样轻松,因为在centos 6中,官方源已经去除了xen的rpm包,只能使用第三方源或自行编译,这里推荐使用第三方源,编译安装要解决的问题比较多.还有一个包libvirt,这个是管理xen的api,官方的这个包已经不支持xen,并且是0.9版的需要更高版本的iptables支持,所以libvirt需要编译安装.<br>下面是在CentOS 6 64位系统进行安装配置Xen.</p>
+<p>1、安装Xen及内核</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">rpm</span> -Uvh http://www.crc.id.au/repo/x<span class="number">86</span>_<span class="number">64</span>/kernel-xen-release-<span class="number">6</span>-<span class="number">3</span>.noarch.rpm //导入第三方源安装Xen</span><br><span class="line"><span class="attribute">yum</span> install bridge-utils //安装网桥设置工具</span><br><span class="line"><span class="attribute">yum</span> install kernel-xen xen //安装xen及内核</span><br></pre></td></tr></table></figure>
+
+<p>2、配置grub引导xen内核</p>
+<p>xen内核安装后,会自动插入引导xen内核代码到 <code>/boot/grub/grub.conf</code>文件,但还需要进行相应的修改.<br>修改后引导xen内核的代码如下:</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">title</span> CentOS (<span class="number">2.6.32.56</span>-<span class="number">1</span>.el<span class="number">6</span>xen.x<span class="number">86</span>_<span class="number">64</span>)</span><br><span class="line"><span class="attribute">root</span> (hd<span class="number">0</span>,<span class="number">7</span>)</span><br><span class="line"><span class="attribute">kernel</span> /xen.gz dom<span class="number">0</span>_mem=<span class="number">1024</span>M loglvl=<span class="literal">all</span> guest_loglvl=<span class="literal">all</span></span><br><span class="line"><span class="attribute">module</span> /vmlinuz-<span class="number">2.6.32.56</span>-<span class="number">1</span>.el<span class="number">6</span>xen.x<span class="number">86</span>_<span class="number">64</span> ro root=/dev/mapper/VolGroup-LogVol<span class="number">00</span> rd_LVM_LV=VolGroup/LogVol<span class="number">00</span> nomodeset</span><br><span class="line"><span class="attribute">module</span> /initramfs-<span class="number">2.6.32.56</span>-<span class="number">1</span>.el<span class="number">6</span>xen.x<span class="number">86</span>_<span class="number">64</span>.img</span><br></pre></td></tr></table></figure>
+<p>这段代码仅够参考,不一定适用于你的配置.</p>
+<p>3、关闭selinux</p>
+<p>这是必须关闭的,要不会因为selinux的安全机制导致xen无法正常工作.<br>编辑selinux配置文件:</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vi <span class="regexp">/etc/</span>sysconfig/selinux</span><br></pre></td></tr></table></figure>
+
+<p>修改为如下:</p>
+<figure class="highlight vala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta"># This file controls the state of SELinux on the system.</span></span><br><span class="line"><span class="meta"># SELINUX= can take one of these three values:</span></span><br><span class="line"><span class="meta"># enforcing - SELinux security policy is enforced.</span></span><br><span class="line"><span class="meta"># permissive - SELinux prints warnings instead of enforcing.</span></span><br><span class="line"><span class="meta"># disabled - No SELinux policy is loaded.</span></span><br><span class="line">SELINUX=disabled</span><br><span class="line"><span class="meta"># SELINUXTYPE= can take one of these two values:</span></span><br><span class="line"><span class="meta"># targeted - Targeted processes are protected,</span></span><br><span class="line"><span class="meta"># mls - Multi Level Security protection.</span></span><br><span class="line">SELINUXTYPE=targeted</span><br></pre></td></tr></table></figure>
+
+<p>还有一点配置也很重要,就是禁止netmanager接管网络,因为这个工具不支持网桥管理.<br>在 <code>/etc/sysconfig/network-script/ifcfg-eth0</code>中加入:</p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">NM_CONTROLLED</span>=<span class="literal">no</span></span><br></pre></td></tr></table></figure>
+
+<p>4、重启引导进入xen内核</p>
+<p>引导后执行xm info测试:</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">[<span class="string">root@localhost</span> <span class="string">~</span>]<span class="comment"># xm info</span></span><br><span class="line"><span class="attr">host :</span> <span class="string">localhost.localdomain</span></span><br><span class="line"><span class="attr">release :</span> <span class="number">2.6</span><span class="number">.32</span><span class="number">.56</span><span class="number">-1.</span><span class="string">el6xen.x86_64</span></span><br><span class="line"><span class="attr">version :</span> <span class="comment">#1 SMP Mon Feb 20 13:03:03 EST 2012</span></span><br><span class="line"><span class="attr">machine :</span> <span class="string">x86_64</span></span><br><span class="line"><span class="attr">nr_cpus :</span> <span class="number">4</span></span><br><span class="line"><span class="attr">nr_nodes :</span> <span class="number">1</span></span><br><span class="line"><span class="attr">cores_per_socket :</span> <span class="number">2</span></span><br><span class="line"><span class="attr">threads_per_core :</span> <span class="number">2</span></span><br><span class="line"><span class="attr">cpu_mhz :</span> <span class="number">2394</span></span><br><span class="line"><span class="attr">hw_caps :</span> <span class="string">bfebfbff:28100800:00000000:00003f40:009ae3bd:00000000:00000001:00000000</span></span><br><span class="line"><span class="attr">virt_caps :</span> <span class="string">hvm</span></span><br><span class="line"><span class="attr">total_memory :</span> <span class="number">1972</span></span><br><span class="line"><span class="attr">free_memory :</span> <span class="number">412</span></span><br><span class="line"><span class="attr">free_cpus :</span> <span class="number">0</span></span><br><span class="line"><span class="attr">xen_major :</span> <span class="number">4</span></span><br><span class="line"><span class="attr">xen_minor :</span> <span class="number">1</span></span><br><span class="line"><span class="attr">xen_extra :</span> <span class="number">.2</span></span><br><span class="line"><span class="attr">xen_caps :</span> <span class="string">xen-3.0-x86_64</span> <span class="string">xen-3.0-x86_32p</span> <span class="string">hvm-3.0-x86_32</span> <span class="string">hvm-3.0-x86_32p</span> <span class="string">hvm-3.0-x86_64</span></span><br><span class="line"><span class="attr">xen_scheduler :</span> <span class="string">credit</span></span><br><span class="line"><span class="attr">xen_pagesize :</span> <span class="number">4096</span></span><br><span class="line"><span class="attr">platform_params :</span> <span class="string">virt_start=0xffff800000000000</span></span><br><span class="line"><span class="attr">xen_changeset :</span> <span class="string">unavailable</span></span><br><span class="line"><span class="attr">xen_commandline :</span> <span class="string">dom0_mem=1024M</span> <span class="string">loglvl=all</span> <span class="string">guest_loglvl=all</span></span><br><span class="line"><span class="attr">cc_compiler :</span> <span class="string">gcc</span> <span class="string">version</span> <span class="number">4.4</span><span class="number">.6</span> <span class="number">20110731</span> <span class="string">(Red</span> <span class="string">Hat</span> <span class="number">4.4</span><span class="number">.6</span><span class="number">-3</span><span class="string">)</span> <span class="string">(GCC)</span></span><br><span class="line"><span class="attr">cc_compile_by :</span> <span class="string">mockbuild</span></span><br><span class="line"><span class="attr">cc_compile_domain :</span> <span class="string">crc.id.au</span></span><br><span class="line"><span class="attr">cc_compile_date :</span> <span class="string">Mon</span> <span class="string">Feb</span> <span class="number">20</span> <span class="number">12</span><span class="string">:52:37</span> <span class="string">EST</span> <span class="number">2012</span></span><br><span class="line"><span class="attr">xend_config_format :</span> <span class="number">4</span></span><br></pre></td></tr></table></figure>
+
+<p>5、安装api管理工具</p>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum <span class="keyword">install</span> virt-<span class="keyword">install</span> virt-viewer</span><br></pre></td></tr></table></figure>
+
+<p>6、编译安装libvirt</p>
+<p>因为rpm安装的libvirt不支持xen连接,所以我们使用编译安装.还有版本也不能选择高的,不然可能会因为iptables的版本低而不能使用libvirt.</p>
+<figure class="highlight jboss-cli"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">yum install gcc xen-devel libxml2-devel gnutls-devel device-mapper-devel libnl-devel make</span><br><span class="line"><span class="keyword">cd</span> <span class="string">/tmp</span></span><br><span class="line">wget http:<span class="string">//libvirt.org/sources/libvirt-0.8.1.tar.gz</span></span><br><span class="line">tar xzf libvirt-0.8.1.tar.gz</span><br><span class="line"><span class="keyword">cd</span> libvirt-0.8.1</span><br><span class="line"><span class="string">./configure</span> <span class="params">--with-xen</span> <span class="params">--with-xen-inotify</span> <span class="params">--with-libvirtd</span></span><br><span class="line">make &amp;&amp; make install</span><br></pre></td></tr></table></figure>
+
+<p>然后打开 <code>/usr/local/etc/libvirt/libvirtd.conf</code>文件,删除 <code>unix_sock_dir = &quot;/var/run/libvirt&quot;</code>前面的注释,并创建 <code>/var/run/libvirt</code>目录.<br>之后启动libvirtd,并设置开机启动</p>
+<figure class="highlight arcade"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">libvirtd -d</span><br><span class="line">echo <span class="string">&quot;/usr/local/sbin/libvirtd -d&quot;</span> &gt;&gt;<span class="regexp">/etc/</span>rc.d/rc.local</span><br></pre></td></tr></table></figure>
+
+<p>7、安装xen guest</p>
+<p>我们这里使用virt-install工具进行guest的安装,当然你也可以使用xm命令安装,不过相对麻烦点.<br>可以执行 <code>virt-install –help</code>学习这工具的使用方法.<br>下面是安装guest的示例</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">virt</span>-install -n CentOSVM<span class="number">1</span> -r <span class="number">512</span> -f /xen/CentOSVM<span class="number">1</span>.img -l http://www/ –network=network:default -s <span class="number">10</span> –nographics –vcpus=<span class="number">2</span></span><br></pre></td></tr></table></figure>
+
+<p>或者使用交互式安装</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">virt-install --prompt</span><br><span class="line"></span><br><span class="line">-n CentOSVM1 设置虚拟服务器名称</span><br><span class="line">-r <span class="number">512</span> 设置内存大小</span><br><span class="line">-f <span class="regexp">/xen/</span>CentOSVM1.img 虚拟磁盘文件的保存路径,如果有重名可以使用–force参数强制重建.</span><br><span class="line">-l http:<span class="regexp">//</span>www<span class="regexp">/ 安装文件的访问方式,支持nfs http ftp smb等多种方式.如果你对你的带宽比较自信,可以使用http:/</span><span class="regexp">/mirrors.163.com/</span>centos<span class="regexp">/5.5/</span>os<span class="regexp">/i386/</span>网易的镜像站</span><br><span class="line">–network=network:default 网络连接方式,我选择的是route中的default</span><br><span class="line">-s <span class="number">10</span>磁盘文件的大小,单位是G</span><br><span class="line">–nographics 不使用图形界面,可以不加此参数,然后加–vnc看看图形效果</span><br><span class="line">–vcpus=<span class="number">2</span> 虚拟CPU的个数</span><br></pre></td></tr></table></figure>
+
+<p>在执行virt-install命令安装系统之前,先确定你的安装源,支持nfs http ftp smb等多种方式,宽带大的话,可以使用http直接连接远程安装源,比如mirror.163.com.<br>我这里adsl上网的,本地已经下载有iso文件了,所以在本地架设个http服务器进行安装.</p>
+<p>1、挂载iso文件到/iso目录,这个目录必须存在.</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">mount</span> -o loop CentOS-<span class="number">6</span>.<span class="number">2</span>-x<span class="number">86</span>_<span class="number">64</span>-minimal.iso /iso</span><br></pre></td></tr></table></figure>
+
+<p>2、安装httpd服务器,我这里安装apache.</p>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">yum <span class="keyword">install</span> httpd</span><br><span class="line">service httpd start</span><br></pre></td></tr></table></figure>
+
+<p>3、创建软链接或直接复制文件到apache根目录 <code>/var/www/html</code>,如果你的centos 6.2是完整版,只需要做个软链接,如果下载的是精简版,也就是minimal,需要复制全部文件到根目录,因为.treeinfo这个文件需要相应的修改.</p>
+<p>centos 6.2完整版:</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ln -s <span class="regexp">/iso /</span>var<span class="regexp">/www/</span>html</span><br></pre></td></tr></table></figure>
+
+<p>centos 6.2精简版:</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cp -R <span class="regexp">/iso /</span>var<span class="regexp">/www/</span>html</span><br></pre></td></tr></table></figure>
+
+<p>修改.treeinfo文件,如:</p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">[general]</span></span><br><span class="line"><span class="attr">family</span> = CentOS</span><br><span class="line"><span class="attr">timestamp</span> = <span class="number">1323560005.81</span></span><br><span class="line"><span class="attr">variant</span> =</span><br><span class="line"><span class="attr">totaldiscs</span> = <span class="number">1</span></span><br><span class="line"><span class="attr">version</span> = <span class="number">6.2</span></span><br><span class="line"><span class="attr">discnum</span> = <span class="number">1</span></span><br><span class="line"><span class="attr">packagedir</span> =</span><br><span class="line"><span class="attr">arch</span> = x<span class="number">86_64</span></span><br><span class="line"><span class="section">[images-x86_64]</span></span><br><span class="line"><span class="attr">kernel</span> = isolinux/vmlinuz</span><br><span class="line"><span class="attr">initrd</span> = isolinux/initrd.img</span><br><span class="line"><span class="section">[images-xen]</span></span><br><span class="line"><span class="attr">kernel</span> = isolinux/vmlinuz</span><br><span class="line"><span class="attr">initrd</span> = isolinux/initrd.img  </span><br><span class="line"><span class="section">[stage2]</span></span><br><span class="line"><span class="attr">mainimage</span> = images/install.img</span><br></pre></td></tr></table></figure>
+
+<p>4、在安装之前,需要暂时关闭iptables,否则安装过程中会无法取得相应文件.</p>
+<figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">service iptables stop</span><br></pre></td></tr></table></figure>
+
+<p>5、开始使用virt-install安装</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">virt</span>-install -n centos<span class="number">6</span> -r <span class="number">512</span> -f /xen/CentOSVM<span class="number">1</span>.img -l http://<span class="number">192.168.1.100</span>/iso --network=network:default -s <span class="number">4</span> --vcpus=<span class="number">2</span></span><br></pre></td></tr></table></figure>
+
+<p>之后会自动调用virt-viewer工具显示安装界面.</p>
+<p>6、启动guest centos6</p>
+<p>安装完成后会要求重启,这时guest关闭之后不会自动启动,需要使用xm start命令启动:</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">xm</span> start centos<span class="number">6</span></span><br></pre></td></tr></table></figure>
+
+<p>开启iptables.<br>之前为了连接安装源,暂时关闭了iptables,现在需要启动iptables,否则guest无法连接外网.</p>
+<figure class="highlight crmsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">service iptables <span class="literal">start</span></span><br></pre></td></tr></table></figure>
+
+<p>8、使用virt-viewer管理guest</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">virt</span>-viewer centos<span class="number">6</span></span><br></pre></td></tr></table></figure>
+
+<p>执行这条命令即可连接虚拟机centos6进行管理了,当然也可以直接使用ssh连接更简单.<br>另外,我安装过virt-manager来安装guest,但到创建域时就出现KeyError错误,不知道如何解决,有懂的告诉一声.</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E5%AE%89%E8%A3%85/" rel="tag"># 安装</a>
+              <a href="/tags/%E5%90%AF%E5%8A%A8/" rel="tag"># 启动</a>
+              <a href="/tags/%E4%BD%BF%E7%94%A8/" rel="tag"># 使用</a>
+              <a href="/tags/%E6%96%87%E4%BB%B6/" rel="tag"># 文件</a>
+              <a href="/tags/iptables/" rel="tag"># iptables</a>
+              <a href="/tags/%E8%BF%9E%E6%8E%A5/" rel="tag"># 连接</a>
+              <a href="/tags/%E5%B7%A5%E5%85%B7/" rel="tag"># 工具</a>
+              <a href="/tags/Guest/" rel="tag"># Guest</a>
+              <a href="/tags/xen/" rel="tag"># xen</a>
+              <a href="/tags/libvirt/" rel="tag"># libvirt</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2019/04/18/1349/" rel="prev" title="RPM 命令参数使用详解">
+      <i class="fa fa-chevron-left"></i> RPM 命令参数使用详解
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2019/04/30/1174/" rel="next" title="error macro free_alloca requires 2 arguments, but only 1 given">
+      error macro free_alloca requires 2 arguments, but only 1 given <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="王殊勋"
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name">王殊勋</p>
+  <div class="site-description" itemprop="description">better late than never.<br>只要开始，虽晚不迟。</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">656</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">2058</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <!--添加网站运行时间 -->
+  <span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
+  <script>
+      var now = new Date(); 
+      function createtime() { 
+          var grt= new Date("12/01/2007 12:00:00");//此处修改你的建站时间或者网站上线时间 
+          now.setTime(now.getTime()+250); 
+          days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days); 
+          hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours); 
+          if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum); 
+          mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;} 
+          seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum); 
+          snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;} 
+          document.getElementById("timeDate").innerHTML = "本站已安全运行 "+dnum+" 天 "; 
+          document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒"; 
+      } 
+  setInterval("createtime()",250);
+  </script>
+  <span itemprop="copyrightYear">(2007 - 2021)</span>
+  <!-- 添加网站运行时间 -->
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">学无止境</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script size="300" alpha="0.6" zIndex="0" src="/lib/canvas-ribbon/canvas-ribbon.js"></script>
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

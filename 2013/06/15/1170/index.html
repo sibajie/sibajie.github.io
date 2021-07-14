@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"shuxun","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"./public/search.xml"};
+  </script>
+
+  <meta name="description" content="echo 是一个非常简单、直接的命令:将 argument 送出至标准输出(STDOUT),通常就是在监视器(monitor)上输出.为了更好理解,不如先让我们先跑一下 echo 命令好了: 12$ echo$  你会发现只有一个空白行,然后又回到 shell prompt 上了. 这是因为 echo 在预设上,在显示完 argument 之后,还会送出一个换行符号(new-line charac">
+<meta property="og:type" content="article">
+<meta property="og:title" content="echo命令知多少">
+<meta property="og:url" content="http://shuxun,wang/2013/06/15/1170/index.html">
+<meta property="og:site_name" content="学无止境">
+<meta property="og:description" content="echo 是一个非常简单、直接的命令:将 argument 送出至标准输出(STDOUT),通常就是在监视器(monitor)上输出.为了更好理解,不如先让我们先跑一下 echo 命令好了: 12$ echo$  你会发现只有一个空白行,然后又回到 shell prompt 上了. 这是因为 echo 在预设上,在显示完 argument 之后,还会送出一个换行符号(new-line charac">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2013-06-15T01:41:00.000Z">
+<meta property="article:modified_time" content="2021-07-14T07:16:21.701Z">
+<meta property="article:author" content="王殊勋">
+<meta property="article:tag" content="命令">
+<meta property="article:tag" content="echo">
+<meta property="article:tag" content="command">
+<meta property="article:tag" content="选项">
+<meta property="article:tag" content="line">
+<meta property="article:tag" content="字符">
+<meta property="article:tag" content="shell">
+<meta property="article:tag" content="换行符号">
+<meta property="article:tag" content="表格">
+<meta property="article:tag" content="取消">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://shuxun,wang/2013/06/15/1170/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>echo命令知多少 | 学无止境</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">学无止境</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">注互联网运维技术发展</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-sitemap">
+
+    <a href="/sitemap.xml" rel="section"><i class="fa fa-sitemap fa-fw"></i>站点地图</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://shuxun,wang/2013/06/15/1170/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="王殊勋">
+      <meta itemprop="description" content="专注互联网运维技术发展">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="学无止境">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          echo命令知多少
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2013-06-15 09:41:00" itemprop="dateCreated datePublished" datetime="2013-06-15T09:41:00+08:00">2013-06-15</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-07-14 15:16:21" itemprop="dateModified" datetime="2021-07-14T15:16:21+08:00">2021-07-14</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" itemprop="url" rel="index"><span itemprop="name">操作系统</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>echo 是一个非常简单、直接的命令:<br>将 argument 送出至标准输出(STDOUT),通常就是在监视器(monitor)上输出.<br>为了更好理解,不如先让我们先跑一下 echo 命令好了:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> <span class="built_in">echo</span></span></span><br><span class="line"><span class="meta">$</span></span><br></pre></td></tr></table></figure>
+
+<p>你会发现只有一个空白行,然后又回到 shell prompt 上了. 这是因为 echo 在预设上,在显示完 argument 之后,还会送出一个换行符号(new-line charactor).但是上面的 command 并没任何的 argument ,那结果就只剩一个换行符号了…<br>若你要取消这个换行符号,可利用 echo 的 -n option :</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> <span class="built_in">echo</span> -n</span></span><br><span class="line"><span class="meta">$</span></span><br></pre></td></tr></table></figure>
+
+<p>不妨让我们回到 command line 的概念上来讨论上例的 echo 命令好了:<br>command line 只有 command_name(echo) 及 option(-n),并没有任何 argument .<br>要想看看 echo 的 argument ,那还不简单﹗接下来,你可试试如下的输入:</p>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="keyword">echo</span> <span class="keyword">first</span> <span class="built_in">line</span></span><br><span class="line"><span class="keyword">first</span> <span class="built_in">line</span></span><br><span class="line">$ <span class="keyword">echo</span> -n <span class="keyword">first</span> <span class="built_in">line</span></span><br><span class="line"><span class="keyword">first</span> <span class="built_in">line</span> $</span><br></pre></td></tr></table></figure>
+
+<p>从上两个 echo 命令中,你会发现 argument 的部份显示在你的荧幕,而换行符号则视 -n option 的有无而别. 很明显的,第二个 echo 由于换行符号被取消了,接下来的 shell prompt 就接在输出结果同一行了…<br>事实上,echo 除了 -n options 之外,常用选项还有:</p>
+<figure class="highlight diff"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="deletion">-e :启用反斜线控制字符的转换(参考下表)</span></span><br><span class="line"><span class="deletion">-E:关闭反斜线控制字符的转换(预设如此)</span></span><br><span class="line"><span class="deletion">-n :取消行末之换行符号(与 -e 选项下的 c 字符同意)</span></span><br></pre></td></tr></table></figure>
+
+<p>关于 echo 命令所支持的反斜线控制字符如下表:</p>
+<figure class="highlight vbnet"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="symbol">a:</span>ALERT / BELL (从系统喇叭送出铃声)</span><br><span class="line"><span class="symbol">b:</span>BACKSPACE ,也就是向左删除键</span><br><span class="line"><span class="symbol">c:</span>取消行末之换行符号</span><br><span class="line"><span class="symbol">E:</span>ESCAPE,跳脱键</span><br><span class="line"><span class="symbol">f:</span>FORMFEED,换页字符</span><br><span class="line"><span class="symbol">n:</span>NEWLINE,换行字符</span><br><span class="line"><span class="symbol">r:</span><span class="keyword">RETURN</span>,回车键</span><br><span class="line"><span class="symbol">t:</span>TAB,表格跳位键</span><br><span class="line"><span class="symbol">v:</span>VERTICAL TAB,垂直表格跳位键</span><br><span class="line"><span class="symbol">n:</span>ASCII 八进位编码(以 x 开首为十六进制) :反斜线本身</span><br><span class="line"></span><br><span class="line">(表格资料来自 O<span class="comment">&#x27;Reilly 出版社之 Learning the Bash Shell, 2nd Ed.)</span></span><br></pre></td></tr></table></figure>
+
+<p>或许,我们可以透过实例来了解 echo 的选项及控制字符:</p>
+<p>例一:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> <span class="built_in">echo</span> -e <span class="string">&quot;atbtcndtetf&quot;</span></span></span><br><span class="line">a       b       c</span><br><span class="line">d       e       f</span><br></pre></td></tr></table></figure>
+
+<p>上例运用 t 来区隔 abc 还有 def ,及用n 将 def 换至下一行.</p>
+<p>例二:</p>
+<figure class="highlight taggerscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ echo -e &quot;<span class="symbol">\1</span>41<span class="symbol">\0</span>11<span class="symbol">\1</span>42<span class="symbol">\0</span>11<span class="symbol">\1</span>43<span class="symbol">\0</span>12<span class="symbol">\1</span>44<span class="symbol">\0</span>11<span class="symbol">\1</span>45<span class="symbol">\0</span>11<span class="symbol">\1</span>46&quot;</span><br><span class="line">a       b       c</span><br><span class="line">d       e       f</span><br></pre></td></tr></table></figure>
+
+<p>与例一的结果一样,只是使用 ASCII 八进位编码.</p>
+<p>例三:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> <span class="built_in">echo</span> -e <span class="string">&quot;x61x09x62x09x63x0ax64x09x65x09x66&quot;</span></span></span><br><span class="line">a       b       c</span><br><span class="line">d       e       f</span><br></pre></td></tr></table></figure>
+
+<p>与例二差不多,只是这次换用 ASCII 十六进制编码.</p>
+<p>例四:</p>
+<figure class="highlight gams"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="symbol">$</span> echo -<span class="keyword">ne</span> <span class="string">&quot;atbtcndtebfa&quot;</span></span><br><span class="line">a       b       c</span><br><span class="line">d       f <span class="symbol">$</span></span><br></pre></td></tr></table></figure>
+
+<p>因为 e 字母后面是删除键(b),因此输出结果就没有 e 了. 在结束时听到一声铃向,那是 a 的杰作﹗ 由于同时使用了 -n 选项,因此 shell prompt 紧接在第二行之后. 若你不用 -n 的话,那你在 a 后再加个 c ,也是同样的效果.<br>事实上,在日后的 shell 操作及 shell script 设计上,echo 命令是最常被使用的命令之一. 比方说,用 echo 来检查变量值:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> A=B</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> <span class="built_in">echo</span> <span class="variable">$A</span></span></span><br><span class="line">B</span><br><span class="line"><span class="meta">$</span><span class="bash"> <span class="built_in">echo</span> $?</span></span><br><span class="line">0</span><br></pre></td></tr></table></figure>
+
+<p>(注:关于变量概念,我们留到下两章才跟大家说明.)<br>好了,更多的关于 command line 的格式,以及 echo 命令的选项,就请您自行多加练习、运用了…</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E5%91%BD%E4%BB%A4/" rel="tag"># 命令</a>
+              <a href="/tags/echo/" rel="tag"># echo</a>
+              <a href="/tags/command/" rel="tag"># command</a>
+              <a href="/tags/%E9%80%89%E9%A1%B9/" rel="tag"># 选项</a>
+              <a href="/tags/line/" rel="tag"># line</a>
+              <a href="/tags/%E5%AD%97%E7%AC%A6/" rel="tag"># 字符</a>
+              <a href="/tags/shell/" rel="tag"># shell</a>
+              <a href="/tags/%E6%8D%A2%E8%A1%8C%E7%AC%A6%E5%8F%B7/" rel="tag"># 换行符号</a>
+              <a href="/tags/%E8%A1%A8%E6%A0%BC/" rel="tag"># 表格</a>
+              <a href="/tags/%E5%8F%96%E6%B6%88/" rel="tag"># 取消</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2013/06/08/1263/" rel="prev" title="MFS客户端错误">
+      <i class="fa fa-chevron-left"></i> MFS客户端错误
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2013/06/18/1502/" rel="next" title="解决Putty出现Network errorSoftware caused connection abort">
+      解决Putty出现Network errorSoftware caused connection abort <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="王殊勋"
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name">王殊勋</p>
+  <div class="site-description" itemprop="description">better late than never.<br>只要开始，虽晚不迟。</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">656</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">2058</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <!--添加网站运行时间 -->
+  <span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
+  <script>
+      var now = new Date(); 
+      function createtime() { 
+          var grt= new Date("12/01/2007 12:00:00");//此处修改你的建站时间或者网站上线时间 
+          now.setTime(now.getTime()+250); 
+          days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days); 
+          hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours); 
+          if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum); 
+          mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;} 
+          seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum); 
+          snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;} 
+          document.getElementById("timeDate").innerHTML = "本站已安全运行 "+dnum+" 天 "; 
+          document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒"; 
+      } 
+  setInterval("createtime()",250);
+  </script>
+  <span itemprop="copyrightYear">(2007 - 2021)</span>
+  <!-- 添加网站运行时间 -->
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">学无止境</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script size="300" alpha="0.6" zIndex="0" src="/lib/canvas-ribbon/canvas-ribbon.js"></script>
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

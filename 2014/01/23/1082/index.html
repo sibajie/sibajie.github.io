@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"shuxun","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"./public/search.xml"};
+  </script>
+
+  <meta name="description" content="在你安装VHCS2前请确认你注意到以下问题: (1)请确认您使用的是CentOS 5.3(2)你的服务器必须配置有完全合法的域名,或者这个域名可以被网络上的其他计算机识别.(3)服务器的安装,请见教程:开源主机安装装备篇之——CentOS5.3的安装(4)服务器的IP、子网掩码等设置,以(3)中的教程设置为范例,您可以自行修改成你的设置.CentOS 5.2&#x2F;5.3的安装可以参考本站的开源主机安装">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CentOS5.3下安装 VHCS2教程">
+<meta property="og:url" content="http://shuxun,wang/2014/01/23/1082/index.html">
+<meta property="og:site_name" content="学无止境">
+<meta property="og:description" content="在你安装VHCS2前请确认你注意到以下问题: (1)请确认您使用的是CentOS 5.3(2)你的服务器必须配置有完全合法的域名,或者这个域名可以被网络上的其他计算机识别.(3)服务器的安装,请见教程:开源主机安装装备篇之——CentOS5.3的安装(4)服务器的IP、子网掩码等设置,以(3)中的教程设置为范例,您可以自行修改成你的设置.CentOS 5.2&#x2F;5.3的安装可以参考本站的开源主机安装">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2014-01-23T12:41:00.000Z">
+<meta property="article:modified_time" content="2021-07-14T07:15:16.105Z">
+<meta property="article:author" content="王殊勋">
+<meta property="article:tag" content="安装">
+<meta property="article:tag" content="输入">
+<meta property="article:tag" content="etc">
+<meta property="article:tag" content="文件">
+<meta property="article:tag" content="数据库">
+<meta property="article:tag" content="密码">
+<meta property="article:tag" content="Please">
+<meta property="article:tag" content="Host">
+<meta property="article:tag" content="bytes">
+<meta property="article:tag" content="used">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://shuxun,wang/2014/01/23/1082/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>CentOS5.3下安装 VHCS2教程 | 学无止境</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">学无止境</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">注互联网运维技术发展</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-sitemap">
+
+    <a href="/sitemap.xml" rel="section"><i class="fa fa-sitemap fa-fw"></i>站点地图</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://shuxun,wang/2014/01/23/1082/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="王殊勋">
+      <meta itemprop="description" content="专注互联网运维技术发展">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="学无止境">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          CentOS5.3下安装 VHCS2教程
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2014-01-23 20:41:00" itemprop="dateCreated datePublished" datetime="2014-01-23T20:41:00+08:00">2014-01-23</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-07-14 15:15:16" itemprop="dateModified" datetime="2021-07-14T15:15:16+08:00">2021-07-14</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%90%84%E7%B1%BB%E6%9C%8D%E5%8A%A1/" itemprop="url" rel="index"><span itemprop="name">各类服务</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>在你安装VHCS2前请确认你注意到以下问题:</p>
+<p>(1)请确认您使用的是CentOS 5.3<br>(2)你的服务器必须配置有完全合法的域名,或者这个域名可以被网络上的其他计算机识别.<br>(3)服务器的安装,请见教程:开源主机安装装备篇之——CentOS5.3的安装<br>(4)服务器的IP、子网掩码等设置,以(3)中的教程设置为范例,您可以自行修改成你的设置.CentOS 5.2/5.3的安装可以参考本站的开源主机安装装备篇之——CentOS5.3的安装.</p>
+<p>注意:服务器安装完成后,必须关闭防火墙和SELinux,设置后必须重启一次.本教程仅做测试研究之用,由于VHCS2对CentOS5的兼容性不是太好,不建议用做工业用途.</p>
+<p>一、调整 <code>/etc/hosts</code>:</p>
+<p>编辑 <code>/etc/hosts</code></p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">host:~$ vi <span class="regexp">/etc/</span>hosts</span><br></pre></td></tr></table></figure>
+
+<p>内容如下:</p>
+<figure class="highlight accesslog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"># Do not remove the following line, or various programs</span><br><span class="line"># that require network functionality will fail.</span><br><span class="line"><span class="number">127.0.0.1</span> localhost.localdomain localhost</span><br><span class="line"><span class="number">192.168.0.200</span> server.ispcpcn.com server</span><br><span class="line">::<span class="number">1</span> localhost6.localdomain6 localhost6</span><br></pre></td></tr></table></figure>
+
+<p>二、系统的初始化配置安装过后,要进行系统的初始化配置.具体配置方法见本站的:</p>
+<p>CentOS安装过后的几个初始化配置.</p>
+<p>三、使用root帐号登录系统,升级系统,建立一个专用文件夹,下载VHCS2最新版压缩包并解压:</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">host</span>:~$ mkdir downloads</span><br><span class="line"><span class="attribute">host</span>:~$ cd downloads</span><br><span class="line"><span class="attribute">host</span>:~$ wget http://server<span class="number">5</span>.moll-newmedia.de/vhcs-<span class="number">2</span>.<span class="number">4</span>.<span class="number">8</span>.tar.bz<span class="number">2</span></span><br><span class="line"><span class="attribute">host</span>:~$ tar -xjvf vhcs-<span class="number">2</span>.<span class="number">4</span>.<span class="number">8</span>.tar.bz<span class="number">2</span></span><br></pre></td></tr></table></figure>
+
+<p>四、设置补充更新源,并更新系统:</p>
+<p>在VHCS2中,某些模块在官方的更新源中是没有的,就需要引用一些其他的源来安装.安装这个模块,就可以方便得使用yum install来安装一些官方没有的功能模块.</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">host</span>:~$ wget http://www.ispcpcn.com/Soft/ispCP/rpmforge-release-<span class="number">0</span>.<span class="number">3</span>.<span class="number">6</span>-<span class="number">1</span>.el<span class="number">5</span>.rf.i<span class="number">386</span>.rpm</span><br><span class="line"><span class="attribute">host</span>:~$ rpm -Uhv rpmforge-release-<span class="number">0</span>.<span class="number">3</span>.<span class="number">6</span>-<span class="number">1</span>.el<span class="number">5</span>.rf.i<span class="number">386</span>.rpm</span><br><span class="line"><span class="attribute">host</span>:~$ rm -f rpmforge-release-<span class="number">0</span>.<span class="number">3</span>.<span class="number">6</span>-<span class="number">1</span>.el<span class="number">5</span>.rf.i<span class="number">386</span>.rpm</span><br><span class="line"><span class="attribute">host</span>:~$ yum update</span><br></pre></td></tr></table></figure>
+
+<p>五、切换到VHCS2解压缩主目录,建立软件安装文件列表:</p>
+<figure class="highlight avrasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="symbol">host:</span>~<span class="meta"># cd $HOME/downloads/vhcs*</span></span><br><span class="line"><span class="symbol">host:</span>~<span class="meta"># vi ./docs/centos-packages</span></span><br></pre></td></tr></table></figure>
+
+<p>centos5-packages内容如下:</p>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">yum install awstats bind bind-chroot bind-libs bind-utils bzip2</span><br><span class="line">caching-nameserver chkrootkit clamav clamd clamav-db courier-authlib</span><br><span class="line">courier-authlib-userdb courier-<span class="keyword">imap</span> cyrus-sasl cyrus-sasl-gssapi</span><br><span class="line">cyrus-sasl-plain cyrus-sasl-md5 cyrus-sasl-ntlm expect gcc httpd</span><br><span class="line">iptables libdbi-dbd-mysql libmcrypt libtool-ltdl redhat-lsb mod_perl</span><br><span class="line">mod_ssl mod_auth_mysql mysql mysql-server net-snmp-<span class="keyword">perl</span> patch <span class="keyword">perl</span>-</span><br><span class="line">Archive-Tar <span class="keyword">perl</span>-Archive-Zip <span class="keyword">perl</span>-BerkeleyDB <span class="keyword">perl</span>-Bit-Vector <span class="keyword">perl</span>-</span><br><span class="line">Carp-Clan <span class="keyword">perl</span>-Compress-Zlib <span class="keyword">perl</span>-Convert-TNEF <span class="keyword">perl</span>-Convert-UUlib</span><br><span class="line"><span class="keyword">perl</span>-Crypt-Blowfish <span class="keyword">perl</span>-Crypt-CBC <span class="keyword">perl</span>-Crypt-DH <span class="keyword">perl</span>-Crypt-</span><br><span class="line">PasswdMD5 <span class="keyword">perl</span>-Date-Calc <span class="keyword">perl</span>-DateManip <span class="keyword">perl</span>-DBD-MySQL <span class="keyword">perl</span>-Digest-</span><br><span class="line">HMAC <span class="keyword">perl</span>-HTML-Parser <span class="keyword">perl</span>-HTML-Tagset <span class="keyword">perl</span>-MIME-tools <span class="keyword">perl</span>-IO-</span><br><span class="line">stringy <span class="keyword">perl</span>-libwww-<span class="keyword">perl</span> <span class="keyword">perl</span>-MailTools <span class="keyword">perl</span>-Net-CIDR-Lite <span class="keyword">perl</span>-Net</span><br><span class="line">-DNS <span class="keyword">perl</span>-Net-IP <span class="keyword">perl</span>-Net-LibIDN <span class="keyword">perl</span>-Net-Netmask <span class="keyword">perl</span>-Net-Server</span><br><span class="line"><span class="keyword">perl</span>-suidperl <span class="keyword">perl</span>-TermReadKey <span class="keyword">perl</span>-TimeDate <span class="keyword">perl</span>-URI <span class="keyword">perl</span>-Unix-</span><br><span class="line">Syslog <span class="keyword">perl</span>-MailTools php php-bcmath php-dba php-gd php-ldap hp-</span><br><span class="line">mbstring php-mcrypt php-mysql php-odbc php-pear php-snmp php-xml</span><br><span class="line">postfix proftpd proftpd-mysql rkhunter spamassassin <span class="built_in">system</span>-config-</span><br><span class="line">bind tar unixODBC unzip wget</span><br></pre></td></tr></table></figure>
+
+<p>六、通过yum安装必须的软件包.</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">host:~$ cd <span class="variable">$HOME</span><span class="regexp">/downloads/</span>vhcs*</span><br><span class="line">host:~$ yum install `cat .<span class="regexp">/docs/</span>centos-packages`</span><br></pre></td></tr></table></figure>
+
+<p>七、通过CPAN安装一些不能通过yum 安装的模块:</p>
+<figure class="highlight avrasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="symbol">host:</span>~$ cpan</span><br></pre></td></tr></table></figure>
+
+<p>进入cpan会出现如下提示,请输入no回车:</p>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">Are</span> you ready for manual configuration? [<span class="literal">yes</span>] <span class="literal">no</span> &lt;--这里输入<span class="literal">no</span>然后回车确认</span><br></pre></td></tr></table></figure>
+
+<p>安装:MIME::Entity:</p>
+<figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cpan&gt; install MIME::Entity</span><br></pre></td></tr></table></figure>
+
+<p>安装过程出现如下提示:</p>
+<figure class="highlight livescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="params">(<span class="number">1</span>)</span>--&gt;</span>Auto-install the <span class="number">1</span> mandatory <span class="built_in">module</span>(s) <span class="keyword">from</span> CPAN? [y] &lt;--输入y回车</span><br><span class="line">(<span class="number">2</span>)Shall I follow them <span class="keyword">and</span> prepend them <span class="keyword">to</span> the queue <span class="keyword">of</span> modules we are processing right now? [<span class="literal">yes</span>] &lt;--输入<span class="literal">yes</span>回车</span><br></pre></td></tr></table></figure>
+
+<p>安装Term::ReadPassword:</p>
+<figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cpan&gt; install Term::ReadPassword</span><br></pre></td></tr></table></figure>
+
+<p>退出cpan:</p>
+<figure class="highlight cos"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cpan&gt; <span class="keyword">quit</span></span><br></pre></td></tr></table></figure>
+
+<p>八、卸载 sendmail,同时安装redhat-lsb,避免sendmail影响postfix的运行.</p>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hos<span class="variable">t:</span>~$ yum <span class="built_in">remove</span> sendmail</span><br><span class="line">hos<span class="variable">t:</span>~$ yum install redhat-lsb</span><br></pre></td></tr></table></figure>
+
+<p>九、安装courier-imap,courier-authlib-userdb和courier-authlib.</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">host</span>:~$ wget http://www.ispcpcn.com/Soft/ispCP/courier-authlib-<span class="number">0</span>.<span class="number">62</span>.<span class="number">2</span>-<span class="number">1</span>.el<span class="number">5</span>.mf.i<span class="number">386</span>.rpm</span><br><span class="line"><span class="attribute">host</span>:~$ wget http://www.ispcpcn.com/Soft/ispCP/courier-authlib-userdb-<span class="number">0</span>.<span class="number">62</span>.<span class="number">2</span>-<span class="number">1</span>.el<span class="number">5</span>.mf.i<span class="number">386</span>.rpm</span><br><span class="line"><span class="attribute">host</span>:~$ wget http://www.ispcpcn.com/Soft/ispCP/courier-imap-<span class="number">4</span>.<span class="number">4</span>.<span class="number">1</span>-<span class="number">1</span>.el<span class="number">5</span>.mf.i<span class="number">386</span>.rpm</span><br><span class="line"><span class="attribute">host</span>:~$ rpm -ivh courier-authlib-*.rpm courier-authlib-userdb-*.rpm courier-imap-*.rpm</span><br></pre></td></tr></table></figure>
+
+<p>十、更新系统并更新php和mysql.</p>
+<p>更新最新PHP和MYSQL的方法见:CentOS通过yum升级php到5.2.9版本的方法.</p>
+<p>十一、为courier建立用户和用户组,当我们建立用户组的时候可能会提示已经建立了,如果有这个提示,可以忽略,跳过.</p>
+<figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">host:~$ groupadd courier -g <span class="number">3000</span></span><br><span class="line">host:~$ useradd -u <span class="number">3000</span> -c <span class="string">&#x27;Courier Mail Server&#x27;</span> -d <span class="regexp">/dev/</span><span class="keyword">null</span> -g courier -s <span class="regexp">/bin/</span><span class="keyword">false</span> courier</span><br></pre></td></tr></table></figure>
+
+<p>十二、设置mysql数据库:<br>(1)启动mysql服务器:</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">host:~<span class="variable">$</span> service mysqld <span class="built_in">start</span></span><br></pre></td></tr></table></figure>
+
+<p>(2)进行MySQL设置:</p>
+<figure class="highlight prolog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">host:~$ mysql_secure_installation</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="symbol">Enter</span> current password for root (enter for none):</span><br><span class="line">在这里输入root用户的密码,如果您没设置密码,请直接回车.</span><br><span class="line"><span class="symbol">Change</span> the root password? [<span class="symbol">Y</span>/n]</span><br><span class="line">是否更改root的密码,如果更改,就输入<span class="string">&quot;y&quot;</span>,如果不更改,就输入 <span class="string">&quot;n&quot;</span>,更改root密码需要连续两次输入密码.</span><br><span class="line"><span class="symbol">Remove</span> anonymous users? [<span class="symbol">Y</span>/n]</span><br><span class="line">是否删除mysql的匿名用户,删除选择<span class="string">&quot;y&quot;</span>,不删除选择<span class="string">&quot;n&quot;</span>,为了安全,建议删除匿名帐号.</span><br><span class="line"><span class="symbol">Disallow</span> root login remotely? [<span class="symbol">Y</span>/n]</span><br><span class="line">是否允许root帐号远程登录,允许输入<span class="string">&quot;y&quot;</span>,不允许输入<span class="string">&quot;n&quot;</span>,建议不允许root远程登录.</span><br><span class="line"><span class="symbol">Remove</span> test database and access to it? [<span class="symbol">Y</span>/n]</span><br><span class="line">是否删除测试数据库及对测试数据库的访问许可.建议输入<span class="string">&quot;y&quot;</span>删除测试数据库.</span><br><span class="line"><span class="symbol">Reload</span> privilege tables now? [<span class="symbol">Y</span>/n]</span><br></pre></td></tr></table></figure>
+
+<p>重置数据表的权限,建议输入”y”执行本步.</p>
+<p>十三、建立三个文件和文件夹,解决VHCS2对CentOS兼容性差的问题!</p>
+<p>(1)建立/etc/proftpd文件夹:</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">host:~$ mkdir <span class="regexp">/etc/</span>proftpd</span><br></pre></td></tr></table></figure>
+
+<p>(2)建立/etc/proftpd/proftpd.conf文件,内容随便写:</p>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hos<span class="variable">t:</span>~$ <span class="keyword">vi</span> /etc/proftpd/proftpd.<span class="keyword">conf</span></span><br></pre></td></tr></table></figure>
+
+<p>(3)建立/etc/named.conf,内容随便写:</p>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hos<span class="variable">t:</span>~$ <span class="keyword">vi</span> /etc/named.<span class="keyword">conf</span></span><br></pre></td></tr></table></figure>
+
+<p>(4)建立/var/mail/virtual文件夹:</p>
+<figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">host:~$ mkdir /var/mail/<span class="keyword">virtual</span></span><br></pre></td></tr></table></figure>
+
+<p>十四、编译VHCS2安装文件:</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">host:~<span class="variable">$</span> <span class="built_in">cd</span> <span class="variable">$HOME</span>/downloads/vhcs*</span><br><span class="line">host:~<span class="variable">$</span> make <span class="operator">-f</span> Makefile.centos5 install</span><br></pre></td></tr></table></figure>
+
+<p>十五、拷贝编译好的文件进系统:</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">host:~$ cp -RLf <span class="regexp">/tmp/</span>vhcs-<span class="number">2.4</span>.<span class="number">8</span><span class="regexp">/* /</span>   询问是否覆盖,请输入<span class="string">&quot;y&quot;</span>回车确认覆盖.</span><br></pre></td></tr></table></figure>
+
+<p>十六、切换进入VHCS2安装目录,安装VHCS2,并根据提示问题进行输入和确认:</p>
+<figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">host:~$ cd /var/www/vhcs2/engine/setup/</span><br><span class="line">host:~$ ./vhcs2-setup</span><br><span class="line"></span><br><span class="line">(<span class="number">1</span>)Please enter <span class="keyword">system</span> hostname (Enter <span class="keyword">for</span> defaults) [<span class="keyword">server</span>]: <span class="comment">--&gt;输入完整的主机名回车确认,这里vhcs2对centos有bug,主机名不是完整的.</span></span><br><span class="line">(<span class="number">2</span>)Please enter <span class="keyword">system</span> network address (Enter <span class="keyword">for</span> defaults) [<span class="number">192.168</span><span class="number">.0</span><span class="number">.200</span>]: <span class="comment">--&gt;直接回车</span></span><br><span class="line">(<span class="number">3</span>)Please enter <span class="keyword">SQL</span> <span class="keyword">server</span> host (Enter <span class="keyword">for</span> defaults) [localhost]: <span class="comment">--&gt;直接回车</span></span><br><span class="line">(<span class="number">4</span>)Please enter <span class="keyword">system</span> <span class="keyword">SQL</span> <span class="keyword">database</span> (Enter <span class="keyword">for</span> defaults) [vhcs2]: <span class="comment">--&gt;直接回车</span></span><br><span class="line">(<span class="number">5</span>)Please enter <span class="keyword">system</span> <span class="keyword">SQL</span> <span class="keyword">user</span> (Enter <span class="keyword">for</span> defaults) [root]: <span class="comment">--&gt;直接回车</span></span><br><span class="line">(<span class="number">6</span>)Please enter <span class="keyword">system</span> <span class="keyword">SQL</span> <span class="keyword">password</span> (Enter <span class="keyword">for</span> defaults) [<span class="keyword">none</span>]: <span class="comment">--&gt;输入MySQL的root用户的密码</span></span><br><span class="line">(<span class="number">7</span>)Please repeat <span class="keyword">system</span> <span class="keyword">SQL</span> <span class="keyword">password</span>: <span class="comment">--&gt;重复输入密码,进行确认</span></span><br><span class="line">(<span class="number">8</span>)Please enter VHCS ftp <span class="keyword">SQL</span> <span class="keyword">user</span> (Enter <span class="keyword">for</span> defaults) [vftp]: <span class="comment">--&gt;FTP的数据库连接用户,保持默认直接回车</span></span><br><span class="line">(<span class="number">9</span>)Please enter VHCS ftp <span class="keyword">SQL</span> <span class="keyword">user</span> <span class="keyword">password</span> (Enter <span class="keyword">for</span> defaults) [<span class="keyword">none</span>]:输入FTP的数据库连接密码</span><br><span class="line">(<span class="number">10</span>)Please repeat VHCS ftp <span class="keyword">SQL</span> <span class="keyword">user</span> <span class="keyword">password</span>: <span class="comment">--&gt;重复输入FTP的数据库连接密码</span></span><br><span class="line">(<span class="number">11</span>)Please enter administration <span class="keyword">login</span> <span class="type">name</span> (Enter <span class="keyword">for</span> defaults) [<span class="keyword">admin</span>]: <span class="comment">--&gt;输入VHCS管理员的用户名</span></span><br><span class="line">(<span class="number">12</span>)Please enter administrator <span class="keyword">password</span>: <span class="comment">--&gt;输入VHCS管理员的密码</span></span><br><span class="line">(<span class="number">13</span>)Please repeat administrator <span class="keyword">password</span>: <span class="comment">--&gt;重复输入VHCS管理员的密码,进行确认</span></span><br><span class="line">(<span class="number">14</span>)Please enter administrator email address: <span class="comment">--&gt;输入管理员的电子邮件地址</span></span><br></pre></td></tr></table></figure>
+
+<p>然后开始正式安装了,耐心等候,等待安装结束.</p>
+<p>十七、重新编辑 <code>/etc/hosts</code>配置文件:</p>
+<p>编辑 <code>/etc/hosts</code>:</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">host:~$ vi <span class="regexp">/etc/</span>hosts</span><br></pre></td></tr></table></figure>
+
+<p>内容如下:</p>
+<figure class="highlight accesslog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"># Do not remove the following line, or various programs</span><br><span class="line"># that require network functionality will fail.</span><br><span class="line"><span class="number">127.0.0.1</span> localhost.localdomain localhost</span><br><span class="line"><span class="number">192.168.0.200</span> server.ispcpcn.com server</span><br><span class="line">::<span class="number">1</span> localhost6.localdomain6 localhost6</span><br></pre></td></tr></table></figure>
+
+<p>十八、修改proftpd的配置:</p>
+<p>VHCS2对proftpd的配置是错误的,这里需要纠正过来.<br>删除原来的proftpd.conf配置文件:</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">host:~<span class="variable">$</span> <span class="built_in">rm</span> <span class="operator">-f</span> /etc/proftpd.conf</span><br></pre></td></tr></table></figure>
+
+<p>建立新的proftpd.conf文件:</p>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hos<span class="variable">t:</span>~$ <span class="keyword">vi</span> /etc/proftpd.<span class="keyword">conf</span></span><br></pre></td></tr></table></figure>
+
+<p>内容如下:</p>
+<figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br></pre></td><td class="code"><pre><span class="line">LoadModule mod_sql.c</span><br><span class="line">LoadModule mod_sql_mysql.c</span><br><span class="line">LoadModule mod_quotatab.c</span><br><span class="line">LoadModule mod_quotatab_file.c</span><br><span class="line">LoadModule mod_quotatab_sql.c</span><br><span class="line">UseIPv6 <span class="keyword">off</span></span><br><span class="line">ServerName &quot;host.hqtcn.me&quot;</span><br><span class="line">ServerType standalone</span><br><span class="line">DeferWelcome <span class="keyword">off</span></span><br><span class="line">MultilineRFC2228 <span class="keyword">on</span></span><br><span class="line">DefaultServer <span class="keyword">on</span></span><br><span class="line">ShowSymlinks <span class="keyword">on</span></span><br><span class="line">AllowOverwrite <span class="keyword">on</span></span><br><span class="line">UseReverseDNS <span class="keyword">off</span></span><br><span class="line">IdentLookups <span class="keyword">off</span></span><br><span class="line">AllowStoreRestart <span class="keyword">on</span></span><br><span class="line">AllowForeignAddress <span class="keyword">on</span></span><br><span class="line">LogFormat traff &quot;%b %u&quot;</span><br><span class="line">TimeoutLogin <span class="number">120</span></span><br><span class="line">TimeoutNoTransfer <span class="number">600</span></span><br><span class="line">TimeoutStalled <span class="number">600</span></span><br><span class="line">TimeoutIdle <span class="number">1200</span></span><br><span class="line">DisplayLogin welcome.msg</span><br><span class="line">DisplayChdir .message</span><br><span class="line">ListOptions &quot;-l&quot;</span><br><span class="line">DenyFilter *.*/</span><br><span class="line">DefaultRoot ~</span><br><span class="line">Port <span class="number">21</span></span><br><span class="line">MaxInstances <span class="number">30</span></span><br><span class="line"><span class="keyword">User</span> nobody</span><br><span class="line"><span class="keyword">Group</span> nobody</span><br><span class="line">Umask <span class="number">022</span> <span class="number">022</span></span><br><span class="line">AllowOverwrite <span class="keyword">on</span></span><br><span class="line">HideNoAccess <span class="keyword">on</span></span><br><span class="line">IgnoreHidden <span class="keyword">on</span></span><br><span class="line">RootLogin <span class="keyword">off</span></span><br><span class="line">TransferLog /var/<span class="keyword">log</span>/proftpd/xferlog</span><br><span class="line">ExtendedLog /var/<span class="keyword">log</span>/proftpd/ftp_traff.<span class="keyword">log</span> <span class="keyword">read</span>,<span class="keyword">write</span> traff</span><br><span class="line">PathDenyFilter &quot;.quota$&quot;</span><br><span class="line">QuotaEngine <span class="keyword">on</span></span><br><span class="line">QuotaShowQuotas <span class="keyword">on</span></span><br><span class="line">QuotaDisplayUnits Mb</span><br><span class="line">SQLNamedQuery <span class="keyword">get</span>-quota-<span class="keyword">limit</span> <span class="keyword">SELECT</span> &quot;name, quota_type, per_session, limit_type, bytes_in_avail, bytes_out_avail, bytes_xfer_avail, files_in_avail, files_out_avail, files_xfer_avail FROM quotalimits WHERE name = &#x27;%&#123;0&#125;&#x27; AND quota_type = &#x27;%&#123;1&#125;&#x27;&quot;</span><br><span class="line">SQLNamedQuery <span class="keyword">get</span>-quota-tally <span class="keyword">SELECT</span> &quot;name, quota_type, bytes_in_used, bytes_out_used, bytes_xfer_used, files_in_used, files_out_used, files_xfer_used FROM quotatallies WHERE name = &#x27;%&#123;0&#125;&#x27; AND quota_type = &#x27;%&#123;1&#125;&#x27;&quot;</span><br><span class="line">SQLNamedQuery <span class="keyword">update</span>-quota-tally <span class="keyword">UPDATE</span> &quot;bytes_in_used = bytes_in_used + %&#123;0&#125;, bytes_out_used = bytes_out_used + %&#123;1&#125;, bytes_xfer_used = bytes_xfer_used + %&#123;2&#125;, files_in_used = files_in_used + %&#123;3&#125;, files_out_used = files_out_used + %&#123;4&#125;, files_xfer_used = files_xfer_used + %&#123;5&#125; WHERE name = &#x27;%&#123;6&#125;&#x27; AND quota_type = &#x27;%&#123;7&#125;&#x27;&quot; quotatallies</span><br><span class="line">SQLNamedQuery <span class="keyword">insert</span>-quota-tally <span class="keyword">INSERT</span> &quot;%&#123;0&#125;, %&#123;1&#125;, %&#123;2&#125;, %&#123;3&#125;, %&#123;4&#125;, %&#123;5&#125;, %&#123;6&#125;, %&#123;7&#125;&quot; quotatallies</span><br><span class="line">QuotaLock /var/run/proftpd/tally.<span class="keyword">lock</span></span><br><span class="line">QuotaLimitTable <span class="keyword">sql</span>:/<span class="keyword">get</span>-quota-<span class="keyword">limit</span></span><br><span class="line">QuotaTallyTable <span class="keyword">sql</span>:/<span class="keyword">get</span>-quota-tally/<span class="keyword">update</span>-quota-tally/<span class="keyword">insert</span>-quota-tally</span><br><span class="line">Ratios <span class="keyword">on</span></span><br><span class="line">DelayEngine <span class="keyword">on</span></span><br><span class="line">ControlsEngine <span class="keyword">on</span></span><br><span class="line">ControlsMaxClients <span class="number">2</span></span><br><span class="line">ControlsLog /var/<span class="keyword">log</span>/proftpd/controls.<span class="keyword">log</span></span><br><span class="line">ControlsInterval <span class="number">5</span></span><br><span class="line">ControlsSocket /var/run/proftpd/proftpd.sock</span><br><span class="line">AdminControlsEngine <span class="keyword">on</span></span><br><span class="line">AuthPAMConfig proftpd</span><br><span class="line">AuthOrder mod_sql.c</span><br><span class="line">SQLBackend mysql</span><br><span class="line">SQLAuthTypes Crypt</span><br><span class="line">SQLAuthenticate <span class="keyword">on</span></span><br><span class="line">SQLConnectInfo vhcs2@localhost vftp <span class="number">111111111</span></span><br><span class="line">SQLUserInfo ftp_users userid passwd uid gid homedir shell</span><br><span class="line">SQLGroupInfo ftp_group groupname gid members</span><br><span class="line">SQLMinUserUID <span class="number">2000</span></span><br><span class="line">SQLMinUserGID <span class="number">2000</span></span><br></pre></td></tr></table></figure>
+
+<p>如上面的内容有点乱,如果您复制后无法启动proftpd.conf,请下载我改好的配置文件:</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">host:~<span class="variable">$</span> <span class="built_in">cd</span> /etc/</span><br><span class="line">host:~<span class="variable">$</span> <span class="built_in">rm</span> <span class="operator">-f</span> proftpd.conf</span><br><span class="line">host:~<span class="variable">$</span> <span class="built_in">wget</span> http://www.ispcpcn.com/Soft/vhcs2/proftpd.conf</span><br></pre></td></tr></table></figure>
+
+<p>然后对 <code>/etc/proftpd.conf</code>进行编辑(无论是是新建的还是下载的proftpd.conf文件都需要再编辑):</p>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hos<span class="variable">t:</span>~$ <span class="keyword">vi</span> /etc/proftpd.<span class="keyword">conf</span></span><br></pre></td></tr></table></figure>
+
+<p>需要编辑的内容如下:</p>
+<figure class="highlight lasso"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">[</span><span class="params">...</span><span class="params">...</span><span class="meta">]</span></span><br><span class="line">ServerName &quot;host.hqtcn.me&quot; &lt;--这里把host.hqtcn.me替换成您的主机名</span><br><span class="line"><span class="meta">[</span><span class="params">...</span><span class="params">...</span><span class="meta">]</span></span><br><span class="line">SQLConnectInfo vhcs2@localhost vftp 111111 &lt;-- 这里vhcs2是您的VHCS2数据库名,如果您默认不是vhcs2,修改成您的,vftp是您的ftp连接数据库的用户名,改成您的设置,后面的 111111是您的vftp连接数据库的密码.</span><br><span class="line"><span class="meta">[</span><span class="params">...</span><span class="params">...</span><span class="meta">]</span></span><br></pre></td></tr></table></figure>
+
+<p>十九、设置 VHCS2必须的启动项:</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">host</span>:~$ chkconfig --add vhcs<span class="number">2</span>_daemon</span><br><span class="line"><span class="attribute">host</span>:~$ chkconfig --levels <span class="number">345</span> vhcs<span class="number">2</span>_daemon <span class="literal">on</span></span><br><span class="line"><span class="attribute">host</span>:~$ chkconfig --levels <span class="number">235</span> httpd <span class="literal">on</span></span><br><span class="line"><span class="attribute">host</span>:~$ chkconfig --levels <span class="number">235</span> mysqld <span class="literal">on</span></span><br><span class="line"><span class="attribute">host</span>:~$ chkconfig --levels <span class="number">235</span> saslauthd <span class="literal">on</span></span><br><span class="line"><span class="attribute">host</span>:~$ chkconfig --levels <span class="number">235</span> proftpd <span class="literal">on</span></span><br><span class="line"><span class="attribute">host</span>:~$ chkconfig --levels <span class="number">235</span> named <span class="literal">on</span></span><br></pre></td></tr></table></figure>
+
+<p>二十、重启服务器:</p>
+<figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">host:~$ shutdown -r now</span><br></pre></td></tr></table></figure>
+
+<p>二十一、控制面板的汉化:</p>
+<p>界面的汉化请参看Debian5下安装VHCS2最新版(2.4.8) 中的第十二步.</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E5%AE%89%E8%A3%85/" rel="tag"># 安装</a>
+              <a href="/tags/%E8%BE%93%E5%85%A5/" rel="tag"># 输入</a>
+              <a href="/tags/etc/" rel="tag"># etc</a>
+              <a href="/tags/%E6%96%87%E4%BB%B6/" rel="tag"># 文件</a>
+              <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag"># 数据库</a>
+              <a href="/tags/%E5%AF%86%E7%A0%81/" rel="tag"># 密码</a>
+              <a href="/tags/Please/" rel="tag"># Please</a>
+              <a href="/tags/Host/" rel="tag"># Host</a>
+              <a href="/tags/bytes/" rel="tag"># bytes</a>
+              <a href="/tags/used/" rel="tag"># used</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2014/01/22/1288/" rel="prev" title="mysql视图简介">
+      <i class="fa fa-chevron-left"></i> mysql视图简介
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2014/02/02/1351/" rel="next" title="ruby scriptserver 出错(openssl),解决方法">
+      ruby scriptserver 出错(openssl),解决方法 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="王殊勋"
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name">王殊勋</p>
+  <div class="site-description" itemprop="description">better late than never.<br>只要开始，虽晚不迟。</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">656</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">2058</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <!--添加网站运行时间 -->
+  <span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
+  <script>
+      var now = new Date(); 
+      function createtime() { 
+          var grt= new Date("12/01/2007 12:00:00");//此处修改你的建站时间或者网站上线时间 
+          now.setTime(now.getTime()+250); 
+          days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days); 
+          hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours); 
+          if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum); 
+          mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;} 
+          seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum); 
+          snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;} 
+          document.getElementById("timeDate").innerHTML = "本站已安全运行 "+dnum+" 天 "; 
+          document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒"; 
+      } 
+  setInterval("createtime()",250);
+  </script>
+  <span itemprop="copyrightYear">(2007 - 2021)</span>
+  <!-- 添加网站运行时间 -->
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">学无止境</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script size="300" alpha="0.6" zIndex="0" src="/lib/canvas-ribbon/canvas-ribbon.js"></script>
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

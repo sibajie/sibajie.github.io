@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"shuxun","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"./public/search.xml"};
+  </script>
+
+  <meta name="description" content="memcached的安装包括:1、服务端的安装;2、客户端的安装. 1、服务端的安装: 在这里,由于用编译安装memcached服务端过于复杂,因此我选用依赖管理工具 yum 来实现 memcached 的服务端安装: 12[root@localhost &#x2F;]$ yum install -y memcached#-y 表示自动应答,即默认安装所有需要用到的依赖包  在这一步之后,我们就安装完了.我">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Centos 安装 memcached">
+<meta property="og:url" content="http://shuxun,wang/2014/04/15/1064/index.html">
+<meta property="og:site_name" content="学无止境">
+<meta property="og:description" content="memcached的安装包括:1、服务端的安装;2、客户端的安装. 1、服务端的安装: 在这里,由于用编译安装memcached服务端过于复杂,因此我选用依赖管理工具 yum 来实现 memcached 的服务端安装: 12[root@localhost &#x2F;]$ yum install -y memcached#-y 表示自动应答,即默认安装所有需要用到的依赖包  在这一步之后,我们就安装完了.我">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2014-04-14T17:01:00.000Z">
+<meta property="article:modified_time" content="2021-07-14T07:14:53.463Z">
+<meta property="article:author" content="王殊勋">
+<meta property="article:tag" content="localhost">
+<meta property="article:tag" content="安装">
+<meta property="article:tag" content="目录">
+<meta property="article:tag" content="usr">
+<meta property="article:tag" content="指定">
+<meta property="article:tag" content="libmemcached">
+<meta property="article:tag" content="文件">
+<meta property="article:tag" content="root">
+<meta property="article:tag" content="配置">
+<meta property="article:tag" content="src">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://shuxun,wang/2014/04/15/1064/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>Centos 安装 memcached | 学无止境</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">学无止境</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">注互联网运维技术发展</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-sitemap">
+
+    <a href="/sitemap.xml" rel="section"><i class="fa fa-sitemap fa-fw"></i>站点地图</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://shuxun,wang/2014/04/15/1064/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="王殊勋">
+      <meta itemprop="description" content="专注互联网运维技术发展">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="学无止境">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Centos 安装 memcached
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2014-04-15 01:01:00" itemprop="dateCreated datePublished" datetime="2014-04-15T01:01:00+08:00">2014-04-15</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-07-14 15:14:53" itemprop="dateModified" datetime="2021-07-14T15:14:53+08:00">2021-07-14</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%90%84%E7%B1%BB%E6%9C%8D%E5%8A%A1/" itemprop="url" rel="index"><span itemprop="name">各类服务</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>memcached的安装包括:1、服务端的安装;2、客户端的安装.</p>
+<p>1、服务端的安装:</p>
+<p>在这里,由于用编译安装memcached服务端过于复杂,因此我选用依赖管理工具 yum 来实现 memcached 的服务端安装:</p>
+<figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root<span class="variable">@localhost</span> /]<span class="variable">$ </span>yum install -y memcached</span><br><span class="line"><span class="comment">#-y 表示自动应答,即默认安装所有需要用到的依赖包</span></span><br></pre></td></tr></table></figure>
+
+<p>在这一步之后,我们就安装完了.<br>我们尝试去启动一下memcached:</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost <span class="regexp">/]$ /u</span>sr<span class="regexp">/bin/m</span>emcached -b -l <span class="number">127.0</span>.<span class="number">0.1</span> -p <span class="number">11211</span> -m <span class="number">150</span> -u root</span><br><span class="line"><span class="comment">#-b 守护进程模式(退出终端窗口之后使程序还在运行),-l 指定IP地址127.0.0.1 ,-p 指定端口号11211,-m 为memcached分配多少内存(单位:M),-u 指定使用哪个用户启动memcached</span></span><br></pre></td></tr></table></figure>
+
+<p>查看memcached是否在运行:</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[<span class="meta">root@localhost /</span>]<span class="meta"># ps -ef | grep memcached</span></span><br><span class="line"><span class="comment">//或</span></span><br><span class="line">[<span class="meta">root@localhost /</span>]<span class="meta"># pstree -p | grep memcached</span></span><br></pre></td></tr></table></figure>
+
+<p>如果能够看到存在memcached进程,那就说明我们的 memcached 服务端已经安装成功了.</p>
+<p>2、客户端的安装:</p>
+<p>客户端的安装又分为两步:1、libmemcached 客户端库的安装;2、为PHP安装 php-memcached 扩展.<br>现在我们先来下载后面安装所需要的两个安装包.</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost <span class="regexp">/]$ cd /u</span>sr<span class="regexp">/local/</span>src   <span class="comment">#我的所有源码包习惯放在该目录下</span></span><br><span class="line">[root@localhost src]$ wget https:<span class="regexp">//</span>launchpad.net<span class="regexp">/libmemcached/</span><span class="number">1.0</span><span class="regexp">/1.0.18/</span>+download/libmemcached-<span class="number">1.0</span>.<span class="number">18</span>.tar.gz  <span class="comment">#下载libmemcached源码包</span></span><br><span class="line">[root@localhost src]$ wget http:<span class="regexp">//</span>pecl.php.net<span class="regexp">/get/m</span>emcached-<span class="number">2.2</span>.<span class="number">0</span>.tgz  <span class="comment">#下载memcached源码包</span></span><br><span class="line">[root@localhost src]$ ls</span><br><span class="line">libmemcached-<span class="number">1.0</span>.<span class="number">18</span>.tar.gz  memcached-<span class="number">2.2</span>.<span class="number">0</span>.tgz</span><br></pre></td></tr></table></figure>
+
+<p>1、libmemcached 客户端库的安装:</p>
+<p>首先解压 libmemcached-1.0.18.tar.gz配置:</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost src]$ tar -zxvf libmemcached-<span class="number">1.0</span>.<span class="number">18</span>.tar.gz</span><br><span class="line">[root@localhost src]$ cd libmemcached-<span class="number">1.0</span>.<span class="number">18</span>/</span><br><span class="line">[root@localhost libmemcached-<span class="number">1.0</span>.<span class="number">18</span>]$ .<span class="regexp">/configure --prefix=/u</span>sr<span class="regexp">/lib/</span>libmemcached</span><br><span class="line"><span class="comment">#–prefix 指定安装目录,该目录我们后面会用到</span></span><br></pre></td></tr></table></figure>
+
+<p>编译、安装:</p>
+<figure class="highlight autoit"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root<span class="symbol">@localhost</span> libmemcached<span class="number">-1.0</span><span class="number">.18</span>]<span class="meta"># make &amp;&amp; make install</span></span><br></pre></td></tr></table></figure>
+
+<p>2、为PHP安装 php-memcached 扩展:</p>
+<p>首先解压 libmemcached-1.0.18.tar.gz配置:</p>
+<figure class="highlight autoit"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root<span class="symbol">@localhost</span> libmemcached<span class="number">-1.0</span><span class="number">.18</span>]<span class="meta"># cd ..</span></span><br><span class="line">[root<span class="symbol">@localhost</span> src]<span class="meta"># tar -zxvf memcached-2.2.0.tgz</span></span><br><span class="line">[root<span class="symbol">@localhost</span> src]<span class="meta"># cd cd memcached-2.2.0</span></span><br></pre></td></tr></table></figure>
+
+<p>到了这一步,我们要使用安装php时生成的 phpize 来生成 configure 配置文件</p>
+<figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost memcached-<span class="number">2.2</span>.<span class="number">0</span>]# <span class="regexp">/usr/</span>local<span class="regexp">/php/</span>bin<span class="regexp">/phpize (或 /u</span>sr<span class="regexp">/bin/</span>phpize) </span><br><span class="line">#具体用哪个要取决于你的phpize文件所在的目录,这时你应该用 whereis phpize 来查看路径,如果php是默认安装的话,直接使用phpize即可</span><br></pre></td></tr></table></figure>
+
+<p>配置</p>
+<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost memcached-<span class="number">2</span><span class="variable">.2</span><span class="variable">.0</span>]# ./configure -<span class="keyword">with</span>-php-<span class="keyword">config</span>=/usr/bin/php-<span class="keyword">config</span> --<span class="keyword">with</span>-libmemcached-dir=/usr/lib/libmemcached --<span class="keyword">disable</span>-memcached-sasl</span><br><span class="line">#-<span class="keyword">with</span>-php-<span class="keyword">config</span> 指定 php-<span class="keyword">config</span>,该文件与 phpize 所在目录相同.</span><br><span class="line">#–<span class="keyword">with</span>-libmemcached-dir 指定 libmemcached 安装目录,就刚才我们 –prefix 那个目录 ,–<span class="keyword">disable</span>-memcached-sasl 说明我们系统不支持sasl<span class="variable">.h</span>.</span><br></pre></td></tr></table></figure>
+
+<p>编译、安装:</p>
+<figure class="highlight autoit"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root<span class="symbol">@localhost</span> memcached<span class="number">-2.2</span><span class="number">.0</span>]<span class="meta"># make &amp;&amp; make install</span></span><br></pre></td></tr></table></figure>
+
+<p>如果安装成功,会提示:Installing shared extension:<code>/usr/local/php/lib/extensions/no-debug-non-zts-20160524/</code> 等类信息.</p>
+<p>接下来,我们编辑php配置文件php.ini,你可以用 whereis php.ini 查看所在位置(我的在 <code>/etc/php.ini</code> ),把 php-memcached 扩展加到配置文件.<br>在 php.ini 中添加以下内容:</p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">extension</span>=memcached.so</span><br></pre></td></tr></table></figure>
+
+<p>步骤二:重启apache服务器,使配置生效.</p>
+<figure class="highlight autoit"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root<span class="symbol">@localhost</span> memcached<span class="number">-2.2</span><span class="number">.0</span>]<span class="meta"># systemctl restart httpd.service</span></span><br></pre></td></tr></table></figure>
+
+<p>重启完之后,检查是否安装完成php-memcached扩展.</p>
+<figure class="highlight php-template"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="xml">[root@localhost memcached-2.2.0]# echo &quot;</span><span class="php"><span class="meta">&lt;?php</span> <span class="keyword">echo</span> phpinfo() <span class="meta">?&gt;</span></span><span class="xml">&quot;&gt;&gt;/home/www/index.php(这里web目录如果没改的话是在 /var/www/html/)</span></span><br></pre></td></tr></table></figure>
+
+<p>在浏览器地址栏输入 127.0.0.1,查看php扩展,如果有memcache,则表示安装成功.</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/localhost/" rel="tag"># localhost</a>
+              <a href="/tags/%E5%AE%89%E8%A3%85/" rel="tag"># 安装</a>
+              <a href="/tags/%E7%9B%AE%E5%BD%95/" rel="tag"># 目录</a>
+              <a href="/tags/usr/" rel="tag"># usr</a>
+              <a href="/tags/%E6%8C%87%E5%AE%9A/" rel="tag"># 指定</a>
+              <a href="/tags/libmemcached/" rel="tag"># libmemcached</a>
+              <a href="/tags/%E6%96%87%E4%BB%B6/" rel="tag"># 文件</a>
+              <a href="/tags/root/" rel="tag"># root</a>
+              <a href="/tags/%E9%85%8D%E7%BD%AE/" rel="tag"># 配置</a>
+              <a href="/tags/src/" rel="tag"># src</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2014/04/12/1368/" rel="prev" title="Tcpdump 的用法">
+      <i class="fa fa-chevron-left"></i> Tcpdump 的用法
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2014/04/19/1481/" rel="next" title="解决Failed to convert command to 8 bit charset">
+      解决Failed to convert command to 8 bit charset <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="王殊勋"
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name">王殊勋</p>
+  <div class="site-description" itemprop="description">better late than never.<br>只要开始，虽晚不迟。</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">656</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">2058</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <!--添加网站运行时间 -->
+  <span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
+  <script>
+      var now = new Date(); 
+      function createtime() { 
+          var grt= new Date("12/01/2007 12:00:00");//此处修改你的建站时间或者网站上线时间 
+          now.setTime(now.getTime()+250); 
+          days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days); 
+          hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours); 
+          if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum); 
+          mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;} 
+          seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum); 
+          snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;} 
+          document.getElementById("timeDate").innerHTML = "本站已安全运行 "+dnum+" 天 "; 
+          document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒"; 
+      } 
+  setInterval("createtime()",250);
+  </script>
+  <span itemprop="copyrightYear">(2007 - 2021)</span>
+  <!-- 添加网站运行时间 -->
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">学无止境</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script size="300" alpha="0.6" zIndex="0" src="/lib/canvas-ribbon/canvas-ribbon.js"></script>
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

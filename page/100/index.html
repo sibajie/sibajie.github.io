@@ -1,0 +1,866 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"shuxun","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"./public/search.xml"};
+  </script>
+
+  <meta name="description" content="专注互联网运维技术发展">
+<meta property="og:type" content="website">
+<meta property="og:title" content="学无止境">
+<meta property="og:url" content="http://shuxun,wang/page/100/index.html">
+<meta property="og:site_name" content="学无止境">
+<meta property="og:description" content="专注互联网运维技术发展">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:author" content="王殊勋">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://shuxun,wang/page/100/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : true,
+    isPost : false,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>学无止境</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">学无止境</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">注互联网运维技术发展</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-sitemap">
+
+    <a href="/sitemap.xml" rel="section"><i class="fa fa-sitemap fa-fw"></i>站点地图</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content index posts-expand">
+            
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://shuxun,wang/2013/06/15/1170/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="王殊勋">
+      <meta itemprop="description" content="专注互联网运维技术发展">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="学无止境">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2013/06/15/1170/" class="post-title-link" itemprop="url">echo命令知多少</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2013-06-15 09:41:00" itemprop="dateCreated datePublished" datetime="2013-06-15T09:41:00+08:00">2013-06-15</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-07-14 15:16:21" itemprop="dateModified" datetime="2021-07-14T15:16:21+08:00">2021-07-14</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" itemprop="url" rel="index"><span itemprop="name">操作系统</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>echo 是一个非常简单、直接的命令:<br>将 argument 送出至标准输出(STDOUT),通常就是在监视器(monitor)上输出.<br>为了更好理解,不如先让我们先跑一下 echo 命令好了:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> <span class="built_in">echo</span></span></span><br><span class="line"><span class="meta">$</span></span><br></pre></td></tr></table></figure>
+
+<p>你会发现只有一个空白行,然后又回到 shell prompt 上了. 这是因为 echo 在预设上,在显示完 argument 之后,还会送出一个换行符号(new-line charactor).但是上面的 command 并没任何的 argument ,那结果就只剩一个换行符号了…<br>若你要取消这个换行符号,可利用 echo 的 -n option :</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> <span class="built_in">echo</span> -n</span></span><br><span class="line"><span class="meta">$</span></span><br></pre></td></tr></table></figure>
+
+<p>不妨让我们回到 command line 的概念上来讨论上例的 echo 命令好了:<br>command line 只有 command_name(echo) 及 option(-n),并没有任何 argument .<br>要想看看 echo 的 argument ,那还不简单﹗接下来,你可试试如下的输入:</p>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="keyword">echo</span> <span class="keyword">first</span> <span class="built_in">line</span></span><br><span class="line"><span class="keyword">first</span> <span class="built_in">line</span></span><br><span class="line">$ <span class="keyword">echo</span> -n <span class="keyword">first</span> <span class="built_in">line</span></span><br><span class="line"><span class="keyword">first</span> <span class="built_in">line</span> $</span><br></pre></td></tr></table></figure>
+
+<p>从上两个 echo 命令中,你会发现 argument 的部份显示在你的荧幕,而换行符号则视 -n option 的有无而别. 很明显的,第二个 echo 由于换行符号被取消了,接下来的 shell prompt 就接在输出结果同一行了…<br>事实上,echo 除了 -n options 之外,常用选项还有:</p>
+<figure class="highlight diff"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="deletion">-e :启用反斜线控制字符的转换(参考下表)</span></span><br><span class="line"><span class="deletion">-E:关闭反斜线控制字符的转换(预设如此)</span></span><br><span class="line"><span class="deletion">-n :取消行末之换行符号(与 -e 选项下的 c 字符同意)</span></span><br></pre></td></tr></table></figure>
+
+<p>关于 echo 命令所支持的反斜线控制字符如下表:</p>
+<figure class="highlight vbnet"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="symbol">a:</span>ALERT / BELL (从系统喇叭送出铃声)</span><br><span class="line"><span class="symbol">b:</span>BACKSPACE ,也就是向左删除键</span><br><span class="line"><span class="symbol">c:</span>取消行末之换行符号</span><br><span class="line"><span class="symbol">E:</span>ESCAPE,跳脱键</span><br><span class="line"><span class="symbol">f:</span>FORMFEED,换页字符</span><br><span class="line"><span class="symbol">n:</span>NEWLINE,换行字符</span><br><span class="line"><span class="symbol">r:</span><span class="keyword">RETURN</span>,回车键</span><br><span class="line"><span class="symbol">t:</span>TAB,表格跳位键</span><br><span class="line"><span class="symbol">v:</span>VERTICAL TAB,垂直表格跳位键</span><br><span class="line"><span class="symbol">n:</span>ASCII 八进位编码(以 x 开首为十六进制) :反斜线本身</span><br><span class="line"></span><br><span class="line">(表格资料来自 O<span class="comment">&#x27;Reilly 出版社之 Learning the Bash Shell, 2nd Ed.)</span></span><br></pre></td></tr></table></figure>
+
+<p>或许,我们可以透过实例来了解 echo 的选项及控制字符:</p>
+<p>例一:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> <span class="built_in">echo</span> -e <span class="string">&quot;atbtcndtetf&quot;</span></span></span><br><span class="line">a       b       c</span><br><span class="line">d       e       f</span><br></pre></td></tr></table></figure>
+
+<p>上例运用 t 来区隔 abc 还有 def ,及用n 将 def 换至下一行.</p>
+<p>例二:</p>
+<figure class="highlight taggerscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ echo -e &quot;<span class="symbol">\1</span>41<span class="symbol">\0</span>11<span class="symbol">\1</span>42<span class="symbol">\0</span>11<span class="symbol">\1</span>43<span class="symbol">\0</span>12<span class="symbol">\1</span>44<span class="symbol">\0</span>11<span class="symbol">\1</span>45<span class="symbol">\0</span>11<span class="symbol">\1</span>46&quot;</span><br><span class="line">a       b       c</span><br><span class="line">d       e       f</span><br></pre></td></tr></table></figure>
+
+<p>与例一的结果一样,只是使用 ASCII 八进位编码.</p>
+<p>例三:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> <span class="built_in">echo</span> -e <span class="string">&quot;x61x09x62x09x63x0ax64x09x65x09x66&quot;</span></span></span><br><span class="line">a       b       c</span><br><span class="line">d       e       f</span><br></pre></td></tr></table></figure>
+
+<p>与例二差不多,只是这次换用 ASCII 十六进制编码.</p>
+<p>例四:</p>
+<figure class="highlight gams"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="symbol">$</span> echo -<span class="keyword">ne</span> <span class="string">&quot;atbtcndtebfa&quot;</span></span><br><span class="line">a       b       c</span><br><span class="line">d       f <span class="symbol">$</span></span><br></pre></td></tr></table></figure>
+
+<p>因为 e 字母后面是删除键(b),因此输出结果就没有 e 了. 在结束时听到一声铃向,那是 a 的杰作﹗ 由于同时使用了 -n 选项,因此 shell prompt 紧接在第二行之后. 若你不用 -n 的话,那你在 a 后再加个 c ,也是同样的效果.<br>事实上,在日后的 shell 操作及 shell script 设计上,echo 命令是最常被使用的命令之一. 比方说,用 echo 来检查变量值:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> A=B</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> <span class="built_in">echo</span> <span class="variable">$A</span></span></span><br><span class="line">B</span><br><span class="line"><span class="meta">$</span><span class="bash"> <span class="built_in">echo</span> $?</span></span><br><span class="line">0</span><br></pre></td></tr></table></figure>
+
+<p>(注:关于变量概念,我们留到下两章才跟大家说明.)<br>好了,更多的关于 command line 的格式,以及 echo 命令的选项,就请您自行多加练习、运用了…</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://shuxun,wang/2013/06/08/1263/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="王殊勋">
+      <meta itemprop="description" content="专注互联网运维技术发展">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="学无止境">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2013/06/08/1263/" class="post-title-link" itemprop="url">MFS客户端错误</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2013-06-08 19:18:00" itemprop="dateCreated datePublished" datetime="2013-06-08T19:18:00+08:00">2013-06-08</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-07-14 15:16:06" itemprop="dateModified" datetime="2021-07-14T15:16:06+08:00">2021-07-14</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E9%94%99%E8%AF%AF%E8%A7%A3%E5%86%B3/" itemprop="url" rel="index"><span itemprop="name">错误解决</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>错误:</p>
+<figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">configure: <span class="keyword">error</span>: mfsmount build was forced, <span class="keyword">but</span> fuse library <span class="keyword">is</span> too old <span class="keyword">or</span> <span class="keyword">not</span> installed</span><br></pre></td></tr></table></figure>
+
+<p>解决:</p>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum -y <span class="keyword">install</span> fuse-devel</span><br></pre></td></tr></table></figure>
+
+<p>对client进行操作时 注意防火墙是否授权.</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://shuxun,wang/2013/06/04/1572/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="王殊勋">
+      <meta itemprop="description" content="专注互联网运维技术发展">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="学无止境">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2013/06/04/1572/" class="post-title-link" itemprop="url">实现ganglia监控多主机的方法</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2013-06-04 10:06:00" itemprop="dateCreated datePublished" datetime="2013-06-04T10:06:00+08:00">2013-06-04</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-07-14 15:16:04" itemprop="dateModified" datetime="2021-07-14T15:16:04+08:00">2021-07-14</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%90%84%E7%B1%BB%E6%9C%8D%E5%8A%A1/" itemprop="url" rel="index"><span itemprop="name">各类服务</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>在监控服务器编写一个脚本文件,执行它可以将服务快速的发布到被监控主机上.</p>
+<p>step1、首先编写一个主机地址文件:</p>
+<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">vi mynodes</span></span><br></pre></td></tr></table></figure>
+
+<p>添加你的主机名或服务器ip到该文件,我这里只写了5台主机.</p>
+<figure class="highlight accesslog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">192.168.10.1</span></span><br><span class="line"><span class="number">192.168.10.2</span></span><br><span class="line"><span class="number">192.168.10.3</span></span><br><span class="line"><span class="number">192.168.10.4</span></span><br><span class="line"><span class="number">192.168.10.5</span></span><br></pre></td></tr></table></figure>
+
+<p>step2、编写脚本实现服务的发布</p>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">vi</span> ganglia.<span class="keyword">sh</span></span><br></pre></td></tr></table></figure>
+
+<p>使用以下内容,这里使用的是64位OS,如果是32位OS,将下面的lib64改为lib.</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> `cat mynodes`; <span class="keyword">do</span></span><br><span class="line">scp <span class="regexp">/usr/</span>bin<span class="regexp">/gmetric $i:/u</span>sr/bin</span><br><span class="line">scp <span class="regexp">/usr/</span>sbin<span class="regexp">/gmond $i:/u</span>sr<span class="regexp">/sbin/gm</span>ond</span><br><span class="line">ssh <span class="variable">$i</span> mkdir -p <span class="regexp">/etc/g</span>anglia/</span><br><span class="line">scp <span class="regexp">/etc/g</span>anglia<span class="regexp">/gmond.conf $i:/</span>etc<span class="regexp">/ganglia/</span></span><br><span class="line">scp <span class="regexp">/etc/i</span>nit.d<span class="regexp">/gmond $i:/</span>etc<span class="regexp">/init.d/</span></span><br><span class="line">scp <span class="regexp">/usr/</span>lib64<span class="regexp">/libganglia-3.1.2.so.0 $i:/u</span>sr<span class="regexp">/lib64/</span></span><br><span class="line">scp <span class="regexp">/lib64/</span>libexpat.so.<span class="number">0</span> <span class="variable">$i</span>:<span class="regexp">/lib64/</span></span><br><span class="line">scp <span class="regexp">/usr/</span>lib64<span class="regexp">/libconfuse.so.0 $i:/u</span>sr<span class="regexp">/lib64/</span></span><br><span class="line">scp <span class="regexp">/usr/</span>lib64<span class="regexp">/libapr-1.so.0 $i:/u</span>sr<span class="regexp">/lib64/</span></span><br><span class="line">scp -r <span class="regexp">/usr/</span>lib64<span class="regexp">/ganglia $i:/u</span>sr<span class="regexp">/lib64/</span></span><br><span class="line">ssh <span class="variable">$i</span> service gmond start</span><br><span class="line">done</span><br></pre></td></tr></table></figure>
+
+<p>赋予脚本可执行权限并执行.</p>
+<figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">chmod 755 ganglia.<span class="keyword">sh</span></span><br><span class="line">./ganglia.<span class="keyword">sh</span></span><br></pre></td></tr></table></figure>
+
+<p>至此ganglia客户端和服务器端的配置完成,可以通过web访问来监控你的群集了.</p>
+<p>传送的文件版本可能不同要根据自己的情况去修改版本信息.<br>传送的文件版本可能不同要根据自己的情况去修改版本信息.</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://shuxun,wang/2013/05/31/1045/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="王殊勋">
+      <meta itemprop="description" content="专注互联网运维技术发展">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="学无止境">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2013/05/31/1045/" class="post-title-link" itemprop="url">asp服务器500错误解决</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2013-05-31 18:55:00" itemprop="dateCreated datePublished" datetime="2013-05-31T18:55:00+08:00">2013-05-31</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-07-14 15:15:03" itemprop="dateModified" datetime="2021-07-14T15:15:03+08:00">2021-07-14</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E9%94%99%E8%AF%AF%E8%A7%A3%E5%86%B3/" itemprop="url" rel="index"><span itemprop="name">错误解决</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>解决办法:<br>打开计算机管理IIS后,展开网站,点击出现错误的具体网站-&gt;”高级设置”-&gt;”物理路径凭据”,<br>在弹出的对话框中查看路径凭据是不是选择在”特定用户”,如果是请改成” 应用程序用户(通过身份验证)(A) “,点击确定.</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://shuxun,wang/2013/05/12/1581/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="王殊勋">
+      <meta itemprop="description" content="专注互联网运维技术发展">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="学无止境">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2013/05/12/1581/" class="post-title-link" itemprop="url">使用pssh工具实现批量管理</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2013-05-12 11:59:00" itemprop="dateCreated datePublished" datetime="2013-05-12T11:59:00+08:00">2013-05-12</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-07-14 15:16:01" itemprop="dateModified" datetime="2021-07-14T15:16:01+08:00">2021-07-14</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%90%84%E7%B1%BB%E6%9C%8D%E5%8A%A1/" itemprop="url" rel="index"><span itemprop="name">各类服务</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>1,本地服务器已做了公私钥 ssh-gen</p>
+<p>2, 安装*python*</p>
+<figure class="highlight asciidoc"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install <span class="strong">*python*</span></span><br></pre></td></tr></table></figure>
+
+<p>如安装setuptools包 不成功:</p>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum <span class="keyword">install</span> python-setuptools.noarch</span><br></pre></td></tr></table></figure>
+
+<p>3, 下载最新版本</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">wget</span> http://www.theether.org/pssh/pssh-<span class="number">1</span>.<span class="number">4</span>.<span class="number">3</span>.tar.gz</span><br><span class="line"><span class="attribute">tar</span> zxvf pssh-<span class="number">1</span>.<span class="number">4</span>.<span class="number">3</span>.tar.gz</span><br><span class="line"><span class="attribute">cd</span> pssh-<span class="number">1</span>.<span class="number">4</span>.<span class="number">3</span></span><br><span class="line"><span class="attribute">python</span> setup.py install</span><br></pre></td></tr></table></figure>
+
+<p>4,在 other.txt 输入已经copy好 公钥的服务器名</p>
+<figure class="highlight accesslog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ cat other.txt</span><br><span class="line"><span class="number">192.168.2.241</span></span><br><span class="line"><span class="number">192.168.2.148:22</span> (端口不写默认为<span class="number">22</span>)</span><br></pre></td></tr></table></figure>
+
+<p>5,安装成功直接执行命令</p>
+<figure class="highlight oxygene"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Parallel</span> ssh (pssh) 批量登陆操作某一命令或脚本</span><br><span class="line"><span class="keyword">Parallel</span> scp (pscp) 批量<span class="keyword">copy</span></span><br><span class="line"><span class="keyword">Parallel</span> rsync (prsync) 批量同步</span><br><span class="line"><span class="keyword">Parallel</span> nuke (pnuke) 批量killall 某一进程</span><br><span class="line"><span class="keyword">Parallel</span> slurp (pslurp) 批量远程<span class="keyword">copy</span>文件至当前服务器</span><br></pre></td></tr></table></figure>
+
+<p>例:pscp:</p>
+<p>将文件lighttpd-1.4.30.tar.gz 复制到远程各服务器的 <code>/usr/local</code>目录下.</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">pscp -h other<span class="selector-class">.txt</span> -l root /opt/lighttpd-<span class="number">1.4</span>.<span class="number">30</span><span class="selector-class">.tar</span><span class="selector-class">.gz</span> /usr/local/</span><br><span class="line"><span class="selector-attr">[1]</span> <span class="number">11</span>:<span class="number">26</span>:<span class="number">43</span> <span class="selector-attr">[SUCCESS]</span> <span class="number">192.168</span>.<span class="number">2.241</span> <span class="number">22</span></span><br><span class="line"><span class="selector-attr">[2]</span> <span class="number">11</span>:<span class="number">26</span>:<span class="number">43</span> <span class="selector-attr">[SUCCESS]</span> <span class="number">192.168</span>.<span class="number">2.148</span> <span class="number">22</span></span><br></pre></td></tr></table></figure>
+
+<p>例:pssh:</p>
+<p>在各服务器上执行 hostname查看 将结果输入到 success 目录下.</p>
+<figure class="highlight inform7"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">pssh -h other.txt -l root -o success -e error hostname</span><br><span class="line"><span class="comment">[1]</span> 11:21:37 <span class="comment">[SUCCESS]</span> 192.168.2.241 22</span><br><span class="line"><span class="comment">[2]</span> 11:21:37 <span class="comment">[SUCCESS]</span> 192.168.2.148 22</span><br><span class="line"></span><br><span class="line">opt]# pssh -h other.txt -l root -i hostname</span><br><span class="line"><span class="comment">[1]</span> 11:39:27 <span class="comment">[SUCCESS]</span> 192.168.2.241 22</span><br><span class="line">testrhelclone.com</span><br><span class="line"><span class="comment">[2]</span> 11:39:27 <span class="comment">[SUCCESS]</span> 192.168.2.148 22</span><br><span class="line">testcobb.com</span><br><span class="line"></span><br><span class="line">pssh -h other.txt -l root -i sh /opt/aa.sh #直接执行远程脚本</span><br><span class="line"><span class="comment">[1]</span> 14:44:16 <span class="comment">[SUCCESS]</span> 192.168.2.241 22</span><br><span class="line">pssh this <span class="keyword">is</span> ok 241</span><br><span class="line">14:42:33</span><br><span class="line"><span class="comment">[2]</span> 14:44:16 <span class="comment">[SUCCESS]</span> 192.168.2.148 22</span><br><span class="line">pssh this <span class="keyword">is</span> ok 148</span><br><span class="line">14:42:33</span><br></pre></td></tr></table></figure>
+
+<p>例:prsync:</p>
+<p>将本地的other.txt 同步到远程的 <code>/opt/other1.txt</code>.</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">prsync -r -h other<span class="selector-class">.txt</span> -l root other<span class="selector-class">.txt</span> /opt/other1<span class="selector-class">.txt</span></span><br><span class="line"><span class="selector-attr">[1]</span> <span class="number">11</span>:<span class="number">51</span>:<span class="number">55</span> <span class="selector-attr">[SUCCESS]</span> <span class="number">192.168</span>.<span class="number">2.148</span> <span class="number">22</span></span><br><span class="line"><span class="selector-attr">[2]</span> <span class="number">11</span>:<span class="number">51</span>:<span class="number">55</span> <span class="selector-attr">[SUCCESS]</span> <span class="number">192.168</span>.<span class="number">2.241</span> <span class="number">22</span></span><br></pre></td></tr></table></figure>
+
+<p>将success压缩传输:</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">prsync -r -az -h other<span class="selector-class">.txt</span> -v -l root success /opt/</span><br><span class="line"><span class="selector-attr">[1]</span> <span class="number">13</span>:<span class="number">40</span>:<span class="number">49</span> <span class="selector-attr">[SUCCESS]</span> <span class="number">192.168</span>.<span class="number">2.241</span> <span class="number">22</span></span><br><span class="line"><span class="selector-attr">[2]</span> <span class="number">13</span>:<span class="number">40</span>:<span class="number">49</span> <span class="selector-attr">[SUCCESS]</span> <span class="number">192.168</span>.<span class="number">2.148</span> <span class="number">22</span></span><br></pre></td></tr></table></figure>
+
+<p>例:pslurp:</p>
+<p>pslurp 与pscp方向相反!</p>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">Usage: pslurp [OPTIONS] -h hosts.txt -<span class="keyword">o</span> outdir remote local</span><br><span class="line">-r --recursive recusively <span class="keyword">copy</span> directories (OPTIONAL)</span><br><span class="line">-L --localdir output directory <span class="keyword">for</span> remote <span class="keyword">file</span> copies</span><br><span class="line">-h --hosts hosts <span class="keyword">file</span> (each <span class="built_in">line</span> <span class="string">&quot;host[:port] [login]&quot;</span>)</span><br><span class="line">-<span class="keyword">l</span> --user username (OPTIONAL)</span><br><span class="line">-<span class="keyword">p</span> --par <span class="built_in">max</span> <span class="keyword">number</span> of parallel threads (OPTIONAL)</span><br><span class="line">-<span class="keyword">o</span> --outdir output directory <span class="keyword">for</span> stdout <span class="keyword">files</span> (OPTIONAL)</span><br><span class="line">-<span class="keyword">e</span> --errdir output directory <span class="keyword">for</span> stderr <span class="keyword">files</span> (OPTIONAL)</span><br><span class="line">-t --timeout timeout (secs) (-<span class="number">1</span> = <span class="keyword">no</span> timeout) per host (OPTIONAL)</span><br><span class="line">-v --<span class="keyword">verbose</span> turn <span class="keyword">on</span> warning <span class="built_in">and</span> diagnostic <span class="keyword">messages</span> (OPTIONAL)</span><br><span class="line">-O --<span class="keyword">options</span> SSH <span class="keyword">options</span> (OPTIONAL)</span><br><span class="line">Example: pslurp -h hosts.txt -L /tmp/outdir -<span class="keyword">l</span> irb2 </span><br><span class="line">/home/irb2/foo.txt foo.txt</span><br></pre></td></tr></table></figure>
+
+<p>将远程服务器的各个/opt/success 目录递归 拷贝到本地的 <code>/opt/test/</code> 目录下:</p>
+<figure class="highlight accesslog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">pslurp -r -h other.txt -L /opt/test/ /opt/success remote</span><br><span class="line"><span class="string">[1]</span> <span class="number">14</span>:<span class="number">19</span>:<span class="number">45</span> <span class="string">[SUCCESS]</span> <span class="number">192</span>.<span class="number">168</span>.<span class="number">2</span>.<span class="number">241</span> <span class="number">22</span></span><br><span class="line"><span class="string">[2]</span> <span class="number">14</span>:<span class="number">19</span>:<span class="number">45</span> <span class="string">[SUCCESS]</span> <span class="number">192</span>.<span class="number">168</span>.<span class="number">2</span>.<span class="number">148</span> <span class="number">22</span></span><br><span class="line"><span class="string">[root@testrhel opt]</span># cd test/</span><br><span class="line"><span class="string">[root@testrhel test]</span># ls</span><br><span class="line"><span class="number">192.168.2.148</span> <span class="number">192</span>.<span class="number">168</span>.<span class="number">2</span>.<span class="number">241</span></span><br><span class="line"><span class="string">[root@testrhel test]</span># tree *</span><br><span class="line"><span class="number">192.168.2.148</span></span><br><span class="line">`-- remote</span><br><span class="line">|-- <span class="number">192</span>.<span class="number">168</span>.<span class="number">2</span>.<span class="number">148</span></span><br><span class="line">|-- <span class="number">192</span>.<span class="number">168</span>.<span class="number">2</span>.<span class="number">241</span></span><br><span class="line">|-- aa.txt</span><br><span class="line">`-- daf.d</span><br><span class="line"><span class="number">192.168.2.241</span></span><br><span class="line">`-- remote</span><br><span class="line">|-- <span class="number">192</span>.<span class="number">168</span>.<span class="number">2</span>.<span class="number">148</span></span><br><span class="line">|-- <span class="number">192</span>.<span class="number">168</span>.<span class="number">2</span>.<span class="number">241</span></span><br><span class="line">|-- aa.txt</span><br><span class="line">`-- inotify.sh</span><br></pre></td></tr></table></figure>
+
+<p>例:pnuke:</p>
+<p>将远程服务器中的所有以root启动的sendmail 服务关闭 (只要ps aux到 sendmail 就强行关闭 如同 killall命令).</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">pnuke -h /opt/other<span class="selector-class">.txt</span> -l root sendmail</span><br><span class="line"><span class="selector-attr">[1]</span> <span class="number">14</span>:<span class="number">29</span>:<span class="number">58</span> <span class="selector-attr">[SUCCESS]</span> <span class="number">192.168</span>.<span class="number">2.148</span> <span class="number">22</span></span><br><span class="line"><span class="selector-attr">[2]</span> <span class="number">14</span>:<span class="number">29</span>:<span class="number">58</span> <span class="selector-attr">[SUCCESS]</span> <span class="number">192.168</span>.<span class="number">2.241</span> <span class="number">22</span></span><br></pre></td></tr></table></figure>
+
+<p>其它:</p>
+<p>1,如果过程中需要交互,如询问yes/no的时候,可以使用以下方式来解决.</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pssh -i -h <span class="regexp">/opt/</span>other.txt <span class="string">&quot;echo y | sudo yum remove xxxx&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>这样的话,yum询问是否安全的时候,就可以自动确认了.</p>
+<p>2,添加环境变量,让命令更简洁</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">export PSSH_HOSTS=<span class="string">&quot;/opt/other.txt&quot;</span></span><br><span class="line">pssh -<span class="selector-tag">i</span> hostname</span><br><span class="line"><span class="selector-attr">[1]</span> <span class="number">15</span>:<span class="number">04</span>:<span class="number">06</span> <span class="selector-attr">[SUCCESS]</span> <span class="number">192.168</span>.<span class="number">2.148</span> <span class="number">22</span></span><br><span class="line">testcobb<span class="selector-class">.com</span></span><br><span class="line"><span class="selector-attr">[2]</span> <span class="number">15</span>:<span class="number">04</span>:<span class="number">06</span> <span class="selector-attr">[SUCCESS]</span> <span class="number">192.168</span>.<span class="number">2.241</span> <span class="number">22</span></span><br><span class="line"></span><br><span class="line">pssh -h ip1<span class="selector-class">.txt</span> -<span class="selector-tag">i</span> hostname 也可另指目录文件</span><br><span class="line"><span class="selector-attr">[1]</span> <span class="number">15</span>:<span class="number">05</span>:<span class="number">35</span> <span class="selector-attr">[SUCCESS]</span> <span class="number">192.168</span>.<span class="number">2.148</span> <span class="number">22</span></span><br><span class="line">testcobb<span class="selector-class">.com</span></span><br><span class="line"><span class="selector-attr">[2]</span> <span class="number">15</span>:<span class="number">05</span>:<span class="number">35</span> <span class="selector-attr">[SUCCESS]</span> <span class="number">192.168</span>.<span class="number">2.241</span> <span class="number">22</span></span><br><span class="line">testrhelclone.com</span><br></pre></td></tr></table></figure>
+
+<p>官网给出的一些环境变量名,可相应添加!</p>
+<figure class="highlight clean"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"># <span class="keyword">export</span> PSSH_HOSTS=<span class="string">&quot;/x/bnc/ips.txt&quot;</span></span><br><span class="line"># <span class="keyword">export</span> PSSH_USER=<span class="string">&quot;irb2&quot;</span></span><br><span class="line"># <span class="keyword">export</span> PSSH_PAR=<span class="string">&quot;32&quot;</span></span><br><span class="line"># <span class="keyword">export</span> PSSH_OUTDIR=<span class="string">&quot;/tmp/bar&quot;</span></span><br><span class="line"># <span class="keyword">export</span> PSSH_VERBOSE=<span class="string">&quot;0&quot;</span></span><br><span class="line"># <span class="keyword">export</span> PSSH_OPTIONS=<span class="string">&quot;UserKnownHostsFile /tmp/known_hosts&quot;</span></span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+
+  
+  <nav class="pagination">
+    <a class="extend prev" rel="prev" href="/page/99/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/99/">99</a><span class="page-number current">100</span><a class="page-number" href="/page/101/">101</a><span class="space">&hellip;</span><a class="page-number" href="/page/132/">132</a><a class="extend next" rel="next" href="/page/101/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+  </nav>
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="王殊勋"
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name">王殊勋</p>
+  <div class="site-description" itemprop="description">better late than never.<br>只要开始，虽晚不迟。</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">656</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">2058</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <!--添加网站运行时间 -->
+  <span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
+  <script>
+      var now = new Date(); 
+      function createtime() { 
+          var grt= new Date("12/01/2007 12:00:00");//此处修改你的建站时间或者网站上线时间 
+          now.setTime(now.getTime()+250); 
+          days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days); 
+          hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours); 
+          if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum); 
+          mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;} 
+          seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum); 
+          snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;} 
+          document.getElementById("timeDate").innerHTML = "本站已安全运行 "+dnum+" 天 "; 
+          document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒"; 
+      } 
+  setInterval("createtime()",250);
+  </script>
+  <span itemprop="copyrightYear">(2007 - 2021)</span>
+  <!-- 添加网站运行时间 -->
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">学无止境</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script size="300" alpha="0.6" zIndex="0" src="/lib/canvas-ribbon/canvas-ribbon.js"></script>
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"shuxun","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"./public/search.xml"};
+  </script>
+
+  <meta name="description" content="熟悉Linux的用户可能常常在Linux上安装Samba服务来实现与Windows系统的文件共享和打印机共享,他们之间的数据传输使用 SMB(Service Message Block)协议.这是一个在传输层之上的协议,所以他可以支持很多不同异构系统的网络互联(比如,Linux,Solaris,Windows 等),Samba之所以能够工作,因为SMB协议模仿了Windows内核的文件和打印共享协">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CentOS搭建samba服务器">
+<meta property="og:url" content="http://shuxun,wang/2010/12/11/1119/index.html">
+<meta property="og:site_name" content="学无止境">
+<meta property="og:description" content="熟悉Linux的用户可能常常在Linux上安装Samba服务来实现与Windows系统的文件共享和打印机共享,他们之间的数据传输使用 SMB(Service Message Block)协议.这是一个在传输层之上的协议,所以他可以支持很多不同异构系统的网络互联(比如,Linux,Solaris,Windows 等),Samba之所以能够工作,因为SMB协议模仿了Windows内核的文件和打印共享协">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2010-12-11T04:17:00.000Z">
+<meta property="article:modified_time" content="2021-07-14T07:14:57.539Z">
+<meta property="article:author" content="王殊勋">
+<meta property="article:tag" content="权限">
+<meta property="article:tag" content="文件">
+<meta property="article:tag" content="yes">
+<meta property="article:tag" content="Samba">
+<meta property="article:tag" content="设定">
+<meta property="article:tag" content="server">
+<meta property="article:tag" content="预设">
+<meta property="article:tag" content="语法">
+<meta property="article:tag" content="说明">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://shuxun,wang/2010/12/11/1119/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>CentOS搭建samba服务器 | 学无止境</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">学无止境</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">注互联网运维技术发展</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-sitemap">
+
+    <a href="/sitemap.xml" rel="section"><i class="fa fa-sitemap fa-fw"></i>站点地图</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://shuxun,wang/2010/12/11/1119/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="王殊勋">
+      <meta itemprop="description" content="专注互联网运维技术发展">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="学无止境">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          CentOS搭建samba服务器
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2010-12-11 12:17:00" itemprop="dateCreated datePublished" datetime="2010-12-11T12:17:00+08:00">2010-12-11</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-07-14 15:14:57" itemprop="dateModified" datetime="2021-07-14T15:14:57+08:00">2021-07-14</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%90%84%E7%B1%BB%E6%9C%8D%E5%8A%A1/" itemprop="url" rel="index"><span itemprop="name">各类服务</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>熟悉Linux的用户可能常常在Linux上安装Samba服务来实现与Windows系统的文件共享和打印机共享,<br>他们之间的数据传输使用 SMB(Service Message Block)协议.这是一个在传输层之上的协议,<br>所以他可以支持很多不同异构系统的网络互联(比如,Linux,Solaris,Windows 等),<br>Samba之所以能够工作,因为SMB协议模仿了Windows内核的文件和打印共享协议.<br>微软已经将SMB改名为公共因特网文件系统(CIFS,Common Internet File System ),<br>并打算把它设计为Internet的标准协议.这在一定程度上是由于它想与最初的基于NetBIOS的SMB保持一定的距离.<br>NetBIOS是 Windows 网络的一个伟大的工具,Microsoft使用NetBIOS实现了一个网络文件/打印服务系统,<br>但是为LAN设计的它却注定了不能路由. Samba执行了SMB/CIFS的一个版本,这个版本在很大程度上与大多数的Windows版本兼容.<br>我们可以通过Windows的网络邻居来轻松访问安装了Samba的UNIX/LINUX服务器.<br>1.安装centos时在防火墙中开启文件共享服务,并选择安装文件共享服务器<br>2.启动 Samba 服务.</p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># chkconfig smb on　 ← 设置 Samba 自启动</span></span><br><span class="line"><span class="comment"># service smb start ← 启动Samba服务</span></span><br><span class="line">Starting<span class="built_in"> SMB </span>services:　　　　　　 [ OK ]</span><br><span class="line">Starting NMB services:　　　　　　 [ OK ]</span><br><span class="line"></span><br><span class="line"><span class="comment"># smbpasswd -a root　 ← 将系统用户 root 加入到 Samba 用户数据库</span></span><br><span class="line">New<span class="built_in"> SMB </span>password:　 ← 输入该用户用于登录 Samba 的密码</span><br><span class="line">Retype new<span class="built_in"> SMB </span>password:　 ← 再次确认输入该密码</span><br><span class="line">Added<span class="built_in"> user </span>centospub.</span><br></pre></td></tr></table></figure>
+
+<p>3.配置Samba<br>通过编辑 <code>/etc/samba/smb.conf</code> 让将要被共享的目录拥有充分的读写权限属性.</p>
+<p>在smb.conf文件最后加入下面内容</p>
+<figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">[<span class="keyword">all</span> file]</span><br><span class="line"><span class="keyword">comment</span> = centos <span class="keyword">all</span> file</span><br><span class="line"><span class="type">path</span> = /</span><br><span class="line"><span class="keyword">valid</span> users = root</span><br><span class="line"><span class="built_in">public</span> = <span class="keyword">no</span></span><br><span class="line">writable = yes</span><br><span class="line">printable = <span class="keyword">no</span></span><br><span class="line"><span class="keyword">create</span> mask = <span class="number">0777</span></span><br><span class="line">directory mask = <span class="number">0777</span></span><br><span class="line"></span><br><span class="line"># [<span class="keyword">all</span> file] 是共享名</span><br><span class="line"><span class="meta">#comment = centos all file是注释</span></span><br><span class="line"># <span class="type">path</span> = / 分享资源的完整路径名称,除了路径要正确外,目录的权限也要设对,我设置了共享/所有文件</span><br><span class="line"><span class="meta">#valid users = root valid users 说明:指定共享资源的有效用户,即允许访问该资源的用户</span></span><br><span class="line"># <span class="built_in">public</span> = <span class="keyword">no</span> 设置<span class="built_in">public</span>=<span class="keyword">no</span> 表示在网上邻居看见但不能进入</span><br><span class="line"># writable = yes writable = yes表示可写,writable = <span class="keyword">no</span>表示只读</span><br><span class="line"># printable<span class="comment">-------是yes/否no允许打印</span></span><br><span class="line"><span class="meta">#create mask-----建立文件时所给的权限</span></span><br><span class="line"><span class="meta">#directory mask--建立目录时所给的权限</span></span><br></pre></td></tr></table></figure>
+
+<p>修改完smb.conf文件后一定要重启sam服务</p>
+<figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># servcie smb <span class="keyword">restart</span> <span class="comment">---重启smb服务</span></span><br></pre></td></tr></table></figure>
+
+<p>以上是我开启samba服务的过程</p>
+<p>4、访问共享资源<br>在windows的桌面上打开”网上邻居”,并点击”查看工作组计算机”选项;<br>就出现 Samba 服务端的连接了,用户和密码就是你设置的.</p>
+<p>============================================================<br>smb.conf手册</p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br></pre></td><td class="code"><pre><span class="line">服务名:smb</span><br><span class="line">配置目录:/etc/sabma/</span><br><span class="line">主配置文件:/etc/sabma/smb.conf</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">#====================== Global Settings =====================</span></span><br><span class="line">17行workgroup</span><br><span class="line">语法 workgtoup = &lt;工作组群&gt;;</span><br><span class="line">预设 workgroup = MYGROUP</span><br><span class="line">说明 设定 Samba<span class="built_in"> Server </span>的工作组</span><br><span class="line">例 workgroup = workgroup 和WIN2000S设为一个组,可在网上邻居可中看到共享</span><br><span class="line"></span><br><span class="line">21行server string</span><br><span class="line">语法<span class="built_in"> server </span>string = &lt;说明&gt;;</span><br><span class="line">预设 sarver string = Samba<span class="built_in"> Server</span></span><br><span class="line"><span class="built_in"></span>说明 设定 Samba<span class="built_in"> Server </span>的注释</span><br><span class="line">其他 支持变量 t%-访问时间 I%-客户端IP m%-客户端主机名 M%-客户端域名 S%-客户端用户名</span><br><span class="line">例<span class="built_in"> server </span>string = this is a Samba<span class="built_in"> Server </span>设定出现在Windows网上邻居的 Samba<span class="built_in"> Server </span>注释为 this is a Samba<span class="built_in"> Server</span></span><br><span class="line"><span class="built_in"></span></span><br><span class="line">28行hosts allow</span><br><span class="line">语法 hosts aoolw = ; <span class="built_in">..</span>.</span><br><span class="line">预设 ; host allow = 192.168.1. 192.168.2. 127.</span><br><span class="line">说明 限制允许连接到 Samba<span class="built_in"> Server </span>的机器,多个参数以空格隔开.表示方法可以为</span><br><span class="line">完整的IP地址,如 192.168.0.1</span><br><span class="line">网段,如 192.168.0.</span><br><span class="line">例 hosts allow = 192.168.1. 192.168.0.1 表示允许192.168.1 网段的机器 网址为192.168.0.1 的机器 连接到自己的samba<span class="built_in"> server</span></span><br><span class="line"><span class="built_in"></span></span><br><span class="line">32行printcap name</span><br><span class="line">语法 printcap name = &lt;打印机配置文件&gt;;</span><br><span class="line">预设 printcap name = /etc/printcap</span><br><span class="line">说明 设定 samba srever 打印机的配置文件</span><br><span class="line">例 printcap name = /etc/printcap 设定 samba srever 参考 /etc/printcap 档的打印机设定</span><br><span class="line"></span><br><span class="line">33行load printers</span><br><span class="line">语法 load printers = ;</span><br><span class="line">预设 load printers = <span class="literal">yes</span></span><br><span class="line">说明 是否在开启 samba<span class="built_in"> server </span>时即共享打印机</span><br><span class="line"></span><br><span class="line">38行printing</span><br><span class="line">语法 printing = &lt;打印机类型&gt;;</span><br><span class="line">预设 printing = lprng</span><br><span class="line">说明 设定 samba<span class="built_in"> server </span>打印机所使用的类型,37行为目前所支持的类型</span><br><span class="line"></span><br><span class="line">42行guest account</span><br><span class="line">语法 guert account = &lt;帐户名称&gt;;</span><br><span class="line">预设 guert account = pcguest</span><br><span class="line">说明 设定访问 samba<span class="built_in"> server </span>的来宾帐户(即访问时不用输入用户名和密码的帐户),若设为pcguest的话则为默认为<span class="string">&quot;nobody&quot;</span>用户</span><br><span class="line">例 guert account = andy 设定设定访问 samba<span class="built_in"> server </span>的来宾帐户以andy用户登陆,则此登陆帐户享有andy用户的所有权限</span><br><span class="line"></span><br><span class="line">46行log file</span><br><span class="line">语法 log file = &lt;日志文件&gt;;</span><br><span class="line">预设 log file = /var/log/samba/%m.log</span><br><span class="line">说明 设定 samba<span class="built_in"> server </span>日志文件的储存位置和文件名(%m代表客户端主机名)</span><br><span class="line"></span><br><span class="line">49行max log size</span><br><span class="line">语法 max log size = ;</span><br><span class="line">预设 max log size = 0</span><br><span class="line">说明 设定日子文件的最大容量,单位KB 这里的预设值0代表不做限制</span><br><span class="line"></span><br><span class="line">53行security</span><br><span class="line">语法 security = &lt;等级&gt;;</span><br><span class="line">预设 security =<span class="built_in"> user</span></span><br><span class="line"><span class="built_in"></span>说明 设定访问 samba<span class="built_in"> server </span>的安全级别 共有四种</span><br><span class="line">share---不需要提供用户名和密码</span><br><span class="line">user----需要提供用户名和密码,而且身份验证由 samba<span class="built_in"> server </span>负责</span><br><span class="line">server--需要提供用户名和密码,可指定其他机器(winNT/2000/XP)或另一台 samba server作身份验证</span><br><span class="line">domain--需要提供用户名和密码,指定winNT/2000/XP域服务器作身份验证</span><br><span class="line"></span><br><span class="line">60行password<span class="built_in"> server</span></span><br><span class="line"><span class="built_in"></span>语法 password<span class="built_in"> server </span>= ;</span><br><span class="line">预设 password<span class="built_in"> server </span>= ;</span><br><span class="line">说明 指定某台服务器(包括windows 和 linux)的密码,作为用户登入时验证的密码</span><br><span class="line">其他 此项需配合 security = server时,才可设定本参数</span><br><span class="line"></span><br><span class="line">64行password level</span><br><span class="line"></span><br><span class="line">65行username level</span><br><span class="line">语法 password level = &lt;位数&gt;;</span><br><span class="line">username level = &lt;位数&gt;;</span><br><span class="line">预设 password level = 8</span><br><span class="line">username level = 8</span><br><span class="line">说明 设定用户名和密码的位数,预设为8位字符</span><br><span class="line"></span><br><span class="line">70行encrypt passwords</span><br><span class="line">语法 encrypt passwords = ;</span><br><span class="line">预设 encrypt passwords = yse</span><br><span class="line">说明 设定是否对samba的密码加密</span><br><span class="line"></span><br><span class="line">71行smb passwd file</span><br><span class="line">语法<span class="built_in"> smb </span>passwd file = &lt;密码文件&gt;;</span><br><span class="line">预设<span class="built_in"> smb </span>passwd file = /etc/samba/smbpasswd</span><br><span class="line">说明 设定samba的密码文件</span><br><span class="line"></span><br><span class="line">130行local master</span><br><span class="line">语法 local master = ;</span><br><span class="line">预设 local master = <span class="literal">no</span></span><br><span class="line">说明 设定 samba<span class="built_in"> server </span>是否要担当LMB角色(LMB负责收集本地网络的Browse List资源),通常无特殊原因设为<span class="literal">no</span></span><br><span class="line"></span><br><span class="line">134行os level = 33</span><br><span class="line">语法 os level = &lt;数字&gt;;</span><br><span class="line">预设 os level = 33</span><br><span class="line">说明 设定 samba server的os level. os level从 0 到 255 . winNT的os level为33, win95/98的os level 是 1 .</span><br><span class="line">若要拿samba<span class="built_in"> server </span>当LMB或DMB则它的os level至少要大于NT的33以上</span><br><span class="line"></span><br><span class="line">139行domain master</span><br><span class="line">语法 domain master = ;</span><br><span class="line">预设 domain master = <span class="literal">yes</span></span><br><span class="line">说明 设定 samba<span class="built_in"> server </span>是否要担当DMB角色(DMB会负责收集其他子网的Browse List资源),通常无特殊原因设为<span class="literal">no</span></span><br><span class="line"></span><br><span class="line">143行preferred master</span><br><span class="line">语法 preferred master = ;</span><br><span class="line">预设 preferred master = <span class="literal">yes</span></span><br><span class="line">说明 设定 samba<span class="built_in"> server </span>是否要担当PDC角色(PDC会负责追踪网络帐户进行的一切变更),通常无特殊原因设为<span class="literal">no</span>.</span><br><span class="line">(同一网段不可有两个PDC,他们会每5分钟抢主控权一次)</span><br><span class="line"></span><br><span class="line">163行wins support</span><br><span class="line">语法 wins support = ;</span><br><span class="line">预设 wins support = <span class="literal">yes</span></span><br><span class="line">说明 设定samba<span class="built_in"> server </span>是否想网络提供WINS服务,通常无特殊原因设为<span class="literal">no</span>.</span><br><span class="line">除非所处网络上没有主机提供WINS服务且需要此台samba server提供WINS服务是才设<span class="literal">yes</span></span><br><span class="line">其他 wins support 和 wins<span class="built_in"> server </span>只能选择一个</span><br><span class="line"></span><br><span class="line">167行wins<span class="built_in"> server</span></span><br><span class="line"><span class="built_in"></span>语法 wins<span class="built_in"> server </span>= ;</span><br><span class="line">预设 wins<span class="built_in"> server </span>= w.x.y.z</span><br><span class="line">说明 设定samba<span class="built_in"> server </span>是否要使用别台主机提供的WINS服务.通常无特殊原因设为<span class="literal">no</span>.除非所处网络上有一台主机提供WINS服务才要设<span class="literal">yes</span></span><br><span class="line">其他 wins support 和 wins<span class="built_in"> server</span></span><br><span class="line"><span class="built_in"></span>例 wins<span class="built_in"> server </span>= 192.168.0.1 表示samba server要使用192.168.0.1提供的WINS服务</span><br><span class="line"></span><br><span class="line"><span class="comment">#=============Share Definitions ================</span></span><br><span class="line"></span><br><span class="line">[homes]</span><br><span class="line">comment = Home Directories</span><br><span class="line">browseable = <span class="literal">no</span></span><br><span class="line">writable = <span class="literal">yes</span></span><br><span class="line">valid<span class="built_in"> users </span>= %S</span><br><span class="line"></span><br><span class="line">使用者本身的<span class="string">&quot;家&quot;</span>目录,当使用者以samba使用者身份登入samba<span class="built_in"> server </span>后,</span><br><span class="line">samba<span class="built_in"> server </span>底下会看到自己的家目录,目录名称是使用者自己的帐号</span><br><span class="line"></span><br><span class="line">[分享的资源名称]</span><br><span class="line">&lt;指令1&gt;; = (参数)</span><br><span class="line">&lt;指令2&gt;; = (参数)</span><br><span class="line"><span class="built_in">..</span><span class="built_in">..</span><span class="built_in">..</span><span class="built_in">..</span><span class="built_in">..</span><span class="built_in">..</span><span class="built_in">..</span><span class="built_in">..</span><span class="built_in">..</span><span class="built_in">..</span><span class="built_in">..</span><span class="built_in">..</span><span class="built_in">..</span></span><br><span class="line"></span><br><span class="line">要提供分享资源时,须先把欲分享的资源以 [ ] 符号括住,底下通常会带指令和参数来表示此资源的设定和存取权限等,详情如下</span><br><span class="line"></span><br><span class="line">comment---------注释说明</span><br><span class="line">path------------分享资源的完整路径名称,除了路径要正确外,目录的权限也要设对</span><br><span class="line">browseable------是<span class="literal">yes</span>/否<span class="literal">no</span>在浏览资源中显示共享目录,若为否则必须指定共享路径才能存取</span><br><span class="line">printable-------是<span class="literal">yes</span>/否<span class="literal">no</span>允许打印</span><br><span class="line">hide dot ftles--是<span class="literal">yes</span>/否<span class="literal">no</span>隐藏隐藏文件</span><br><span class="line">public----------是<span class="literal">yes</span>/否<span class="literal">no</span>公开共享,若为否则进行身份验证(只有当security = share 时此项才起作用)</span><br><span class="line">guest ok--------是<span class="literal">yes</span>/否<span class="literal">no</span>公开共享,若为否则进行身份验证(只有当security = share 时此项才起作用)</span><br><span class="line">read only-------是<span class="literal">yes</span>/否<span class="literal">no</span>以只读方式共享当与writable发生冲突时也writable为准</span><br><span class="line">writable--------是<span class="literal">yes</span>/否<span class="literal">no</span>不以只读方式共享当与read only发生冲突时,无视read only</span><br><span class="line">vaild users-----设定只有此名单内的用户才能访问共享资源(拒绝优先)(用户名/@组名)</span><br><span class="line">invalid users---设定只有此名单内的用户不能访问共享资源(拒绝优先)(用户名/@组名)</span><br><span class="line">read list-------设定此名单内的成员为只读(用户名/@组名)</span><br><span class="line">write list------若设定为只读时,则只有此设定的名单内的成员才可作写入动作(用户名/@组名)</span><br><span class="line">create mask-----建立文件时所给的权限</span><br><span class="line">directory mask--建立目录时所给的权限</span><br><span class="line">force group-----指定存取资源时须以此设定的群组使用者进入才能存取(用户名/@组名)</span><br><span class="line">force user------指定存取资源时须以此设定的使用者进入才能存取(用户名/@组名)</span><br><span class="line">allow hosts-----设定只有此网段/IP的用户才能访问共享资源</span><br><span class="line">allwo hosts = 网段 except<span class="built_in"> IP</span></span><br><span class="line"><span class="built_in"></span>deny hosts------设定只有此网段/IP的用户不能访问共享资源</span><br><span class="line">allow <span class="attribute">hosts</span>=本网段指定IP指定IP</span><br><span class="line">deny <span class="attribute">hosts</span>=指定IP本网段指定IP</span><br></pre></td></tr></table></figure>
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E6%9D%83%E9%99%90/" rel="tag"># 权限</a>
+              <a href="/tags/%E6%96%87%E4%BB%B6/" rel="tag"># 文件</a>
+              <a href="/tags/yes/" rel="tag"># yes</a>
+              <a href="/tags/Samba/" rel="tag"># Samba</a>
+              <a href="/tags/%E8%AE%BE%E5%AE%9A/" rel="tag"># 设定</a>
+              <a href="/tags/server/" rel="tag"># server</a>
+              <a href="/tags/%E9%A2%84%E8%AE%BE/" rel="tag"># 预设</a>
+              <a href="/tags/%E8%AF%AD%E6%B3%95/" rel="tag"># 语法</a>
+              <a href="/tags/%E8%AF%B4%E6%98%8E/" rel="tag"># 说明</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2010/11/11/1246/" rel="prev" title="linux下的建模软件Dia Diagram Editor">
+      <i class="fa fa-chevron-left"></i> linux下的建模软件Dia Diagram Editor
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2011/01/16/1535/" rel="next" title="禁止目录下某拓展名文件的访问">
+      禁止目录下某拓展名文件的访问 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="王殊勋"
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name">王殊勋</p>
+  <div class="site-description" itemprop="description">better late than never.<br>只要开始，虽晚不迟。</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">656</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">2058</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <!--添加网站运行时间 -->
+  <span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
+  <script>
+      var now = new Date(); 
+      function createtime() { 
+          var grt= new Date("12/01/2007 12:00:00");//此处修改你的建站时间或者网站上线时间 
+          now.setTime(now.getTime()+250); 
+          days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days); 
+          hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours); 
+          if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum); 
+          mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;} 
+          seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum); 
+          snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;} 
+          document.getElementById("timeDate").innerHTML = "本站已安全运行 "+dnum+" 天 "; 
+          document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒"; 
+      } 
+  setInterval("createtime()",250);
+  </script>
+  <span itemprop="copyrightYear">(2007 - 2021)</span>
+  <!-- 添加网站运行时间 -->
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">学无止境</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script size="300" alpha="0.6" zIndex="0" src="/lib/canvas-ribbon/canvas-ribbon.js"></script>
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

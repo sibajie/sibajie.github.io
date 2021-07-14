@@ -1,0 +1,920 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"shuxun","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"./public/search.xml"};
+  </script>
+
+  <meta name="description" content="专注互联网运维技术发展">
+<meta property="og:type" content="website">
+<meta property="og:title" content="学无止境">
+<meta property="og:url" content="http://shuxun,wang/page/73/index.html">
+<meta property="og:site_name" content="学无止境">
+<meta property="og:description" content="专注互联网运维技术发展">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:author" content="王殊勋">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://shuxun,wang/page/73/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : true,
+    isPost : false,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>学无止境</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">学无止境</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">注互联网运维技术发展</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-sitemap">
+
+    <a href="/sitemap.xml" rel="section"><i class="fa fa-sitemap fa-fw"></i>站点地图</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content index posts-expand">
+            
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://shuxun,wang/2015/04/09/1323/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="王殊勋">
+      <meta itemprop="description" content="专注互联网运维技术发展">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="学无止境">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2015/04/09/1323/" class="post-title-link" itemprop="url">perl ----Can't locate CPAN.pm in @INC的解决办法</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2015-04-09 23:27:00" itemprop="dateCreated datePublished" datetime="2015-04-09T23:27:00+08:00">2015-04-09</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-07-14 15:15:31" itemprop="dateModified" datetime="2021-07-14T15:15:31+08:00">2021-07-14</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E9%94%99%E8%AF%AF%E8%A7%A3%E5%86%B3/" itemprop="url" rel="index"><span itemprop="name">错误解决</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <figure class="highlight ada"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">perl -MCPAN -e <span class="symbol">&#x27;install</span> <span class="string">&quot;模块名称&quot;</span>&#x27;</span><br></pre></td></tr></table></figure>
+
+<p>我在在线安装perl 模块时,发现有这样的问题.应该是说没有安装CPAN这个服务吧.</p>
+<p>1、执行perl -MCPAN -e shell出错,提示如下:</p>
+<figure class="highlight gherkin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root<span class="meta">@GM</span> ~]<span class="comment"># perl -MCPAN -e shell</span></span><br><span class="line">Can&#x27;t locate CPAN.pm in <span class="meta">@INC</span> (<span class="meta">@INC</span> contains:......省略</span><br></pre></td></tr></table></figure>
+
+<p>2、到cpan的官方站点下载CPAN模块.</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@GM ~]$ wget http:<span class="regexp">//</span>cpan.communilink.net<span class="regexp">/authors/i</span>d<span class="regexp">/A/</span>AN<span class="regexp">/ANDK/</span>CPAN-<span class="number">1.9600</span>.tar.gz</span><br></pre></td></tr></table></figure>
+
+<p>3、解压,编绎,安装.<br>[root@GM ~]$ tar -zxvf CPAN-1.9600.tar.gz<br>[root@GM ~]$ cd CPAN-1.9600<br>[root@GM CPAN-1.9600]$ perl Makefile.PL<br>[root@GM CPAN-1.9600]$ make<br>[root@GM CPAN-1.9600]$ make install</p>
+<p>4、成功进入CPAN的shell模式.</p>
+<figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root<span class="variable">@GM</span> CPAN<span class="number">-1.9600</span>]<span class="variable">$ </span>perl -MCPAN -e shell</span><br></pre></td></tr></table></figure>
+
+<p>5、install XXX 安装对应模块.</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://shuxun,wang/2015/04/04/1612/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="王殊勋">
+      <meta itemprop="description" content="专注互联网运维技术发展">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="学无止境">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2015/04/04/1612/" class="post-title-link" itemprop="url">修改phpmyadmin上传限制</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2015-04-04 09:23:00" itemprop="dateCreated datePublished" datetime="2015-04-04T09:23:00+08:00">2015-04-04</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-07-14 15:14:50" itemprop="dateModified" datetime="2021-07-14T15:14:50+08:00">2021-07-14</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%BD%91%E7%AB%99%E5%BB%BA%E8%AE%BE/" itemprop="url" rel="index"><span itemprop="name">网站建设</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>方法一:修改 php.ini</p>
+<p>相关参数解释:</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">file_uploads</span> = <span class="literal">on</span> ;是否允许通过HTTP上传文件的开关.默认为<span class="literal">ON</span>即是开</span><br><span class="line"><span class="attribute">upload_tmp_dir</span> ;文件上传至服务器上存储临时文件的地方,如果没指定就会用系统默认的临时文件夹.</span><br><span class="line"><span class="attribute">upload_max_filesize</span> = <span class="number">2</span>m ;望文生意,即允许上传文件大小的最大值.默认为<span class="number">2</span>M</span><br><span class="line"><span class="attribute">post_max_size</span> = <span class="number">8</span>m ;指通过表单POST给PHP的所能接收的最大值,包括表单里的所有值.默认为<span class="number">8</span>M</span><br><span class="line"><span class="attribute">max_execution_time</span> = <span class="number">30</span> ;每个PHP页面运行的最大时间值(秒),默认<span class="number">30</span>秒</span><br><span class="line"><span class="attribute">max_input_time</span> = <span class="number">60</span> ;每个PHP页面接收数据所需的最大时间,默认<span class="number">60</span>秒</span><br><span class="line"><span class="attribute">memory_limit</span> = <span class="number">128</span>m ;每个PHP页面所吃掉的最大内存,默认<span class="number">128</span>M.如果觉得小了,可以设置大点.<span class="number">128</span>够用.</span><br><span class="line"><span class="attribute">max_execution_time</span> = <span class="number">600</span></span><br><span class="line"><span class="attribute">max_input_time</span> = <span class="number">600</span></span><br><span class="line"><span class="attribute">upload_max_filesize</span> = <span class="number">32</span>m</span><br><span class="line"><span class="attribute">post_max_size</span> = <span class="number">32</span>m</span><br></pre></td></tr></table></figure>
+
+<p>把上述参数修改后,在网络所允许的正常情况下,就可以上传大体积文件了</p>
+<p>方法二,利用.htaccess文件:</p>
+<p>此法不用直接.修改php.ini,适用于虚拟主机.<br>配置Apache支持.htaccess</p>
+<figure class="highlight dts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//找到</span></span><br><span class="line"><span class="params">&lt;directory /&gt;</span></span><br><span class="line">　　Options FollowSymLinks</span><br><span class="line">　　AllowOverride None</span><br><span class="line"><span class="params">&lt;/directory&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//修改为</span></span><br><span class="line"><span class="params">&lt;directory /&gt;</span></span><br><span class="line">　　Options FollowSymLinks</span><br><span class="line">　　AllowOverride All</span><br><span class="line"><span class="params">&lt;/directory&gt;</span></span><br><span class="line"><span class="comment">//就可以了</span></span><br></pre></td></tr></table></figure>
+
+<p>在目录下新建一个.htaccess文件,windows默认是不允许这么干的,可以在Dreamweaver的文件管理下新建,就不会了.<br>.htaccess里写入</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">php_value</span> post_max_size <span class="number">12</span>m</span><br><span class="line"><span class="attribute">php_value</span> upload_max_filesize <span class="number">12</span>m</span><br><span class="line"><span class="attribute">php_value</span> max_execution_time <span class="number">120</span></span><br><span class="line"><span class="attribute">php_value</span> max_input_time <span class="number">240</span></span><br></pre></td></tr></table></figure>
+
+<p>就OK了.</p>
+<p>补充解释:</p>
+<p>使用 <code>ini_set(&quot;post_max_size&quot;,&quot;80M&quot;);</code>的方法是行不通的.</p>
+<p>post_max_size的可修改范围是PHP_INI_PERDIR.<br>PHP_INI_PERDIR是域内指令只能在php.ini、httpd.conf或.htaccess文件中修改,故行不通.</p>
+<figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">php_value <span class="built_in">name</span> value</span><br></pre></td></tr></table></figure>
+
+<p>设定指定指令的值.仅能用于 PHP_INI_ALL 和 PHP_INI_PERDIR 类型的指令.要清除上一个设定的值,将值设为 none .<br>注: 不要用 php_value 来设定布尔值.应该用 php_flag (见下面)来替代.</p>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">php_flag</span> name <span class="literal">on</span>|<span class="literal">off</span></span><br></pre></td></tr></table></figure>
+
+<p>用于设定布尔值类型的配置指令.仅能用于 PHP_INI_ALL 和 PHP_INI_PERDIR 类型的指令.</p>
+<figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">php_admin_value <span class="built_in">name</span> value</span><br></pre></td></tr></table></figure>
+
+<p>设定指定指令的值.不能在 .htaccess 文件中使用.任何在 php_admin_value 中设定的值不能被 .htaccess 或者 virtualhost 中的指令覆盖.要清除上一个设定的值,将值设为 none .</p>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">php_admin_flag</span> name <span class="literal">on</span>|<span class="literal">off</span></span><br></pre></td></tr></table></figure>
+
+<p>用于设定布尔值类型的配置指令.不能在 .htaccess 文件中使用.任何在 php_admin_flag 中设定的值不能被 .htaccess 或者 virtualhost 中的指令覆盖.</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://shuxun,wang/2015/03/30/1282/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="王殊勋">
+      <meta itemprop="description" content="专注互联网运维技术发展">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="学无止境">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2015/03/30/1282/" class="post-title-link" itemprop="url">mysql命令</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2015-03-30 09:53:00" itemprop="dateCreated datePublished" datetime="2015-03-30T09:53:00+08:00">2015-03-30</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-07-14 15:16:13" itemprop="dateModified" datetime="2021-07-14T15:16:13+08:00">2021-07-14</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%90%84%E7%B1%BB%E6%9C%8D%E5%8A%A1/" itemprop="url" rel="index"><span itemprop="name">各类服务</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>一、连接MYSQL.</p>
+<figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">格式: <span class="selector-tag">mysql</span> <span class="selector-tag">-h</span>主机地址 <span class="selector-tag">-u</span>用户名 －<span class="selector-tag">p</span>用户密码</span><br></pre></td></tr></table></figure>
+
+<p>1、连接到本机上的MYSQL.</p>
+<p>首先打开DOS窗口,然后进入目录mysqlbin,再键入命令mysql -u root -p,回车后提示你输密码.注意用户名前可以有空格也可以没有空格,但是密码前必须没有空格,否则让你重新输入密码.<br>如果刚安装好MYSQL,超级用户root是没有密码的,故直接回车即可进入到MYSQL中了,MYSQL的提示符是: mysql&gt;</p>
+<p>2、连接到远程主机上的MYSQL.假设远程主机的IP为:110.110.110.110,用户名为root,密码为abcd123.则键入以下命令:</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">mysql</span> -h<span class="number">110.110.110.110</span> -u root -p <span class="number">123</span>;(注:u与root之间可以不用加空格,其它也一样)</span><br></pre></td></tr></table></figure>
+
+<p>3、退出MYSQL命令: exit (回车)</p>
+<p>二、修改密码.</p>
+<figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">格式<span class="symbol">:mysqladmin</span> -u用户名 -p旧密码 password 新密码</span><br></pre></td></tr></table></figure>
+
+<p>1、给root加个密码ab12.首先在DOS下进入目录mysqlbin,然后键入以下命令</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">mysqladmin</span> -u root -password ab<span class="number">12</span></span><br></pre></td></tr></table></figure>
+
+<p>注:因为开始时root没有密码,所以-p旧密码一项就可以省略了.</p>
+<p>2、再将root的密码改为djg345.</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">mysqladmin</span> -u root -p ab<span class="number">12</span> password djg<span class="number">345</span></span><br></pre></td></tr></table></figure>
+
+<p>三、增加新用户.</p>
+<p>(注意:和上面不同,下面的因为是MYSQL环境中的命令,所以后面都带一个分号作为命令结束符)</p>
+<figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">格式:<span class="keyword">grant</span> <span class="keyword">select</span> <span class="keyword">on</span> 数据库.* <span class="keyword">to</span> 用户名@登录主机 identified <span class="keyword">by</span> &quot;密码&quot;</span><br></pre></td></tr></table></figure>
+
+<p>1、增加一个用户test1密码为abc,让他可以在任何主机上登录,并对所有数据库有查询、插入、修改、删除的权限.首先用root用户连入MYSQL,然后键入以下命令:</p>
+<figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">grant</span> <span class="keyword">select</span>,<span class="keyword">insert</span>,<span class="keyword">update</span>,<span class="keyword">delete</span> <span class="keyword">on</span> *.* <span class="keyword">to</span> [email=test1@&quot;%]test1@&quot;%[/email]&quot; Identified by &quot;abc&quot;;</span><br></pre></td></tr></table></figure>
+
+<p>但增加的用户是十分危险的,你想如某个人知道test1的密码,那么他就可以在internet上的任何一台电脑上登录你的mysql数据库并对你的数据可以为所欲为了,解决办法见2.</p>
+<p>2、增加一个用户test2密码为abc,让他只可以在localhost上登录,并可以对数据库mydb进行查询、插入、修改、删除的操作(localhost指本地主机,即MYSQL数据库所在的那台主机),<br>这样用户即使用知道test2的密码,他也无法从internet上直接访问数据库,只能通过MYSQL主机上的web页来访问了.</p>
+<figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">grant</span> <span class="keyword">select</span>,<span class="keyword">insert</span>,<span class="keyword">update</span>,<span class="keyword">delete</span> <span class="keyword">on</span> mydb.* <span class="keyword">to</span> [email=test2@localhost]test2@localhost[/email] identified <span class="keyword">by</span> &quot;abc&quot;;</span><br></pre></td></tr></table></figure>
+
+<p>如果你不想test2有密码,可以再打一个命令将密码消掉.</p>
+<figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">grant</span> <span class="keyword">select</span>,<span class="keyword">insert</span>,<span class="keyword">update</span>,<span class="keyword">delete</span> <span class="keyword">on</span> mydb.* <span class="keyword">to</span> [email=test2@localhost]test2@localhost[/email] identified <span class="keyword">by</span> &quot;&quot;;</span><br></pre></td></tr></table></figure>
+
+<p>下篇我是MYSQL中有关数据库方面的操作.注意:你必须首先登录到MYSQL中,以下操作都是在MYSQL的提示符下进行的,而且每个命令以分号结束.</p>
+<p>一、操作技巧</p>
+<p>1、如果你打命令时,回车后发现忘记加分号,你无须重打一遍命令,只要打个分号回车就可以了.<br>也就是说你可以把一个完整的命令分成几行来打,完后用分号作结束标志就OK.</p>
+<p>2、你可以使用光标上下键调出以前的命令.</p>
+<p>二、显示命令</p>
+<p>1、显示当前数据库服务器中的数据库列表:</p>
+<figure class="highlight abnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; SHOW DATABASES<span class="comment">;</span></span><br></pre></td></tr></table></figure>
+
+<p>注意:mysql库里面有MYSQL的系统信息,我们改密码和新增用户,实际上就是用这个库进行操作.</p>
+<p>2、显示数据库中的数据表:</p>
+<figure class="highlight abnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; USE 库名<span class="comment">;</span></span><br><span class="line">mysql&gt; SHOW TABLES<span class="comment">;</span></span><br></pre></td></tr></table></figure>
+
+<p>3、显示数据表的结构:</p>
+<figure class="highlight abnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; DESCRIBE 表名<span class="comment">;</span></span><br></pre></td></tr></table></figure>
+
+<p>4、建立数据库:</p>
+<figure class="highlight n1ql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; <span class="keyword">CREATE</span> <span class="keyword">DATABASE</span> 库名;</span><br></pre></td></tr></table></figure>
+
+<p>5、建立数据表:</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mysql<span class="operator">&gt;</span> USE 库名;</span><br><span class="line">mysql<span class="operator">&gt;</span> <span class="keyword">CREATE</span> <span class="keyword">TABLE</span> 表名 (字段名 <span class="type">VARCHAR</span>(<span class="number">20</span>), 字段名 <span class="type">CHAR</span>(<span class="number">1</span>));</span><br></pre></td></tr></table></figure>
+
+<p>6、删除数据库:</p>
+<figure class="highlight n1ql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; <span class="keyword">DROP</span> <span class="keyword">DATABASE</span> 库名;</span><br></pre></td></tr></table></figure>
+
+<p>7、删除数据表:</p>
+<figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; <span class="keyword">DROP</span> <span class="keyword">TABLE</span> 表名;</span><br></pre></td></tr></table></figure>
+
+<p>8、将表中记录清空:</p>
+<figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; <span class="keyword">DELETE</span> <span class="keyword">FROM</span> 表名;</span><br></pre></td></tr></table></figure>
+
+<p>9、显示表中的记录:</p>
+<figure class="highlight n1ql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; <span class="keyword">SELECT</span> * <span class="keyword">FROM</span> 表名;</span><br></pre></td></tr></table></figure>
+
+<p>10、往表中插入记录:</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql<span class="operator">&gt;</span> <span class="keyword">INSERT</span> <span class="keyword">INTO</span> 表名 <span class="keyword">VALUES</span> (&quot;hyq&quot;,&quot;M&quot;);</span><br></pre></td></tr></table></figure>
+
+<p>11、更新表中数据:</p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql-&gt; UPDATE 表名 <span class="builtin-name">SET</span> 字段名<span class="attribute">1</span>=<span class="string">&#x27;a&#x27;</span>,字段名2=&#x27;b&#x27; WHERE 字段名<span class="attribute">3</span>=<span class="string">&#x27;c&#x27;</span>;</span><br></pre></td></tr></table></figure>
+
+<p>12、用文本方式将数据装入数据表中:</p>
+<figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; <span class="keyword">LOAD</span> DATA <span class="keyword">LOCAL</span> INFILE &quot;D:/mysql.txt&quot; <span class="keyword">INTO</span> <span class="keyword">TABLE</span> 表名;</span><br></pre></td></tr></table></figure>
+
+<p>13、导入.sql文件命令:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">mysql&gt;</span><span class="bash"> USE 数据库名;</span></span><br><span class="line"><span class="meta">mysql&gt;</span><span class="bash"> SOURCE d:/mysql.sql;</span></span><br></pre></td></tr></table></figure>
+
+<p>14、命令行修改root密码:</p>
+<figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; <span class="keyword">UPDATE</span> mysql.<span class="keyword">user</span> <span class="keyword">SET</span> <span class="keyword">password</span>=<span class="keyword">PASSWORD</span>(<span class="string">&#x27;新密码&#x27;</span>) <span class="keyword">WHERE</span> <span class="keyword">User</span>=<span class="string">&#x27;root&#x27;</span>;</span><br><span class="line">mysql&gt; FLUSH <span class="keyword">PRIVILEGES</span>;</span><br></pre></td></tr></table></figure>
+
+<p>15、显示use的数据库名:</p>
+<figure class="highlight n1ql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; <span class="keyword">SELECT</span> <span class="keyword">DATABASE</span>();</span><br></pre></td></tr></table></figure>
+
+<p>16、显示当前的user:</p>
+<figure class="highlight n1ql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; <span class="keyword">SELECT</span> <span class="keyword">USER</span>();</span><br></pre></td></tr></table></figure>
+
+<p>三、一个建库和建表以及插入数据的实例</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">drop</span> database if <span class="keyword">exists</span> school; <span class="operator">/</span><span class="operator">/</span>如果存在SCHOOL则删除</span><br><span class="line"><span class="keyword">create</span> database school; <span class="operator">/</span><span class="operator">/</span>建立库SCHOOL</span><br><span class="line">use school; <span class="operator">/</span><span class="operator">/</span>打开库SCHOOL</span><br><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> teacher <span class="operator">/</span><span class="operator">/</span>建立表TEACHER</span><br><span class="line">(</span><br><span class="line">    id <span class="type">int</span>(<span class="number">3</span>) auto_increment <span class="keyword">not</span> <span class="keyword">null</span> <span class="keyword">primary</span> key,</span><br><span class="line">    name <span class="type">char</span>(<span class="number">10</span>) <span class="keyword">not</span> <span class="keyword">null</span>,</span><br><span class="line">    address <span class="type">varchar</span>(<span class="number">50</span>) <span class="keyword">default</span> <span class="string">&#x27;深圳&#x27;</span>,</span><br><span class="line">    <span class="keyword">year</span> <span class="type">date</span></span><br><span class="line">); <span class="operator">/</span><span class="operator">/</span>建表结束</span><br><span class="line"><span class="operator">/</span><span class="operator">/</span>以下为插入字段</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> teacher <span class="keyword">values</span>(&quot;,&#x27;allen&#x27;,&#x27;大连一中&#x27;,&#x27;1976-10-10&#x27;);</span><br><span class="line">insert into teacher values(&quot;,<span class="string">&#x27;jack&#x27;</span>,<span class="string">&#x27;大连二中&#x27;</span>,<span class="string">&#x27;1975-12-23&#x27;</span>);</span><br></pre></td></tr></table></figure>
+
+<p>如果你在mysql提示符键入上面的命令也可以,但不方便调试.</p>
+<p>(1)你可以将以上命令原样写入一个文本文件中,假设为school.sql,然后复制到c:下,并在DOS状态进入目录 <code>[url=file://mysqlbin]mysqlbin[/url]</code>,然后键入以下命令:</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql -uroot -<span class="selector-tag">p</span>密码 &lt; c:school.sql</span><br></pre></td></tr></table></figure>
+
+<p>如果成功,空出一行无任何显示;如有错误,会有提示.(以上命令已经调试,你只要将//的注释去掉即可使用).</p>
+<p>(2)或者进入命令行后使用</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">mysql&gt;</span><span class="bash"> <span class="built_in">source</span> c:/school.sql;</span> </span><br></pre></td></tr></table></figure>
+
+<p>也可以将school.sql文件导入数据库中.</p>
+<p>四、将文本数据转到数据库中</p>
+<p>1、文本数据应符合的格式:字段数据之间用tab键隔开,null值用[url=file://n]n[/url]来代替.例:</p>
+<figure class="highlight basic"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="symbol">3 </span>rose 大连二中 <span class="number">1976</span>-<span class="number">10</span>-<span class="number">10</span></span><br><span class="line"><span class="symbol">4 </span>mike 大连一中 <span class="number">1975</span>-<span class="number">12</span>-<span class="number">23</span></span><br></pre></td></tr></table></figure>
+
+<p>假设你把这两组数据存为school.txt文件,放在c盘根目录下.</p>
+<p>2、数据传入命令:</p>
+<figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">load</span> data <span class="keyword">local</span> infile &quot;c:/school.txt&quot; <span class="keyword">into</span> <span class="keyword">table</span> 表名;</span><br></pre></td></tr></table></figure>
+
+<p>注意:你最好将文件复制到 <code>[url=file://mysqlbin]mysqlbin[/url]</code>目录下,并且要先用use命令打表所在的库.</p>
+<p>五、备份数据库:(命令在DOS的 <code>[url=file://mysqlbin]mysqlbin[/url]</code>目录下执行)</p>
+<p>1.导出整个数据库</p>
+<p>导出文件默认是存在mysqlbin目录下</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">mysqldump</span> -u 用户名 -p 数据库名 &gt; 导出的文件名</span><br><span class="line"><span class="attribute">mysqldump</span> -u user_name -p<span class="number">123456</span> database_name &gt; outfile_name.sql</span><br></pre></td></tr></table></figure>
+
+<p>2.导出一个表</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mysqldump -u 用户名 -<span class="selector-tag">p</span> 数据库名 表名&gt; 导出的文件名</span><br><span class="line">mysqldump -u user_name -<span class="selector-tag">p</span> database_name table_name &gt; outfile_name<span class="selector-class">.sql</span></span><br></pre></td></tr></table></figure>
+
+<p>3.导出一个数据库结构</p>
+<figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mysqldump -u user_name -p -d –<span class="keyword">add</span>-<span class="keyword">drop</span>-<span class="keyword">table</span> database_name &gt; outfile_name.<span class="keyword">sql</span></span><br><span class="line">-d 没有数据 –<span class="keyword">add</span>-<span class="keyword">drop</span>-<span class="keyword">table</span> 在每个<span class="keyword">create</span>语句之前增加一个<span class="keyword">drop</span> <span class="keyword">table</span></span><br></pre></td></tr></table></figure>
+
+<p>4.带语言参数导出</p>
+<figure class="highlight dsconfig"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">mysqldump</span> -<span class="string">uroot</span> -<span class="string">p</span> –<span class="string">default-character-set</span>=<span class="string">latin1</span> –<span class="built_in">set-charset=gbk</span> –<span class="string">skip-opt</span> <span class="string">database_name</span> &gt; <span class="string">outfile_name</span>.<span class="string">sql</span></span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://shuxun,wang/2015/03/29/1652/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="王殊勋">
+      <meta itemprop="description" content="专注互联网运维技术发展">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="学无止境">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2015/03/29/1652/" class="post-title-link" itemprop="url">Can't exec /usr/sbin/makeuserdb  No such file or directory</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2015-03-29 12:47:00" itemprop="dateCreated datePublished" datetime="2015-03-29T12:47:00+08:00">2015-03-29</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-07-14 15:14:57" itemprop="dateModified" datetime="2021-07-14T15:14:57+08:00">2021-07-14</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E9%94%99%E8%AF%AF%E8%A7%A3%E5%86%B3/" itemprop="url" rel="index"><span itemprop="name">错误解决</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>需要安装:</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">courier</span>-authlib-userdb-<span class="number">0</span>.<span class="number">60</span>.<span class="number">6</span>-<span class="number">2</span>.<span class="number">1</span>.x<span class="number">86</span>_<span class="number">64</span>.rpm</span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://shuxun,wang/2015/03/28/1414/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="王殊勋">
+      <meta itemprop="description" content="专注互联网运维技术发展">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="学无止境">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2015/03/28/1414/" class="post-title-link" itemprop="url">安装完rsync找不到rsyncd.conf</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2015-03-28 15:08:00" itemprop="dateCreated datePublished" datetime="2015-03-28T15:08:00+08:00">2015-03-28</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-07-14 15:15:01" itemprop="dateModified" datetime="2021-07-14T15:15:01+08:00">2021-07-14</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E9%94%99%E8%AF%AF%E8%A7%A3%E5%86%B3/" itemprop="url" rel="index"><span itemprop="name">错误解决</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>今天站长鼓捣rsync发现 安装完rsync找不到书上说的rsyncd.conf,</p>
+<p>后来发现没有也没有关系,</p>
+<p>直接在<code>/etc/</code>下建立一个这个文件,然后把内容写进去就可以使用了.</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+
+  
+  <nav class="pagination">
+    <a class="extend prev" rel="prev" href="/page/72/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/72/">72</a><span class="page-number current">73</span><a class="page-number" href="/page/74/">74</a><span class="space">&hellip;</span><a class="page-number" href="/page/132/">132</a><a class="extend next" rel="next" href="/page/74/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+  </nav>
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="王殊勋"
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name">王殊勋</p>
+  <div class="site-description" itemprop="description">better late than never.<br>只要开始，虽晚不迟。</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">656</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">2058</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <!--添加网站运行时间 -->
+  <span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
+  <script>
+      var now = new Date(); 
+      function createtime() { 
+          var grt= new Date("12/01/2007 12:00:00");//此处修改你的建站时间或者网站上线时间 
+          now.setTime(now.getTime()+250); 
+          days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days); 
+          hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours); 
+          if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum); 
+          mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;} 
+          seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum); 
+          snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;} 
+          document.getElementById("timeDate").innerHTML = "本站已安全运行 "+dnum+" 天 "; 
+          document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒"; 
+      } 
+  setInterval("createtime()",250);
+  </script>
+  <span itemprop="copyrightYear">(2007 - 2021)</span>
+  <!-- 添加网站运行时间 -->
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">学无止境</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script size="300" alpha="0.6" zIndex="0" src="/lib/canvas-ribbon/canvas-ribbon.js"></script>
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

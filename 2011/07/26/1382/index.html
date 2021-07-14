@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"shuxun","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"./public/search.xml"};
+  </script>
+
+  <meta name="description" content="列表项目 只安装必要的选件 空间面板中可选择删除Windows组件. 如何安装IIS? 计算机右键→管理→服务器管理器→角色摘要→添加角色→服务器角色→Web服务器(IIS). 关闭界面美化选项 如在Windows操作系统,系统属性里,有一个性能选项(Performance Options),一般选择性能优先,而不是显示优先.如应用系统中不做三维图形显示,可将操作系统中的显示属性&#x2F;Settings">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Windows Server 2008作Web服务器优化配置">
+<meta property="og:url" content="http://shuxun,wang/2011/07/26/1382/index.html">
+<meta property="og:site_name" content="学无止境">
+<meta property="og:description" content="列表项目 只安装必要的选件 空间面板中可选择删除Windows组件. 如何安装IIS? 计算机右键→管理→服务器管理器→角色摘要→添加角色→服务器角色→Web服务器(IIS). 关闭界面美化选项 如在Windows操作系统,系统属性里,有一个性能选项(Performance Options),一般选择性能优先,而不是显示优先.如应用系统中不做三维图形显示,可将操作系统中的显示属性&#x2F;Settings">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2011-07-26T00:09:00.000Z">
+<meta property="article:modified_time" content="2021-07-14T07:15:54.155Z">
+<meta property="article:author" content="王殊勋">
+<meta property="article:tag" content="设置">
+<meta property="article:tag" content="关闭">
+<meta property="article:tag" content="端口">
+<meta property="article:tag" content="服务器">
+<meta property="article:tag" content="选项">
+<meta property="article:tag" content="Windows">
+<meta property="article:tag" content="角色">
+<meta property="article:tag" content="系统中">
+<meta property="article:tag" content="杀毒">
+<meta property="article:tag" content="右键">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://shuxun,wang/2011/07/26/1382/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>Windows Server 2008作Web服务器优化配置 | 学无止境</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">学无止境</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">注互联网运维技术发展</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-sitemap">
+
+    <a href="/sitemap.xml" rel="section"><i class="fa fa-sitemap fa-fw"></i>站点地图</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://shuxun,wang/2011/07/26/1382/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="王殊勋">
+      <meta itemprop="description" content="专注互联网运维技术发展">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="学无止境">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Windows Server 2008作Web服务器优化配置
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2011-07-26 08:09:00" itemprop="dateCreated datePublished" datetime="2011-07-26T08:09:00+08:00">2011-07-26</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-07-14 15:15:54" itemprop="dateModified" datetime="2021-07-14T15:15:54+08:00">2021-07-14</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" itemprop="url" rel="index"><span itemprop="name">操作系统</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>列表项目</p>
+<p>只安装必要的选件</p>
+<p>空间面板中可选择删除Windows组件.</p>
+<p>如何安装IIS?</p>
+<p>计算机右键→管理→服务器管理器→角色摘要→添加角色→服务器角色→Web服务器(IIS).</p>
+<p>关闭界面美化选项</p>
+<p>如在Windows操作系统,系统属性里,有一个性能选项(Performance Options),一般选择性能优先,而不是显示优先.如应用系统中不做三维图形显示,可将操作系统中的显示属性/Settings/Advanced/Troubleshoot中,硬件加速(Hardware acceleration)调到None.</p>
+<p>如何打开显卡的硬件加速?<br>桌面右键→个性化→显示设置→高级设置→疑难解答→更该设置→硬件加速→完全.然后运行dxdiag,打开显示选项卡,会发现DirectX功能已经全部启用了.</p>
+<p>设后台服务优先</p>
+<p>在”系统属性”的”性能选项”中,”高级”页面,调整Processor Scheduling为后台服务优先(Background services).</p>
+<p>关闭不必要的服务和端口</p>
+<p>检查您操作系统中所有的服务和端口,对于一些用不到的服务和端口,可将其停止或关闭.</p>
+<p>如何打开索引功能?</p>
+<p>计算机右键→管理→服务器管理器→角色摘要→添加角色→服务器角色→文件服务→角色服务→选择Windows 搜索服务.但是索引功能,会在系统空闲时运行,出现系统空闲时硬盘狂转的现象.另外可能会造成长时间的I/O操作的内容主要有:1磁盘碎片整理计划.2 Windows Defender计划.3 Windows Search 服务.4 Superfetch 服务.</p>
+<p>1 Computer Browser(默认禁用)<br>有了网络和共享中心的网络发现,这个服务应该没什么用了.<br>2 Distributed Link Tracking Client<br>个人用户一般用不到,设置为手动.<br>3 Distributed Transaction Coordinator<br>个人用户一般用不到,也容易受到远程拒绝服务攻击,设置为手动.<br>4 Remote Registry<br>这个服务应该算是必停的服务之一,设置为禁用.<br>5 Secondary Logon<br>对于多用户,可以给某用户分配临时的管理员权限,一般不会用到,设置为手动.<br>6 TCP/IP NetBIOS Helper<br>如果你的网络不使用NetBIOS或是WINS,设置为手动.<br>7 Terminal Services<br>用于远程桌面控制,存在安全隐患,设置为手动.<br>8 Windows Defender<br>四大拖慢你机器的功能之一,当然前提是你不需要这个功能,设置为禁用.<br>9 Windows Error Reporting Service<br>生成错误报告,个人觉得意义不大,设置为手动.</p>
+<p>[根据情况可以关闭的服务]<br>1 Netlogon(默认手动)<br>如果你不是处在域管理当中,设置为手动.<br>2 Server<br>如果你不会共享你的文件或打印机,设置为手动.<br>3 Smart Card(默认手动)<br>如果你不用U盾等智能卡,设置为禁用.<br>4 Tablet PC Input Service<br>如果你没有这样的设备,设置为手动.<br>5 Windows Update<br>如果你不用自动更新.设置为手动.</p>
+<p>开始→运行→输入”msconfig”确定→<br>①启动→点击[全部禁用]→[确定]后,不要重新启动<br>②服务→勾上”隐藏所有Microsoft服务”的勾→点击[全部禁用],[应用]→再去掉”隐藏所有Microsoft服务”的勾→将”windows time, wireless zero configuration, task scheduler, Fast user switching compatibility,Netmeeting remote desktop sharing,terminal services, automatic updates, remote registry,removable storage, Indexing service, messenger, server, Computer browser,Print Spooler”服务前的勾去掉(请仔细查找,大小写忽略.电脑若在局域网内,用时将server,Computer browser手动打开,若有打印机,用时将Print Spooler手动打开)[确定]后,重新启动.</p>
+<p>尽量将数据库服务器与WebGIS服务器分开</p>
+<p>多数情况下,针对数据库服务器和WebGIS服务器的优化是有冲突的,而且若这两者在同一台设备上,也会产生资源争用的情形,WebGIS服务器对内存的消耗也是非常大.另外,有一点值得注意,最好不要将这两类服务器分到两个子网中,即中间最好不要有路由器.</p>
+<p>关于杀毒软件</p>
+<p>一些杀毒软件在运行查毒时,非常消耗资源,服务器尽量不要安装杀毒软件,在一些优化措施已实施的情况下,比如关掉不必要的服务和端口,病毒一般也不会感染服务器.在Windows Server下若要安装杀毒软件,也尽量将查毒时间放在系统闲时;而在Solaris,AIX或Linux下,最好不要安装杀毒软件.</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E8%AE%BE%E7%BD%AE/" rel="tag"># 设置</a>
+              <a href="/tags/%E5%85%B3%E9%97%AD/" rel="tag"># 关闭</a>
+              <a href="/tags/%E7%AB%AF%E5%8F%A3/" rel="tag"># 端口</a>
+              <a href="/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/" rel="tag"># 服务器</a>
+              <a href="/tags/%E9%80%89%E9%A1%B9/" rel="tag"># 选项</a>
+              <a href="/tags/Windows/" rel="tag"># Windows</a>
+              <a href="/tags/%E8%A7%92%E8%89%B2/" rel="tag"># 角色</a>
+              <a href="/tags/%E7%B3%BB%E7%BB%9F%E4%B8%AD/" rel="tag"># 系统中</a>
+              <a href="/tags/%E6%9D%80%E6%AF%92/" rel="tag"># 杀毒</a>
+              <a href="/tags/%E5%8F%B3%E9%94%AE/" rel="tag"># 右键</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2011/07/22/1394/" rel="prev" title="wordpress在nginx下只能显示一个主题的解决方法">
+      <i class="fa fa-chevron-left"></i> wordpress在nginx下只能显示一个主题的解决方法
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2011/08/02/1098/" rel="next" title="centos安装 samba实现共享">
+      centos安装 samba实现共享 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="王殊勋"
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name">王殊勋</p>
+  <div class="site-description" itemprop="description">better late than never.<br>只要开始，虽晚不迟。</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">656</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">2058</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <!--添加网站运行时间 -->
+  <span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
+  <script>
+      var now = new Date(); 
+      function createtime() { 
+          var grt= new Date("12/01/2007 12:00:00");//此处修改你的建站时间或者网站上线时间 
+          now.setTime(now.getTime()+250); 
+          days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days); 
+          hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours); 
+          if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum); 
+          mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;} 
+          seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum); 
+          snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;} 
+          document.getElementById("timeDate").innerHTML = "本站已安全运行 "+dnum+" 天 "; 
+          document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒"; 
+      } 
+  setInterval("createtime()",250);
+  </script>
+  <span itemprop="copyrightYear">(2007 - 2021)</span>
+  <!-- 添加网站运行时间 -->
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">学无止境</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script size="300" alpha="0.6" zIndex="0" src="/lib/canvas-ribbon/canvas-ribbon.js"></script>
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

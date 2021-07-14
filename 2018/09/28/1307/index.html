@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"shuxun","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"./public/search.xml"};
+  </script>
+
+  <meta name="description" content="1、Nginx 运行工作进程个数 12worker_processes 4;                           #工作进程,建议和cpu核心数一致worker_cpu_affinity 0001 0010 0100 1000       #cpu亲和力设置  2、Nginx 事件处理模型 12345events &amp;#123;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="nginx配置优化">
+<meta property="og:url" content="http://shuxun,wang/2018/09/28/1307/index.html">
+<meta property="og:site_name" content="学无止境">
+<meta property="og:description" content="1、Nginx 运行工作进程个数 12worker_processes 4;                           #工作进程,建议和cpu核心数一致worker_cpu_affinity 0001 0010 0100 1000       #cpu亲和力设置  2、Nginx 事件处理模型 12345events &amp;#123;">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2018-09-28T08:51:00.000Z">
+<meta property="article:modified_time" content="2021-07-14T07:14:45.447Z">
+<meta property="article:author" content="王殊勋">
+<meta property="article:tag" content="文件">
+<meta property="article:tag" content="内存">
+<meta property="article:tag" content="内核">
+<meta property="article:tag" content="压缩">
+<meta property="article:tag" content="tcp">
+<meta property="article:tag" content="连接">
+<meta property="article:tag" content="gzip">
+<meta property="article:tag" content="缓存">
+<meta property="article:tag" content="限制">
+<meta property="article:tag" content="超时">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://shuxun,wang/2018/09/28/1307/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>nginx配置优化 | 学无止境</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">学无止境</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">注互联网运维技术发展</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-sitemap">
+
+    <a href="/sitemap.xml" rel="section"><i class="fa fa-sitemap fa-fw"></i>站点地图</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://shuxun,wang/2018/09/28/1307/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="王殊勋">
+      <meta itemprop="description" content="专注互联网运维技术发展">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="学无止境">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          nginx配置优化
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2018-09-28 16:51:00" itemprop="dateCreated datePublished" datetime="2018-09-28T16:51:00+08:00">2018-09-28</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-07-14 15:14:45" itemprop="dateModified" datetime="2021-07-14T15:14:45+08:00">2021-07-14</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%90%84%E7%B1%BB%E6%9C%8D%E5%8A%A1/" itemprop="url" rel="index"><span itemprop="name">各类服务</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>1、Nginx 运行工作进程个数</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">worker_processes</span> <span class="number">4</span><span class="string">;</span>                           <span class="comment">#工作进程,建议和cpu核心数一致</span></span><br><span class="line"><span class="string">worker_cpu_affinity</span> <span class="number">0001 </span><span class="number">0010 </span><span class="number">0100 </span><span class="number">1000</span>       <span class="comment">#cpu亲和力设置</span></span><br></pre></td></tr></table></figure>
+
+<p>2、Nginx 事件处理模型</p>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">events</span> &#123;                                      <span class="comment">#events:提供配置文件上下文,其中指定了影响连接处理的指令.</span></span><br><span class="line">    <span class="attribute">use</span> <span class="literal">epoll</span>;                                <span class="comment">#使用epoll事件处理模型</span></span><br><span class="line">    <span class="attribute">worker_connections</span> <span class="number">65535</span>;                 <span class="comment">#单个worker_processes支持的最大连接</span></span><br><span class="line">    <span class="attribute">multi_accept</span> <span class="literal">on</span>;                          <span class="comment">#worker_processes一次接受所有连接</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>3、开启高效传输模式</p>
+<figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">http &#123;                                        <span class="comment">#提供指定的HTTP服务器指令的配置文件上下文</span></span><br><span class="line">    include mime.types;                       <span class="comment">#支持所有mime类型</span></span><br><span class="line">    default_type <span class="built_in">application</span>/octet-stream;    <span class="comment">#默认流的类型</span></span><br><span class="line">    ……</span><br><span class="line">    sendfile <span class="keyword">on</span>;                              <span class="comment">#开启高效传输模式</span></span><br><span class="line">    tcp_nopush <span class="keyword">on</span>;                            <span class="comment">#告诉 nginx 在一个数据包里发送所有头文件,可防止网络阻塞</span></span><br><span class="line">    ……</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>4、连接超时时间</p>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">keepalive_timeout</span> <span class="number">60</span>;                         <span class="comment">#长连接超时时间60s</span></span><br><span class="line"><span class="attribute">tcp_nodelay</span> <span class="literal">on</span>;                               <span class="comment">#防止网络阻塞</span></span><br><span class="line"><span class="attribute">client_header_buffer_size</span> <span class="number">4k</span>;                 <span class="comment">#客户端请求头部的缓冲区大小</span></span><br><span class="line"><span class="attribute">open_file_cache</span> max=<span class="number">102400</span> inactive=<span class="number">20s</span>;      <span class="comment">#打开文件的缓存大小,最大100M,活跃时间20s</span></span><br><span class="line"><span class="attribute">open_file_cache_valid</span> <span class="number">30s</span>;                    <span class="comment">#缓存有效时间30s</span></span><br><span class="line"><span class="attribute">open_file_cache_min_uses</span> <span class="number">1</span>;                   <span class="comment">#最少打开一个文件进行缓存</span></span><br><span class="line"><span class="attribute">client_header_timeout</span> <span class="number">15</span>;                     <span class="comment">#请求头超时时间</span></span><br><span class="line"><span class="attribute">client_body_timeout</span> <span class="number">15</span>;                       <span class="comment">#请求体超时时间</span></span><br><span class="line"><span class="attribute">reset_timedout_connection</span> <span class="literal">on</span>;                 <span class="comment">#关闭不响应的客户端连接</span></span><br><span class="line"><span class="attribute">send_timeout</span> <span class="number">15</span>;                              <span class="comment">#发送超时时间</span></span><br><span class="line"><span class="attribute">server_tokens</span> <span class="literal">off</span>;                            <span class="comment">#不显示nginx的版本</span></span><br><span class="line"><span class="attribute">client_max_body_size</span> <span class="number">10m</span>;                     <span class="comment">#上传文件的大小限制</span></span><br></pre></td></tr></table></figure>
+
+<p>5、fastcgi连接优化</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">fastcgi_connect_timeout</span> <span class="number">600</span>;                  #指定连接后端fastcgi超时时间</span><br><span class="line"><span class="attribute">fastcgi_send_timeout</span> <span class="number">600</span>;                     #向fastcg发送请求超时时间</span><br><span class="line"><span class="attribute">fastcgi_read_timeout</span> <span class="number">600</span>;                     #接收fastcgi应答的超时时间</span><br><span class="line"><span class="attribute">fastcgi_buffer_size</span> <span class="number">64</span>k;                      #缓冲区大小</span><br><span class="line"><span class="attribute">fastcgi_buffers</span> <span class="number">4</span> <span class="number">64</span>k;                        #给fastcgi分配<span class="number">4</span>个缓冲区,每个<span class="number">64</span>K</span><br><span class="line"><span class="attribute">fastcgi_busy_buffers_size</span> <span class="number">128</span>k;               #fastcgi忙碌时的缓冲区大小</span><br><span class="line"><span class="attribute">fastcgi_temp_file_write_size</span> <span class="number">128</span>k;            #临时写文件的目录大小</span><br><span class="line"><span class="attribute">fastcgi_temp_path</span> /tmp/nginx_tmp;             #临时写文件的路径</span><br><span class="line"><span class="attribute">fastcgi_intercept_errors</span> <span class="literal">on</span>;                  #允许发送错误到客户端,(php页面不存在默认返回空白页)</span><br><span class="line"><span class="attribute">fastcgi_cache_path</span> /usr/local/nginx<span class="number">1</span>.<span class="number">10</span>/fastcgi_cache levels=<span class="number">1</span>:<span class="number">2</span> keys_zone=cache_fastcgi:<span class="number">128</span>m inactive=<span class="number">1</span>d max_size=<span class="number">10</span>g;                                     #设置缓存路径、目录层级为<span class="number">16</span>*<span class="number">256</span>个子目录、缓存区名称为cache_fastcgi,大小<span class="number">128</span>M,有效期一天,最大缓存<span class="number">10</span>G.</span><br></pre></td></tr></table></figure>
+
+<p>6、gzip压缩</p>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">gzip</span> <span class="literal">on</span>;                                     <span class="comment">#开启gzip</span></span><br><span class="line"><span class="attribute">gzip_min_length</span> <span class="number">2k</span>;                          <span class="comment">#最小压缩大小2k,也就是只要超过2k就进行压缩</span></span><br><span class="line"><span class="attribute">gzip_buffers</span> <span class="number">4</span> <span class="number">32k</span>;                          <span class="comment">#压缩缓冲区大小32k,4个</span></span><br><span class="line"><span class="attribute">gzip_http_version</span> <span class="number">1</span>.<span class="number">1</span>;                       <span class="comment">#gzip版本</span></span><br><span class="line"><span class="attribute">gzip_comp_level</span> <span class="number">6</span>;                           <span class="comment">#压缩级别6</span></span><br><span class="line"><span class="attribute">gzip_types</span> text/plain text/css text/javascript application/json application/javascript application/x-javascript application/xml;                           <span class="comment">#以上的那些格式的数据进行压缩</span></span><br><span class="line"><span class="attribute">gzip_vary</span> <span class="literal">on</span>;                                <span class="comment">#加&quot;Vary:Accept-Encoding&quot;响应头字段,为了让前端的代理识别是压缩数据 </span></span><br><span class="line"><span class="attribute">gzip_proxied</span> any;                            <span class="comment">#为所有代理请求启用压缩</span></span><br></pre></td></tr></table></figure>
+
+<p>7、expires头缓存</p>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">location</span> <span class="regexp">~* \.(ico|jpeg|png|bmp|swf|flv)$</span> &#123;  <span class="comment">#匹配以.ico.jpg.jpeg.gif.png.bmp.swf.flv结尾的文件</span></span><br><span class="line">    <span class="attribute">expires</span> <span class="number">30d</span>;                             <span class="comment">#缓存30天</span></span><br><span class="line">    <span class="comment">#log_not_found off;</span></span><br><span class="line">    <span class="attribute">access_log</span> <span class="literal">off</span>;                          <span class="comment">#不记录成功日志</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="attribute">location</span> <span class="regexp">~* \.(js|css)$</span> &#123;                    <span class="comment">#匹配.js.css结尾的</span></span><br><span class="line">    <span class="attribute">expires</span> <span class="number">7d</span>;                              <span class="comment">#缓存7天</span></span><br><span class="line">    <span class="attribute">log_not_found</span> <span class="literal">off</span>;</span><br><span class="line">    <span class="attribute">access_log</span> <span class="literal">off</span>;                          <span class="comment">#不记录日志</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>8、防盗链</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">location ~* ^.+\.(jpg|gif|png|swf|flv)$ &#123;    <span class="comment">#匹配以任意多个字符开头中间带&quot;.&quot;并且以jpg gif png swf flv </span></span><br><span class="line">    wma wmv asf mp3 mmf zip rar结尾的</span><br><span class="line">    valid_referers none blocked zhangsan.com;<span class="comment">#定义变量valid_referers,当referer为空、或者为www.zhangsan.com、zhangsan.com为有效</span></span><br><span class="line">    <span class="keyword">if</span> (<span class="variable">$invalid_referer</span>) &#123;                  <span class="comment">#如果referer无效时,也就是不是上面定义的</span></span><br><span class="line">        return <span class="number">302</span> http:<span class="regexp">//</span>zhangsan.com<span class="regexp">/img/</span>nolink.jpg;</span><br><span class="line">                                             <span class="comment">#返回302,指定一个图片位置(你可以给一个警告的图片)</span></span><br><span class="line">        return <span class="number">404</span>;                          <span class="comment">#返回404</span></span><br><span class="line">        <span class="keyword">break</span>;                               <span class="comment">#if语句的结束</span></span><br><span class="line">    &#125;</span><br><span class="line">access_log off;                              <span class="comment">#不记录日志</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>9、内核参数</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">vim</span> /etc/sysctl.conf</span><br><span class="line"></span><br><span class="line"><span class="attribute">fs</span>.file-max = <span class="number">999999</span>                        #打开文件的句柄数</span><br><span class="line"><span class="attribute">net</span>.ipv<span class="number">4</span>.ip_forward = <span class="number">0</span>                     #打开ipv<span class="number">4</span>路由转发</span><br><span class="line"><span class="attribute">net</span>.ipv<span class="number">4</span>.conf.default.rp_filter = <span class="number">1</span>         #启用源路由核查功能</span><br><span class="line"><span class="attribute">net</span>.ipv<span class="number">4</span>.conf.default.accept_source_route = <span class="number">0</span></span><br><span class="line">                                            <span class="comment">#禁用所有IP源路由</span></span><br><span class="line"><span class="attribute">kernel</span>.sysrq = <span class="number">0</span>                            #使用sysrq组合键是了解系统目前运行情况,为安全起见设为<span class="number">0</span>关闭</span><br><span class="line"><span class="attribute">kernel</span>.core_uses_pid = <span class="number">1</span>                    #控制core文件的文件名是否添加pid作为扩展</span><br><span class="line"><span class="attribute">net</span>.ipv<span class="number">4</span>.tcp_syncookies = <span class="number">1</span>                 #启SYN Cookies,当出现SYN等待队列溢出时,启用cookies来处理</span><br><span class="line"><span class="attribute">kernel</span>.msgmnb = <span class="number">65536</span>                       #每个消息队列的大小(单位:字节)限制</span><br><span class="line"><span class="attribute">kernel</span>.msgmax = <span class="number">65536</span>                       #整个系统最大消息队列数量限制</span><br><span class="line"><span class="attribute">kernel</span>.shmmax = <span class="number">68719476736</span>                 #单个共享内存段的大小</span><br><span class="line"><span class="attribute">kernel</span>.shmall = <span class="number">4294967296</span>                  #所有内存大小</span><br><span class="line"><span class="attribute">net</span>.ipv<span class="number">4</span>.tcp_max_tw_buckets = <span class="number">6000</span>          #timewait的数量,默认是<span class="number">180000</span></span><br><span class="line"><span class="attribute">net</span>.ipv<span class="number">4</span>.tcp_sack = <span class="number">1</span>                       #开启有选择的应答</span><br><span class="line"><span class="attribute">net</span>.ipv<span class="number">4</span>.tcp_window_scaling = <span class="number">1</span>             #支持更大的TCP窗口. 如果TCP窗口最大超过<span class="number">65535</span>(<span class="number">64</span>K), 必须设置该数值为<span class="number">1</span></span><br><span class="line"><span class="attribute">net</span>.ipv<span class="number">4</span>.tcp_rmem = <span class="number">10240</span> <span class="number">87380</span> <span class="number">12582912</span>    #TCP读buffer</span><br><span class="line"><span class="attribute">net</span>.ipv<span class="number">4</span>.tcp_wmem = <span class="number">10240</span> <span class="number">87380</span> <span class="number">12582912</span>    #TCP写buffer</span><br><span class="line"><span class="attribute">net</span>.core.wmem_default = <span class="number">8388608</span>             #为TCP socket预留用于发送缓冲的内存默认值(单位:字节)</span><br><span class="line"><span class="attribute">net</span>.core.rmem_default = <span class="number">8388608</span>             #为TCP socket预留用于接收缓冲的内存默认值(单位:字节)</span><br><span class="line"><span class="attribute">net</span>.core.rmem_max = <span class="number">16777216</span>                #为TCP socket预留用于接收缓冲的内存最大值(单位:字节)</span><br><span class="line"><span class="attribute">net</span>.core.wmem_max = <span class="number">16777216</span>                #为TCP socket预留用于发送缓冲的内存最大值(单位:字节)</span><br><span class="line"><span class="attribute">net</span>.core.netdev_max_backlog = <span class="number">262144</span>        #每个网络接口接收数据包的速率比内核处理这些包的速率快时,允许送到队列的数据包的最大数目</span><br><span class="line"><span class="attribute">net</span>.core.somaxconn = <span class="number">40960</span>                  #web应用中listen函数的backlog默认会给我们内核参数的net.core.somaxconn限制到<span class="number">128</span>,而nginx定义的NGX_LISTEN_BACKLOG默认为<span class="number">511</span>,所以有必要调整这个值</span><br><span class="line"><span class="attribute">net</span>.ipv<span class="number">4</span>.tcp_max_orphans = <span class="number">3276800</span>          #系统中最多有多少个TCP套接字不被关联到任何一个用户文件句柄上.这个限制仅仅是为了防止简单的DoS×××,不能过分依靠它或者人为地减小这个值,更应该增加这个值(如果增加了内存之后)</span><br><span class="line"><span class="attribute">net</span>.ipv<span class="number">4</span>.tcp_max_syn_backlog = <span class="number">262144</span>       #记录的那些尚未收到客户端确认信息的连接请求的最大值.对于有<span class="number">128</span>M内存的系统而言,缺省值是<span class="number">1024</span>,小内存的系统则是<span class="number">128</span></span><br><span class="line"><span class="attribute">net</span>.ipv<span class="number">4</span>.tcp_timestamps = <span class="number">0</span>                 #时间戳可以避免序列号的卷绕.一个<span class="number">1</span>Gbps的链路肯定会遇到以前用过的序列号.时间戳能够让内核接受这种<span class="string">&quot;异常&quot;</span>的数据包.这里需要将其关掉</span><br><span class="line"><span class="attribute">net</span>.ipv<span class="number">4</span>.tcp_synack_retries = <span class="number">1</span>             #为了打开对端的连接,内核需要发送一个SYN并附带一个回应前面一个SYN的ACK.也就是所谓三次握手中的第二次握手.这个设置决定了内核放弃连接之前发送SYN+ACK包的数量</span><br><span class="line"><span class="attribute">net</span>.ipv<span class="number">4</span>.tcp_syn_retries = <span class="number">1</span>                #在内核放弃建立连接之前发送SYN包的数量</span><br><span class="line"><span class="attribute">net</span>.ipv<span class="number">4</span>.tcp_tw_recycle = <span class="number">1</span>                 #开启TCP连接中time_wait sockets的快速回收</span><br><span class="line"><span class="attribute">net</span>.ipv<span class="number">4</span>.tcp_tw_reuse = <span class="number">1</span>                   #开启TCP连接复用功能,允许将time_wait sockets重新用于新的TCP连接(主要针对time_wait连接)</span><br><span class="line"><span class="attribute">net</span>.ipv<span class="number">4</span>.tcp_mem = <span class="number">94500000</span> <span class="number">915000000</span> <span class="number">927000000</span></span><br><span class="line">                                           <span class="comment">#1st低于此值,TCP没有内存压力,2nd进入内存压力阶段,3rdTCP拒绝分配socket(单位:内存页)</span></span><br><span class="line"><span class="attribute">net</span>.ipv<span class="number">4</span>.tcp_fin_timeout = <span class="number">1</span>               #如果套接字由本端要求关闭,这个参数决定了它保持在FIN-WAIT-<span class="number">2</span>状态的时间.对端可以出错并永远不关闭连接,甚至意外当机.缺省值是<span class="number">60</span> 秒.<span class="number">2</span>.<span class="number">2</span> 内核的通常值是<span class="number">180</span>秒,你可以按这个设置,但要记住的是,即使你的机器是一个轻载的WEB服务器,也有因为大量的死套接字而内存溢出的风险,FIN- WAIT-<span class="number">2</span>的危险性比FIN-WAIT-<span class="number">1</span>要小,因为它最多只能吃掉<span class="number">1</span>.<span class="number">5</span>K内存,但是它们的生存期长些.</span><br><span class="line"><span class="attribute">net</span>.ipv<span class="number">4</span>.tcp_keepalive_time = <span class="number">30</span>           #表示当keepalive起用的时候,TCP发送keepalive消息的频度(单位:秒)</span><br><span class="line"><span class="attribute">net</span>.ipv<span class="number">4</span>.ip_local_port_range = <span class="number">1024</span> <span class="number">65000</span>  #对外连接端口范围</span><br></pre></td></tr></table></figure>
+
+<p>10、关于系统连接数的优化<br>在 <code>/etc/security/limits.conf</code> 最后增加:</p>
+<figure class="highlight tap"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/security/limits</span><br><span class="line"></span><br><span class="line">* soft nofile<span class="number"> 65535 </span>                       <span class="comment">#软限制打开最大文件数65535</span></span><br><span class="line">* hard nofile<span class="number"> 65535 </span>                       <span class="comment">#硬限制打开最大文件数65535</span></span><br><span class="line">* soft noproc<span class="number"> 65535 </span>                       <span class="comment">#软限制打开最大进程数65535</span></span><br><span class="line">* hard noproc<span class="number"> 65535 </span>                       <span class="comment">#硬限制打开最大进程数65535</span></span><br></pre></td></tr></table></figure>
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E6%96%87%E4%BB%B6/" rel="tag"># 文件</a>
+              <a href="/tags/%E5%86%85%E5%AD%98/" rel="tag"># 内存</a>
+              <a href="/tags/%E5%86%85%E6%A0%B8/" rel="tag"># 内核</a>
+              <a href="/tags/%E5%8E%8B%E7%BC%A9/" rel="tag"># 压缩</a>
+              <a href="/tags/tcp/" rel="tag"># tcp</a>
+              <a href="/tags/%E8%BF%9E%E6%8E%A5/" rel="tag"># 连接</a>
+              <a href="/tags/gzip/" rel="tag"># gzip</a>
+              <a href="/tags/%E7%BC%93%E5%AD%98/" rel="tag"># 缓存</a>
+              <a href="/tags/%E9%99%90%E5%88%B6/" rel="tag"># 限制</a>
+              <a href="/tags/%E8%B6%85%E6%97%B6/" rel="tag"># 超时</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2018/09/22/1450/" rel="prev" title="监控软件Monit安装与配置">
+      <i class="fa fa-chevron-left"></i> 监控软件Monit安装与配置
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2018/10/09/1227/" rel="next" title="linux清空last和lastb记录">
+      linux清空last和lastb记录 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="王殊勋"
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name">王殊勋</p>
+  <div class="site-description" itemprop="description">better late than never.<br>只要开始，虽晚不迟。</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">656</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">2058</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <!--添加网站运行时间 -->
+  <span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
+  <script>
+      var now = new Date(); 
+      function createtime() { 
+          var grt= new Date("12/01/2007 12:00:00");//此处修改你的建站时间或者网站上线时间 
+          now.setTime(now.getTime()+250); 
+          days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days); 
+          hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours); 
+          if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum); 
+          mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;} 
+          seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum); 
+          snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;} 
+          document.getElementById("timeDate").innerHTML = "本站已安全运行 "+dnum+" 天 "; 
+          document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒"; 
+      } 
+  setInterval("createtime()",250);
+  </script>
+  <span itemprop="copyrightYear">(2007 - 2021)</span>
+  <!-- 添加网站运行时间 -->
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">学无止境</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script size="300" alpha="0.6" zIndex="0" src="/lib/canvas-ribbon/canvas-ribbon.js"></script>
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

@@ -1,0 +1,882 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"shuxun","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"./public/search.xml"};
+  </script>
+
+  <meta name="description" content="专注互联网运维技术发展">
+<meta property="og:type" content="website">
+<meta property="og:title" content="学无止境">
+<meta property="og:url" content="http://shuxun,wang/page/79/index.html">
+<meta property="og:site_name" content="学无止境">
+<meta property="og:description" content="专注互联网运维技术发展">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:author" content="王殊勋">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://shuxun,wang/page/79/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : true,
+    isPost : false,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>学无止境</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">学无止境</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">注互联网运维技术发展</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-sitemap">
+
+    <a href="/sitemap.xml" rel="section"><i class="fa fa-sitemap fa-fw"></i>站点地图</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content index posts-expand">
+            
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://shuxun,wang/2014/10/13/1501/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="王殊勋">
+      <meta itemprop="description" content="专注互联网运维技术发展">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="学无止境">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2014/10/13/1501/" class="post-title-link" itemprop="url">解决Please install the GNU compiler.</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2014-10-13 11:39:00" itemprop="dateCreated datePublished" datetime="2014-10-13T11:39:00+08:00">2014-10-13</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-07-14 15:16:12" itemprop="dateModified" datetime="2021-07-14T15:16:12+08:00">2021-07-14</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E9%94%99%E8%AF%AF%E8%A7%A3%E5%86%B3/" itemprop="url" rel="index"><span itemprop="name">错误解决</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>今天站长在安装VirtualBox的时候遇到这个错误,后来发现是gcc没有安装导致的.</p>
+<p>解决办法</p>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum <span class="keyword">install</span> gcc</span><br></pre></td></tr></table></figure>
+<p>如果网络不好可能要等一会~</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://shuxun,wang/2014/10/02/1011/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="王殊勋">
+      <meta itemprop="description" content="专注互联网运维技术发展">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="学无止境">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2014/10/02/1011/" class="post-title-link" itemprop="url">详解rsync error some files/attrs were not transferred (see previous errors) (code 23) at main.c(1508) [generator=3.0.7]</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2014-10-02 23:41:00" itemprop="dateCreated datePublished" datetime="2014-10-02T23:41:00+08:00">2014-10-02</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-07-14 15:16:05" itemprop="dateModified" datetime="2021-07-14T15:16:05+08:00">2021-07-14</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E9%94%99%E8%AF%AF%E8%A7%A3%E5%86%B3/" itemprop="url" rel="index"><span itemprop="name">错误解决</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">rsync</span> <span class="selector-tag">error</span>: <span class="selector-tag">some</span> <span class="selector-tag">files</span>/<span class="selector-tag">attrs</span> <span class="selector-tag">were</span> <span class="selector-tag">not</span> <span class="selector-tag">transferred</span> (see previous errors) (code <span class="number">23</span>) <span class="selector-tag">at</span> <span class="selector-tag">main</span><span class="selector-class">.c</span>(<span class="number">1508</span>) <span class="selector-attr">[generator=3.0.7]</span></span><br></pre></td></tr></table></figure>
+
+<p>一般出现这个错误的原因有有两个,一个是备份的目录不存在,还有一个就是权限不够.<br>比如执行:</p>
+<figure class="highlight ceylon"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rsync -av <span class="meta">license</span> /tmp</span><br></pre></td></tr></table></figure>
+
+<p>如果license目录不存在就会出现第一个错误,<br>如果不是管理员,对两个目录没有读写权限也会出现那个错误.<br>解决办法也很简单,<br>不存在的 话就备份存在的文件夹.<br>如果权限不够就换管理员操作.</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://shuxun,wang/2014/09/30/1401/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="王殊勋">
+      <meta itemprop="description" content="专注互联网运维技术发展">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="学无止境">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2014/09/30/1401/" class="post-title-link" itemprop="url">yum安装eaccelerator</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2014-09-30 05:45:00" itemprop="dateCreated datePublished" datetime="2014-09-30T05:45:00+08:00">2014-09-30</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-07-14 15:14:59" itemprop="dateModified" datetime="2021-07-14T15:14:59+08:00">2021-07-14</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%90%84%E7%B1%BB%E6%9C%8D%E5%8A%A1/" itemprop="url" rel="index"><span itemprop="name">各类服务</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>现在已经习惯yum安装软件,可以用rpm就尽量用rpm包来安装,尽量不去编译.<br>官方的源没有eaccelerator,</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">rpm -Uhv http:<span class="regexp">//</span>apt.sw.be<span class="regexp">/redhat/</span>el5<span class="regexp">/en/i</span>386<span class="regexp">/rpmforge/</span>RPMS/rpmforge-release-<span class="number">0.3</span>.<span class="number">6</span>-<span class="number">1</span>.el5.rf.i386.rpm</span><br><span class="line">rpm –import <span class="regexp">/etc/</span>pki<span class="regexp">/rpm-gpg/</span>RPM-GPG-KEY*</span><br><span class="line">yum install php-eaccelerator</span><br></pre></td></tr></table></figure>
+
+<p>执行 yum install eaccelerator 半天,都说没有这个包,后来:</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">[<span class="string">root@srv</span> <span class="string">yum.repos.d</span>]<span class="comment"># yum search eaccelerator</span></span><br><span class="line"></span><br><span class="line"><span class="attr">Loaded plugins:</span> <span class="string">fastestmirror</span></span><br><span class="line"><span class="string">Loading</span> <span class="string">mirror</span> <span class="string">speeds</span> <span class="string">from</span> <span class="string">cached</span> <span class="string">hostfile</span></span><br><span class="line"><span class="string">*</span> <span class="attr">rpmforge:</span> <span class="string">apt.sw.be</span></span><br><span class="line"><span class="string">*</span> <span class="attr">base:</span> <span class="string">centos.mirrors.redwire.net</span></span><br><span class="line"><span class="string">*</span> <span class="attr">updates:</span> <span class="string">mirrors.usc.edu</span></span><br><span class="line"><span class="string">*</span> <span class="attr">addons:</span> <span class="string">mirror.nic.uoregon.edu</span></span><br><span class="line"><span class="string">*</span> <span class="attr">extras:</span> <span class="string">centos.cogentcloud.com</span></span><br><span class="line"><span class="string">=============================</span> <span class="attr">Matched:</span> <span class="string">eaccelerator</span> <span class="string">==============================</span></span><br><span class="line"><span class="attr">php-eaccelerator.i386 :</span> <span class="string">PHP</span> <span class="string">accelerator,</span> <span class="string">optimizer,</span> <span class="string">encoder</span> <span class="string">and</span> <span class="string">dynamic</span> <span class="string">content</span></span><br><span class="line"><span class="string">:</span> <span class="string">cacher</span></span><br></pre></td></tr></table></figure>
+
+<p>搞定.装完就好了,什么都不要管,这比你用编译的方式方便多,也不需要设置什么目录.</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vi <span class="regexp">/etc/</span>php.d/eaccelerator.ini</span><br></pre></td></tr></table></figure>
+
+<p>配置信息都在上面.</p>
+<figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-attr">[root@srv yum.repos.d]</span># <span class="selector-tag">php</span> <span class="selector-tag">-v</span></span><br><span class="line"><span class="selector-tag">PHP</span> <span class="selector-tag">5</span><span class="selector-class">.1</span><span class="selector-class">.6</span> (cli) (<span class="attribute">built</span>: Apr <span class="number">7</span> <span class="number">2009</span> <span class="number">08</span>:<span class="number">00</span>:<span class="number">04</span>)</span><br><span class="line"><span class="selector-tag">Copyright</span> (c) <span class="selector-tag">1997-2006</span> <span class="selector-tag">The</span> <span class="selector-tag">PHP</span> <span class="selector-tag">Group</span></span><br><span class="line"><span class="selector-tag">Zend</span> <span class="selector-tag">Engine</span> <span class="selector-tag">v2</span><span class="selector-class">.1</span><span class="selector-class">.0</span>, <span class="selector-tag">Copyright</span> (c) <span class="selector-tag">1998-2006</span> <span class="selector-tag">Zend</span> <span class="selector-tag">Technologies</span></span><br><span class="line"><span class="selector-tag">with</span> <span class="selector-tag">eAccelerator</span> <span class="selector-tag">v0</span><span class="selector-class">.9</span><span class="selector-class">.5</span><span class="selector-class">.2</span>, <span class="selector-tag">Copyright</span> (c) <span class="selector-tag">2004-2006</span> <span class="selector-tag">eAccelerator</span>, <span class="selector-tag">by</span> <span class="selector-tag">eAccelerator</span></span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://shuxun,wang/2014/09/30/1238/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="王殊勋">
+      <meta itemprop="description" content="专注互联网运维技术发展">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="学无止境">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2014/09/30/1238/" class="post-title-link" itemprop="url">linux下xampp搭配</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2014-09-30 04:05:00" itemprop="dateCreated datePublished" datetime="2014-09-30T04:05:00+08:00">2014-09-30</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-07-14 15:15:04" itemprop="dateModified" datetime="2021-07-14T15:15:04+08:00">2021-07-14</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%90%84%E7%B1%BB%E6%9C%8D%E5%8A%A1/" itemprop="url" rel="index"><span itemprop="name">各类服务</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>一、安装</p>
+<p>这里我选择的是CentOS,当然,版本你可以自己选择,官网地址  <a target="_blank" rel="noopener" href="http://www.centos.org/">http://www.centos.org</a>.<br>当然,有一点要值得注意,就是32位和64位的选择.如果机器符合64位,那就没必要用32位的.<br>安装这里就没什么好讲的了,尽量最小化安装,留个”开发工具”就可以了!<br>至于分区,google一下,很多!但我们在第一次接触时,尽量选择默认分区.先顺利的达成应用,以后再慢慢研究尚可.这能增加你的信心和学习效率!</p>
+<p>二、AMP的安装和配置、优化</p>
+<p>也就是apache、mysql、php.<br>我的学习过程是,用一个集成的安装包,而不是一上来就挨个的那样配置,会对信心大打折扣,并且引出的问题会很多!<br>这里,我推荐的是:LAMPP 官方地址:<a target="_blank" rel="noopener" href="http://www.apachefriends.org/zh_cn/xampp-linux.html">http://www.apachefriends.org/zh_cn/xampp-linux.html</a>.<br>下载源码包,然后解压进行安装、启动.</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">wget http:<span class="regexp">//</span>nchc.dl.sourceforge.net/s ... linux-<span class="number">1.6</span>.<span class="number">8</span>a.tar.gz</span><br><span class="line">tar xvfz xampp-linux-<span class="number">1.6</span>.<span class="number">8</span>a.tar.gz -C /opt</span><br><span class="line"><span class="regexp">/opt/</span>lampp/lampp start</span><br></pre></td></tr></table></figure>
+
+<p>此时,lampp组件就成功启动了,但它并不是每次随系统启动.</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ln -s <span class="regexp">/opt/</span>lampp<span class="regexp">/lampp /</span>etc<span class="regexp">/rc.d/</span>rc3.d/S99lampp</span><br><span class="line">ln -s <span class="regexp">/opt/</span>lampp<span class="regexp">/lampp /</span>etc<span class="regexp">/rc.d/</span>rc4.d/S99lampp</span><br><span class="line">ln -s <span class="regexp">/opt/</span>lampp<span class="regexp">/lampp /</span>etc<span class="regexp">/rc.d/</span>rc5.d/S99lampp</span><br></pre></td></tr></table></figure>
+
+<p>这样,就OK了!<br>然后我们来重启服务器,看下成功与否.</p>
+<figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">shutdown -r now</span><br></pre></td></tr></table></figure>
+
+<p>但这个时候是比较危险的,如果你的服务器已经在公网的话,那么你需要马上执行下面的命令,根据提示,设定密码.具体的可参照上面给出的lampp官方说明.</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="regexp">/opt/</span>lampp/lampp security</span><br></pre></td></tr></table></figure>
+
+<p>开启 eAccelerator:</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vi <span class="regexp">/opt/</span>lampp<span class="regexp">/etc/</span>php.ini</span><br></pre></td></tr></table></figure>
+
+<p>查找 eAccelerator 将前面的 # 去掉,重启apache即可.<br>另外,参数可以默认即可,当然,你也可以改一下,比如我把 eaccelerator.shm_size 修改为 32.<br>意思是eAccelerator缓存可用的共享内存数量为32M.<br>这个时候,实质上,你的LAMP已经是基本可以应用了!但有一点你要知道,这个组件默认是没有zend的,你可以再另外安装配置:</p>
+<figure class="highlight jboss-cli"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">wget http:<span class="string">//</span>网址<span class="string">/ZendOptimizer-3.3.3-linux-glibc23-i386.tar.gz</span></span><br><span class="line">tar xvzf ZendOptimizer-3.3.3-linux-glibc23-i386.tar.gz</span><br><span class="line"><span class="keyword">cd</span> ZendOptimizer-3.2.2-linux-glibc21-i386</span><br><span class="line"><span class="string">./install.sh</span></span><br></pre></td></tr></table></figure>
+
+<p>在Please specify the location for installing ZendOptimizer:提示后输入ZendOptimizer安装路径,例:如:<code>/data/webserver/zend</code>.<br>在Confirm the location of your php.ini file:提示后输入php.ini文件所在目录,例如 <code>/data/webserver/php/etc</code>.<br>在Specify the full path to the Apache control utility (apachectl):提示输入apachectl绝对路径,例:如:<code>/data/webserver/apache/bin/apachectl</code>.<br>时间差问题.<br>在php.ini添加(eaccelerator下边).</p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">;;;;;;;;;;;;;;;;;;;</span></span><br><span class="line"><span class="comment">; Module Settings ;</span></span><br><span class="line"><span class="comment">;;;;;;;;;;;;;;;;;;;</span></span><br><span class="line"><span class="section">[Date]</span></span><br><span class="line"><span class="comment">; Defines the default timezone used by the date functions</span></span><br><span class="line"><span class="comment">;date.timezone =</span></span><br><span class="line"><span class="attr">date.timezone</span> = Etc/GMT-<span class="number">8</span></span><br></pre></td></tr></table></figure>
+
+<p>修改mysql最大连接数:</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vi <span class="regexp">/etc/my</span>.cnf</span><br></pre></td></tr></table></figure>
+
+<p>在 [mysqld] 下面加入一行:</p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">max_connections</span> = <span class="number">1500</span></span><br></pre></td></tr></table></figure>
+
+<p>伪静态:</p>
+<p>打开apache的配置文件(httpd.conf).<br>找到<br>#LoadModule rewrite_module modules/mod_rewrite.so<br>把前面的#去掉.<br>然后找到AllowOverride None,将其全部改成AllowOverride All.<br>即可支持伪静态功能.<br>在bbs等站点根目录下放置相应htaccess规则即可.</p>
+<figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">#<span class="keyword">Include</span> conf<span class="regexp">/extra/</span>httpd-mpm.conf</span><br><span class="line">#<span class="keyword">Include</span> conf<span class="regexp">/extra/</span>httpd-<span class="keyword">default</span>.conf</span><br><span class="line">#<span class="keyword">Include</span> conf<span class="regexp">/extra/</span>httpd-info.conf</span><br><span class="line">#<span class="keyword">Include</span> conf<span class="regexp">/extra/</span>httpd-vhosts.conf #这个就是apache虚拟主机的配置文件了</span><br></pre></td></tr></table></figure>
+
+<p>去掉前边的#  按照相关原则进行合理配置!<br>影响最大的是 httpd-mpm.conf:</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">&lt;ifModule prefork.c&gt;</span></span><br><span class="line">    <span class="attribute">ServerLimit</span> <span class="number">2000</span></span><br><span class="line">    <span class="attribute">StartServers</span> <span class="number">10</span></span><br><span class="line">    <span class="attribute">MinSpareServers</span> <span class="number">10</span></span><br><span class="line">    <span class="attribute">MaxSpareServers</span> <span class="number">15</span></span><br><span class="line">    <span class="attribute">MaxClients</span> <span class="number">1500</span></span><br><span class="line">    <span class="attribute">MaxRequestsPerChild</span> <span class="number">10000</span></span><br><span class="line"><span class="section">&lt;/ifModule&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>虚拟主机配置:</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#Include conf/extra/httpd-vhosts.conf #这个就是apache虚拟主机的配置文件了</span></span><br><span class="line"><span class="section">&lt;virtualHost *<span class="number">:80</span>&gt;</span></span><br><span class="line">    <span class="attribute">ServerAdmin</span> www@iamhe.cn</span><br><span class="line">    <span class="attribute"><span class="nomarkup">DocumentRoot</span></span> /opt/lampp/htdocs/wwwroot/bbs</span><br><span class="line">    <span class="attribute"><span class="nomarkup">ServerName</span></span> bbs.<span class="number">123</span>.com</span><br><span class="line">    <span class="attribute">ServerAlias</span> bbs<span class="number">2</span>.<span class="number">123</span>.com</span><br><span class="line">    <span class="attribute">ErrorLog</span> logs/bbs.<span class="number">123</span>.com-error_log</span><br><span class="line">    <span class="attribute">CustomLog</span> logs/bbs.<span class="number">123</span>.com-access_log common</span><br><span class="line"><span class="section">&lt;/virtualHost&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>现在,bbs.123.com和bbs2.123.com 即可同时访问这个目录,那么如果你不想让 bbs2 访问,那么去掉  ServerAlias bbs2.123.com   这行就可以了.</p>
+<p>三、安全方面的问题</p>
+<p>这个一看就知道什么意思吧?<br>修改 Options Indexes FollowSymLinks ExecCGI Includes 为 Options FollowSymLinks Includes.<br>隐藏apache版本相关信息 (错误页面).<br>添加到httpd.conf文件结尾即可:<br>ServerSignature Off<br>ServerTokens Prod</p>
+<p>提升PHP安全性:</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">php.ini</span><br></pre></td></tr></table></figure>
+
+<p>找到:</p>
+<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">disable_functions</span> =</span><br></pre></td></tr></table></figure>
+
+<p>设置为:</p>
+<figure class="highlight perl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">disable_functions = phpinfo,passthru,<span class="keyword">exec</span>,<span class="keyword">system</span>,popen,<span class="keyword">chroot</span>,escapeshellcmd,escapeshellarg,shell_exec,proc_open,proc_get_status,ini_restore</span><br><span class="line">disable_functions = phpinfo,passthru,<span class="keyword">exec</span>,<span class="keyword">system</span>,<span class="keyword">chroot</span>,scandir,chgrp,<span class="keyword">chown</span>,shell_exec,proc_open,proc_get_status,ini_alter,ini_alter,ini_restore,dl,pfsockopen,openlog,syslog,<span class="keyword">readlink</span>,<span class="keyword">symlink</span>,popepassthru,stream_socket_server</span><br></pre></td></tr></table></figure>
+
+<p>这里我给出了两组,根据你自己需求写吧.<br>关闭 ipv6 以最大限度保证安全和快速.</p>
+<figure class="highlight jboss-cli"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">ifconfig -a <span class="comment">#列出全部网络接口信息</span></span><br><span class="line">sit0 Link encap<span class="function">:IPv6-in-IPv4</span> <span class="comment">#确认ipv6是被启动的状态</span></span><br><span class="line">vi <span class="string">/etc/modprobe.conf</span> <span class="comment">#修改相应配置文件,添加如下行到文尾:</span></span><br><span class="line"><span class="keyword">alias</span> net-pf-10 off</span><br><span class="line"><span class="keyword">alias</span> ipv6 off</span><br><span class="line"><span class="keyword">shutdown</span> -r now <span class="comment">#重新启动系统,使设置生效</span></span><br></pre></td></tr></table></figure>
+
+<p>如果你安装了X,那么想让linux默认不启动X,而是启动字符文本….</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vi <span class="regexp">/etc/i</span>nittab</span><br></pre></td></tr></table></figure>
+
+<p>文档中,将 id:5改成3即可.<br>(在/etc/inittab修改运行等级为5是系统开机进入X windows,运行等级为3是系统开机进入文本.).</p>
+<figure class="highlight vbnet"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># <span class="keyword">Default</span> runlevel. (<span class="keyword">Do</span> <span class="built_in">not</span> <span class="keyword">set</span> <span class="keyword">to</span> <span class="number">0</span> <span class="built_in">or</span> <span class="number">6</span>)</span><br><span class="line"><span class="symbol">id:</span><span class="number">3</span>:initdefault:</span><br></pre></td></tr></table></figure>
+
+<p>字符终端模式下启动x-windows:</p>
+<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">startx</span></span><br></pre></td></tr></table></figure>
+
+<p>ARP绑定:</p>
+<p>为了开机启动:</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vi <span class="regexp">/etc/</span>rc.d/rc.local</span><br></pre></td></tr></table></figure>
+
+<p>增加:</p>
+<figure class="highlight armasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="symbol">arp</span> -s 网关<span class="built_in">IP</span> 网关MAC</span><br><span class="line"><span class="symbol">arp</span> -s 服务器<span class="built_in">IP</span> 服务器MAC</span><br></pre></td></tr></table></figure>
+
+<p>SYN、DDOS的解决办法  (没有硬防的情况下).<br>这个只能抵御,不能本质上防范.</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">iptables -A INPUT -p tcp --syn -m limit --limit <span class="number">1</span>/s -j ACCEPT</span><br><span class="line">iptables -A INPUT -p tcp --tcp-flags SYN,ACK,FIN,RST RST -m limit --limit <span class="number">1</span>/s -j ACCEPT</span><br><span class="line">iptables -A INPUT -p icmp --icmp-type echo-request -m limit --limit <span class="number">1</span>/s -j ACCEPT</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">echo <span class="number">2048</span> &gt; <span class="regexp">/proc/</span>sys<span class="regexp">/net/i</span>pv4/tcp_max_syn_backlog</span><br><span class="line">echo <span class="number">1</span> &gt; <span class="regexp">/proc/</span>sys<span class="regexp">/net/i</span>pv4/tcp_synack_retries</span><br><span class="line">echo <span class="number">1</span> &gt; <span class="regexp">/proc/</span>sys<span class="regexp">/net/i</span>pv4/tcp_syn_retries</span><br><span class="line">echo <span class="number">1</span> &gt; <span class="regexp">/proc/</span>sys<span class="regexp">/net/i</span>pv4/tcp_syncookies</span><br></pre></td></tr></table></figure>
+
+<p>如果你有幸能分析出攻击者的真实肉机IP地址.<br>那么你可以同样通过linux防火墙来封掉他的IP地址或IP段,比如:<br>单个IP的命令是:</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">iptables -<span class="selector-tag">I</span> <span class="selector-tag">INPUT</span> -s <span class="number">127.0</span>.<span class="number">0.1</span> -j DROP</span><br></pre></td></tr></table></figure>
+
+<p>封IP段的命令是:</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">iptables</span> -I INPUT -s <span class="number">127.1.0.0</span>/<span class="number">16</span> -j DROP</span><br><span class="line"><span class="attribute">iptables</span> -I INPUT -s <span class="number">127.2.0.0</span>/<span class="number">16</span> -j DROP</span><br><span class="line"><span class="attribute">iptables</span> -I INPUT -s <span class="number">127.3.0.0</span>/<span class="number">16</span> -j DROP</span><br></pre></td></tr></table></figure>
+
+<p>封整个段的命令是:</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">iptables</span> -I INPUT -s <span class="number">127.0.0.0</span>/<span class="number">8</span> -j DROP</span><br></pre></td></tr></table></figure>
+
+<p>封几个段的命令是:</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">iptables</span> -I INPUT -s <span class="number">127.0.1.0</span>/<span class="number">24</span> -j DROP</span><br><span class="line"><span class="attribute">iptables</span> -I INPUT -s <span class="number">127.0.2.0</span>/<span class="number">24</span> -j DROP</span><br></pre></td></tr></table></figure>
+
+<p>对LAMPP套件的补充<br>在初步安装完后,你在浏览器里输入  localhost  即可出现lampp的界面,里面包括你开放的组件,安全状况,phpinfo、以及流量监 测,都在里面.<br>这个界面的地址是 htdocs的 index.html.<br>那么你在没配置虚拟主机时,任何人通过IP或你绑定的域名,都可以访问得到.<br>我的建议是,在 htdocs 下,新建一个 robots.txt 文件来屏蔽所有的搜索引擎.<br>然后再另建一个 wwwroot 目录来存放你的网站.<br>套件的官方地址是:<a target="_blank" rel="noopener" href="http://www.apachefriends.org/zh_cn/xampp-linux.html">http://www.apachefriends.org/zh_cn/xampp-linux.html</a>.<br>这个套件有win、linux、macos 等版本,其实它是适合做开发环境的,并不适合生产环境.<br>但如果你做一下安全配置,例如把不需要的都关掉,也是可以投入生产环境的.</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://shuxun,wang/2014/09/11/1427/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="王殊勋">
+      <meta itemprop="description" content="专注互联网运维技术发展">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="学无止境">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2014/09/11/1427/" class="post-title-link" itemprop="url">防火墙开放端口</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2014-09-11 01:55:00" itemprop="dateCreated datePublished" datetime="2014-09-11T01:55:00+08:00">2014-09-11</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-07-14 15:15:19" itemprop="dateModified" datetime="2021-07-14T15:15:19+08:00">2021-07-14</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" itemprop="url" rel="index"><span itemprop="name">操作系统</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>临时开放端口:<br>运行命令:</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">iptables -<span class="selector-tag">I</span> <span class="selector-tag">INPUT</span> -<span class="selector-tag">p</span> tcp --dport <span class="number">80</span> -j ACCEPT</span><br></pre></td></tr></table></figure>
+
+<p>重启防火墙:</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="regexp">/etc/i</span>nit.d/iptables restart</span><br></pre></td></tr></table></figure>
+
+<p>该方式重启电脑后,可能会失效.</p>
+<p>永久开放端口:<br>编辑文件:</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vi <span class="regexp">/etc/</span>sysconfig/iptables</span><br></pre></td></tr></table></figure>
+
+<p>添加一行:</p>
+<figure class="highlight pf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">-A RH-Firewall-<span class="number">1</span>-INPUT -m <span class="keyword">state</span> --state NEW -m tcp -p tcp --dport <span class="number">80</span> -j ACCEPT</span><br></pre></td></tr></table></figure>
+
+<p>重启防火墙</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="regexp">/etc/i</span>nit.d/iptables restart</span><br></pre></td></tr></table></figure>
+
+<p>该方式重启电脑后,不会失效.</p>
+<p>关闭防火墙:</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="regexp">/etc/i</span>nit.d/iptables stop</span><br></pre></td></tr></table></figure>
+
+<p>永久关闭:</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">chkconfig</span> –level <span class="number">35</span> iptables <span class="literal">off</span></span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+
+  
+  <nav class="pagination">
+    <a class="extend prev" rel="prev" href="/page/78/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/78/">78</a><span class="page-number current">79</span><a class="page-number" href="/page/80/">80</a><span class="space">&hellip;</span><a class="page-number" href="/page/132/">132</a><a class="extend next" rel="next" href="/page/80/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+  </nav>
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="王殊勋"
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name">王殊勋</p>
+  <div class="site-description" itemprop="description">better late than never.<br>只要开始，虽晚不迟。</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">656</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">2058</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <!--添加网站运行时间 -->
+  <span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
+  <script>
+      var now = new Date(); 
+      function createtime() { 
+          var grt= new Date("12/01/2007 12:00:00");//此处修改你的建站时间或者网站上线时间 
+          now.setTime(now.getTime()+250); 
+          days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days); 
+          hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours); 
+          if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum); 
+          mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;} 
+          seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum); 
+          snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;} 
+          document.getElementById("timeDate").innerHTML = "本站已安全运行 "+dnum+" 天 "; 
+          document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒"; 
+      } 
+  setInterval("createtime()",250);
+  </script>
+  <span itemprop="copyrightYear">(2007 - 2021)</span>
+  <!-- 添加网站运行时间 -->
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">学无止境</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script size="300" alpha="0.6" zIndex="0" src="/lib/canvas-ribbon/canvas-ribbon.js"></script>
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
